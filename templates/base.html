@@ -7,11 +7,9 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
 </head>
 <body>
-  <nav class="navbar navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
-  </nav>
-  <div>
-    {% block container %}{% endblock %}
+  {% include('nav.html') %}
+  <div class="mt-2 container-fluid">
+    {% block body %}{% endblock %}
   </div>
 </body>
 </html>
