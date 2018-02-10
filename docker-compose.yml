@@ -1,0 +1,13 @@
+version: '3.1'
+services:
+    backend:
+        build:
+            context: .
+            dockerfile: Dockerfile-backend
+        ports:
+            - "80:80"
+        restart: always
+        volumes:
+            - ./:/src/
+        command: python /src/run.py
+        image: library/python

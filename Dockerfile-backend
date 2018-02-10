@@ -1,0 +1,10 @@
+FROM python:latest
+
+RUN mkdir /src/
+WORKDIR /src/
+
+COPY requirements.txt requirements.txt
+
+RUN pip install -r requirements.txt
+
+CMD ["python", "run.py"]
