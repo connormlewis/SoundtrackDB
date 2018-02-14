@@ -1,60 +1,83 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+{% endblock%}
+
 {% block body %}
 
-<div class="container">
-	<div class="row">
-		<div class="col-sm-8">
-			{% set type = 'TV Show' %}
-			{% if content.name %}
-				<h1>{{content.name}}</h1>
-			{% else %}
-				{% set type = 'Movie' %}
-				<h1>{{content.title}}</h1>
-			{% endif %}
+<div class="row" style="padding-bottom: 20px;">
+	<div class="col-sm-7">
+		{% set type = 'TV Show' %}
+		{% if content.name %}
+			<h1>{{content.name}}</h1>
+		{% else %}
+			{% set type = 'Movie' %}
+			<h1>{{content.title}}</h1>
+		{% endif %}
 
-			{% set years = '' %}
-			{% if type == 'TV Show' %}
-				{% set last = content.last_air_date[:-6] %}
-				{% if last == '2018' %}
-					{% set last = 'Present' %}
-				{% endif %}
-			{% set years = content.first_air_date[:-6] + ' - ' + last %}
-			{% else %}
-				{% set years = content.release_date[:-6]%}
+		{% set years = '' %}
+		{% if type == 'TV Show' %}
+			{% set last = content.last_air_date[:-6] %}
+			{% if last == '2018' %}
+				{% set last = 'Present' %}
 			{% endif %}
-		
-			<h4>{{type}} | {{years}}| {{content.genres|join(', ', attribute='name')}}</h4>
-			<h3><u>About</u></h4>
-			<p>{{content.overview}}</p>
-			<div class="row">
-				<div class="col-sm-6">
-					<h3><u>Cast</u></h3>
-					<ul>
-						{% for actor in cast.cast%}
-							<li>{{actor.name}}</li>
-						{% endfor %}
-					</ul>
+		{% set years = content.first_air_date[:-6] + ' - ' + last %}
+		{% else %}
+			{% set years = content.release_date[:-6]%}
+		{% endif %}
+
+		<h4>{{type}} | {{years}}| {{content.genres|join(', ', attribute='name')}}</h4>
+		<h3>About</h3>
+		<p>{{content.overview}}</p>
+		<div class="row" style="padding-bottom: 20px;">
+			<div class="col-sm-6">
+				<h3>Cast</h3>
+				<ul>
+					{% for actor in cast.cast%}
+						<li>{{actor.name}}</li>
+					{% endfor %}
+				</ul>
+						<h3>Photos</h3>
+				<div id="photoCarousel" class="carousel slide" data-ride="carousel">
+
+					<!-- Wrapper for slides -->
+					<div class="carousel-inner">
+						{% for img in images.backdrops%}
+						<div class="carousel-item {% if loop.index == 1 %}active{% endif %}" id="slide{{ loop.index }}">
+							<img src="http://image.tmdb.org/t/p/w500{{img.file_path}}">
+						</div>
+						{% endfor%}
+					</div>
+
+			  		<!-- Left and right controls -->
+			  		<a class="carousel-control-prev" href="#photoCarousel" data-slide="prev">
+			    		<span class="carousel-control-prev-icon"></span>
+			  		</a>
+			  		<a class="carousel-control-next" href="#photoCarousel" data-slide="next">
+			    		<span class="carousel-control-next-icon"></span>
+			  		</a>
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-4">
-			<img class="img-responsive" src="http://image.tmdb.org/t/p/w500/{{content.poster_path}}" width=475 height=575 vspace="20">
-			<iframe width="480" height="270" src="//www.youtube.com/embed/{{video.results[0].key}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
-		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-6">
-			<h3><u>Photos</u></h3>
-		</div>
+	<div class="col-sm-5">
+		<img class="img-responsive" src="http://image.tmdb.org/t/p/w500/{{content.poster_path}}" width=475 height=575 vspace="20">
+		<iframe width="480" height="270" src="//www.youtube.com/embed/{{video.results[0].key}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen ></iframe>
 	</div>
-	<div class="row">
-		<div class="col-sm-6">
-			<h3><u>Soundtracks</u></h3>
-		</div>
-		<div class="col-sm-6">
-			<h3><u>Artists</u></h3>
-		</div>
+</div>
+<div class="row">
+	<div class="col-sm-4">
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-6">
+		<h3>Soundtracks</h3>
+	</div>
+	<div class="col-sm-6">
+		<h3>Artists</h3>
 	</div>
 </div>
 {% endblock %}

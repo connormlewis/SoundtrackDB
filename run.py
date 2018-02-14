@@ -43,8 +43,9 @@ def get_single_media(media_name: str):
 	content_data = json.load(open('static/instances/show_' + media_name + '.json'))
 	cast_data = json.load(open('static/instances/cast_' + media_name + '.json'))
 	video_data = json.load(open('static/instances/video_' + media_name + '.json'))
+	image_data = json.load(open('static/instances/images_' + media_name + '.json'))
 
-	return render_template('model-movie-tv.html', content=content_data, cast=cast_data, video=video_data)
+	return render_template('model-movie-tv.html', content=content_data, cast=cast_data, video=video_data, images=image_data)
 
 
 @app.errorhandler(404)
