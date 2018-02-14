@@ -17,12 +17,15 @@
         {% endfor %}
     </ol>
   </div>
-</div>
 
-<div class="col-sm-4">
+  <div class="col-sm-4">
 
-<img class="mb-3" src="{{ content.images[1].url }}" width=350 height=350 alt="" >
-<iframe src="https://open.spotify.com/embed?uri={{content.uri}}"
+    <img class="mb-3" src="{{ content.images[1].url }}" width=350 height=350 alt="{{content.name}} album cover" >
+    <iframe src="https://open.spotify.com/embed?uri={{content.uri}}"
         width="350" height="380" frameborder="0" allowtransparency="true"></iframe>
+  </div>
+
+
 </div>
+
 {% endblock %}  
