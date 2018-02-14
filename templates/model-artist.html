@@ -2,6 +2,30 @@
 
 {% block body %}
 
-Put artist model stuff here.
+<div class="row">
+  <div class="col-md-6">
+    <h1 class="float-left mr-3">{{ lastfm.artist.name }}</h1>
+
+    <iframe src="https://open.spotify.com/follow/1/?uri={{ spotify.uri }}&size=detail&theme=light" width="300" height="56"
+        scrolling="no" frameborder="0" style="border:none; overflow:hidden;" allowtransparency="true"></iframe>
+
+    <h4>Bio</h4>
+    <p>{{ lastfm.artist.bio.content | safe }}</p>
+
+    <h4>Learn More</h4>
+    <p><a href="{{ lastfm.artist.url }}"><i class="fab fa-lastfm fa-fw"></i> Last.fm</a></p>
+    <p><a href="{{ spotify.external_urls.spotify }}"><i class="fab fa-spotify fa-fw"></i> {{ spotify.name }} Spotify</a></p>
+  </div>
+
+  <div class="col-md-6">
+    <img src="{{ spotify.images[0].url }}" width="100%" alt="">
+
+    <div class="text-center mt-3">
+      <iframe src="https://open.spotify.com/embed?uri=spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+        frameborder="0" allowtransparency="true"></iframe>
+    </div>
+
+  </div>
+</div>
 
 {% endblock %}
