@@ -1,5 +1,43 @@
 {% extends "base.html" %}
 
+{% block head %}
+  <script src="{{ url_for('static', filename='node_modules/jquery/dist/jquery.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='node_modules/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+
+{% endblock%}
+
 {% block body %}
-<div>This is the home page</div>
+<div id="myCarousel" class="carousel slide carousel-fade" data-ride="carousel" data-interval="5000">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#myCarousel" data-slide-to="1"></li>
+    <li data-target="#myCarousel" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://i.imgur.com/sNVImA5.jpg" alt="John Williams" style="width:100%;">
+    </div>
+
+    <div class="carousel-item">
+    	<div class="overlay"></div>
+      <img src="https://i.imgur.com/dkZpu9n.jpg" alt="Buddy Bergman" style="width:100%;">
+    </div>
+
+    <div class="carousel-item">
+    	<div class="overlay"></div>
+    	<img src="https://i.imgur.com/0HPuGqO.jpg" alt="George Kallis" style="width:100%;">
+    </div>
+  </div>
+
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
 {% endblock %}
