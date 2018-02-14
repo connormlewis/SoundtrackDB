@@ -7,6 +7,4 @@ services:
         ports:
             - "80:80"
         restart: always
-        volumes:
-            - ./:/src/
         image: library/python
