@@ -1,6 +1,6 @@
-import json
+import json 
 
-from flask import Flask, render_template, abort, current_app
+from flask import Flask, render_template, abort
 
 app = Flask('SoundtrackDB')
 
@@ -43,7 +43,15 @@ def get_media():
 
 @app.route('/tv-movie/<media_name>')
 def get_single_media(media_name: str):
-    return render_template('model-movie-tv.html')
+    if media_name not in ['riverdale', 'interstellar', 'e_t']:
+        abort(404)
+
+    content_data = json.load(open('static/instances/show_' + media_name + '.json'))
+    cast_data = json.load(open('static/instances/cast_' + media_name + '.json'))
+    video_data = json.load(open('static/instances/video_' + media_name + '.json'))
+    image_data = json.load(open('static/instances/images_' + media_name + '.json'))
+
+    return render_template('model-movie-tv.html', content=content_data, cast=cast_data, video=video_data, images=image_data)
 
 
 @app.errorhandler(404)
