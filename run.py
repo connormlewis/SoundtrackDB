@@ -1,4 +1,6 @@
-from flask import Flask, render_template, abort
+import json
+
+from flask import Flask, render_template, abort, current_app
 
 app = Flask('SoundtrackDB')
 
@@ -15,7 +17,13 @@ def get_artists():
 
 @app.route('/artist/<artist_name>')
 def get_artist(artist_name: str):
-    return render_template('model-artist.html')
+    if artist_name not in ['hans_zimmer', 'blake_neely', 'john_williams']:
+        abort(404)
+
+    spotify_data = json.load(open('static/instances/artist_' + artist_name + '.json'))
+    lastfm_data = json.load(open('static/instances/last_fm_artist_' + artist_name + '.json'))
+
+    return render_template('model-artist.html', lastfm=lastfm_data, spotify=spotify_data)
 
 
 @app.route('/album')
