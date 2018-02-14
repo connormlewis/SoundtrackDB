@@ -11,14 +11,20 @@
 			<p>Label: {{content.label}}<br/>
 				Release Year: {{content.release_date[:-6]}}<br/>
 			<h3>Track List</h3>
-			 <iframe src="https://open.spotify.com/embed?uri={{content.uri}}"
-        width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+			<ol>
+					{% for song in track.tracks%}
+						<li>{{song.name}}</li>
+					{% endfor %}
+			</ol>
+
+			 
 		</div>
 		<div class="col-sm-4">
-	    	<img src="{{ content.images[0].url }}" width=350 height=350 alt="" >
-	    	
+
+	    	<img class="mb-3" src="{{ content.images[1].url }}" width=350 height=350 alt="" >
+	    	<iframe src="https://open.spotify.com/embed?uri={{content.uri}}"
+        width="350" height="380" frameborder="0" allowtransparency="true"></iframe>
 	  	</div>
 
-  	</div>
 </div>
 {% endblock %}
