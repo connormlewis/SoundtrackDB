@@ -2,6 +2,23 @@
 
 {% block body %}
 
-Put album model stuff here.
+<div class="container">
 
+	<div class="row">
+		<h1 class="float-left mr-3">{{ content.name }}</h1>
+		<div class="col-sm-8">
+			<h3>About</h3>
+			<p>Label: {{content.label}}<br/>
+				Release Year: {{content.release_date[:-6]}}<br/>
+			<h3>Track List</h3>
+			 <iframe src="https://open.spotify.com/embed?uri={{content.uri}}"
+        width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+		</div>
+		<div class="col-sm-4">
+	    	<img src="{{ content.images[0].url }}" width=350 height=350 alt="" >
+	    	
+	  	</div>
+
+  	</div>
+</div>
 {% endblock %}

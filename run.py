@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, render_template, abort
 
 app = Flask('SoundtrackDB')
@@ -25,7 +27,13 @@ def get_albums():
 
 @app.route('/album/<album_name>')
 def get_album(album_name: str):
-    return render_template('model-album.html')
+
+	if album_name not in ['riverdale', 'interstellar', 'e_t']:
+		abort(404)
+	content_data = json.load(open('static/instances/album_' + album_name + '.json'))
+	track_data = json.load(open('static/instances/track_' + album_name + '.json'))
+
+	return render_template('model-album.html', content=content_data, track=track_data)
 
 
 @app.route('/tv-movie')
