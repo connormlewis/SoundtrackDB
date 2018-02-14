@@ -29,7 +29,7 @@
 			{% set years = content.release_date[:-6]%}
 		{% endif %}
 
-		<h4>{{type}} | {{years}}| {{content.genres|join(', ', attribute='name')}}</h4>
+		<h4>{{type}} | {{years}} | {{content.genres|join(', ', attribute='name')}}</h4>
 		<h3>About</h3>
 		<p>{{content.overview}}</p>
 		<div class="row" style="padding-bottom: 20px;">
@@ -47,7 +47,7 @@
 					<div class="carousel-inner">
 						{% for img in images.backdrops%}
 						<div class="carousel-item {% if loop.index == 1 %}active{% endif %}" id="slide{{ loop.index }}">
-							<img src="http://image.tmdb.org/t/p/w500{{img.file_path}}">
+							<img src="http://image.tmdb.org/t/p/w500{{img.file_path}}" width=500>
 						</div>
 						{% endfor%}
 					</div>
