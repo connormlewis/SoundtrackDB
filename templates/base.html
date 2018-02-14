@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +6,16 @@
   <title>SoundtrackDB</title>
 
   <link rel="stylesheet" href="{{ url_for('static', filename='node_modules/bootstrap/dist/css/bootstrap.min.css') }}">
-  {% block metas %}{% endblock %}
-  {% block styles %}{% endblock %}
-  {% block scripts %}{% endblock %}
+
+  <script src="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome-free-solid/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome-free-regular/index.js') }}"></script>
+  <script src="{{ url_for('static', filename='node_modules/@fortawesome/fontawesome-free-brands/index.js') }}"></script>
+  <style>
+    .container-fluid {
+      max-width: 1200px !important;
+    }
+  </style>
 </head>
 <body>
   {% include('nav.html') %}
