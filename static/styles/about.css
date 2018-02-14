@@ -1,0 +1,38 @@
+h1 {
+  text-align: center;
+  padding: 10px;
+}
+p {
+  text-align: center;
+}
+
+.desc {
+  padding-right: 25px;
+  padding-left: 25px;
+}
+
+.avatar {
+  width: 100%;
+  height: auto;
+  display: block;
+  background-position: top center;
+  background-size: cover;
+  border-radius: 50%;
+}
+
+.stats {
+  padding: 10px;
+}
+
+.column {
+  padding-top: 10px;
+  margin: auto;
+  margin-top: 50px;
+  word-wrap: break-word;
+  width: 310px;
+  overflow: hidden;
+}
+
+.tools {
+  padding-bottom: 35px;
+}

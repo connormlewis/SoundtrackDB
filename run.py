@@ -37,6 +37,9 @@ def get_media():
 def get_single_media(media_name: str):
     return render_template('model-movie-tv.html')
 
+@app.route('/about')
+def get_about():
+    return render_template('about.html')
 
 @app.errorhandler(404)
 def page_not_found(e):
