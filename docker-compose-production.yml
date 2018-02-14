@@ -7,4 +7,4 @@ services:
         ports:
             - "80:80"
         restart: always
-        image: library/python
+        image: backend
