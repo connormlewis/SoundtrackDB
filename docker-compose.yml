@@ -9,5 +9,4 @@ services:
         restart: always
         volumes:
             - ./:/src/
-        command: python /src/run.py
-        image: library/python
+        image: backend
