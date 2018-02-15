@@ -12,9 +12,12 @@ p {
 }
 
 .avatar {
+  max-height: 200px;
+  max-width: 200px;
   width: 100%;
   height: auto;
   display: block;
+  margin: auto;
   background-position: top center;
   background-size: cover;
   border-radius: 50%;
