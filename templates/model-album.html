@@ -3,7 +3,7 @@
 {% block body %}
 
 <div class="row">
-  <h1 class="float-left mr-3">{{ content.name }}</h1>
+  <div class="col-12"><h1 class="float-left mr-3">{{ content.name }}</h1></div>
   <div class="col-sm-8">
     <h3>About</h3>
     <p>Label: {{content.label}}<br/>
@@ -17,12 +17,27 @@
         {% endfor %}
     </ol>
   </div>
-</div>
 
-<div class="col-sm-4">
+  <div class="col-sm-4">
 
-<img class="mb-3" src="{{ content.images[1].url }}" width=350 height=350 alt="" >
-<iframe src="https://open.spotify.com/embed?uri={{content.uri}}"
+    <img class="mb-3" src="{{ content.images[1].url }}" width=350 height=350 alt="{{content.name}} album cover" >
+    <iframe src="https://open.spotify.com/embed?uri={{content.uri}}"
         width="350" height="380" frameborder="0" allowtransparency="true"></iframe>
+  </div>
 </div>
+<div class="row">
+    <div class="col-sm-6">
+        <h3>Movies/TV</h3>
+        <ul>
+          <li><a href="{{related.media.link}}">{{related.media.name}}</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        <h3>Artists</h3>
+        <ul>
+          <li><a href="{{related.artist.link}}">{{related.artist.name}}</a></li>
+        </ul>
+    </div>
+</div>
+
 {% endblock %}  

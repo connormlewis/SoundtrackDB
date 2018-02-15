@@ -18,11 +18,20 @@
     .container-fluid {
       max-width: 1200px !important;
     }
+    body {
+      background:#222E50 !important;
+    }
+    body, html { 
+      min-height: 100vh; 
+    }
+    .flex-grow { 
+      flex: 1; 
+    }
   </style>
 </head>
-<body>
+<body class="d-flex flex-column">
   {% include('nav.html') %}
-  <div class="mt-2 container-fluid">
+  <div class="flex-grow pt-2 container-fluid" style="background-color: #FFFFFF;" >
     {% block body %}{% endblock %}
   </div>
 </body>

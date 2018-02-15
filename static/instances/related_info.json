@@ -1,0 +1,98 @@
+{
+  "albums": {
+    "riverdale": {
+      "artist": {
+        "name": "Blake Neely",
+        "link": "/artist/blake_neely"
+      },
+      "media": {
+        "name": "Riverdale",
+        "link": "/tv-movie/riverdale"
+      }
+    },
+    "interstellar": {
+      "artist": {
+        "name": "Hans Zimmer",
+        "link": "/artist/hans_zimmer"
+      },
+      "media": {
+        "name": "Interstellar",
+        "link": "/tv-movie/interstellar"
+      }
+    },
+    "e_t": {
+      "artist": {
+        "name": "John Williams",
+        "link": "/artist/john_williams"
+      },
+      "media": {
+        "name": "E.T. the Extra-Terrestrial",
+        "link": "/tv-movie/e_t"
+      }
+    }
+  },
+  "artists": {
+    "blake_neely": {
+      "album": {
+        "name": "Riverdale: Original Television Score (Season 1)",
+        "link": "/album/riverdale"
+      },
+      "media": {
+        "name": "Riverdale",
+        "link": "/tv-movie/riverdale"
+      }
+    },
+    "hans_zimmer": {
+      "album": {
+        "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)",
+        "link": "/album/interstellar"
+      },
+      "media": {
+        "name": "Interstellar",
+        "link": "/tv-movie/interstellar"
+      }
+    },
+    "john_williams": {
+      "album": {
+        "name": "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)",
+        "link": "/album/e_t"
+      },
+      "media": {
+        "name": "E.T the Extra-Terrestrial",
+        "link": "/tv-movie/e_t"
+      }
+    }
+  },
+  "media": {
+    "riverdale": {
+      "album": {
+        "name": "Riverdale: Original Television Score (Season 1)",
+        "link": "/album/riverdale"
+      },
+      "artist": {
+        "name": "Blake Neely",
+        "link": "/artist/blake_neely"
+      }
+    },
+    "interstellar": {
+      "album": {
+        "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)",
+        "link": "/album/interstellar"
+      },
+      "artist": {
+        "name": "Hans Zimmer",
+        "link": "/artist/hans_zimmer"
+      }
+    },
+    "e_t": {
+      "album": {
+        "name": "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)",
+        "link": "/album/e_t"
+      },
+      "artist": {
+        "name": "John Williams",
+        "link": "/artist/john_williams"
+      }
+    }
+  }
+}
