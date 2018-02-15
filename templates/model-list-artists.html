@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h3>Artists</h3>
+
+<div class="row">
+  {% for artist in artist_data %}
+  <div class="col-12 col-md-4 col-lg-3" style="cursor: pointer;" onclick="window.location = {{ '\"' + artist['linkUrl'] + '\"' }};">
+    <div class="card mb-3">
+      <div class="card-img-top" style="height: 200px; background-image: url('{{ artist.images[1].url }}'); background-size: cover; background-position: center;"></div>
+      <div class="card-body">
+        <h5 class="card-title">{{ artist.name }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Artist</h6>
+        <p class="card-text">Spotify Followers: {{ "{:,}".format(artist.followers.total) }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+</div>
+
+{% endblock %}
