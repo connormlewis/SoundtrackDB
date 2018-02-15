@@ -10,3 +10,5 @@ services:
         volumes:
             - ./:/src/
         image: backend
+        env_file:
+          - private.env
