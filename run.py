@@ -27,8 +27,9 @@ def get_artist(artist_name: str):
 
     spotify_data = json.load(open('static/instances/artist_' + artist_name + '.json'))
     lastfm_data = json.load(open('static/instances/last_fm_artist_' + artist_name + '.json'))
+    related_data = json.load(open('static/instances/related_info.json'))
 
-    return render_template('model-artist.html', lastfm=lastfm_data, spotify=spotify_data)
+    return render_template('model-artist.html', lastfm=lastfm_data, spotify=spotify_data, related=related_data['artists'][artist_name])
 
 
 @app.route('/album')
@@ -39,6 +40,7 @@ def get_albums():
         loaded_data = json.load(open('static/instances/album_' + album + '.json'))
         loaded_data['linkUrl'] = '/album/' + album
         albums_data.append(loaded_data)
+
     return render_template('model-list-albums.html', albums_data=albums_data)
 
 
@@ -49,8 +51,8 @@ def get_album(album_name: str):
         abort(404)
     content_data = json.load(open('static/instances/album_' + album_name + '.json'))
     track_data = json.load(open('static/instances/track_' + album_name + '.json'))
-
-    return render_template('model-album.html', content=content_data, track=track_data)
+    related_data = json.load(open('static/instances/related_info.json'))
+    return render_template('model-album.html', content=content_data, track=track_data, related=related_data['albums'][album_name])
 
 
 @app.route('/tv-movie')
@@ -77,8 +79,9 @@ def get_single_media(media_name: str):
     cast_data = json.load(open('static/instances/cast_' + media_name + '.json'))
     video_data = json.load(open('static/instances/video_' + media_name + '.json'))
     image_data = json.load(open('static/instances/images_' + media_name + '.json'))
+    related_data = json.load(open('static/instances/related_info.json'))
 
-    return render_template('model-movie-tv.html', content=content_data, cast=cast_data, video=video_data, images=image_data)
+    return render_template('model-movie-tv.html', content=content_data, cast=cast_data, video=video_data, images=image_data, related=related_data['media'][media_name])
 
 
 @app.errorhandler(404)
