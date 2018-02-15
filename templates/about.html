@@ -7,7 +7,7 @@
   <h1 class="text-center">About</h1>
   <hr>
     <div>
-      <p class="desc">Our website will display information about soundtracks/scores and the movies/TV shows they are associated with. The website will also contain information about the artists behind the music and what other movies/TV shows they have worked on.</p>
+      <p class="desc">SoundtrackDB connects soundtracks, artists, and their associated movies and TV shows. This site allows users to discover the soundtracks from their favorite shows and films. Users can find out more about the artists behind the music and explore other media they have worked on.</p>
     </div>
   <hr>
   </div>
@@ -16,7 +16,7 @@
       <div class="column">
         <h1 class="name">Alan Yi</h1>
         <img class="avatar" src="{{url_for('static', filename='avatar/alan.png')}}" alt="Alan Yi Avatar">
-        <p class="bio"><p>Third Year Computer Science Student</p>
+        <p class="bio"><p>Third Year Weeaboo </p>
         <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End<br></p>
         <p class="stats">
           <strong>Number of Commits: </strong>{{commits['tsukkisuki']}}<br>
@@ -27,7 +27,7 @@
       <div class="column">
         <h1 class="name">Aylish Wrench</h1>
         <img class="avatar" src="https://aylishw.files.wordpress.com/2018/01/headshot.jpg" alt="Aylish Wrench Avatar">
-        <p class="bio"><p>Third Year Computer Science Student</p>
+        <p class="bio"><p>Aylish is a third-year Computer Science major who enjoys listening to TV and video game scores. Her all-time favorite TV shows include Doctor Who, Person of Interest and Chuck.</p>
         <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End<br></p>
         <p class="stats">
           <strong>Number of Commits: </strong>{{commits['aylish19']}}<br>
@@ -38,7 +38,7 @@
       <div class="column">
         <h1 class="name">Melody Truong</h1>
         <img class="avatar" src="https://melodyisblogging.files.wordpress.com/2018/01/img_56411.jpg" alt="Melody Truong Avatar">
-        <p class="bio"><p>Third Year Computer Science Student</p>
+        <p class="bio"><p>Melody is a third-year CS major. The TV show she is currently watching is This is Us. Her go-to comedy movie is White Chicks.</p>
         <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End</p>
         <p class="stats">
           <strong>Number of Commits: </strong>{{commits['melxtru']}}<br>
@@ -51,7 +51,7 @@
       <div class="column">
         <h1 class="name">Connor Lewis</h1>
         <img class="avatar" src="https://connorlewiscs373.files.wordpress.com/2018/01/fullsizeoutput_f5e.jpeg" alt="Connor Lewis Avatar">
-        <p class="bio"><p>Third Year Computer Science Student</p>
+        <p class="bio"><p>Connor is a fourth-year CS major and is currently watching The Magicians. He really enjoys musical theater soundtracks, and spends a lot of time watching TV shows.</p>
         <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Fullstack</p>
         <p class="stats">
           <strong>Number of Commits: </strong>{{commits['connormlewis']}}<br>
@@ -62,7 +62,7 @@
       <div class="column">
         <h1 class="name">Taylor Schaffner</h1>
         <img class="avatar" src="{{url_for('static', filename='avatar/taylor.jpeg')}}" alt="Taylor Schaffner Avatar">
-        <p class="bio">Hey my name is Taylor! I'm a junior computer science major at UT and I'm in charge of API/Backend/Database stuff for this website! I'm also a janitor!</p>
+        <p class="bio"><p>Hey my name is Taylor! I'm a junior computer science major at UT and I'm in charge of API/Backend/Database stuff for this website! I'm also a janitor!</p>
         <p class="responsibilities"><strong>Major Responsibilities:</strong><br>API Documentation</p>
         <p class="stats">
           <strong>Number of Commits: </strong>{{commits['TheSchaft']}}<br>
@@ -73,7 +73,7 @@
       <div class="column">
         <h1 class="name">Steve Wang</h1>
         <img class="avatar" src="https://swesteve.files.wordpress.com/2018/01/mug.jpg" alt="Steve Wang Avatar">
-        <p class="bio"><p>Third Year Computer Science Student</p>
+        <p class="bio"><p>Steve is a third-year Computer Science major who's favorite TV show is Spongebob Squarepants. I also enjoy long walks on the beach and wrote this About page.</p>
         <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End<br></p>
         <p class="stats">
           <strong>Number of Commits: </strong>{{commits['stevex196x']}}<br>
@@ -96,8 +96,9 @@
     <p><a href="https://developer.spotify.com/web-api/">Spotify API</a><br>
        <a href="https://www.last.fm/api">LastFM API</a><br>
        <a href="https://www.themoviedb.org/documentation/api">TheMovieDB API</a><br>
+       <a href="https://developer.github.com/v3/">GitHub API</a>
     </p>
-    <p>The APIs were scraped using curl commands and saved into a json file for further data processsing.</p>
+    <p class="desc">Spotify, LastFM, and TheMovieDB were scraped using curl commands and saved into a json file for further data processsing. The GitHub API was scraped using the python requests library and the total commits and issues are updated when the page is refreshed.</p>
   </div>
   <div class="tools">
     <h1>Tools Used</h1>
