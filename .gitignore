@@ -79,9 +79,6 @@ celerybeat-schedule
 # SageMath parsed files
 *.sage.py
 
-# dotenv
-.env
-
 # virtualenv
 .venv
 venv/
@@ -101,3 +98,5 @@ ENV/
 .mypy_cache/
 
 !static/**/dist
+
+private.env
