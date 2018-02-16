@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block body %}
+<link rel= "stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/about.css') }}">
+<div id="root">
+  <div id="about">
+  <h1 class="text-center">About</h1>
+  <hr>
+    <div>
+      <p class="desc">SoundtrackDB connects soundtracks, artists, and their associated movies and TV shows. This site allows users to discover the soundtracks from their favorite shows and films. Users can find out more about the artists behind the music and explore other media they have worked on.</p>
+    </div>
+  <hr>
+  </div>
+  <div class="container">
+    <div class="row align-self">
+      <div class="column">
+        <h1 class="name">Alan Yi</h1>
+        <img class="avatar" src="{{url_for('static', filename='avatar/alan.png')}}" alt="Alan Yi Avatar">
+        <p class="bio"><p>Alan is a third-year CS major who watches a lot of anime TV shows and movies. Alan also enjoys listening to original soundtracks by various composers such as Yuki Hayashi, Hiroyuki Sawano, John Wiliams, and Hans Zimmer.</p>
+        <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End<br></p>
+        <p class="stats">
+          <strong>Number of Commits: </strong>{{commits['tsukkisuki']}}<br>
+          <strong>Number of Issues: </strong>{{issues['tsukkisuki']}}<br>
+          <strong>Number of Unit Tests: </strong>0<br>
+        </p>
+      </div>
+      <div class="column">
+        <h1 class="name">Aylish Wrench</h1>
+        <img class="avatar" src="https://aylishw.files.wordpress.com/2018/01/headshot.jpg" alt="Aylish Wrench Avatar">
+        <p class="bio"><p>Aylish is a third-year Computer Science major who enjoys listening to TV and video game scores. Her all-time favorite TV shows include Doctor Who, Person of Interest and Chuck.</p>
+        <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End<br></p>
+        <p class="stats">
+          <strong>Number of Commits: </strong>{{commits['aylish19']}}<br>
+          <strong>Number of Issues: </strong>{{issues['aylish19']}}<br>
+          <strong>Number of Unit Tests: </strong>0<br>
+        </p>
+      </div>
+      <div class="column">
+        <h1 class="name">Melody Truong</h1>
+        <img class="avatar" src="https://melodyisblogging.files.wordpress.com/2018/01/img_56411.jpg" alt="Melody Truong Avatar">
+        <p class="bio"><p>Melody is a "thrid"-year CS major. The TV show she is currently watching is This is Us. Her go-to comedy movie is White Chicks.</p>
+        <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End</p>
+        <p class="stats">
+          <strong>Number of Commits: </strong>{{commits['melxtru']}}<br>
+          <strong>Number of Issues: </strong>{{issues['melxtru']}}<br>
+          <strong>Number of Unit Tests: </strong>0<br>
+        </p>
+      </div>
+    </div>
+    <div class="row align-start">
+      <div class="column">
+        <h1 class="name">Connor Lewis</h1>
+        <img class="avatar" src="https://connorlewiscs373.files.wordpress.com/2018/01/fullsizeoutput_f5e.jpeg" alt="Connor Lewis Avatar">
+        <p class="bio"><p>Connor is a fourth-year CS major and is currently watching The Magicians. He really enjoys musical theater soundtracks, and spends a lot of time watching TV shows.</p>
+        <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Fullstack</p>
+        <p class="stats">
+          <strong>Number of Commits: </strong>{{commits['connormlewis']}}<br>
+          <strong>Number of Issues: </strong>{{issues['connormlewis']}}<br>
+          <strong>Number of Unit Tests: </strong>0<br>
+        </p>
+      </div>
+      <div class="column">
+        <h1 class="name">Taylor Schaffner</h1>
+        <img class="avatar" src="{{url_for('static', filename='avatar/taylor.jpeg')}}" alt="Taylor Schaffner Avatar">
+        <p class="bio"><p>Hey my name is Taylor! I'm a junior computer science major at UT and I'm in charge of API/Backend/Database stuff for this website! I'm also a janitor!</p>
+        <p class="responsibilities"><strong>Major Responsibilities:</strong><br>API Documentation</p>
+        <p class="stats">
+          <strong>Number of Commits: </strong>{{commits['TheSchaft']}}<br>
+          <strong>Number of Issues: </strong>{{issues['TheSchaft']}}<br>
+          <strong>Number of Unit Tests: </strong>0<br>
+        </p>
+      </div>
+      <div class="column">
+        <h1 class="name">Steve Wang</h1>
+        <img class="avatar" src="https://swesteve.files.wordpress.com/2018/01/mug.jpg" alt="Steve Wang Avatar">
+        <p class="bio"><p>Steve is a third-year Computer Science major who's favorite TV show is Spongebob Squarepants. I also enjoy long walks on the beach and wrote this About page.</p>
+        <p class="responsibilities"><strong>Major Responsibilities:</strong><br>Front End<br></p>
+        <p class="stats">
+          <strong>Number of Commits: </strong>{{commits['stevex196x']}}<br>
+          <strong>Number of Issues: </strong>{{issues['stevex196x']}}<br>
+          <strong>Number of Unit Tests: </strong>0<br>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="statistics">
+    <h1>Statistics</h1>
+    <p><strong>Total Commits: </strong>{{total_commits}}<br>
+      <strong>Total Issues: </strong>{{total_issues}}<br>
+      <strong>Total Unit Tests: </strong>0</p>
+    <p><a href="https://github.com/connormlewis/idb">GitHub Repository</a><br>
+    <a href="https://connormlewis.gitbooks.io/report/ ">GitBook Report</a></p>
+  </div>
+  <div class="data">
+    <h1>Data Sources</h1>
+    <p><a href="https://developer.spotify.com/web-api/">Spotify API</a><br>
+       <a href="https://www.last.fm/api">LastFM API</a><br>
+       <a href="https://www.themoviedb.org/documentation/api">TheMovieDB API</a><br>
+       <a href="https://developer.github.com/v3/">GitHub API</a>
+    </p>
+    <p class="desc">Spotify, LastFM, and TheMovieDB were scraped using curl commands and saved into a json file for further data processsing. The GitHub API was scraped using the python requests library and the total commits and issues are updated when the page is refreshed.</p>
+  </div>
+  <div class="tools">
+    <h1>Tools Used</h1>
+    <p>
+      <strong>BootStrap</strong> as a CSS framework.<br>
+      <strong>Flask</strong> is a Python micro web framework that we used for our backend.<br>
+      <strong>Amazon Web Services</strong> was used to host our website.<br>
+      <strong>NameCheap</strong> for domain name registration.<br>
+      <strong>GitHub</strong> was used for our Version Control System.<br>
+      <strong>GitBook</strong> to document our API and our technical report.<br>
+      <strong>Slack</strong> to communicate with our team members.<br>
+    </p>
+  </div>
+</div>
+{% endblock %}

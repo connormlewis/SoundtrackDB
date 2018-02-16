@@ -1,5 +1,7 @@
 import json
-from flask import Flask, render_template, abort
+from flask import Flask, render_template, abort, current_app
+import requests
+import os
 
 app = Flask('SoundtrackDB')
 
@@ -82,6 +84,44 @@ def get_single_media(media_name: str):
     related_data = json.load(open('static/instances/related_info.json'))
 
     return render_template('model-movie-tv.html', content=content_data, cast=cast_data, video=video_data, images=image_data, related=related_data['media'][media_name])
+
+
+@app.route('/about')
+def get_about():
+    return render_template('about.html', commits=get_commits()[0], total_commits=get_commits()[1], issues=get_issues()[0], total_issues=get_issues()[1])
+
+
+def get_commits():
+    all_commits = 0
+    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0, 'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    try:
+        url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
+        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        json_list = data.json()
+        for entry in json_list:
+            total = entry['total']
+            user_name = entry['author']['login']
+            team[user_name] = total
+            all_commits += total
+    except TypeError:
+        return (team, all_commits)
+    return (team, all_commits)
+
+
+def get_issues():
+    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0, 'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    all_issues = 0
+    try:
+        url = 'https://api.github.com/repos/connormlewis/idb/issues?state=all&filter=all'
+        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        json_list = data.json()    
+        for entry in json_list:
+            if 'pull_request' not in entry:
+                team[entry['user']['login']] += 1
+                all_issues += 1
+    except TypeError:
+        return (team, all_issues)
+    return (team, all_issues)
 
 
 @app.errorhandler(404)
