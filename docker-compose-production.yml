@@ -2,11 +2,11 @@ version: '3.1'
 services:
     backend:
         build:
-            context: .
+            context: ./backend
             dockerfile: Dockerfile-backend
         ports:
             - "80:80"
         restart: always
         image: backend
         env_file:
-          - private.env
+          - backend/private.env
