@@ -5,9 +5,7 @@ import {
   Container, 
   Nav, 
   NavItem,
-  NavLink,
-  Collapse,
-  NavbarToggler } from 'reactstrap'; 
+  NavLink } from 'reactstrap'; 
 
 class Navigation extends Component {
   render() {
