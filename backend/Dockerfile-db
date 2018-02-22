@@ -1,0 +1,5 @@
+from postgres
+
+RUN mkdir -p "/var/lib/postgresql/data"
+RUN chmod 700 "/var/lib/postgresql/data"
+RUN chown -R postgres "/var/lib/postgresql/data"

@@ -102,3 +102,5 @@ ENV/
 !backend/static/**/dist
 
 private.env
+postgres-data/**/*
+!.gitkeep
