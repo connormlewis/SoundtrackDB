@@ -5,10 +5,20 @@ services:
             context: ./backend
             dockerfile: Dockerfile-backend
         ports:
-            - "80:80"
+            - "8080:8080"
         restart: always
         volumes:
             - ./backend:/src/
         image: backend
         env_file:
           - backend/private.env
+    frontend:
+        build:
+            context: ./frontend
+            dockerfile: Dockerfile-frontend
+        ports:
+            - "3000:3000"
+        restart: always
+        volumes:
+            - ./frontend:/app/
+        image: frontend
