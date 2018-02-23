@@ -5,7 +5,7 @@ services:
             context: ./backend
             dockerfile: Dockerfile-backend
         ports:
-            - "8080:8080"
+            - "80:80"
         restart: always
         volumes:
             - ./backend:/src/
