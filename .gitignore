@@ -100,5 +100,6 @@ ENV/
 .mypy_cache/
 
 !backend/static/**/dist
+!frontend/**/dist
 
 private.env
