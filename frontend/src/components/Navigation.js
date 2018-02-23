@@ -18,7 +18,7 @@ class Navigation extends Component {
                 <NavLink href="/album">Albums</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/artist">Artist</NavLink>
+                <NavLink href="/artist">Artists</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/tv-movie">TV/Movies</NavLink>
