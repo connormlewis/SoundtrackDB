@@ -4,6 +4,8 @@ services:
         build:
             context: ./backend
             dockerfile: Dockerfile-backend
+        depends_on:
+          - db
         ports:
             - "80:80"
         restart: always
@@ -11,7 +13,24 @@ services:
             - ./backend:/src/
         image: backend
         env_file:
-          - backend/private.env
+           - backend/private.env
+        links:
+          - db
+        networks:
+          db:
+    db:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile-db
+        volumes:
+            - ./postgres-data/data:/var/lib/postgresql/data
+        environment:
+            - POSTGRES_PASSWORD=postgrespassword
+            - POSTGRES_USER=soundtrackdb
+        ports:
+            - "5432:5432"
+        networks:
+          db:
     frontend:
         build:
             context: ./frontend
@@ -21,4 +40,7 @@ services:
         restart: always
         volumes:
             - ./frontend:/app/
-        image: frontend
+        depends_on:
+          - backend
+networks:
+  db:

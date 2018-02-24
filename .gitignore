@@ -103,3 +103,5 @@ ENV/
 !frontend/**/dist
 
 private.env
+postgres-data/**/*
+!.gitkeep
