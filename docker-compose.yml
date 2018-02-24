@@ -16,6 +16,8 @@ services:
            - backend/private.env
         links:
           - db
+        networks:
+          db:
     db:
         build:
             context: ./backend
@@ -27,3 +29,7 @@ services:
             - POSTGRES_USER=soundtrackdb
         ports:
             - "5432:5432"
+        networks:
+          db:
+networks:
+  db:
