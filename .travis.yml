@@ -1,14 +1,14 @@
 sudo: false
-
 language: python
-
 python:
-  - 3.6
-
+- 3.6
 install:
-  - pip install -r ./backend/requirements.txt
-
+- cd backend && pip install -r requirements.txt
+- cd ../frontend && yarn install
 script:
-  - pylint backend/app
-  - py.test --cov=backend/app --cov-report term-missing --cov-fail-under 95 --color=yes backend/tests.py
-  - cd frontend && yarn test
+- cd ../backend && pylint app
+- py.test --cov=app --cov-report term-missing --cov-fail-under 95 --color=yes tests.py
+- cd ../frontend && yarn test
+notifications:
+  slack:
+    secure: gLGB8TEVKFSF4jEdB8h9Xq8zfW2wErRH4h0eF0lGJBf8ZmOmnMlo20Up2ceTnikvfTpT/SA+JHH5Z2Ilot7b9qk2/UcybEThuh84z+0MF2yW/5+GjWFkkJo7Qs3dnw1vwZLDHvj15vRVH0iUj+wVOm8m4cZmmkPvJNXiIoPhOcKG/O9a7e7j1HoEbyeLDjGKsuGoxdusZjjGAVKKdk4X1DWgvHEhH9XIUb+xGg/Z/tUiQWHWxpj3MkCFVU+C3MrmyV+vtl7QS4q8gHmjWzvQZd4DSxzWugyhBUPWZUUNQxa1f2U+GYfBbkHXTgJ6hr3xlWNMOWAhElTTynPZMaelXLkHOhIgS3LIqT/8sHV2GDf4bcnSXC0Cf9okKaQorcwmULNNCQH7WxyFgDpLvA7vz1EbbWVxHH0kZxNtH9smIeXJCspdcTC7nN5C/SeaSFJB0uki2cl9HaO9e/0HcW0ew48PAI6t+6NtbB5T9DuxayKU9wbDnmdGK+h7KTBSwWqAwpW+ak4rS0Qh+cf4MnHBx7rDgb3RcMqApWNRI1mdq3oAQk9O0WIh9ExgvS89cXE4zijlkWjPq0K9eCiI7EnjaJCJfRn9146pQGQRhHTSCTAiYA/PeoYova1Nu4T/2w3j+uEP3SlPfs8l++4yUAecSftyHIrgvg0LA9PsyCT9iss=
