@@ -1,0 +1,14 @@
+sudo: false
+
+language: python
+
+python:
+  - 3.6
+
+install:
+  - pip install -r ./backend/requirements.txt
+
+script:
+  - pylint backend/app
+  - py.test --cov=backend/app --cov-report term-missing --cov-fail-under 95 --color=yes backend/tests.py
+  - cd frontend && yarn test
