@@ -2,7 +2,14 @@
 
 import { JSDOM } from 'jsdom';
 
-global.document = new JSDOM('<html><body></body></html>');
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+Enzyme.configure({ adapter: new Adapter() });
+
+const dom = new JSDOM('<html><body></body></html>');
+
+global.document = dom.window.document; 
 global.window = document.defaultView;
 global.navigator = {userAgent: 'node.js'};
 
