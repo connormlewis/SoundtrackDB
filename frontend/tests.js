@@ -14,7 +14,7 @@ describe('<App/>', function () {
 });
 
 // Navigation
-describe('<Navigation', function () {
+describe('<Navigation/>', function () {
   it('should render without crashing', function() {
     shallow(<Navigation/>); 
   });
