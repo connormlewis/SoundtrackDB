@@ -1,5 +1,7 @@
 # SoundtrackDB
 
+[![Build Status](https://travis-ci.org/connormlewis/idb.svg?branch=master)](https://travis-ci.org/connormlewis/idb)
+
 A system to connect soundtracks for movies and tv shows to their artists.
 
 The project can be accessed at [soundtrackdb.me](soundtrackdb.me)

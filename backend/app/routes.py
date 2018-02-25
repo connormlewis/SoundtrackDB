@@ -114,7 +114,7 @@ def get_issues():
     try:
         url = 'https://api.github.com/repos/connormlewis/idb/issues?state=all&filter=all'
         data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
-        json_list = data.json()    
+        json_list = data.json()
         for entry in json_list:
             if 'pull_request' not in entry:
                 team[entry['user']['login']] += 1

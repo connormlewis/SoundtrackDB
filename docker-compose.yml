@@ -11,7 +11,6 @@ services:
         restart: always
         volumes:
             - ./backend:/src/
-        image: backend
         env_file:
            - backend/private.env
         links:
