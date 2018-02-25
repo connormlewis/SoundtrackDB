@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../style/App.css';
 import Navigation from './Navigation'; 
-import {UIView} from 'ui-router-react';
+import {UIView} from '@uirouter/react';
 import {Container} from 'reactstrap'; 
 
 
