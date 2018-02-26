@@ -1,9 +1,10 @@
 .carousel-caption {
-  text-shadow: 4px 4px black;
+  text-shadow: 3px 3px black;
 }
 
 .carousel-img {
   object-fit: cover;
+  object-position: center;
   height: 600px;
   width: 100%; 
 }

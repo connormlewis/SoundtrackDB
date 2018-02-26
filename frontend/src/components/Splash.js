@@ -78,7 +78,7 @@ class Splash extends Component {
       return (
         <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} >
           <img src={item.src} alt={item.altText} class="carousel-img" />
-          <CarouselCaption captionHeader={item.caption} captionText={""} cssModule={styles}/>
+          <CarouselCaption captionHeader={item.caption} captionText={""} cssModule={styles} />
         </CarouselItem>
       );
     });
