@@ -1,5 +1,7 @@
 import React from 'react'; 
 
+import MediaHome from './components/home-pages/MediaHome'
+
 const HOME = {
   name: 'home',
   url: '',
@@ -27,7 +29,7 @@ const ARTIST_HOME = {
 const MEDIA_HOME = {
   name: 'mediaHome',
   url: '/tv-movie',
-  component: () => <h3>media home</h3>
+  component: MediaHome
 };
 
 const ALBUM_INSTANCE = {
