@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -20,6 +21,14 @@
 
 .App-intro {
   font-size: large;
+}
+
+.container-fluid {
+  max-width: 1200px !important;
+}
+
+.flex-grow { 
+  flex: 1; 
 }
 
 @keyframes App-logo-spin {

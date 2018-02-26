@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from "../style/Splash.css"; 
 import {
   Carousel,
   CarouselItem,
@@ -7,7 +8,7 @@ import {
   CarouselCaption } from 'reactstrap';
 
 const items = [
-	{
+  {
     src: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Record-Album-02.jpg',
     altText: 'Record Player',
     caption: 'Albums',
@@ -28,17 +29,6 @@ const items = [
     caption: 'Making Connections',
   }
 ];
-
-const carouselStyle = {
-  objectFit: 'cover',
-  objectScale: 'center',
-  height: '600px',
-  width: '100%',
-};
-
-const textStyle = {
-  textShadow: '4px 4px #000000',
-};
 
 class Splash extends Component {
   constructor(props) {
@@ -87,8 +77,8 @@ class Splash extends Component {
     const slides = items.map((item) => {
       return (
         <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} >
-          <img src={item.src} alt={item.altText} style={carouselStyle} />
-          <CarouselCaption captionHeader={item.caption} captionText={""} />
+          <img src={item.src} alt={item.altText} class="carousel-img" />
+          <CarouselCaption captionHeader={item.caption} captionText={""} cssModule={styles}/>
         </CarouselItem>
       );
     });
