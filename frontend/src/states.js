@@ -2,6 +2,7 @@ import React from 'react';
 
 import MediaHome from './components/home-pages/MediaHome'
 import AlbumHome from './components/home-pages/AlbumsHome';
+import ArtistHome from './components/home-pages/ArtistsHome';
 
 const HOME = {
   name: 'home',
@@ -24,7 +25,7 @@ const ALBUM_HOME = {
 const ARTIST_HOME = {
   name: 'artistHome',
   url: '/artist',
-  component: () => <h3>artist home</h3>
+  component: ArtistHome
 };
 
 const MEDIA_HOME = {
