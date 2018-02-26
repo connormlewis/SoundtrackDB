@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
 import {
-  Navbar, 
-  NavbarBrand, 
-  Container, 
-  Nav, 
-  NavItem,
-  NavLink,
   Carousel,
   CarouselItem,
   CarouselControl,
@@ -40,6 +34,10 @@ const carouselStyle = {
   objectScale: 'center',
   height: '600px',
   width: '100%',
+};
+
+const textStyle = {
+  textSize: '50px',
 };
 
 class Splash extends Component {
@@ -88,7 +86,7 @@ class Splash extends Component {
     const { activeIndex } = this.state;
     const slides = items.map((item) => {
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} >
+        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} style={textStyle}>
           <img src={item.src} alt={item.altText} style={carouselStyle} />
           <CarouselCaption captionHeader={item.caption} captionText={""} />
         </CarouselItem>
