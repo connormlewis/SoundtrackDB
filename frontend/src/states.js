@@ -1,9 +1,10 @@
 import React from 'react'; 
+import Splash from './components/Splash';
 
 const HOME = {
   name: 'home',
   url: '',
-  component: () => <h3>home</h3>
+  component: (Splash)
 };
 
 const ABOUT = {
