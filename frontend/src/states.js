@@ -1,6 +1,7 @@
 import React from 'react'; 
 
 import MediaHome from './components/home-pages/MediaHome'
+import AlbumHome from './components/home-pages/AlbumsHome';
 
 const HOME = {
   name: 'home',
@@ -17,7 +18,7 @@ const ABOUT = {
 const ALBUM_HOME = {
   name: 'albumHome',
   url: '/album',
-  component: () => <h3>album home</h3>
+  component: AlbumHome
 };
 
 const ARTIST_HOME = {
