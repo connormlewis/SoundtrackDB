@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand, Container, Nav, NavItem, NavLink } from 'reactstrap';
+import { Navbar, Container, Nav, NavItem } from 'reactstrap';
 import { UISref } from '@uirouter/react';
 
 class Navigation extends Component {

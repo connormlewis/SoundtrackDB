@@ -3,6 +3,7 @@ import React from 'react';
 import MediaHome from './components/home-pages/MediaHome'
 import AlbumHome from './components/home-pages/AlbumsHome';
 import ArtistHome from './components/home-pages/ArtistsHome';
+import ApiService from './ApiService'
 
 const HOME = {
   name: 'home',
@@ -19,19 +20,31 @@ const ABOUT = {
 const ALBUM_HOME = {
   name: 'albumHome',
   url: '/album',
-  component: AlbumHome
+  component: AlbumHome,
+  resolve: [{
+    token: 'albums',
+    resolveFn: (apiService) => ApiService.getAlbums()
+  }]
 };
 
 const ARTIST_HOME = {
   name: 'artistHome',
   url: '/artist',
-  component: ArtistHome
+  component: ArtistHome,
+  resolve: [{
+    token: 'artists',
+    resolveFn: (apiService) => ApiService.getArtists()
+  }]
 };
 
 const MEDIA_HOME = {
   name: 'mediaHome',
   url: '/tv-movie',
-  component: MediaHome
+  component: MediaHome,
+  resolve: [{
+    token: 'media',
+    resolveFn: (apiService) => ApiService.getMedia()
+  }]
 };
 
 const ALBUM_INSTANCE = {
