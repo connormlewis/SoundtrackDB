@@ -37,7 +37,7 @@ const carouselStyle = {
 };
 
 const textStyle = {
-  textSize: '50px',
+  textShadow: '4px 4px #000000',
 };
 
 class Splash extends Component {
@@ -86,7 +86,7 @@ class Splash extends Component {
     const { activeIndex } = this.state;
     const slides = items.map((item) => {
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} style={textStyle}>
+        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} >
           <img src={item.src} alt={item.altText} style={carouselStyle} />
           <CarouselCaption captionHeader={item.caption} captionText={""} />
         </CarouselItem>
@@ -96,8 +96,8 @@ class Splash extends Component {
     return (
       <div>
         <h2 class="text-center">Welcome to SoundtrackDB</h2>
-        <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} ride={"carousel"}>
-          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} autoPlay={false}/>
+        <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} ride={"carousel"} >
+          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
           {slides}
           <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
           <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
