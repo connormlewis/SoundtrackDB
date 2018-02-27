@@ -4,6 +4,7 @@ import { expect } from 'chai';
 
 import App from './src/components/App'; 
 import Navigation from './src/components/Navigation'; 
+import Splash from './src/components/Splash';
 
 
 // App
@@ -43,3 +44,20 @@ describe('<Navigation/>', function () {
     expect(navItems.at(3).find('NavLink').prop('href')).to.equal('/about');       
   }) 
 }); 
+
+// Splash
+describe('<Splash/>', function () {
+  it('should render without crashing', function() {
+    shallow(<Splash/>);
+  })
+
+  it('should have 4 items: Albums, Artists, Movies and TV, and Making Connections', function() {
+    const wrapper = shallow(<Splash/>);
+    const carouselItems = wrapper.find('CarouselCaption');
+    expect(carouselItems).to.have.length(4);
+    expect(carouselItems.at(0).render().text()).to.equal('Albums');
+    expect(carouselItems.at(1).render().text()).to.equal('Artists');
+    expect(carouselItems.at(2).render().text()).to.equal('TV and Movies');
+    expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
+  })
+})
