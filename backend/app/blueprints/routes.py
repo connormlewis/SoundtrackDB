@@ -1,7 +1,7 @@
 """Application routes"""
 import json
 
-from flask import Blueprint
+from flask import Blueprint, abort
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
@@ -14,6 +14,7 @@ def get_home():
 #Clean up
 @BP.route('/artist')
 def get_artists():
+    """Get all of the artists"""
     artists = ['hans_zimmer', 'blake_neely', 'john_williams']
     artist_data = []
     related_data = json.load(open('static/instances/related_info.json'))
@@ -31,12 +32,12 @@ def get_artists():
         new_artist['followers'] = spotify_data['followers']['total']
         artist_data.append(new_artist)
         counter += 1
-    
     return json.dumps(artist_data)
 
 #Clean up
 @BP.route('/artist/<artist_name>')
 def get_artist(artist_name: str):
+    """Get a specific artist"""
     if artist_name not in ['hans_zimmer', 'blake_neely', 'john_williams']:
         abort(404)
 
@@ -44,7 +45,6 @@ def get_artist(artist_name: str):
     related_data = json.load(open('static/instances/related_info.json'))
     spotify_data = json.load(open('static/instances/artist_' + artist_name + '.json'))
     lastfm_data = json.load(open('static/instances/last_fm_artist_' + artist_name + '.json'))
-    
     new_artist['related_data'] = related_data
     new_artist['spotify_data'] = spotify_data
     new_artist['lastfm_data'] = lastfm_data
@@ -53,6 +53,7 @@ def get_artist(artist_name: str):
 #Clean up
 @BP.route('/album')
 def get_albums():
+    """Get all of the albums"""
     albums = ['riverdale', 'interstellar', 'e_t']
     albums_data = []
     related_data = json.load(open('static/instances/related_info.json'))
@@ -68,18 +69,17 @@ def get_albums():
             new_album['track_list'].append(track['name'])
         new_album['year'] = loaded_data['release_date']
         new_album['label'] = loaded_data['label']
-        new_album['img'] = loaded_data['images'][0][ 'url']
+        new_album['img'] = loaded_data['images'][0]['url']
         new_album['movies-tv_show'] = [related_data['albums'][album]['media']['name']]
         new_album['id'] = counter
         albums_data.append(new_album)
         counter += 1
-
     return json.dumps(albums_data)
 
 #Clean up
 @BP.route('/album/<album_name>')
 def get_album(album_name: str):
-
+    """Get a specific album"""
     if album_name not in ['riverdale', 'interstellar', 'e_t']:
         abort(404)
     related_data = json.load(open('static/instances/related_info.json'))
@@ -94,6 +94,7 @@ def get_album(album_name: str):
 #Clean up
 @BP.route('/tv-movie')
 def get_media():
+    """Get all of the tv-movies"""
     movies = ['riverdale', 'interstellar', 'e_t']
     movies_data = []
     counter = 0
@@ -119,7 +120,7 @@ def get_media():
         new_movie['description'] = loaded_data['overview']
         new_movie['cast'] = []
         for member in cast_data['cast']:
-            new_movie['cast'].append(member['name']) 
+            new_movie['cast'].append(member['name'])
         new_movie['genres'] = []
         for genre in loaded_data['genres']:
             new_movie['genres'].append(genre['name'])
@@ -131,6 +132,7 @@ def get_media():
 #Clean up
 @BP.route('/tv-movie/<media_name>')
 def get_single_media(media_name: str):
+    """Get a specific tv-movie instance"""
     if media_name not in ['riverdale', 'interstellar', 'e_t']:
         abort(404)
 
@@ -142,7 +144,7 @@ def get_single_media(media_name: str):
     new_movie = {}
     new_movie['related_data'] = related_data
     new_movie['model_data'] = model_data
-    new_movie['casr_data'] = cast_data
+    new_movie['cast_data'] = cast_data
     new_movie['video_data'] = video_data
     new_movie['image_data'] = image_data
     return json.dumps(new_movie)
