@@ -9,6 +9,6 @@ def create_app() -> Flask:
     return Flask('SoundtrackDB')
 
 
-def register_routes(app: Flask):
+def register_routes(app):
     """Registers the application routes"""
     app.register_blueprint(routes.BP)
