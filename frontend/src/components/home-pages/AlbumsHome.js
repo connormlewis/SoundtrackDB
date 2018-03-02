@@ -12,7 +12,7 @@ const titleStyles = {
   'maxHeight': '2.4'       /* fallback */
 }
 
-class AlbumItem extends Component {
+export class AlbumItem extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -37,7 +37,7 @@ class AlbumItem extends Component {
   }
 }
 
-export default class AlbumHome extends Component {
+export class AlbumHome extends Component {
   constructor(props) {
     super(props)
     this.navigateToInstance = this.navigateToInstance.bind(this);

@@ -3,7 +3,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import PropTypes from 'prop-types'
 
 
-class ArtistItem extends Component {
+export class ArtistItem extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -17,9 +17,9 @@ class ArtistItem extends Component {
   render() {
     return (
       <Card className="mb-3" onClick={this.handleClick}>
-        <div width="100%" className="card-img-top" src={this.props.artist.images[0].url} alt="Card image cap" style={{
+        <div width="100%" className="card-img-top" alt="Card image cap" style={{
           height: '200px',
-          backgroundImage: `url('${this.props.artist.images[1].url}')`,
+          backgroundImage: `url('${this.props.artist.images[0].url}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }} />
@@ -33,7 +33,7 @@ class ArtistItem extends Component {
   }
 }
 
-export default class ArtistHome extends Component {
+export class ArtistHome extends Component {
   constructor(props) {
     super(props)
     this.navigateToInstance = this.navigateToInstance.bind(this);

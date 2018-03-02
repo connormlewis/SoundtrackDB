@@ -3,7 +3,7 @@ import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import PropTypes from 'prop-types'
 
 
-class MediaItem extends Component {
+export class MediaItem extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -27,7 +27,7 @@ class MediaItem extends Component {
   }
 }
 
-export default class MediaHome extends Component {
+export class MediaHome extends Component {
   constructor(props) {
     super(props)
     this.navigateToInstance = this.navigateToInstance.bind(this);
