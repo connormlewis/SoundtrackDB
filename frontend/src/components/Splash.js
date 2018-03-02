@@ -77,7 +77,7 @@ class Splash extends Component {
     const slides = items.map((item) => {
       return (
         <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} >
-          <img src={item.src} alt={item.altText} class="carousel-img" />
+          <img src={item.src} alt={item.altText} className="carousel-img" />
           <CarouselCaption captionHeader={item.caption} captionText={""} cssModule={styles} />
         </CarouselItem>
       );
@@ -85,7 +85,7 @@ class Splash extends Component {
 
     return (
       <div>
-        <h2 class="text-center">Welcome to SoundtrackDB</h2>
+        <h2 className="text-center">Welcome to SoundtrackDB</h2>
         <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} ride={"carousel"} >
           <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
           {slides}

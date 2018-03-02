@@ -1,6 +1,11 @@
 import React from 'react'; 
 import Splash from './components/Splash';
 
+import { MediaHome } from './components/home-pages/MediaHome'
+import { AlbumHome } from './components/home-pages/AlbumsHome';
+import { ArtistHome } from './components/home-pages/ArtistsHome';
+import ApiService from './ApiService'
+
 const HOME = {
   name: 'home',
   url: '',
@@ -16,19 +21,31 @@ const ABOUT = {
 const ALBUM_HOME = {
   name: 'albumHome',
   url: '/album',
-  component: () => <h3>album home</h3>
+  component: AlbumHome,
+  resolve: [{
+    token: 'albums',
+    resolveFn: (apiService) => ApiService.getAlbums()
+  }]
 };
 
 const ARTIST_HOME = {
   name: 'artistHome',
   url: '/artist',
-  component: () => <h3>artist home</h3>
+  component: ArtistHome,
+  resolve: [{
+    token: 'artists',
+    resolveFn: (apiService) => ApiService.getArtists()
+  }]
 };
 
 const MEDIA_HOME = {
   name: 'mediaHome',
   url: '/tv-movie',
-  component: () => <h3>media home</h3>
+  component: MediaHome,
+  resolve: [{
+    token: 'media',
+    resolveFn: (apiService) => ApiService.getMedia()
+  }]
 };
 
 const ALBUM_INSTANCE = {
