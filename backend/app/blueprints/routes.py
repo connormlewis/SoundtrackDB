@@ -1,6 +1,5 @@
 """Application routes"""
 import json
-from app.blueprints.ModelSchemas import AlbumSchema, ArtistSchema, Movie_TVSchema
 
 from flask import Blueprint
 
@@ -50,16 +49,6 @@ def get_artist(artist_name: str):
     new_artist['spotify_data'] = spotify_data
     new_artist['lastfm_data'] = lastfm_data
     return json.dumps(new_artist)
-"""
-Wrote all this and realized it wasn't necessary hehe, save in case of need for later use
-    new_artist['name'] = spotify_data['name']
-    new_artist['albums'] = [related_data['artists'][artist_name]['album']['name']]
-    new_artist['biography'] = lastfm_data['artist']['bio']['content']
-    new_artist['db_id'] = 0
-    new_artist['movies-tv_shows'] = [related_data['artists'][artist_name]['media']['name']]
-    new_artist['img'] = spotify_data['images'][0]['url']
-    new_artist['followers'] = spotify_data['followers']['total']
-"""    
 
 #Clean up
 @BP.route('/album')
@@ -101,19 +90,6 @@ def get_album(album_name: str):
     new_album['model_data'] = model_data
     new_album['track_data'] = track_data
     return json.dumps(new_album)
-"""
-Wrote all this and found out it wasn't necessary, keep for later in case
-    new_album['name'] = loaded_data['name']
-    new_album['track_list'] = []
-    new_album['artists'] = [related_data['albums'][album_name]['artist']['name']]
-    for track in track_data['tracks']:
-        new_album['track_list'].append(track['name'])
-    new_album['year'] = loaded_data['release_date']
-    new_album['label'] = loaded_data['label']
-    new_album['img'] = loaded_data['images'][0][ 'url']
-    new_album['movies-tv_show'] = [related_data['albums'][album_name]['media']['name']]
-    new_album['id'] = 0
-"""
 
 #Clean up
 @BP.route('/tv-movie')
@@ -170,30 +146,3 @@ def get_single_media(media_name: str):
     new_movie['video_data'] = video_data
     new_movie['image_data'] = image_data
     return json.dumps(new_movie)
-"""
-Wrote all this and didn;t need it, save for later in case
-    if 'seasons' in loaded_data:
-        new_movie['type'] = 0
-        new_movie['name'] = loaded_data['name']
-        new_movie['years'] = []
-        for season in loaded_data['seasons']:
-            new_movie['years'].append(season['air_date'])
-        new_movie['seasons'] = len(loaded_data['seasons'])
-    else:
-        new_movie['name'] = loaded_data['title']
-        new_movie['years'] = [loaded_data['release_date']]
-        new_movie['type'] = 1
-        new_movie['seasons'] = 0
-    new_movie['albums'] = [related_data['media'][media_name]['album']['name']]
-    new_movie['artists'] = [related_data['media'][media_name]['artist']['name']]
-    new_movie['description'] = loaded_data['overview']
-    new_movie['cast'] = []
-    for member in cast_data['cast']:
-        new_movie['cast'].append(member['name']) 
-    new_movie['genres'] = []
-    for genre in loaded_data['genres']:
-        new_movie['genres'].append(genre['name'])
-    new_movie['id'] = 0
-    new_movie['video'] = video_data
-    new_movie['images'] = image_data
-"""
