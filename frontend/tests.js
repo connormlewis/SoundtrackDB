@@ -8,6 +8,7 @@ import { AlbumHome, AlbumItem } from './src/components/home-pages/AlbumsHome'
 import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
+import Splash from './src/components/Splash';
 
 const ALBUMS_JSON = [{
   "artists": [{
@@ -265,5 +266,22 @@ describe('<MediaHome/>', function () {
       expect(wrapper.find('CardTitle').render().text()).to.be.equal(media.name ? media.name : media.title)
       expect(wrapper.find('CardSubtitle').render().text()).to.be.equal(media.name ? 'TV Series' : 'Movie' + ' • ' + media.yearText)
     })
+  });
+});
+
+// Splash
+describe('<Splash/>', function () {
+  it('should render without crashing', function() {
+    shallow(<Splash/>);
   })
-})
+
+  it('should have 4 items: Albums, Artists, Movies and TV, and Making Connections', function() {
+    const wrapper = shallow(<Splash/>);
+    const carouselItems = wrapper.find('CarouselCaption');
+    expect(carouselItems).to.have.length(4);
+    expect(carouselItems.at(0).render().text()).to.equal('Albums');
+    expect(carouselItems.at(1).render().text()).to.equal('Artists');
+    expect(carouselItems.at(2).render().text()).to.equal('TV and Movies');
+    expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
+  })
+});

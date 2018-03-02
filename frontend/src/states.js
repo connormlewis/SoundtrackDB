@@ -1,14 +1,15 @@
 import React from 'react'; 
+import Splash from './components/Splash';
 
-import MediaHome from './components/home-pages/MediaHome'
-import AlbumHome from './components/home-pages/AlbumsHome';
-import ArtistHome from './components/home-pages/ArtistsHome';
+import { MediaHome } from './components/home-pages/MediaHome'
+import { AlbumHome } from './components/home-pages/AlbumsHome';
+import { ArtistHome } from './components/home-pages/ArtistsHome';
 import ApiService from './ApiService'
 
 const HOME = {
   name: 'home',
   url: '',
-  component: () => <h3>home</h3>
+  component: (Splash)
 };
 
 const ABOUT = {
