@@ -14,3 +14,27 @@ class SoundtrackDBTests(unittest.TestCase):
     def test_true(self):
         response = self.client.get('/')
         self.assertEqual(response.status_code, 200)
+
+    def test_get_artist_all(self):
+        response = self.client.get('/artist')
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_artist_individual(self):
+        response  = self.client.get('/artist/hans_zimmer')
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_album_all(self):
+        response = self.client.get('/album')
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_album_individual(self):
+        response = self.client.get('/album/riverdale')
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_tv_movie_all(self):
+        response = self.client.get('/tv-movie')
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_tv_movie_individual(self):
+        response = self.client.get('/tv-movie/riverdale')
+        self.assertEqual(response.status_code, 200)
