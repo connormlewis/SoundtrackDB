@@ -1,7 +1,7 @@
 """Application routes"""
 import json
 
-from flask import Blueprint, abort
+from flask import Blueprint, abort, jsonify
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
@@ -9,7 +9,7 @@ BP = Blueprint('category_routes', 'SoundtrackDB')
 @BP.route('/')
 def get_home():
     """Get the home page"""
-    return json.dumps({'response': 'success'})
+    return jsonify({'response': 'success'})
 
 #Clean up
 @BP.route('/artist')
@@ -26,13 +26,13 @@ def get_artists():
         new_artist['name'] = spotify_data['name']
         new_artist['albums'] = [related_data['artists'][artist]['album']['name']]
         new_artist['biography'] = lastfm_data['artist']['bio']['content']
-        new_artist['db_id'] = counter
         new_artist['movies-tv_shows'] = [related_data['artists'][artist]['media']['name']]
         new_artist['img'] = spotify_data['images'][0]['url']
         new_artist['followers'] = spotify_data['followers']['total']
+        new_artist['id'] = artist
         artist_data.append(new_artist)
         counter += 1
-    return json.dumps(artist_data)
+    return jsonify(artist_data)
 
 #Clean up
 @BP.route('/artist/<artist_name>')
@@ -48,7 +48,7 @@ def get_artist(artist_name: str):
     new_artist['related_data'] = related_data
     new_artist['spotify_data'] = spotify_data
     new_artist['lastfm_data'] = lastfm_data
-    return json.dumps(new_artist)
+    return jsonify(new_artist)
 
 #Clean up
 @BP.route('/album')
@@ -67,14 +67,14 @@ def get_albums():
         new_album['artists'] = [related_data['albums'][album]['artist']['name']]
         for track in track_data['tracks']:
             new_album['track_list'].append(track['name'])
-        new_album['year'] = loaded_data['release_date']
+        new_album['year'] = loaded_data['release_date'][0:4]
         new_album['label'] = loaded_data['label']
         new_album['img'] = loaded_data['images'][0]['url']
         new_album['movies-tv_show'] = [related_data['albums'][album]['media']['name']]
-        new_album['id'] = counter
+        new_album['id'] = album
         albums_data.append(new_album)
         counter += 1
-    return json.dumps(albums_data)
+    return jsonify(albums_data)
 
 #Clean up
 @BP.route('/album/<album_name>')
@@ -89,7 +89,7 @@ def get_album(album_name: str):
     new_album['related_data'] = related_data
     new_album['model_data'] = model_data
     new_album['track_data'] = track_data
-    return json.dumps(new_album)
+    return jsonify(new_album)
 
 #Clean up
 @BP.route('/tv-movie')
@@ -106,28 +106,27 @@ def get_media():
         if 'seasons' in loaded_data:
             new_movie['type'] = 0
             new_movie['name'] = loaded_data['name']
-            new_movie['years'] = []
-            for season in loaded_data['seasons']:
-                new_movie['years'].append(season['air_date'])
+            new_movie['years'] = loaded_data['seasons'][0]['air_date'][0:4]
             new_movie['seasons'] = len(loaded_data['seasons'])
         else:
             new_movie['name'] = loaded_data['title']
-            new_movie['years'] = [loaded_data['release_date']]
+            new_movie['years'] = loaded_data['release_date'][0:4]
             new_movie['type'] = 1
             new_movie['seasons'] = 0
         new_movie['albums'] = [related_data['media'][movie]['album']['name']]
         new_movie['artists'] = [related_data['media'][movie]['artist']['name']]
         new_movie['description'] = loaded_data['overview']
+        new_movie['img'] = 'http://image.tmdb.org/t/p/w500/' + loaded_data['poster_path']
         new_movie['cast'] = []
+        new_movie['id'] = movie
         for member in cast_data['cast']:
             new_movie['cast'].append(member['name'])
         new_movie['genres'] = []
         for genre in loaded_data['genres']:
             new_movie['genres'].append(genre['name'])
-        new_movie['id'] = counter
         movies_data.append(new_movie)
         counter += 1
-    return json.dumps(movies_data)
+    return jsonify(movies_data)
 
 #Clean up
 @BP.route('/tv-movie/<media_name>')
@@ -147,4 +146,4 @@ def get_single_media(media_name: str):
     new_movie['cast_data'] = cast_data
     new_movie['video_data'] = video_data
     new_movie['image_data'] = image_data
-    return json.dumps(new_movie)
+    return jsonify(new_movie)
