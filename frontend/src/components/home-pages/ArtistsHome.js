@@ -19,14 +19,14 @@ export class ArtistItem extends Component {
       <Card className="mb-3" onClick={this.handleClick}>
         <div width="100%" className="card-img-top" alt="Card image cap" style={{
           height: '200px',
-          backgroundImage: `url('${this.props.artist.images[0].url}')`,
+          backgroundImage: `url('${this.props.artist.img}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }} />
         <CardBody>
           <CardTitle className="text-left">{this.props.artist.name}</CardTitle>
           <CardSubtitle className="text-muted text-left">Artist</CardSubtitle>
-          <CardText className="text-left">Spotify Followers: {this.props.artist.followers.total.toLocaleString()}</CardText>
+          <CardText className="text-left">Spotify Followers: {this.props.artist.followers.toLocaleString()}</CardText>
         </CardBody>
       </Card>
     );

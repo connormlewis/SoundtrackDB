@@ -14,13 +14,22 @@ export class MediaItem extends Component {
     this.props.navigateToInstance(this.props.media.id);
   }
 
+  getSubtitleText() {
+    if (this.props.media.type == 0) {
+      // TV Show
+      return `TV Series • ${this.props.media.years} • ${this.props.media.seasons} Seasons`
+    } else {
+      return `Movie • ${this.props.media.years}`      
+    }
+  }
+
   render() {
     return (
       <Card className="mb-3" onClick={this.handleClick}>
-        <CardImg top width="100%" src={"http://image.tmdb.org/t/p/w500/" + this.props.media.poster_path} alt="Card image cap" />
+        <CardImg top width="100%" src={this.props.media.img} alt="Card image cap" />
         <CardBody>
           <CardTitle className="text-left">{this.props.media.name ? this.props.media.name : this.props.media.title}</CardTitle>
-          <CardSubtitle className="text-muted text-left">{this.props.media.name ? 'TV Series' : 'Movie'} • {this.props.media.yearText}</CardSubtitle>
+          <CardSubtitle className="text-muted text-left">{this.getSubtitleText()}</CardSubtitle>
         </CardBody>
       </Card>
     );
