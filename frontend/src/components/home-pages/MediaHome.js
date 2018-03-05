@@ -15,7 +15,7 @@ export class MediaItem extends Component {
   }
 
   getSubtitleText() {
-    if (this.props.media.type == 0) {
+    if (this.props.media.type === 0) {
       // TV Show
       return `TV Series • ${this.props.media.years} • ${this.props.media.seasons} Seasons`
     } else {
