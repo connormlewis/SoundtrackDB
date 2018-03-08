@@ -95,38 +95,43 @@ def get_album(album_name: str):
 @BP.route('/tv-movie')
 def get_media():
     """Get all of the tv-movies"""
-    movies = ['riverdale', 'interstellar', 'e_t']
-    movies_data = []
-    counter = 0
+    media = ['riverdale', 'interstellar', 'e_t']
+    media_data = []
     related_data = json.load(open('static/instances/related_info.json'))
-    for movie in movies:
-        new_movie = {}
-        loaded_data = json.load(open('static/instances/show_' + movie + '.json'))
-        cast_data = json.load(open('static/instances/cast_' + movie + '.json'))
-        if 'seasons' in loaded_data:
-            new_movie['type'] = 0
-            new_movie['name'] = loaded_data['name']
-            new_movie['years'] = loaded_data['seasons'][0]['air_date'][0:4]
-            new_movie['seasons'] = len(loaded_data['seasons'])
+    for media_name in media:
+        new_media = {}
+        model_data = json.load(open('static/instances/show_' + media_name + '.json'))
+        cast_data = json.load(open('static/instances/cast_' + media_name + '.json'))
+        video_data = json.load(open('static/instances/video_' + media_name + '.json'))
+        image_data = json.load(open('static/instances/images_' + media_name + '.json'))
+        media_url = 'http://image.tmdb.org/t/p/w500/'
+        if 'seasons' in model_data:
+            new_media['name'] = model_data['name']
+            new_media['type'] = 'show'
+            first = int(model_data['first_air_date'][0:4])
+            last = int(model_data['last_air_date'][0:4])
+            new_media['years'] = [year for year in range(first, last+1)]
+            new_media['seasons'] = len(model_data['seasons'])
+            new_media['running'] = (model_data['status'] == 'Returning Series')
         else:
-            new_movie['name'] = loaded_data['title']
-            new_movie['years'] = loaded_data['release_date'][0:4]
-            new_movie['type'] = 1
-            new_movie['seasons'] = 0
-        new_movie['albums'] = [related_data['media'][movie]['album']['name']]
-        new_movie['artists'] = [related_data['media'][movie]['artist']['name']]
-        new_movie['description'] = loaded_data['overview']
-        new_movie['img'] = 'http://image.tmdb.org/t/p/w500/' + loaded_data['poster_path']
-        new_movie['cast'] = []
-        new_movie['id'] = movie
-        for member in cast_data['cast']:
-            new_movie['cast'].append(member['name'])
-        new_movie['genres'] = []
-        for genre in loaded_data['genres']:
-            new_movie['genres'].append(genre['name'])
-        movies_data.append(new_movie)
-        counter += 1
-    return jsonify(movies_data)
+            new_media['name'] = model_data['title']
+            new_media['type'] = 'movie'
+            new_media['years'] = model_data['release_date'][0:4]
+            new_media['season'] = 'None'
+            new_media['running'] = 'None'
+        #Set data that doesn't change based on type
+        new_media['genres'] = [genre['name'] for genre in model_data['genres']]
+        new_media['overview'] = model_data['overview']
+        new_media['cast'] = [member['name'] for member in cast_data['cast']]
+        new_media['poster'] = media_url + model_data['poster_path']
+        new_media['video'] = video_data['results'][0]
+        new_media['backdrops'] = [media_url + image['file_path'] for image in image_data['backdrops']]
+        new_media['albums'] = [related_data['media'][media_name]['album']['list'][7:]]
+        new_media['artists'] = [related_data['media'][media_name]['artist']['list'][8:]]
+        new_media['id'] = media_name
+        media_data.append(new_media)
+    
+    return jsonify(media_data)
 
 #Clean up
 @BP.route('/tv-movie/<media_name>')
@@ -164,7 +169,7 @@ def get_single_media(media_name: str):
     new_media['poster'] = media_url + model_data['poster_path']
     new_media['video'] = video_data['results'][0]
     new_media['backdrops'] = [media_url + image['file_path'] for image in image_data['backdrops']]
-    new_media['albums'] = [related_data['media'][media_name]['album']['name']]
-    new_media['artists'] = [related_data['media'][media_name]['artist']['name']]
+    new_media['albums'] = (related_data['media'][media_name]['album']['link'][7:], related_data['media'][media_name]['album']['name'])
+    new_media['artists'] = (related_data['media'][media_name]['artist']['link'][8:], related_data['media'][media_name]['artist']['name'])
     new_media['id'] = media_name
     return jsonify(new_media)
