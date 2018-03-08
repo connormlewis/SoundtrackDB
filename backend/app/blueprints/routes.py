@@ -172,5 +172,6 @@ def get_single_media(media_name: str):
     new_media['albums'] = (related_data['media'][media_name]['album']['link'][7:], related_data['media'][media_name]['album']['name'])
     new_media['artists'] = (related_data['media'][media_name]['artist']['link'][8:], related_data['media'][media_name]['artist']['name'])
     new_media['id'] = media_name
+    for x in range(0, 5):
     #comment again
     return jsonify(new_media)
