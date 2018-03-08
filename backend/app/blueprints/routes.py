@@ -134,16 +134,36 @@ def get_single_media(media_name: str):
     """Get a specific tv-movie instance"""
     if media_name not in ['riverdale', 'interstellar', 'e_t']:
         abort(404)
-
+    #Load data
     related_data = json.load(open('static/instances/related_info.json'))
     model_data = json.load(open('static/instances/show_' + media_name + '.json'))
     cast_data = json.load(open('static/instances/cast_' + media_name + '.json'))
     video_data = json.load(open('static/instances/video_' + media_name + '.json'))
     image_data = json.load(open('static/instances/images_' + media_name + '.json'))
-    new_movie = {}
-    new_movie['related_data'] = related_data
-    new_movie['model_data'] = model_data
-    new_movie['cast_data'] = cast_data
-    new_movie['video_data'] = video_data
-    new_movie['image_data'] = image_data
-    return jsonify(new_movie)
+    media_url = 'http://image.tmdb.org/t/p/w500/'
+    new_media = {}
+    #Set data based on type
+    if 'seasons' in model_data:
+        new_media['name'] = model_data['name']
+        new_media['type'] = 'show'
+        first = int(model_data['first_air_date'][0:4])
+        last = int(model_data['last_air_date'][0:4])
+        new_media['years'] = [year for year in range(first, last+1)]
+        new_media['seasons'] = len(model_data['seasons'])
+        new_media['running'] = (model_data['status'] == 'Returning Series')
+    else:
+        new_media['name'] = model_data['title']
+        new_media['type'] = 'movie'
+        new_media['years'] = model_data['release_date'][0:4]
+        new_media['season'] = 'None'
+        new_media['running'] = 'None'
+    #Set data that doesn't change based on type
+    new_media['genres'] = [genre['name'] for genre in model_data['genres']]
+    new_media['overview'] = model_data['overview']
+    new_media['cast'] = [member['name'] for member in cast_data['cast']]
+    new_media['poster'] = media_url + model_data['poster_path']
+    new_media['video'] = video_data['results'][0]
+    new_media['backdrops'] = [media_url + image['file_path'] for image in image_data['backdrops']]
+    new_media['albums'] = [related_data['media'][media_name]['album']['name']]
+    new_media['artists'] = [related_data['media'][media_name]['artist']['name']]
+    return jsonify(new_media)
