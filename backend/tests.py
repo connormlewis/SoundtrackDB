@@ -35,6 +35,10 @@ class SoundtrackDBTests(unittest.TestCase):
         response = self.client.get('/tv-movie')
         self.assertEqual(response.status_code, 200)
 
-    def test_get_tv_movie_individual(self):
+    def test_get_tv_movie_individual_s(self):
         response = self.client.get('/tv-movie/riverdale')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_get_tv_movie_individual_m(self):
+        response = self.client.get('/tv-movie/interstellar')
         self.assertEqual(response.status_code, 200)
