@@ -125,12 +125,13 @@ def get_media():
         new_media['cast'] = [member['name'] for member in cast_data['cast']]
         new_media['poster'] = media_url + model_data['poster_path']
         new_media['video'] = video_data['results'][0]
-        new_media['backdrops'] = [media_url + image['file_path'] for image in image_data['backdrops']]
-        new_media['albums'] = [related_data['media'][media_name]['album']['list'][7:]]
-        new_media['artists'] = [related_data['media'][media_name]['artist']['list'][8:]]
+        new_media['backdrops'] = [media_url+image['file_path'] for image in image_data['backdrops']]
+        album = related_data['media'][media_name]['album']
+        artist = related_data['media'][media_name]['artist']
+        new_media['albums'] = [album['link'][7:]]
+        new_media['artists'] = [artist['link'][8:]]
         new_media['id'] = media_name
         media_data.append(new_media)
-    
     return jsonify(media_data)
 
 #Clean up
@@ -169,7 +170,9 @@ def get_single_media(media_name: str):
     new_media['poster'] = media_url + model_data['poster_path']
     new_media['video'] = video_data['results'][0]
     new_media['backdrops'] = [media_url + image['file_path'] for image in image_data['backdrops']]
-    new_media['albums'] = (related_data['media'][media_name]['album']['link'][7:], related_data['media'][media_name]['album']['name'])
-    new_media['artists'] = (related_data['media'][media_name]['artist']['link'][8:], related_data['media'][media_name]['artist']['name'])
+    album = related_data['media'][media_name]['album']['link'][7:]
+    artist = related_data['media'][media_name]['artist']['link'][8:]
+    new_media['albums'] = (album, related_data['media'][media_name]['album']['name'])
+    new_media['artists'] = (artist, related_data['media'][media_name]['artist']['name'])
     new_media['id'] = media_name
     return jsonify(new_media)
