@@ -166,4 +166,5 @@ def get_single_media(media_name: str):
     new_media['backdrops'] = [media_url + image['file_path'] for image in image_data['backdrops']]
     new_media['albums'] = [related_data['media'][media_name]['album']['name']]
     new_media['artists'] = [related_data['media'][media_name]['artist']['name']]
+    new_media['id'] = media_name
     return jsonify(new_media)
