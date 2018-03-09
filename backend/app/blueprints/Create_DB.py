@@ -9,4 +9,4 @@ Base = declarative_base()
 engine = create_engine('sqlite:///:memory', echo = True)
 
 def Create_DB():
-    Base.metadata.creat_all(engine)
+    Base.metadata.create_all(engine)
