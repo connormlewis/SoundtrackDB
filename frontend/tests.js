@@ -290,9 +290,11 @@ const MEDIA_JSON = [
 const RIVERDALE_JSON =
   {
     "albums": [
+        "riverdale",
         "Riverdale: Original Television Score (Season 1)"
     ],
     "artists": [
+        "blake_neely",
         "Blake Neely"
     ],
     "backdrops": [
@@ -325,6 +327,7 @@ const RIVERDALE_JSON =
         "Drama",
         "Mystery"
     ],
+    "id": "riverdale",
     "name": "Riverdale",
     "overview": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
     "poster": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
@@ -345,13 +348,15 @@ const RIVERDALE_JSON =
         2017,
         2018
     ]
-}; 
+}
 const INTERSTELLAR_JSON=
   {
     "albums": [
+        "interstellar",
         "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
     ],
     "artists": [
+        "hans_zimmer",
         "Hans Zimmer"
     ],
     "backdrops": [
@@ -429,6 +434,7 @@ const INTERSTELLAR_JSON=
         "Drama",
         "Science Fiction"
     ],
+    "id": "interstellar",
     "name": "Interstellar",
     "overview": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
     "poster": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
@@ -446,8 +452,7 @@ const INTERSTELLAR_JSON=
         "type": "Trailer"
     },
     "years": "2014"
-}; 
-
+}
 
 // App
 describe('<App/>', function () {
