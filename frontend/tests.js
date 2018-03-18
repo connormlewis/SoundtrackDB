@@ -9,6 +9,7 @@ import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
 import Splash from './src/components/Splash';
+import { AlbumInstance } from './src/components/instance-pages/AlbumInstance'; 
 
 const ALBUMS_JSON = [
   {
@@ -49,7 +50,8 @@ const ALBUMS_JSON = [
       "What Floats Beneath",
       "Never Safe"
     ],
-    "year": "2017-07-18"
+    "release-date": "2017-07-18",
+    "year": "2017"
   },
   {
     "artists": [
@@ -88,7 +90,8 @@ const ALBUMS_JSON = [
       "What Happens Now?",
       "Do Not Go Gentle into That Good Night"
     ],
-    "year": "2014-11-21"
+    "release-date": "2014-11-21",
+    "year": "2014"
   },
   {
     "artists": [
@@ -111,7 +114,8 @@ const ALBUMS_JSON = [
       "Over The Moon - From \"E.T. The Extra-Terrestrial\" Soundtrack",
       "Adventure On Earth - From \"E.T. The Extra-Terrestrial\" Soundtrack"
     ],
-    "year": "1982-01-01"
+    "release-date": "1982-01-01",
+    "year": "1982"
   }
 ]
 
@@ -286,8 +290,6 @@ const MEDIA_JSON = [
   }
 ]
 
-
-
 // App
 describe('<App/>', function () {
   it('should render without crashing', function () {
@@ -407,4 +409,41 @@ describe('<Splash/>', function () {
     expect(carouselItems.at(2).render().text()).to.equal('TV and Movies');
     expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
   })
+});
+
+// Album Instance
+describe('<AlbumInstance/>', function () {
+
+  it('should render without crashing', function () {
+    shallow(<AlbumInstance album={ALBUMS_JSON[0]} />).render();
+  })
+
+  it('should have correct data for name, label, release year, and artists ', function () {
+    let album = ALBUMS_JSON[0]
+    const wrapper = shallow(<AlbumInstance album={album} />)
+    expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(album.name);
+    expect(wrapper.find({ id : 'label'}).render().text()).to.be.equal(album.label); 
+    expect(wrapper.find({ id : 'year'}).render().text()).to.be.equal(album.year);
+    expect(wrapper.find({ id : 'artistlist'}).render().text()).to.be.equal(album.artists);
+  })
+
+  it('should have the correct track', function() {
+    let album = ALBUMS_JSON[0]
+    const wrapper = shallow(<AlbumInstance album={album}/>);
+    const expected_track_list = riverdale.track_list; 
+    const result_track_list = wrapper.find({id : 'tracks'}).children(); 
+    let index = 0; 
+    for (let track of expected_track_list) {
+      expect(result_track_list.at(index).render().text()).to.equal(track);
+      index++; 
+    }
+  })
+
+  it('should list associated albums and artists', function() {
+    let album = ALBUMS_JSON[0]
+    const wrapper = shallow(<AlbumInstance album={album}/>);
+    expect(wrapper.find({ id : 'media'}).find('a').render().text()).to.be.equal(album.movies-tv_show); 
+    expect(wrapper.find({ id : 'artists'}).find('a').render().text()).to.be.equal(album.artists); 
+  })
+
 });
