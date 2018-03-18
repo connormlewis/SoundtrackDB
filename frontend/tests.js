@@ -9,6 +9,7 @@ import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
 import Splash from './src/components/Splash';
+import { ArtistInstance } from './src/components/instance-pages/ArtistInstance'
 
 const ALBUMS_JSON = [
   {
@@ -408,3 +409,17 @@ describe('<Splash/>', function () {
     expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
   })
 });
+
+describe('<ArtistInstance/>', function () {
+  it('should render without crashing', function () {
+    shallow(<ArtistInstance artist={ARTISTS_JSON[0]} />).render();
+  })
+
+  it('should have correct data for name and bio', function () {
+    let artist = ARTISTS_JSON[0]
+    const wrapper = shallow(<ArtistInstance artist={artist} />);
+    expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(artist.name);
+    expect(wrapper.find({ id : 'bio'}).render().text()).to.be.equal(artist.biography); 
+    
+  })
+})
