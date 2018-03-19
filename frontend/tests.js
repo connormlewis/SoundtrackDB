@@ -290,7 +290,7 @@ const MEDIA_JSON = [
   }
 ]
 
-const RIVERDALE_JSON = 
+const RIVERDALE_ALBUM_JSON = 
 {
     "artists": [
         "blake_neely",
@@ -2935,11 +2935,11 @@ describe('<Splash/>', function () {
 describe('<AlbumInstance/>', function () {
 
   it('should render without crashing', function () {
-    shallow(<AlbumInstance album={RIVERDALE_JSON} />);
+    shallow(<AlbumInstance album={RIVERDALE_ALBUM_JSON} />);
   })
 
   it('should have correct data for name, label, release year, and artists ', function () {
-    let album = RIVERDALE_JSON;
+    let album = RIVERDALE_ALBUM_JSON;
     const wrapper = shallow(<AlbumInstance album={album} />)
     expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(album.name);
     expect(wrapper.find({ id : 'label'}).render().text()).to.be.equal("Label: " + album.model_data.label); 
@@ -2948,7 +2948,7 @@ describe('<AlbumInstance/>', function () {
   })
 
   it('should have the correct track', function() {
-    let album = RIVERDALE_JSON;
+    let album = RIVERDALE_ALBUM_JSON;
     const wrapper = shallow(<AlbumInstance album={album}/>);
     const expected_track_list = album.track_list; 
     const result_track_list = wrapper.find({id : 'tracks'}).children(); 
@@ -2960,7 +2960,7 @@ describe('<AlbumInstance/>', function () {
   })
 
   it('should list associated albums and artists', function() {
-    let album = RIVERDALE_JSON;
+    let album = RIVERDALE_ALBUM_JSON;
     const wrapper = shallow(<AlbumInstance album={album}/>);
     const related_data = album.related_data.albums.riverdale;
     expect(wrapper.find({ id : 'media'}).find('a').render().text()).to.be.equal(related_data.media.name); 
