@@ -5,6 +5,7 @@ import { MediaHome } from './components/home-pages/MediaHome'
 import { AlbumHome } from './components/home-pages/AlbumsHome';
 import { ArtistHome } from './components/home-pages/ArtistsHome';
 import ApiService from './ApiService'
+import { ArtistInstance } from './components/instance-pages/ArtistInstance';
 
 const HOME = {
   name: 'home',
@@ -62,7 +63,7 @@ const ALBUM_INSTANCE = {
 const ARTIST_INSTANCE = {
   name: 'artistInstance',
   url: '/artist/:artistID',
-  component: () => <h3>artist instance</h3>,
+  component: ArtistInstance,
   resolve: [{
     token: 'artist',
     deps: ['$transition$'],
