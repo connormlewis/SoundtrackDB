@@ -49,11 +49,6 @@ def get_artist(artist_name: str):
     new_artist['spotify_data'] = spotify_data
     new_artist['lastfm_data'] = lastfm_data
     new_artist['name'] = spotify_data['name']
-    new_artist['albums'] = [related_data['artists'][artist_name]['album']['name']]
-    new_artist['biography'] = lastfm_data['artist']['bio']['content']
-    new_artist['img'] = spotify_data['images'][0]['url']
-    new_artist['uri'] = spotify_data['uri']
-    new_artist['followers'] = spotify_data['followers']['total']
     album = related_data['artists'][artist_name]['album']['link'][7:]
     media = related_data['artists'][artist_name]['media']['link'][7:]
     new_artist['albums'] = (album, related_data['artists'][artist_name]['album']['name'])

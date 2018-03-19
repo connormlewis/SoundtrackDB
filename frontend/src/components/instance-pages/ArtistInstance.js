@@ -34,11 +34,11 @@ export class ArtistInstance extends Component {
           <Col sm="8">
             <h2 id="name">{this.props.artist.name}</h2>
             <h3>Biography</h3>
-            <p id="bio">{this.props.artist.biography}</p>
+            <p id="bio">{this.props.artist.lastfm_data.artist.bio.content}</p>
           </Col>
           <Col sm="4">
-            <img className="w-100" src={this.props.artist.img} alt="Artist" vspace="20"/>
-            <iframe className="embed-responsive-item w-100" title="Spotify Player" src={"https://open.spotify.com/embed?uri=" + this.props.artist.uri} height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <img className="w-100" src={this.props.artist.spotify_data.images[0].url} alt="Artist" vspace="20"/>
+            <iframe className="embed-responsive-item w-100" title="Spotify Player" src={"https://open.spotify.com/embed?uri=" + this.props.artist.spotify_data.uri} height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </Col>
         </Row>
         <Row>
