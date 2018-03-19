@@ -8,6 +8,8 @@ class SoundtrackDBTests(unittest.TestCase):
     def setUp(self):
         self.app = app.create_app()
         app.register_routes(self.app)
+        app.connect_db('sqlite:///:memory:', create=True)
+
         self.app.testing = True
         self.client = self.app.test_client()
 

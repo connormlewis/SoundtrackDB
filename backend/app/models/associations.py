@@ -1,4 +1,5 @@
 from sqlalchemy import Table, Column, Integer, ForeignKey
+
 from app.shared.db import Base
 
 album_media = Table('album_media', Base.metadata,

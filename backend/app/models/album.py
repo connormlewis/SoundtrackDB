@@ -1,10 +1,10 @@
 """ORM for Album items"""
 from marshmallow import Schema, fields
-from sqlalchemy import Column, Text, Integer, Date, Table, ForeignKey
+from sqlalchemy import Column, Text, Integer
 from sqlalchemy.orm import relationship
 
-from app.shared.db import Base
 from app.models.associations import album_media, artist_album
+from app.shared.db import Base
 
 
 class Album(Base):
