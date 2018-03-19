@@ -6,8 +6,8 @@ import { UISref } from '@uirouter/react';
 export class AlbumInstance extends Component {
 
   getTracklist() {
-    const tracks = this.props.album.tracks; 
-    return tracks.map((track, index) => <li key={index}>{track}</li>);
+    const track_list = this.props.album.track_list; 
+    return track_list.map((track, index) => <li key={index}>{track}</li>);
   }
 
   getArtists() {
