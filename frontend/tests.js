@@ -453,7 +453,7 @@ const INTERSTELLAR_JSON=
         "type": "Trailer"
     },
     "years": "2014"
-  }
+}
 
 const HANS_ZIMMER_JSON =
   {
@@ -1008,7 +1008,8 @@ describe('<MediaInstance/>', function () {
     const expected_artist = "Blake Neely"; 
     expect(wrapper.find({ id : 'albums'}).find('a').render().text()).to.be.equal(expected_album); 
     expect(wrapper.find({ id : 'albums'}).find('a').render().text()).to.be.equal(expected_album); 
-  }); 
+  });
+});  
     
 describe('<ArtistInstance/>', function () {
   it('should render without crashing', function () {
