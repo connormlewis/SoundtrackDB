@@ -1,0 +1,10 @@
+[MESSAGES CONTROL]
+
+disable=invalid-name, too-few-public-methods, global-statement, bare-except, too-many-instance-attributes
+
+[SIMILARITIES]
+
+min-similarity-lines=4
+ignore-comments=yes
+ignore-docstrings=yes
+ignore-imports=yes
