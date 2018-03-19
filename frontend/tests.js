@@ -9,6 +9,7 @@ import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
 import Splash from './src/components/Splash';
+import { MediaInstance } from './src/components/instance-pages/MediaInstance'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance'
 
 const ALBUMS_JSON = [
@@ -287,8 +288,175 @@ const MEDIA_JSON = [
   }
 ]
 
-const HANS_ZIMMER_JSON = 
-{
+const RIVERDALE_JSON =
+  {
+    "albums": [
+        "riverdale",
+        "Riverdale: Original Television Score (Season 1)"
+    ],
+    "artists": [
+        "blake_neely",
+        "Blake Neely"
+    ],
+    "backdrops": [
+        "http://image.tmdb.org/t/p/w500//2IUpoKSP64r6rp2vBo0Fdk8a1UU.jpg",
+        "http://image.tmdb.org/t/p/w500//a3G7FsQNfo9mrnZtXN3yaDQhAgz.jpg",
+        "http://image.tmdb.org/t/p/w500//2BdeV1gjkWMTFEldekbqFI5qU5n.jpg",
+        "http://image.tmdb.org/t/p/w500//h26n2RPVeoTIEdv96jbxCQKSqaW.jpg",
+        "http://image.tmdb.org/t/p/w500//gS91Amt1arLnP21Pi3nm4ObFF4Y.jpg",
+        "http://image.tmdb.org/t/p/w500//4IeZIgxxeRJdgAYMd0Frc7alKcJ.jpg",
+        "http://image.tmdb.org/t/p/w500//aNKIbzLftZ14NnZJVZTQHL332Ho.jpg",
+        "http://image.tmdb.org/t/p/w500//sEqHXTDUr3W6oNFFIgR5re8UQxZ.jpg",
+        "http://image.tmdb.org/t/p/w500//biY4RGFlVQXnHlfrX7DfC6ekJvE.jpg",
+        "http://image.tmdb.org/t/p/w500//tOOjl0thkVYfcwVLz2up602NQo8.jpg",
+        "http://image.tmdb.org/t/p/w500//dmwqioFelVSmLrZ894ONBX9iaxz.jpg"
+    ],
+    "cast": [
+        "Marisol Nichols",
+        "Mädchen Amick",
+        "K.J. Apa",
+        "Cole Sprouse",
+        "Camila Mendes",
+        "Lili Reinhart",
+        "Madelaine Petsch",
+        "Ashleigh Murray",
+        "Luke Perry",
+        "Casey Cott",
+        "Charles Melton"
+    ],
+    "genres": [
+        "Drama",
+        "Mystery"
+    ],
+    "id": "riverdale",
+    "name": "Riverdale",
+    "overview": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
+    "poster": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
+    "running": true,
+    "seasons": 2,
+    "type": "show",
+    "video": {
+        "id": "5892ead89251416ee300269d",
+        "iso_3166_1": "US",
+        "iso_639_1": "en",
+        "key": "9XmFTADupMc",
+        "name": "Riverdale (The CW) Trailer HD",
+        "site": "YouTube",
+        "size": 720,
+        "type": "Trailer"
+    },
+    "years": [
+        2017,
+        2018
+    ]
+}
+const INTERSTELLAR_JSON=
+  {
+    "albums": [
+        "interstellar",
+        "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
+    ],
+    "artists": [
+        "hans_zimmer",
+        "Hans Zimmer"
+    ],
+    "backdrops": [
+        "http://image.tmdb.org/t/p/w500//xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
+        "http://image.tmdb.org/t/p/w500//gq4Z1pfOWHn3FKFNutlDCySps9C.jpg",
+        "http://image.tmdb.org/t/p/w500//y4ODodoKWWm7KODB6WgPDHv6Bzd.jpg",
+        "http://image.tmdb.org/t/p/w500//o4BjoraqJLfuRZBhiFXSgRZDUyu.jpg",
+        "http://image.tmdb.org/t/p/w500//xW3MLq7t8gynEiFj3E4YP7KQoqw.jpg",
+        "http://image.tmdb.org/t/p/w500//vFJ31Mp68hwtlB4opsAP29gFqhr.jpg",
+        "http://image.tmdb.org/t/p/w500//sn8LEtCXquQJYEVygbW8YUfumwW.jpg",
+        "http://image.tmdb.org/t/p/w500//walWq52PP2IGRc98VkPG7Wp77lK.jpg",
+        "http://image.tmdb.org/t/p/w500//6MDzVm9h6wEGAbvjihdFU83Q5Wo.jpg",
+        "http://image.tmdb.org/t/p/w500//3mPXGfKcsYIEhl4et2WTSX0llVh.jpg",
+        "http://image.tmdb.org/t/p/w500//tAkBC4X2Rp3QtV7rzqTv8DU3fTA.jpg",
+        "http://image.tmdb.org/t/p/w500//tn9JffYteR9LSGWx2FC8T1uO403.jpg",
+        "http://image.tmdb.org/t/p/w500//5cgKuGbnGPzh5YRZcqK8kZGnjl7.jpg",
+        "http://image.tmdb.org/t/p/w500//nYtBxRwoQTfzSDmAB3l7TIdPLpY.jpg",
+        "http://image.tmdb.org/t/p/w500//bbyI73zXfC8cxkT8xCimyttZrRA.jpg",
+        "http://image.tmdb.org/t/p/w500//rN9Vjna7lnS9jcrSMNvYQEWCRlK.jpg",
+        "http://image.tmdb.org/t/p/w500//s4fd4EfqBFYMbZmIdhNdCLwFrhO.jpg",
+        "http://image.tmdb.org/t/p/w500//aivK6Z2naJsHz5EJFweLP2G7hS.jpg",
+        "http://image.tmdb.org/t/p/w500//oAmkQmTUZ8bkyVbch56TrKHzmuu.jpg",
+        "http://image.tmdb.org/t/p/w500//8CQeAuMbR7pFlvZlgV7Oac3ZbDH.jpg",
+        "http://image.tmdb.org/t/p/w500//cwcibDD8VeZ34SNWTJazEeBho1s.jpg",
+        "http://image.tmdb.org/t/p/w500//9Bnh8RkPpPoo3ftLyDrDPDTMK8p.jpg",
+        "http://image.tmdb.org/t/p/w500//gvldej73NLKaC4j7sCldj1sTjjD.jpg",
+        "http://image.tmdb.org/t/p/w500//5EV88Qt5oDRbnj9F9osFrg3Yd55.jpg",
+        "http://image.tmdb.org/t/p/w500//bUSsMnf8K9wug5aJ8P6jpZT25MV.jpg",
+        "http://image.tmdb.org/t/p/w500//fAAwITtgyzwEy6YstNPxnQ00d6z.jpg",
+        "http://image.tmdb.org/t/p/w500//zX1SB9uuQaJJw2kjZszNHx5PqwI.jpg",
+        "http://image.tmdb.org/t/p/w500//zWyDer0uZdwFnOfthdJvy4qykZm.jpg",
+        "http://image.tmdb.org/t/p/w500//pwRzDssAENT121YkSvfR2uSEfh7.jpg",
+        "http://image.tmdb.org/t/p/w500//b3htE2IM0XvupfVg8IKfb2KcKzw.jpg"
+    ],
+    "cast": [
+        "Matthew McConaughey",
+        "Jessica Chastain",
+        "Anne Hathaway",
+        "Michael Caine",
+        "Casey Affleck",
+        "Mackenzie Foy",
+        "Timothée Chalamet",
+        "Bill Irwin",
+        "Matt Damon",
+        "Ellen Burstyn",
+        "John Lithgow",
+        "Wes Bentley",
+        "Topher Grace",
+        "David Oyelowo",
+        "David Gyasi",
+        "William Devane",
+        "Josh Stewart",
+        "Collette Wolfe",
+        "Leah Cairns",
+        "Russ Fega",
+        "Lena Georgas",
+        "Jeff Hephner",
+        "Elyes Gabel",
+        "Brooke Smith",
+        "Liam Dickinson",
+        "Francis X. McCarthy",
+        "Andrew Borba",
+        "Flora Nolan",
+        "William Patrick Brown",
+        "Cici Leah Campbell",
+        "Kristian Van der Heyden",
+        "Mark Casimir Dyniewicz",
+        "Joseph Oliveira",
+        "Ryan Irving",
+        "Alexander Michael Helisek",
+        "Benjamin Hardy"
+    ],
+    "genres": [
+        "Adventure",
+        "Drama",
+        "Science Fiction"
+    ],
+    "id": "interstellar",
+    "name": "Interstellar",
+    "overview": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+    "poster": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
+    "running": "None",
+    "season": "None",
+    "type": "movie",
+    "video": {
+        "id": "57817b1a9251417b8e000a8c",
+        "iso_3166_1": "US",
+        "iso_639_1": "en",
+        "key": "ePbKGoIGAXY",
+        "name": "Official UK Trailer #3",
+        "site": "YouTube",
+        "size": 1080,
+        "type": "Trailer"
+    },
+    "years": "2014"
+}
+
+const HANS_ZIMMER_JSON =
+  {
     "albums": [
         "interstellar",
         "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
@@ -705,7 +873,7 @@ describe('<AlbumHome/>', function () {
   })
 
   describe('<AlbumItem/>', function () {
-    it('should render without crasing', function () {
+    it('should render without crashing', function () {
       let album = ALBUMS_JSON[0]
       const wrapper = shallow(<AlbumItem album={album} />).render()
     })
@@ -734,7 +902,7 @@ describe('<ArtistHome/>', function () {
 
   describe('<ArtistItem/>', function () {
     let artist = ARTISTS_JSON[0]
-    it('should render without crasing', function () {
+    it('should render without crashing', function () {
       const wrapper = shallow(<ArtistItem artist={artist} />).render()
     })
 
@@ -759,7 +927,7 @@ describe('<MediaHome/>', function () {
 
   describe('<MediaItem/>', function () {
     let media = MEDIA_JSON[0]
-    it('should render without crasing', function () {
+    it('should render without crashing', function () {
       const wrapper = shallow(<MediaItem media={media} />).render()
     })
 
@@ -789,6 +957,60 @@ describe('<Splash/>', function () {
   })
 });
 
+describe('<MediaInstance/>', function () {
+  let riverdale = RIVERDALE_JSON; 
+  let interstellar = INTERSTELLAR_JSON; 
+
+  it('should render without crashing', function() {
+    const wrapper = shallow(<MediaInstance media={riverdale}/>); 
+  });
+
+  it('should have the correct data for name and about', function() {
+    const wrapper = shallow(<MediaInstance media={riverdale}/>);
+    expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(riverdale.name);
+    expect(wrapper.find({ id : 'about'}).render().text()).to.be.equal(riverdale.overview); 
+  });
+
+  it('should have a subtitle with type, release year and genres if it is a movie', function() {
+    const wrapper = shallow(<MediaInstance media={interstellar}/>);
+    const expected = 'Movie | 2014 | Adventure, Drama, Science Fiction'; 
+    expect(wrapper.find({ id : 'subtitle'}).render().text()).to.be.equal(expected); 
+  });
+
+  it('should have a subtitle with type, years, number of seasons and genres if it is a TV show', function() {
+    const wrapper = shallow(<MediaInstance media={riverdale}/>);
+    const expected = 'TV Show | 2017 - Present | 2 seasons | Drama, Mystery'; 
+    expect(wrapper.find({ id : 'subtitle'}).render().text()).to.be.equal(expected); 
+  });
+
+  it('should have the correct cast listing', function() {
+    const wrapper = shallow(<MediaInstance media={riverdale}/>); 
+    const expected_cast = riverdale.cast; 
+    const result_cast = wrapper.find({id : 'cast'}).children(); 
+    let index = 0; 
+    for (let member of expected_cast) {
+      expect(result_cast.at(index).render().text()).to.equal(member);
+      index++; 
+    }
+  });
+
+  it('should have the correct poster image and video', function() {
+    const wrapper = shallow(<MediaInstance media={riverdale} />);
+    const expected_img = "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg"; 
+    const expected_video = "//www.youtube.com/embed/9XmFTADupMc"; 
+    expect(wrapper.find({ alt : "Poster"}).prop('src')).to.be.equal(expected_img);
+    expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video); 
+  });
+
+  it('should list associated albums and artists', function() {
+    const wrapper = shallow(<MediaInstance media={riverdale} />);
+    const expected_album = "Riverdale: Original Television Score (Season 1)";
+    const expected_artist = "Blake Neely"; 
+    expect(wrapper.find({ id : 'albums'}).find('a').render().text()).to.be.equal(expected_album); 
+    expect(wrapper.find({ id : 'albums'}).find('a').render().text()).to.be.equal(expected_album); 
+  });
+});  
+    
 describe('<ArtistInstance/>', function () {
   it('should render without crashing', function () {
     shallow(<ArtistInstance artist={HANS_ZIMMER_JSON} />);

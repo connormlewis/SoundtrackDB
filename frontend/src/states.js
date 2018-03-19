@@ -5,6 +5,7 @@ import { MediaHome } from './components/home-pages/MediaHome'
 import { AlbumHome } from './components/home-pages/AlbumsHome';
 import { ArtistHome } from './components/home-pages/ArtistsHome';
 import ApiService from './ApiService'
+import { MediaInstance } from './components/instance-pages/MediaInstance'; 
 import { ArtistInstance } from './components/instance-pages/ArtistInstance';
 
 const HOME = {
@@ -74,7 +75,7 @@ const ARTIST_INSTANCE = {
 const MEDIA_INSTANCE = {
   name: 'mediaInstance',
   url: '/tv-movie/:mediaID',
-  component: () => <h3>media instance</h3>,
+  component: MediaInstance,
   resolve: [{
     token: 'media',
     deps: ['$transition$'],
