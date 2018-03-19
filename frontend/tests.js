@@ -422,4 +422,13 @@ describe('<ArtistInstance/>', function () {
     expect(wrapper.find({ id : 'bio'}).render().text()).to.be.equal(artist.biography); 
     
   })
-})
+
+  it('should have the correct media', function () {
+    const wrapper = shallow(<ArtistInstance artist={ARTISTS_JSON[0]} />);
+    const expected_image = "https://i.scdn.co/image/14657235e8724181f8b32c6bfa54cdbf86d70852";
+    const expected_spotify = "https://open.spotify.com/embed?uri=spotify:artist:0YC192cP3KPCRWx8zr8MfZ";
+    expect(wrapper.find({ alt : "Artist"}).prop('src')).to.be.equal(expected_image);
+    expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_spotify); 
+    
+  })
+});
