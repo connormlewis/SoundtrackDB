@@ -47,24 +47,17 @@ def get_artists():
 
     query = query.order_by('name')
     artists = query.all()
-    return jsonify(artist_schema.dump(artists, many=True).data)
+    return artist_schema.dumps(artists, many=True)
 
-
-@BP.route('/artist/<artist_name>')
-def get_artist(artist_name: str):
+@BP.route('/artist/<artist_id>')
+def get_artist(artist_id: str):
     """Get a specific artist"""
-    if artist_name not in ['hans_zimmer', 'blake_neely', 'john_williams']:
+    if artist_id not in ['hans_zimmer', 'blake_neely', 'john_williams']:
         abort(404)
 
-    new_artist = {}
-    related_data = json.load(open('static/instances/related_info.json'))
-    spotify_data = json.load(open('static/instances/artist_' + artist_name + '.json'))
-    lastfm_data = json.load(open('static/instances/last_fm_artist_' + artist_name + '.json'))
-    new_artist['related_data'] = related_data
-    new_artist['spotify_data'] = spotify_data
-    new_artist['lastfm_data'] = lastfm_data
-    return jsonify(new_artist)
-
+    session = get_session()
+    query = session.query(Artist).get(artist_id)
+    return jsonify(artist_schema.dump(query).data)
 
 @BP.route('/album')
 def get_albums():
