@@ -8,5 +8,4 @@ pytest-cov
 marshmallow
 flask-cors
 sqlalchemy
-sqlalchemy.orm
-sqlalchemy.ext.declarative
+psycopg2
