@@ -89,9 +89,7 @@ def get_album(album_name: str):
     new_album['related_data'] = related_data
     new_album['model_data'] = model_data
     new_album['name'] = model_data['name']
-    new_album['label'] = model_data['label']
     new_album['year'] = model_data['release_date'][0:4]
-    new_album['track_data'] = track_data
     new_album['track_list'] = [track['name'] for track in track_data['tracks']]
     artist = related_data['albums'][album_name]['artist']['link'][8:]
     media = related_data['albums'][album_name]['media']['link'][7:]

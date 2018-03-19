@@ -39,7 +39,7 @@ export class AlbumInstance extends Component {
           <Col sm="8">
             <h2 id="name">{this.props.album.name}</h2>
             <h3>About</h3>
-            <p id="label">Label: {this.props.album.label}</p>
+            <p id="label">Label: {this.props.album.model_data.label}</p>
             <p id="year">Release year: {this.props.album.year}</p>
             <p id="artistlist">Artists: {this.props.album.artists[1]}</p>
             <h3>Tracklist</h3>
