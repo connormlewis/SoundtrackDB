@@ -48,6 +48,12 @@ def get_artist(artist_name: str):
     new_artist['related_data'] = related_data
     new_artist['spotify_data'] = spotify_data
     new_artist['lastfm_data'] = lastfm_data
+    new_artist['name'] = spotify_data['name']
+    album = related_data['artists'][artist_name]['album']['link'][7:]
+    media = related_data['artists'][artist_name]['media']['link'][7:]
+    new_artist['albums'] = (album, related_data['artists'][artist_name]['album']['name'])
+    new_artist['media'] = (media, related_data['artists'][artist_name]['media']['name'])
+    new_artist['id'] = artist_name
     return jsonify(new_artist)
 
 #Clean up
