@@ -50,7 +50,7 @@ def get_artist(artist_name: str):
     new_artist['lastfm_data'] = lastfm_data
     new_artist['name'] = spotify_data['name']
     album = related_data['artists'][artist_name]['album']['link'][7:]
-    media = related_data['artists'][artist_name]['media']['link'][7:]
+    media = related_data['artists'][artist_name]['media']['link'][10:]
     new_artist['albums'] = (album, related_data['artists'][artist_name]['album']['name'])
     new_artist['media'] = (media, related_data['artists'][artist_name]['media']['name'])
     new_artist['id'] = artist_name
@@ -98,7 +98,7 @@ def get_album(album_name: str):
     new_album['year'] = model_data['release_date'][0:4]
     new_album['track_list'] = [track['name'] for track in track_data['tracks']]
     artist = related_data['albums'][album_name]['artist']['link'][8:]
-    media = related_data['albums'][album_name]['media']['link'][7:]
+    media = related_data['albums'][album_name]['media']['link'][10:]
     new_album['artists'] = (artist, related_data['albums'][album_name]['artist']['name'])
     new_album['media'] = (media, related_data['albums'][album_name]['media']['name'])
     return jsonify(new_album)
