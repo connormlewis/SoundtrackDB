@@ -13,15 +13,11 @@ services:
             - ./backend:/src/
         env_file:
            - backend/private.env
+           - backend/db.env
         links:
           - db
         networks:
           db:
-        environment:
-          - POSTGRES_URL=db
-          - POSTGRES_PASSWORD=postgrespassword
-          - POSTGRES_USER=soundtrackdb
-          - POSTGRES_DB=soundtrackdb
     db:
         build:
             context: ./backend

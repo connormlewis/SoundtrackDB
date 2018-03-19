@@ -1,16 +1,10 @@
 """ORM for Media items"""
-from sqlalchemy import Column, Integer, String, Date, Boolean, Float, Table, ForeignKey
+from marshmallow import Schema, fields
+from sqlalchemy import Column, Integer, String, Date, Boolean, Float
 from sqlalchemy.orm import relationship
 
+from app.models.associations import media_artist, album_media
 from app.shared.db import Base
-
-album_association = Table('album_media', Base.metadata,
-                          Column('media_id', Integer, ForeignKey('media.id')),
-                          Column('album_id', Integer, ForeignKey('album.id')))
-
-artist_association = Table('media_artist', Base.metadata,
-                           Column('artist_id', Integer, ForeignKey('artist.id')),
-                           Column('media_id', Integer, ForeignKey('media.id')))
 
 
 class Media(Base):
@@ -37,5 +31,30 @@ class Media(Base):
     popularity = Column(Float)
     average_rating = Column(Float)
 
-    artists = relationship('Artist', secondary=artist_association)
-    albums = relationship('Album', secondary=album_association)
+    artists = relationship('Artist', secondary=media_artist)
+    albums = relationship('Album', secondary=album_media)
+
+
+class MediaSchema(Schema):
+    """
+    Movie_TV_Schema Implementation
+    """
+    id = fields.Int()
+    type = fields.Int()
+    name = fields.Str()
+    cast = fields.Str()
+    genres = fields.Str()
+    seasons = fields.Int()
+    release_date = fields.Str()
+    image = fields.Str()
+    running = fields.Bool()
+    overview = fields.Str()
+    other_images = fields.Str()
+    imdb_id = fields.Str()
+    tmdb_id = fields.Int()
+    runtime = fields.Int()
+    tagline = fields.Str()
+    popularity = fields.Float()
+    average_rating = fields.Float()
+    artists = fields.Nested('ArtistSchema', exclude=('media', 'albums'))
+    albums = fields.Nested('AlbumSchema', exclude=('media', 'artist'))

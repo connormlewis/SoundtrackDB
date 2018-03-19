@@ -3,15 +3,22 @@ import json
 import os
 import requests
 
-from flask import Blueprint, abort, jsonify
+from flask import Blueprint, abort, jsonify, request
+from app.shared.db import get_session
+from app.models import Artist, ArtistSchema, Media, MediaSchema, Album, AlbumSchema
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
-#Clean up
+artist_schema = ArtistSchema()
+album_schema = AlbumSchema()
+media_schema = MediaSchema()
+
+
 @BP.route('/')
 def get_home():
     """Get the home page"""
     return jsonify({'response': 'success'})
+
 
 @BP.route('/about')
 def get_about():
@@ -26,30 +33,23 @@ def get_about():
     return jsonify(about_data)
 
 
-#Clean up
 @BP.route('/artist')
 def get_artists():
     """Get all of the artists"""
-    artists = ['hans_zimmer', 'blake_neely', 'john_williams']
-    artist_data = []
-    related_data = json.load(open('static/instances/related_info.json'))
-    counter = 0
-    for artist in artists:
-        spotify_data = json.load(open('static/instances/artist_' + artist+ '.json'))
-        lastfm_data = json.load(open('static/instances/last_fm_artist_' + artist + '.json'))
-        new_artist = {}
-        new_artist['name'] = spotify_data['name']
-        new_artist['albums'] = [related_data['artists'][artist]['album']['name']]
-        new_artist['biography'] = lastfm_data['artist']['bio']['content']
-        new_artist['movies-tv_shows'] = [related_data['artists'][artist]['media']['name']]
-        new_artist['img'] = spotify_data['images'][0]['url']
-        new_artist['followers'] = spotify_data['followers']['total']
-        new_artist['id'] = artist
-        artist_data.append(new_artist)
-        counter += 1
-    return jsonify(artist_data)
+    session = get_session()
+    query = session.query(Artist)
 
-#Clean up
+    if request.args.get('limit') is not None:
+        query = query.limit(int(request.args.get('limit')))
+
+    if request.args.get('offset') is not None:
+        query = query.offset(int(request.args.get('offset')))
+
+    query = query.order_by('name')
+    artists = query.all()
+    return jsonify(artist_schema.dump(artists, many=True).data)
+
+
 @BP.route('/artist/<artist_name>')
 def get_artist(artist_name: str):
     """Get a specific artist"""
@@ -65,7 +65,7 @@ def get_artist(artist_name: str):
     new_artist['lastfm_data'] = lastfm_data
     return jsonify(new_artist)
 
-#Clean up
+
 @BP.route('/album')
 def get_albums():
     """Get all of the albums"""
@@ -91,7 +91,7 @@ def get_albums():
         counter += 1
     return jsonify(albums_data)
 
-#Clean up
+
 @BP.route('/album/<album_name>')
 def get_album(album_name: str):
     """Get a specific album"""
@@ -106,7 +106,7 @@ def get_album(album_name: str):
     new_album['track_data'] = track_data
     return jsonify(new_album)
 
-#Clean up
+
 @BP.route('/tv-movie')
 def get_media():
     """Get all of the tv-movies"""
@@ -149,7 +149,7 @@ def get_media():
         media_data.append(new_media)
     return jsonify(media_data)
 
-#Clean up
+
 @BP.route('/tv-movie/<media_name>')
 def get_single_media(media_name: str):
     """Get a specific tv-movie instance"""

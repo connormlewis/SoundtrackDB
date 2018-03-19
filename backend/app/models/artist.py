@@ -1,15 +1,10 @@
 """ORM for Artist items"""
-from sqlalchemy import Column, Integer, Text, Table, ForeignKey
+from marshmallow import Schema, fields
+from sqlalchemy import Column, Integer, Text
 from sqlalchemy.orm import relationship
+
+from app.models.associations import media_artist, artist_album
 from app.shared.db import Base
-
-album_association = Table('artist_album', Base.metadata,
-                          Column('artist_id', Integer, ForeignKey('artist.id')),
-                          Column('album_id', Integer, ForeignKey('album.id')))
-
-media_association = Table('media_artist', Base.metadata,
-                          Column('artist_id', Integer, ForeignKey('artist.id')),
-                          Column('media_id', Integer, ForeignKey('media.id')))
 
 
 class Artist(Base):
@@ -23,7 +18,21 @@ class Artist(Base):
     bio = Column(Text)
     image = Column(Text)
     followers = Column(Integer)
-    spotify_id = Column(Text, nullable=False)
+    spotify_uri = Column(Text, nullable=False)
 
-    media = relationship('Media', secondary=media_association)
-    albums = relationship('Album', secondary=album_association)
+    media = relationship('Media', secondary=media_artist)
+    albums = relationship('Album', secondary=artist_album)
+
+
+class ArtistSchema(Schema):
+    """
+    Artist_Schema Implementation
+    """
+    id = fields.Int()
+    name = fields.Str()
+    bio = fields.Str()
+    image = fields.URL()
+    followers = fields.Int()
+    spotify_id = fields.Int()
+    media = fields.Nested('MediaSchema', exclude=('artists', 'albums'))
+    albums = fields.Nested('AlbumSchema', exclude=('artists', 'media'))
