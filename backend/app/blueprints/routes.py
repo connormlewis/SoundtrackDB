@@ -190,7 +190,6 @@ def get_single_media(media_name: str):
     new_media['albums'] = (album, related_data['media'][media_name]['album']['name'])
     new_media['artists'] = (artist, related_data['media'][media_name]['artist']['name'])
     new_media['id'] = media_name
-    #comment
     return jsonify(new_media)
 
 def get_commits():
@@ -202,7 +201,7 @@ def get_commits():
                 'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
     try:
         url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
-        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        data = requests.get(url)#, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         json_list = data.json()
         for entry in json_list:
             total = entry['total']
@@ -222,7 +221,7 @@ def get_issues():
     all_issues = 0
     try:
         url = 'https://api.github.com/repos/connormlewis/idb/issues?state=all&filter=all'
-        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        data = requests.get(url)#, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         json_list = data.json()
         for entry in json_list:
             if 'pull_request' not in entry:
