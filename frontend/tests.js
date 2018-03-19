@@ -2942,7 +2942,7 @@ describe('<AlbumInstance/>', function () {
     let album = RIVERDALE_JSON;
     const wrapper = shallow(<AlbumInstance album={album} />)
     expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(album.name);
-    expect(wrapper.find({ id : 'label'}).render().text()).to.be.equal("Label: " + album.label); 
+    expect(wrapper.find({ id : 'label'}).render().text()).to.be.equal("Label: " + album.model_data.label); 
     expect(wrapper.find({ id : 'year'}).render().text()).to.be.equal("Release year: " + album.year);
     expect(wrapper.find({ id : 'artistlist'}).render().text()).to.be.equal("Artists: " + album.artists[1]);
   })
