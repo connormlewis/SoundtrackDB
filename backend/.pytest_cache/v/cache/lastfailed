@@ -1,1 +1,3 @@
-{}
+{
+  "tests.py::SoundtrackDBTests::test_true": true
+}

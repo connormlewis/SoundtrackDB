@@ -1,5 +1,7 @@
-from sqlalchemy.types import TypeDecorator, VARCHAR
+"""Used to allow json blobs to be stored in the database"""
 import json
+
+from sqlalchemy.types import TypeDecorator, VARCHAR
 
 
 class Json(TypeDecorator):

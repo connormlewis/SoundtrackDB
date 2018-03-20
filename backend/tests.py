@@ -13,12 +13,16 @@ class SoundtrackDBTests(unittest.TestCase):
         self.app.testing = True
         self.client = self.app.test_client()
 
-    def test_true(self):
-        response = self.client.get('/')
+    def test_get_about(self):
+        response = self.client.get('/about')
         self.assertEqual(response.status_code, 200)
 
     def test_get_artist_all(self):
         response = self.client.get('/artist')
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_artist_all_page_2(self):
+        response = self.client.get('/artist', query_string={'offset': '10', 'limit': '10'})
         self.assertEqual(response.status_code, 200)
 
     def test_get_artist_individual(self):
@@ -29,12 +33,20 @@ class SoundtrackDBTests(unittest.TestCase):
         response = self.client.get('/album')
         self.assertEqual(response.status_code, 200)
 
+    def test_get_album_all_page_2(self):
+        response = self.client.get('/album', query_string={'offset': '10', 'limit': '10'})
+        self.assertEqual(response.status_code, 200)
+
     def test_get_album_individual(self):
         response = self.client.get('/album/riverdale')
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_all(self):
         response = self.client.get('/tv-movie')
+        self.assertEqual(response.status_code, 200)
+
+    def test_get_tv_movie_all_page_2(self):
+        response = self.client.get('/tv-movie', query_string={'offset': '10', 'limit': '10'})
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_individual_s(self):

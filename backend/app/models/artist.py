@@ -35,4 +35,4 @@ class ArtistSchema(Schema):
     followers = fields.Int()
     spotify_uri = fields.Str()
     media = fields.Nested('MediaSchema', many=True, exclude=('artists', 'albums'))
-    albums = fields.Nested('AlbumSchema', many=True, exclude=('artists', 'media'))
+    albums = fields.Nested('AlbumSchema', many=True, exclude=('artists', 'media', 'tracks'))

@@ -1,11 +1,11 @@
 """Application routes"""
 import json
-import os
-import requests
 
+import requests
 from flask import Blueprint, abort, jsonify, request
+
+from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema
 from app.shared.db import get_session
-from app.models import Artist, ArtistSchema, Media, MediaSchema, Album, AlbumSchema
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
@@ -83,6 +83,7 @@ def get_albums():
             query = query.limit(12)
 
         albums = query.all()
+
         return jsonify(album_schema.dump(albums, many=True).data)
     finally:
         session.close()
