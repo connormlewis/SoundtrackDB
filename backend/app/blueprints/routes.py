@@ -50,7 +50,11 @@ def get_artists():
             query = query.limit(12)
 
         artists = query.all()
-        return jsonify(artists_schema.dump(artists, many=True).data)
+        count = session.query(Artist).count()
+        return jsonify({
+            'items': artists_schema.dump(artists, many=True).data,
+            'count': count
+        })
     finally:
         session.close()
 
@@ -86,8 +90,11 @@ def get_albums():
             query = query.limit(12)
 
         albums = query.all()
-
-        return jsonify(albums_schema.dump(albums, many=True).data)
+        count = session.query(Album).count()
+        return jsonify({
+            'items': albums_schema.dump(albums, many=True).data,
+            'count': count
+        })
     finally:
         session.close()
 

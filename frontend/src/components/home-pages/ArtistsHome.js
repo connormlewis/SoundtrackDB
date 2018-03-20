@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { UISref } from '@uirouter/react';
 import PropTypes from 'prop-types'
 
 
@@ -45,12 +46,16 @@ export class ArtistHome extends Component {
   }
 
   render() {
+    this.params = this.props.transition.params()
+    this.totalPages = Math.ceil(this.props.artists.count / this.params.limit);
+    this.currentPage = this.params.offset / this.params.limit;
+
     return (
       <Fragment>
         <h2>Artists</h2>
         <div className="row">
           {
-            this.props.artists.map((artist) => {
+            this.props.artists.items.map((artist) => {
               return (
                 <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={artist.id}>
                   <ArtistItem artist={artist} navigateToInstance={this.navigateToInstance} />
@@ -58,6 +63,31 @@ export class ArtistHome extends Component {
               );
             })
           }
+        </div>
+        <div className="col-12">
+          <Pagination className="justify-content-center">
+            <PaginationItem>
+              { 
+                this.currentPage === 0 ? <PaginationLink previous disabled/> :
+                <UISref to="." params={{ offset: this.params.offset - this.params.limit }}>
+                  <PaginationLink previous/>
+                </UISref>
+              }
+            </PaginationItem>
+
+            <PaginationItem>
+              <PaginationLink disabled>{ this.currentPage + 1 }</PaginationLink>
+            </PaginationItem>
+
+            <PaginationItem>
+            { 
+                this.currentPage === this.totalPages - 1 ? <PaginationLink next disabled/> :
+                <UISref to="." params={{ offset: this.params.offset + this.params.limit }}>
+                <PaginationLink next/>
+                </UISref>
+              }
+            </PaginationItem>
+          </Pagination>
         </div>
       </Fragment>
     );

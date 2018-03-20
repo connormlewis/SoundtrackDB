@@ -4,17 +4,36 @@ const API_URL = 'http://localhost'
 
 export default class ApiService {
 
-  static getArtists() {
-    return $.get(API_URL + '/artist')
+  static getArtists(offset=0, limit=12) {
+    return $.ajax({
+      url: API_URL + '/artist',
+      type: "get",
+      data: { 
+        offset: offset,
+        limit: limit
+      }
+    })  }
+
+  static getAlbums(offset=0, limit=12) {
+    return $.ajax({
+      url: API_URL + '/album',
+      type: "get",
+      data: { 
+        offset: offset,
+        limit: limit
+      }
+    })
   }
 
-  static getAlbums() {
-    return $.get(API_URL + '/album')
-  }
-
-  static getAllMedia() {
-    return $.get(API_URL + '/tv-movie')
-  }
+  static getAllMedia(offset=0, limit=12) {
+    return $.ajax({
+      url: API_URL + '/tv-movie',
+      type: "get",
+      data: { 
+        offset: offset,
+        limit: limit
+      }
+    })  }
 
   static getArtist(id) {
     return $.get(API_URL + '/artist/' + id)

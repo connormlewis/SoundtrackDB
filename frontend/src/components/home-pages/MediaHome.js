@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { UISref } from '@uirouter/react'
 import PropTypes from 'prop-types'
 
 
@@ -48,12 +49,16 @@ export class MediaHome extends Component {
   }
 
   render() {
+    this.params = this.props.transition.params()
+    this.totalPages = Math.ceil(this.props.media.count / this.params.limit);
+    this.currentPage = this.params.offset / this.params.limit;
+
     return (
       <Fragment>
         <h2>Movies/TV Series</h2>
         <div className="row">
           {
-            this.props.media.map((mediaItem) => {
+            this.props.media.items.map((mediaItem) => {
               return (
                 <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={mediaItem.id}>
                   <MediaItem media={mediaItem} navigateToInstance={this.navigateToInstance}/>
@@ -61,6 +66,31 @@ export class MediaHome extends Component {
               );
             })
           }
+        </div>
+        <div className="col-12">
+          <Pagination className="justify-content-center">
+            <PaginationItem>
+              { 
+                this.currentPage === 0 ? <PaginationLink previous disabled/> :
+                <UISref to="." params={{ offset: this.params.offset - this.params.limit }}>
+                  <PaginationLink previous/>
+                </UISref>
+              }
+            </PaginationItem>
+
+            <PaginationItem>
+              <PaginationLink disabled>{ this.currentPage + 1 }</PaginationLink>
+            </PaginationItem>
+
+            <PaginationItem>
+            { 
+                this.currentPage === this.totalPages - 1 ? <PaginationLink next disabled/> :
+                <UISref to="." params={{ offset: this.params.offset + this.params.limit }}>
+                <PaginationLink next/>
+                </UISref>
+              }
+            </PaginationItem>
+          </Pagination>
         </div>
       </Fragment>
     );
