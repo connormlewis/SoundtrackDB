@@ -175,9 +175,9 @@ def get_issues():
     team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0, \
                  'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
     all_issues = 0
-    try: #DO parse through the pagination using the request headers 
+    try:
         url = ('https://api.github.com/repos/connormlewis/idb/'
-                'issues?state=all&filter=all&per_page=100')
+               'issues?state=all&filter=all&per_page=100')
         data = requests.get(url, \
                    headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         json_list = data.json()
