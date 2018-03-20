@@ -37,7 +37,13 @@ class AlbumSchema(Schema):
     image = fields.Str()
     label = fields.Str()
     genres = fields.List(fields.Str())
-    tracks = fields.Dict()
+    tracks = fields.List(fields.Dict())
+    track_count = fields.Method('track_counter')
     spotify_uri = fields.Str()
     media = fields.Nested('MediaSchema', many=True, exclude=('artists', 'albums'))
     artists = fields.Nested('ArtistSchema', many=True, exclude=('media', 'albums'))
+
+    @classmethod
+    def track_counter(cls, obj):
+        """Returns the number of tracks in the album"""
+        return len(obj.tracks)

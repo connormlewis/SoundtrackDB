@@ -6,7 +6,7 @@ import { UISref } from '@uirouter/react';
 export class AlbumInstance extends Component {
 
   getTracklist() {
-    const track_list = this.props.album.tracks.items; 
+    const track_list = this.props.album.tracks; 
     return (
       <Fragment>
       {

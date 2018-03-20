@@ -12,6 +12,9 @@ BP = Blueprint('category_routes', 'SoundtrackDB')
 artist_schema = ArtistSchema()
 album_schema = AlbumSchema()
 media_schema = MediaSchema()
+artists_schema = ArtistSchema(exclude=('albums', 'media'))
+albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
+medias_schema = MediaSchema(exclude=('albums', 'artists'))
 
 
 @BP.route('/about')
@@ -47,7 +50,7 @@ def get_artists():
             query = query.limit(12)
 
         artists = query.all()
-        return jsonify(artist_schema.dump(artists, many=True).data)
+        return jsonify(artists_schema.dump(artists, many=True).data)
     finally:
         session.close()
 
@@ -84,7 +87,7 @@ def get_albums():
 
         albums = query.all()
 
-        return jsonify(album_schema.dump(albums, many=True).data)
+        return jsonify(albums_schema.dump(albums, many=True).data)
     finally:
         session.close()
 

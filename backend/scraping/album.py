@@ -14,8 +14,7 @@ from app.shared.db import init_db, get_session
 def process_line(line):
     album_json = json.loads(line)
     # add_album(album_json)
-    associate_existing_album(album_json)
-
+    # associate_existing_album(album_json)
 
 def add_album(album_json):
     session = get_session()
@@ -33,6 +32,16 @@ def add_album(album_json):
     session.add(album)
     session.commit()
     session.close()
+
+
+def remove_available_markets():
+    session = get_session()
+    for album in session.query(Album).all():
+        track_data = album.tracks['items']
+        for track in track_data:
+            track.pop('available_markets', None)
+        album.tracks = track_data
+    session.commit()
 
 
 def associate_existing_album(album_json):
@@ -63,7 +72,9 @@ if __name__ == '__main__':
 
     init_db(uri)
 
-    with open('scraping/spotify_album_data.json', 'r') as f:
-        for x in f:
-            x = x.rstrip()
-            process_line(x)
+    remove_available_markets()
+
+    # with open('scraping/spotify_album_data.json', 'r') as f:
+    #     for x in f:
+    #         x = x.rstrip()
+    #         process_line(x)

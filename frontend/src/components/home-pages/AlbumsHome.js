@@ -30,7 +30,7 @@ export class AlbumItem extends Component {
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.album.name}</CardTitle>
           <CardSubtitle className="text-muted text-left">{this.props.album.release_date.substring(0,4)}</CardSubtitle>
-          <CardText className="text-left">{this.props.album.tracks.items.length} Track{this.props.album.tracks.items.length === 1 ? '' : 's'}</CardText>
+          <CardText className="text-left">{this.props.album.track_count} Track{this.props.album.track_count === 1 ? '' : 's'}</CardText>
         </CardBody>
       </Card>
     );
