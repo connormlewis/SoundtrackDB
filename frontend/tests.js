@@ -12,6 +12,7 @@ import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
 import Splash from './src/components/Splash';
 import { MediaInstance } from './src/components/instance-pages/MediaInstance';
+import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
 import * as sinon from 'sinon';
@@ -211,57 +212,63 @@ describe('<Splash/>', function () {
 });
 
 describe('<MediaInstance/>', function () {
-    let riverdale = RIVERDALE_JSON;
-    let interstellar = INTERSTELLAR_JSON;
+  let riverdale = RIVERDALE_JSON;
+  let interstellar = INTERSTELLAR_JSON;
 
+  it('should render without crashing', function () {
+      const wrapper = shallow(<MediaInstance media={riverdale} />);
+  });
+
+  it('should have the correct data for name and about', function () {
+      const wrapper = shallow(<MediaInstance media={riverdale} />);
+      expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(riverdale.name);
+      expect(wrapper.find({ id: 'about' }).render().text()).to.be.equal(riverdale.overview);
+  });
+
+  it('should have a subtitle with type, release year and genres if it is a movie', function () {
+      const wrapper = shallow(<MediaInstance media={interstellar} />);
+      const expected = 'Movie | 2014 | Adventure, Drama, Science Fiction';
+      expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
+  });
+
+  it('should have a subtitle with type, years, number of seasons and genres if it is a TV show', function () {
+      const wrapper = shallow(<MediaInstance media={riverdale} />);
+      const expected = 'TV Show | 2017 - Present | 2 seasons | Drama, Mystery';
+      expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
+  });
+
+  it('should have the correct cast listing', function () {
+      const wrapper = shallow(<MediaInstance media={riverdale} />);
+      const expected_cast = riverdale.cast;
+      const result_cast = wrapper.find({ id: 'cast' }).children();
+      let index = 0;
+      for (let member of expected_cast) {
+          expect(result_cast.at(index).render().text()).to.equal(member);
+          index++;
+      }
+  });
+
+  it('should have the correct poster image and video', function () {
+      const wrapper = shallow(<MediaInstance media={riverdale} />);
+      const expected_img = "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg";
+      const expected_video = "//www.youtube.com/embed/9XmFTADupMc";
+      expect(wrapper.find({ alt: "Poster" }).prop('src')).to.be.equal(expected_img);
+      expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video);
+  });
+
+  // it('should list associated albums and artists', function () {
+  //     const wrapper = shallow(<MediaInstance media={riverdale} />);
+  //     const expected_album = "Riverdale: Original Television Score (Season 1)";
+  //     const expected_artist = "Blake Neely";
+  //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+  //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+  // });
+
+  describe('<MediaCarousel/>', function() {
     it('should render without crashing', function () {
-        const wrapper = shallow(<MediaInstance media={riverdale} />);
-    });
-
-    it('should have the correct data for name and about', function () {
-        const wrapper = shallow(<MediaInstance media={riverdale} />);
-        expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(riverdale.name);
-        expect(wrapper.find({ id: 'about' }).render().text()).to.be.equal(riverdale.overview);
-    });
-
-    it('should have a subtitle with type, release year and genres if it is a movie', function () {
-        const wrapper = shallow(<MediaInstance media={interstellar} />);
-        const expected = 'Movie | 2014 | Adventure, Drama, Science Fiction';
-        expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
-    });
-
-    it('should have a subtitle with type, years, number of seasons and genres if it is a TV show', function () {
-        const wrapper = shallow(<MediaInstance media={riverdale} />);
-        const expected = 'TV Show | 2017 - Present | 2 seasons | Drama, Mystery';
-        expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
-    });
-
-    it('should have the correct cast listing', function () {
-        const wrapper = shallow(<MediaInstance media={riverdale} />);
-        const expected_cast = riverdale.cast;
-        const result_cast = wrapper.find({ id: 'cast' }).children();
-        let index = 0;
-        for (let member of expected_cast) {
-            expect(result_cast.at(index).render().text()).to.equal(member);
-            index++;
-        }
-    });
-
-    it('should have the correct poster image and video', function () {
-        const wrapper = shallow(<MediaInstance media={riverdale} />);
-        const expected_img = "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg";
-        const expected_video = "//www.youtube.com/embed/9XmFTADupMc";
-        expect(wrapper.find({ alt: "Poster" }).prop('src')).to.be.equal(expected_img);
-        expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video);
-    });
-
-    // it('should list associated albums and artists', function () {
-    //     const wrapper = shallow(<MediaInstance media={riverdale} />);
-    //     const expected_album = "Riverdale: Original Television Score (Season 1)";
-    //     const expected_artist = "Blake Neely";
-    //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
-    //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
-    // });
+      shallow(<MediaCarousel photos={RIVERDALE_JSON.backdrops}/>); 
+    }); 
+  });
 });
 
 describe('<ArtistInstance/>', function () {
@@ -313,7 +320,7 @@ describe('<AlbumInstance/>', function () {
         }
     })
 
-    // it('should list associated albums and artists', function () {
+    // it('should list associated media and artists', function () {
     //     const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
     //     const related_data = ALBUM_JSON.related_data.albums.riverdale;
     //     expect(wrapper.find({ id: 'media' }).find('a').render().text()).to.be.equal(ALBUM_JSON.media[0].name);
