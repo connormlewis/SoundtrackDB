@@ -1,6 +1,9 @@
 import * as $ from "jquery";
 
-const API_URL = 'http://localhost'
+var API_URL = 'http://localhost'
+if (process.env.NODE_ENV === "production") {
+  API_URL = 'http://api.soundtrackdb.me'
+}
 
 export default class ApiService {
 
