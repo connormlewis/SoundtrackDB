@@ -19,7 +19,7 @@ export class ArtistItem extends Component {
       <Card className="mb-3" onClick={this.handleClick}>
         <div width="100%" className="card-img-top" alt="Card image cap" style={{
           height: '200px',
-          backgroundImage: `url('${this.props.artist.img}')`,
+          backgroundImage: `url('${this.props.artist.image}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }} />

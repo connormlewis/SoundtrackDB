@@ -7,3 +7,5 @@ pylint
 pytest-cov
 marshmallow
 flask-cors
+sqlalchemy
+psycopg2

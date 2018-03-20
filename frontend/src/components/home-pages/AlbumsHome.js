@@ -26,11 +26,11 @@ export class AlbumItem extends Component {
   render() {
     return (
       <Card className="mb-3" onClick={this.handleClick}>
-        <CardImg top width="100%" src={this.props.album.img} alt="Card image cap" />
+        <CardImg top width="100%" src={this.props.album.image} alt="Card image cap" />
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.album.name}</CardTitle>
-          <CardSubtitle className="text-muted text-left">{this.props.album.year}</CardSubtitle>
-          <CardText className="text-left">{this.props.album.track_list.length} Track{this.props.album.track_list.length === 1 ? '' : 's'}</CardText>
+          <CardSubtitle className="text-muted text-left">{this.props.album.release_date.substring(0,4)}</CardSubtitle>
+          <CardText className="text-left">{this.props.album.track_count} Track{this.props.album.track_count === 1 ? '' : 's'}</CardText>
         </CardBody>
       </Card>
     );

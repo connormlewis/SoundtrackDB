@@ -1,109 +1,108 @@
 """Application routes"""
 import json
 
-from flask import Blueprint, abort, jsonify
+import requests
+from flask import Blueprint, abort, jsonify, request
+
+from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema
+from app.shared.db import get_session
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
-#Clean up
-@BP.route('/')
-def get_home():
-    """Get the home page"""
-    return jsonify({'response': 'success'})
+artist_schema = ArtistSchema()
+album_schema = AlbumSchema()
+media_schema = MediaSchema()
+artists_schema = ArtistSchema(exclude=('albums', 'media'))
+albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
+medias_schema = MediaSchema(exclude=('albums', 'artists'))
 
-#Clean up
+
+@BP.route('/about')
+def get_about():
+    """Get commits and data"""
+    commits = get_commits()
+    about_data = {}
+    about_data['commits'] = commits[0]
+    about_data['total_commits'] = commits[1]
+    issues = get_issues()
+    about_data['issues'] = issues[0]
+    about_data['total_issues'] = issues[1]
+    return jsonify(about_data)
+
+
 @BP.route('/artist')
 def get_artists():
     """Get all of the artists"""
-    artists = ['hans_zimmer', 'blake_neely', 'john_williams']
-    artist_data = []
-    related_data = json.load(open('static/instances/related_info.json'))
-    counter = 0
-    for artist in artists:
-        spotify_data = json.load(open('static/instances/artist_' + artist+ '.json'))
-        lastfm_data = json.load(open('static/instances/last_fm_artist_' + artist + '.json'))
-        new_artist = {}
-        new_artist['name'] = spotify_data['name']
-        new_artist['albums'] = [related_data['artists'][artist]['album']['name']]
-        new_artist['biography'] = lastfm_data['artist']['bio']['content']
-        new_artist['movies-tv_shows'] = [related_data['artists'][artist]['media']['name']]
-        new_artist['img'] = spotify_data['images'][0]['url']
-        new_artist['followers'] = spotify_data['followers']['total']
-        new_artist['id'] = artist
-        artist_data.append(new_artist)
-        counter += 1
-    return jsonify(artist_data)
+    session = get_session()
 
-#Clean up
-@BP.route('/artist/<artist_name>')
-def get_artist(artist_name: str):
+    try:
+        query = session.query(Artist)
+
+        query = query.order_by('name')
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
+        else:
+            query = query.limit(12)
+
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.limit(12)
+
+        artists = query.all()
+        return jsonify(artists_schema.dump(artists, many=True).data)
+    finally:
+        session.close()
+
+
+@BP.route('/artist/<artist_id>')
+def get_artist(artist_id: int):
     """Get a specific artist"""
-    if artist_name not in ['hans_zimmer', 'blake_neely', 'john_williams']:
-        abort(404)
+    session = get_session()
+    try:
+        query = session.query(Artist).get(artist_id)
+        return jsonify(artist_schema.dump(query).data)
+    finally:
+        session.close()
 
-    new_artist = {}
-    related_data = json.load(open('static/instances/related_info.json'))
-    spotify_data = json.load(open('static/instances/artist_' + artist_name + '.json'))
-    lastfm_data = json.load(open('static/instances/last_fm_artist_' + artist_name + '.json'))
-    new_artist['related_data'] = related_data
-    new_artist['spotify_data'] = spotify_data
-    new_artist['lastfm_data'] = lastfm_data
-    new_artist['name'] = spotify_data['name']
-    album = related_data['artists'][artist_name]['album']['link'][7:]
-    media = related_data['artists'][artist_name]['media']['link'][10:]
-    new_artist['albums'] = (album, related_data['artists'][artist_name]['album']['name'])
-    new_artist['media'] = (media, related_data['artists'][artist_name]['media']['name'])
-    new_artist['id'] = artist_name
-    return jsonify(new_artist)
 
-#Clean up
 @BP.route('/album')
 def get_albums():
     """Get all of the albums"""
-    albums = ['riverdale', 'interstellar', 'e_t']
-    albums_data = []
-    related_data = json.load(open('static/instances/related_info.json'))
-    counter = 0
-    for album in albums:
-        loaded_data = json.load(open('static/instances/album_' + album + '.json'))
-        track_data = json.load(open('static/instances/track_' + album + '.json'))
-        new_album = {}
-        new_album['name'] = loaded_data['name']
-        new_album['track_list'] = []
-        new_album['artists'] = [related_data['albums'][album]['artist']['name']]
-        for track in track_data['tracks']:
-            new_album['track_list'].append(track['name'])
-        new_album['year'] = loaded_data['release_date'][0:4]
-        new_album['label'] = loaded_data['label']
-        new_album['img'] = loaded_data['images'][0]['url']
-        new_album['movies-tv_show'] = [related_data['albums'][album]['media']['name']]
-        new_album['id'] = album
-        albums_data.append(new_album)
-        counter += 1
-    return jsonify(albums_data)
+    session = get_session()
 
-#Clean up
-@BP.route('/album/<album_name>')
-def get_album(album_name: str):
+    try:
+        query = session.query(Album)
+
+        query = query.order_by('name')
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
+        else:
+            query = query.limit(12)
+
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.limit(12)
+
+        albums = query.all()
+
+        return jsonify(albums_schema.dump(albums, many=True).data)
+    finally:
+        session.close()
+
+
+@BP.route('/album/<album_id>')
+def get_album(album_id: id):
     """Get a specific album"""
-    if album_name not in ['riverdale', 'interstellar', 'e_t']:
-        abort(404)
-    related_data = json.load(open('static/instances/related_info.json'))
-    model_data = json.load(open('static/instances/album_' + album_name + '.json'))
-    track_data = json.load(open('static/instances/track_' + album_name + '.json'))
-    new_album = {}
-    new_album['related_data'] = related_data
-    new_album['model_data'] = model_data
-    new_album['name'] = model_data['name']
-    new_album['year'] = model_data['release_date'][0:4]
-    new_album['track_list'] = [track['name'] for track in track_data['tracks']]
-    artist = related_data['albums'][album_name]['artist']['link'][8:]
-    media = related_data['albums'][album_name]['media']['link'][10:]
-    new_album['artists'] = (artist, related_data['albums'][album_name]['artist']['name'])
-    new_album['media'] = (media, related_data['albums'][album_name]['media']['name'])
-    return jsonify(new_album)
+    session = get_session()
+    try:
+        query = session.query(Album).get(album_id)
+        return jsonify(album_schema.dump(query).data)
+    finally:
+        session.close()
 
-#Clean up
+
 @BP.route('/tv-movie')
 def get_media():
     """Get all of the tv-movies"""
@@ -146,7 +145,7 @@ def get_media():
         media_data.append(new_media)
     return jsonify(media_data)
 
-#Clean up
+
 @BP.route('/tv-movie/<media_name>')
 def get_single_media(media_name: str):
     """Get a specific tv-movie instance"""
@@ -187,5 +186,43 @@ def get_single_media(media_name: str):
     new_media['albums'] = (album, related_data['media'][media_name]['album']['name'])
     new_media['artists'] = (artist, related_data['media'][media_name]['artist']['name'])
     new_media['id'] = media_name
-    #comment
     return jsonify(new_media)
+
+def get_commits():
+    """
+    Get commits from github
+    """
+    all_commits = 0
+    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0, \
+                'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    try:
+        url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
+        data = requests.get(url)#, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        json_list = data.json()
+        for entry in json_list:
+            total = entry['total']
+            user_name = entry['author']['login']
+            team[user_name] = total
+            all_commits += total
+    except TypeError:
+        return (team, all_commits)
+    return (team, all_commits)
+
+def get_issues():
+    """
+    Get issues from github
+    """
+    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0, \
+                 'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    all_issues = 0
+    try:
+        url = 'https://api.github.com/repos/connormlewis/idb/issues?state=all&filter=all'
+        data = requests.get(url)#, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        json_list = data.json()
+        for entry in json_list:
+            if 'pull_request' not in entry:
+                team[entry['user']['login']] += 1
+                all_issues += 1
+    except TypeError:
+        return (team, all_issues)
+    return (team, all_issues)

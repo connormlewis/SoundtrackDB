@@ -13,6 +13,7 @@ services:
             - ./backend:/src/
         env_file:
            - backend/private.env
+           - backend/db.env
         links:
           - db
         networks:

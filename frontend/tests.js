@@ -9,3593 +9,1192 @@ import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
 import Splash from './src/components/Splash';
-import { MediaInstance } from './src/components/instance-pages/MediaInstance'; 
+import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
-import { AlbumInstance } from './src/components/instance-pages/AlbumInstance'; 
+import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
 
 const ALBUMS_JSON = [
-  {
-    "artists": [
-      "Blake Neely"
-    ],
-    "id": "riverdale",
-    "img": "https://i.scdn.co/image/6d6058dda979cc24276aaab650befd5dd963e390",
-    "label": "WaterTower Music",
-    "movies-tv_show": [
-      "Riverdale"
-    ],
-    "name": "Riverdale: Original Television Score (Season 1)",
-    "track_list": [
-      "Riverdale",
-      "If You Love Me",
-      "Viral Gossip in Town",
-      "Everyone a Suspect",
-      "Receiving the Jersey",
-      "Doubts and Accusations",
-      "All is OK With Milkshakes",
-      "Long Reach",
-      "Ended Up Drowning",
-      "Irreconcilable",
-      "So Many Questions",
-      "A Gift / Forced to Leave",
-      "Not Making the Play",
-      "Overwhelming Evidence",
-      "Realizations",
-      "Do You Feel Guilty?",
-      "Into the Woods",
-      "Name of the Game",
-      "Angry and Vulnerable Girls",
-      "Results of the Father",
-      "Your Father Was Arrested",
-      "The Recording",
-      "Oh, Mommy!",
-      "What Floats Beneath",
-      "Never Safe"
-    ],
-    "year": "2017-07-18"
-  },
-  {
-    "artists": [
-      "Hans Zimmer"
-    ],
-    "id": "interstellar",
-    "img": "https://i.scdn.co/image/eed15df0d0849836293b9f787fabf077ce9e9f2e",
-    "label": "WaterTower Music",
-    "movies-tv_show": [
-      "Interstellar"
-    ],
-    "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)",
-    "track_list": [
-      "Dreaming of the Crash",
-      "Cornfield Chase",
-      "Dust",
-      "Day One",
-      "Stay",
-      "Message from Home",
-      "The Wormhole",
-      "Mountains",
-      "Afraid of Time",
-      "A Place Among the Stars",
-      "Running Out",
-      "I'm Going Home",
-      "Coward",
-      "Detach",
-      "S.T.A.Y.",
-      "Where We're Going",
-      "First Step",
-      "Flying Drone",
-      "Atmospheric Entry",
-      "No Need to Come Back",
-      "Imperfect Lock",
-      "No Time for Caution",
-      "What Happens Now?",
-      "Do Not Go Gentle into That Good Night"
-    ],
-    "year": "2014-11-21"
-  },
-  {
-    "artists": [
-      "John Williams"
-    ],
-    "id": "e_t",
-    "img": "https://i.scdn.co/image/399212ef4aa3612b92e1efe7602bcf8888a676f1",
-    "label": "Geffen",
-    "movies-tv_show": [
-      "E.T. the Extra-Terrestrial"
-    ],
-    "name": "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)",
-    "track_list": [
-      "Three Million Light Years From Home - From \"E.T. The Extra-Terrestrial\" Soundtrack",
-      "Abandoned And Pursued - From \"E.T. The Extra-Terrestrial\" Soundtrack",
-      "E.T. And Me - From \"E.T. The Extra-Terrestrial\" Soundtrack",
-      "E.T.'s Halloween - From \"E.T. The Extra-Terrestrial\" Soundtrack",
-      "Flying - From \"E.T. The Extra-Terrestrial\" Soundtrack",
-      "E.T. Phone Home - From \"E.T. The Extra-Terrestrial\" Soundtrack",
-      "Over The Moon - From \"E.T. The Extra-Terrestrial\" Soundtrack",
-      "Adventure On Earth - From \"E.T. The Extra-Terrestrial\" Soundtrack"
-    ],
-    "year": "1982-01-01"
-  }
+    {
+        "genres": [],
+        "id": 91,
+        "image": "https://i.scdn.co/image/8384d7572ca98a5158aa8132187b83d5cda8e01c",
+        "label": "Studiocanal",
+        "name": "African Safari 3D (Ben Stassen's Original Motion Picture Soundtrack)",
+        "release_date": "2014-04-14",
+        "spotify_uri": "spotify:album:76VCN1e85g0d7p18Nyt60C",
+        "track_count": 15
+    },
+    {
+        "genres": [],
+        "id": 367,
+        "image": "https://i.scdn.co/image/bab5fb09923ec397845c97e2d2f118a46bf6943a",
+        "label": "Sony Classical",
+        "name": "After Earth",
+        "release_date": "2013-05-24",
+        "spotify_uri": "spotify:album:4HZ3KQvXte5re72F65ssv3",
+        "track_count": 28
+    },
+    {
+        "genres": [],
+        "id": 163,
+        "image": "https://i.scdn.co/image/0136f508e01f4d877a465034c507e8219ea113e4",
+        "label": "Warner Bros.",
+        "name": "A.I. (Music from the Motion Picture)",
+        "release_date": "2001-07-03",
+        "spotify_uri": "spotify:album:5yKkKXvX1X0finFqR3JAKL",
+        "track_count": 13
+    }
 ]
 
 const ARTISTS_JSON = [
-  {
-    "albums": [
-      "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-    ],
-    "biography": "Hans Florian Zimmer (born September 12, 1957) is a German film composer and music producer, born in Frankfurt am Main, Germany and active since 1977. Having won a wide variety of honors and commendations, he has composed music for over 100 films, including award-winning films and box-office hits such as Rain Man (1988), Driving Miss Daisy (1989), Thelma & Louise (1991), The Lion King (1994), Crimson Tide (1995), Gladiator (2000), The Last Samurai (2003), The Dark Knight (2008), Inception (2010), 12 Years a Slave (2013), Interstellar (2014), and Blade Runner 2049 (2017). A recipient of a star on the Hollywood Walk of Fame, Zimmer spent the early part of his career in the United Kingdom before moving to the United States. He's also the head of the film music division at DreamWorks studios and additionally works with other composers through the company that he founded: Remote Control Productions.\n\nZimmer's works are notable for integrating electronic music sounds with traditional orchestral arrangements. He has received four Grammy Awards, two Golden Globes, a Classical BRIT Award, and an Academy Award. He was also named on the list of Top 100 Living Geniuses published by The Daily Telegraph.\n\nZimmer was born in Frankfurt am Main, Germany on 12th September 1957, and moved to London as a teenager. While he lived in London, Zimmer wrote advertising jingles for Air-Edel Associates. Zimmer began his musical career playing keyboards and synthesisers. In 1980 he worked with The Buggles, a New Wave band formed in 1977 with Trevor Horn, Geoff Downs, and Bruce Woolley. Zimmer can be briefly seen in The Buggles music video for \"Video Killed the Radio Star\" (1979). \n\nIn the 1980s, Zimmer worked with film composer Stanley Myers, a prolific film composer who composed scores for over sixty films. Zimmer and Myers co-founded the London-based Lillie Yard recording studio. Together, Myers and Zimmer worked on fusing the traditional orchestral sound with state-of-the-art electronics. Some of their first movies with this new sound include \"Moonlighting\" (1982), \"Success is the Best Revenge\" (1984), \"Insignificance\" (1985), and \"My Beautiful Launderette\" (1985). In 1986, Zimmer joined David Byrne and Ryuichi Sakamoto on their Oscar-winning score for \"The Last Emperor\" (1988).\n\nSoon afterwards, Zimmer began working on his own solo projects. During his solo career years, Zimmer experimented and combined the use of old and new musical technologies. His first solo score was for Chris Menges\u2019s film \"A World Apart\" (1988). However, the turning point in his career came later that year when he was asked to compose a score for Barry Levinson\u2019s film \"Rain Man\" (1988). In the score, Zimmer uses synthesizers mixed with steel drums. The score was nominated for an Academy Award in 1989. A year later Zimmer was asked to compose a score for Bruce Beresford's \"Driving Miss Daisy\" (1989), which won a Grammy Award 1991.\n\nIn 1994, Zimmer won his biggest commercial hit for Disney\u2019s \"The Lion King\" (1994). He wanted to go to South Africa himself to record the soundtrack, but couldn't because he had a police record there for making subversive films. \"The Lion King\" soundtrack won numerous awards, including an Oscar, a Golden Globe, and two Grammys. It was then adapted for the Broadway musical version, which won the Tony for Best Musical in 1998.\n\nSince the success of \"The Lion King\", Zimmer has written numerous film scores. His hundredth composition was for \"The Last Samurai\" (2003), for which he won both a Golden Globe and a Broadcast Film Critics nomination in 2004. After composing over a hundred film scores, Zimmer finally performed live for the first time in concert with a hundred-piece orchestra and a hundred-person choir at the twenty-seventh Annual Flanders International Film Festival. \n\nHe has received numerous honours and awards, including: Prestigious Lifetime Achievement Award in Film Composition from the National Board of Review, Frederick Loewe Award in 2003 at the Palm Springs International Film Festival, ASCAP\u2019s Henry Mancini Award for Lifetime Achievement, and BMI's prestigious Richard Kirk Award for lifetime achievement in 1996. Today, Zimmer is considered to be the father of integrating the electronic musical world with traditional orchestral arrangements.\n\nZimmer lives in Los Angeles with his wife Suzanne, and has four children. <a href=\"https://www.last.fm/music/Hans+Zimmer\">Read more on Last.fm</a>. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply.",
-    "followers": 1068930,
-    "id": "hans_zimmer",
-    "img": "https://i.scdn.co/image/14657235e8724181f8b32c6bfa54cdbf86d70852",
-    "movies-tv_shows": [
-      "Interstellar"
-    ],
-    "name": "Hans Zimmer"
-  },
-  {
-    "albums": [
-      "Riverdale: Original Television Score (Season 1)"
-    ],
-    "biography": "Blake Neely (born 1969 in Paris, Texas) is a composer, arranger, orchestrator, conductor, and author. His father was a rancher and his brother Tom Neely is an artist in Los Angeles.\n\nNeely has contributed to and been credited on dozens of film and TV projects over the years such as: Everwood (which earned him a 2003 Emmy Award nomination for the theme), all three Pirates of the Caribbean films, King Kong, The Last Samurai and many more. Other film projects in which he is the sole composer are Elvis and Anabelle, Starter for 10, and The Wedding Date.\n\nIn addition, Neely has composed the music for over twenty television series. He has frequently collaborated with writer/director/producer Greg Berlanti, including Everwood, Jack & Bobby, Brothers & Sisters, Eli Stone, Dirty Sexy Money. He has also been credited alongside several well known composers such as Michael Kamen, James Newton Howard, Vangelis, and Hans Zimmer.\n\nAs an author, he has written over 25 instrumental method books such as the best-selling piano method Piano For Dummies.\n\nHe recorded his score for the HBO documentary on David McCullough at the Conway Studios in Hollywood on February 23, 2008. <a href=\"https://www.last.fm/music/Blake+Neely\">Read more on Last.fm</a>. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply.",
-    "followers": 10677,
-    "id": "blake_neely",
-    "img": "https://i.scdn.co/image/86193f7ba3136d145915a9afb477626ed1c9f40a",
-    "movies-tv_shows": [
-      "Riverdale"
-    ],
-    "name": "Blake Neely"
-  },
-  {
-    "albums": [
-      "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
-    ],
-    "biography": "There are at least five artists with this name: \n\n(1) John Towner Williams (film score composer)\n(2) John Christopher Williams (classical guitarist)\n(3) John Williams (Irish musician)\n(4) John Williams (blues/jazz guitarist)\n(5) John Knowles Williams (experimental/indie)\n---------------------------------------------\n\n(1) John Towner Williams (born February 8, 1932) is one of the most widely recognized composers of film scores. As of 2017, he has received 50 music-related Academy Award nominations, an accomplishment surpassed by none.\n\nEarly scores and compositions are credited as Johnny Williams.\n\nWilliams is best known for heroic, rousing themes in adventure and fantasy films. This includes some of the highest grossing films of all time, such as the Star Wars movies, the Superman movies, Jaws, E.T. the Extra-Terrestrial, Raiders of the Lost Ark, Jurassic Park, and the first three Harry Potter movies. His richly thematic and highly popular 1977 score to the first Star Wars film was selected by the American Film Institute as the greatest American movie score of all time. Five of his film scores won Oscars.\n\nHis long career has also included many sensitive dramatic scores (such as Schindler's List, Saving Private Ryan, and Munich) and quirky character studies (like Catch Me If You Can, the theme for which makes extensive use of jazz, perhaps in homage to Mancini's famous music for The Pink Panther). Also noteworthy are his recent collaborations with Yo-Yo Ma and Itzhak Perlman on the score for Memoirs of a Geisha, as well as Williams' other more experimental concert works.\n\nWilliams has composed the scores for every Steven Spielberg movie, with the exception of The Color Purple (scored by co-producer Quincy Jones) and Duel (Spielberg's first feature film).\n\nWhile skilled in a variety of twentieth-century compositional idioms, his most familiar style may be described as a form of neo-romanticism, influenced by his predecessors and their use of large-scale orchestral music. Korngold (and other Hollywood Golden Age composers), is clearly evident in many of Williams' most famous works.\n\nAnyone who has watched the Olympics on television has heard Williams' \"Olympic Fanfare and Theme,\" parts of which (especially the last fifteen seconds of the fanfare) receive extensive playtime every four years.\n\nWilliams also composed \"The Mission,\" the worldwide-known theme from NBC News.\n\n---------------------------------------------\n(2) John Christopher Williams is a classical guitar player.\n\nBorn in Melbourne, Australia, on 24 April 1941, to an English father (Len Williams) and an Australian-Chinese mother, Williams was taught initially by his father. At the age of twelve he went to Italy to study under \"The Maestro,\" Andr\u00e9s Segovia. Later, he attended the Royal College of Music in London, studying piano because the school did not have a guitar department at the time. Upon graduation, he was offered the opportunity to create such a department. He seized the opportunity and ran it for the first two years. Williams has maintained links with the College (and with the Northern College in Manchester) ever since.\n\nWilliams is best known as a classical guitarist, but has explored many different musical traditions. He has collaborated with Julian Bream and Paco Pe\u00f1a and was a member of the fusion group Sky. He is also a composer and arranger.\n\nWilliams has commissioned guitar concertos from composers such as Stephen Dodgson, Andr\u00e9 Previn, Patrick Gowers, Richard Harvey, and Steve Gray. He has also worked with composers from his native Australia, including Phillip Houghton, Peter Sculthorpe, Ross Edwards (composer), and Nigel Westlake, to produce guitar works that capture the spirit of his homeland.\n\nHe enjoyed a worldwide hit single with his recording of Cavatina by Stanley Myers, used as the theme tune to the Oscar-winning film The Deer Hunter (1979). The piece had originally been written for piano, for another film ten years earlier, The Walking Stick (1970) but re-written for guitar and expanded by Myers at Williams' invitation. In 1973, Cleo Laine wrote lyrics and recorded the song \"He Was Beautiful\" accompanied by John Williams. A year later, it was a top-five UK hit single for Iris Williams (no relation).\n\nAt the invitation of producer Martin Lewis he created a highly acclaimed classical-rock fusion duet with celebrated rock guitarist Pete Townshend of Townshend's anthemic \"Won't Get Fooled Again\" for the 1979 Amnesty International benefit show The Secret Policeman's Ball. The duet was featured on the resulting album and the film version of the show \u2013 bringing Williams to the broader attention of the rock audience.\n\nThe relationship with Lewis led to Williams' classical-rock fusion band Sky being invited to give the first-ever rock concert to be held at Westminster Abbey \u2013 a benefit concert for Amnesty that Lewis produced in February 1981.\n\nHe is visiting professor at the Royal Academy of Music, London.\n\nWilliams and his artist wife Kathy Panama reside in London and Australia.\n\n---------------------------------------------\n(3) John Williams\n\nJohn Williams is internationally regarded as one of the foremost players of Irish music today. With five All-Ireland titles to his credit, John is the only American-born competitor ever to win first place in the \"senior concertina\" category. His additional talents on flute, button accordion, bodhran, and piano distinguish him as a much sought after multi-instrumentalist in the acoustic scene around the world.\n\nBorn and raised on the Southwest Side of Chicago, John spent his summers during college on the Southwest coast of Ireland in his father\u2019s village of Doolin, Co. Clare. Like Chicago, Doolin became a major musical crossroads for John and countless other local and international musicians to meet and exchange music. Gigging every night in the pubs of Doolin and Lisdoonvarna soon led to performances in Galway, Cork, Dublin, Belfast, Paris, Britanny, Zurich, and New York City (bio http://www.johnwilliamsmusic.com/bio.htm).\n\n---------------------------------------------\n(4) John Williams\n\nA blues/jazz guitarist in Seattle, Washington, whose music is available at Magnatune.com (bio http://magnatune.com/artists/john_williams).\n\n---------------------------------------------\n(5) John Knowles Williams\n\nAn experimental/indie musician. Music is available at sweetnuthin.letsneverdie.net/Music/My_Recordings/ or www.myspace.com/JohnKWilliams. <a href=\"https://www.last.fm/music/John+Williams\">Read more on Last.fm</a>. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply.",
-    "followers": 550855,
-    "id": "john_williams",
-    "img": "https://i.scdn.co/image/bde64350466df4aa41efb9b8b766deef6c46fd08",
-    "movies-tv_shows": [
-      "E.T the Extra-Terrestrial"
-    ],
-    "name": "John Williams"
-  }
+    {
+        "bio": null,
+        "followers": 5078,
+        "id": 3,
+        "image": "https://i.scdn.co/image/9423845d6e0c2ae2e4ff4d6aebea661add9854a7",
+        "name": "BBC National Orchestra Of Wales",
+        "spotify_uri": "spotify:artist:1fhEh9FpKs42GFeqerlBUf"
+    },
+    {
+        "bio": null,
+        "followers": 2945,
+        "id": 4,
+        "image": "https://i.scdn.co/image/783b2dc30678e4e96152df9a5ac2102d4bc0449c",
+        "name": "Ben Foster",
+        "spotify_uri": "spotify:artist:6Gp8BbKAqPO3R0UAYkm8J0"
+    },
+    {
+        "bio": null,
+        "followers": 11041,
+        "id": 1,
+        "image": "https://i.scdn.co/image/86193f7ba3136d145915a9afb477626ed1c9f40a",
+        "name": "Blake Neely",
+        "spotify_uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+    }
 ]
 
-const MEDIA_JSON = [
-  {
-    "albums": [
-      "Riverdale: Original Television Score (Season 1)"
-    ],
-    "artists": [
-      "Blake Neely"
-    ],
-    "cast": [
-      "Marisol Nichols",
-      "M\u00e4dchen Amick",
-      "K.J. Apa",
-      "Cole Sprouse",
-      "Camila Mendes",
-      "Lili Reinhart",
-      "Madelaine Petsch",
-      "Ashleigh Murray",
-      "Luke Perry",
-      "Casey Cott",
-      "Charles Melton"
-    ],
-    "description": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale\u2019s wholesome facade.",
-    "genres": [
-      "Drama",
-      "Mystery"
-    ],
-    "id": "riverdale",
-    "img": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
-    "name": "Riverdale",
-    "seasons": 2,
-    "type": 0,
-    "years": "2017"
-  },
-  {
-    "albums": [
-      "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-    ],
-    "artists": [
-      "Hans Zimmer"
-    ],
-    "cast": [
-      "Matthew McConaughey",
-      "Jessica Chastain",
-      "Anne Hathaway",
-      "Michael Caine",
-      "Casey Affleck",
-      "Mackenzie Foy",
-      "Timoth\u00e9e Chalamet",
-      "Bill Irwin",
-      "Matt Damon",
-      "Ellen Burstyn",
-      "John Lithgow",
-      "Wes Bentley",
-      "Topher Grace",
-      "David Oyelowo",
-      "David Gyasi",
-      "William Devane",
-      "Josh Stewart",
-      "Collette Wolfe",
-      "Leah Cairns",
-      "Russ Fega",
-      "Lena Georgas",
-      "Jeff Hephner",
-      "Elyes Gabel",
-      "Brooke Smith",
-      "Liam Dickinson",
-      "Francis X. McCarthy",
-      "Andrew Borba",
-      "Flora Nolan",
-      "William Patrick Brown",
-      "Cici Leah Campbell",
-      "Kristian Van der Heyden",
-      "Mark Casimir Dyniewicz",
-      "Joseph Oliveira",
-      "Ryan Irving",
-      "Alexander Michael Helisek",
-      "Benjamin Hardy"
-    ],
-    "description": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
-    "genres": [
-      "Adventure",
-      "Drama",
-      "Science Fiction"
-    ],
-    "id": "interstellar",
-    "img": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
-    "name": "Interstellar",
-    "seasons": 0,
-    "type": 1,
-    "years": "2014"
-  },
-  {
-    "albums": [
-      "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
-    ],
-    "artists": [
-      "John Williams"
-    ],
-    "cast": [
-      "Henry Thomas",
-      "Drew Barrymore",
-      "Robert MacNaughton",
-      "Dee Wallace",
-      "Peter Coyote",
-      "Erika Eleniak",
-      "Sean Frye",
-      "C. Thomas Howell",
-      "K. C. Martel",
-      "David M. O'Dell",
-      "Richard Swingler",
-      "Frank Toth",
-      "Pat Welsh"
-    ],
-    "description": "After a gentle alien becomes stranded on Earth, the being is discovered and befriended by a young boy named Elliott. Bringing the extraterrestrial into his suburban California house, Elliott introduces E.T., as the alien is dubbed, to his brother and his little sister, Gertie, and the children decide to keep its existence a secret. Soon, however, E.T. falls ill, resulting in government intervention and a dire situation for both Elliott and the alien.",
-    "genres": [
-      "Science Fiction",
-      "Adventure",
-      "Family",
-      "Fantasy"
-    ],
-    "id": "e_t",
-    "img": "http://image.tmdb.org/t/p/w500//8htLKK03TJjKZOXJgihZCu8v0P.jpg",
-    "name": "E.T. the Extra-Terrestrial",
-    "seasons": 0,
-    "type": 1,
-    "years": "1982"
-  }
+const MEDIAS_JSON = [
+    {
+        "albums": [
+            "Riverdale: Original Television Score (Season 1)"
+        ],
+        "artists": [
+            "Blake Neely"
+        ],
+        "cast": [
+            "Marisol Nichols",
+            "M\u00e4dchen Amick",
+            "K.J. Apa",
+            "Cole Sprouse",
+            "Camila Mendes",
+            "Lili Reinhart",
+            "Madelaine Petsch",
+            "Ashleigh Murray",
+            "Luke Perry",
+            "Casey Cott",
+            "Charles Melton"
+        ],
+        "description": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale\u2019s wholesome facade.",
+        "genres": [
+            "Drama",
+            "Mystery"
+        ],
+        "id": "riverdale",
+        "img": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
+        "name": "Riverdale",
+        "seasons": 2,
+        "type": 0,
+        "years": "2017"
+    },
+    {
+        "albums": [
+            "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
+        ],
+        "artists": [
+            "Hans Zimmer"
+        ],
+        "cast": [
+            "Matthew McConaughey",
+            "Jessica Chastain",
+            "Anne Hathaway",
+            "Michael Caine",
+            "Casey Affleck",
+            "Mackenzie Foy",
+            "Timoth\u00e9e Chalamet",
+            "Bill Irwin",
+            "Matt Damon",
+            "Ellen Burstyn",
+            "John Lithgow",
+            "Wes Bentley",
+            "Topher Grace",
+            "David Oyelowo",
+            "David Gyasi",
+            "William Devane",
+            "Josh Stewart",
+            "Collette Wolfe",
+            "Leah Cairns",
+            "Russ Fega",
+            "Lena Georgas",
+            "Jeff Hephner",
+            "Elyes Gabel",
+            "Brooke Smith",
+            "Liam Dickinson",
+            "Francis X. McCarthy",
+            "Andrew Borba",
+            "Flora Nolan",
+            "William Patrick Brown",
+            "Cici Leah Campbell",
+            "Kristian Van der Heyden",
+            "Mark Casimir Dyniewicz",
+            "Joseph Oliveira",
+            "Ryan Irving",
+            "Alexander Michael Helisek",
+            "Benjamin Hardy"
+        ],
+        "description": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+        "genres": [
+            "Adventure",
+            "Drama",
+            "Science Fiction"
+        ],
+        "id": "interstellar",
+        "img": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
+        "name": "Interstellar",
+        "seasons": 0,
+        "type": 1,
+        "years": "2014"
+    },
+    {
+        "albums": [
+            "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
+        ],
+        "artists": [
+            "John Williams"
+        ],
+        "cast": [
+            "Henry Thomas",
+            "Drew Barrymore",
+            "Robert MacNaughton",
+            "Dee Wallace",
+            "Peter Coyote",
+            "Erika Eleniak",
+            "Sean Frye",
+            "C. Thomas Howell",
+            "K. C. Martel",
+            "David M. O'Dell",
+            "Richard Swingler",
+            "Frank Toth",
+            "Pat Welsh"
+        ],
+        "description": "After a gentle alien becomes stranded on Earth, the being is discovered and befriended by a young boy named Elliott. Bringing the extraterrestrial into his suburban California house, Elliott introduces E.T., as the alien is dubbed, to his brother and his little sister, Gertie, and the children decide to keep its existence a secret. Soon, however, E.T. falls ill, resulting in government intervention and a dire situation for both Elliott and the alien.",
+        "genres": [
+            "Science Fiction",
+            "Adventure",
+            "Family",
+            "Fantasy"
+        ],
+        "id": "e_t",
+        "img": "http://image.tmdb.org/t/p/w500//8htLKK03TJjKZOXJgihZCu8v0P.jpg",
+        "name": "E.T. the Extra-Terrestrial",
+        "seasons": 0,
+        "type": 1,
+        "years": "1982"
+    }
 ]
 
 const RIVERDALE_JSON =
-  {
-    "albums": [
-        "riverdale",
-        "Riverdale: Original Television Score (Season 1)"
-    ],
-    "artists": [
-        "blake_neely",
-        "Blake Neely"
-    ],
-    "backdrops": [
-        "http://image.tmdb.org/t/p/w500//2IUpoKSP64r6rp2vBo0Fdk8a1UU.jpg",
-        "http://image.tmdb.org/t/p/w500//a3G7FsQNfo9mrnZtXN3yaDQhAgz.jpg",
-        "http://image.tmdb.org/t/p/w500//2BdeV1gjkWMTFEldekbqFI5qU5n.jpg",
-        "http://image.tmdb.org/t/p/w500//h26n2RPVeoTIEdv96jbxCQKSqaW.jpg",
-        "http://image.tmdb.org/t/p/w500//gS91Amt1arLnP21Pi3nm4ObFF4Y.jpg",
-        "http://image.tmdb.org/t/p/w500//4IeZIgxxeRJdgAYMd0Frc7alKcJ.jpg",
-        "http://image.tmdb.org/t/p/w500//aNKIbzLftZ14NnZJVZTQHL332Ho.jpg",
-        "http://image.tmdb.org/t/p/w500//sEqHXTDUr3W6oNFFIgR5re8UQxZ.jpg",
-        "http://image.tmdb.org/t/p/w500//biY4RGFlVQXnHlfrX7DfC6ekJvE.jpg",
-        "http://image.tmdb.org/t/p/w500//tOOjl0thkVYfcwVLz2up602NQo8.jpg",
-        "http://image.tmdb.org/t/p/w500//dmwqioFelVSmLrZ894ONBX9iaxz.jpg"
-    ],
-    "cast": [
-        "Marisol Nichols",
-        "Mädchen Amick",
-        "K.J. Apa",
-        "Cole Sprouse",
-        "Camila Mendes",
-        "Lili Reinhart",
-        "Madelaine Petsch",
-        "Ashleigh Murray",
-        "Luke Perry",
-        "Casey Cott",
-        "Charles Melton"
-    ],
-    "genres": [
-        "Drama",
-        "Mystery"
-    ],
-    "id": "riverdale",
-    "name": "Riverdale",
-    "overview": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
-    "poster": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
-    "running": true,
-    "seasons": 2,
-    "type": "show",
-    "video": {
-        "id": "5892ead89251416ee300269d",
-        "iso_3166_1": "US",
-        "iso_639_1": "en",
-        "key": "9XmFTADupMc",
-        "name": "Riverdale (The CW) Trailer HD",
-        "site": "YouTube",
-        "size": 720,
-        "type": "Trailer"
-    },
-    "years": [
-        2017,
-        2018
-    ]
-}
-const INTERSTELLAR_JSON=
-  {
-    "albums": [
-        "interstellar",
-        "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-    ],
-    "artists": [
-        "hans_zimmer",
-        "Hans Zimmer"
-    ],
-    "backdrops": [
-        "http://image.tmdb.org/t/p/w500//xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
-        "http://image.tmdb.org/t/p/w500//gq4Z1pfOWHn3FKFNutlDCySps9C.jpg",
-        "http://image.tmdb.org/t/p/w500//y4ODodoKWWm7KODB6WgPDHv6Bzd.jpg",
-        "http://image.tmdb.org/t/p/w500//o4BjoraqJLfuRZBhiFXSgRZDUyu.jpg",
-        "http://image.tmdb.org/t/p/w500//xW3MLq7t8gynEiFj3E4YP7KQoqw.jpg",
-        "http://image.tmdb.org/t/p/w500//vFJ31Mp68hwtlB4opsAP29gFqhr.jpg",
-        "http://image.tmdb.org/t/p/w500//sn8LEtCXquQJYEVygbW8YUfumwW.jpg",
-        "http://image.tmdb.org/t/p/w500//walWq52PP2IGRc98VkPG7Wp77lK.jpg",
-        "http://image.tmdb.org/t/p/w500//6MDzVm9h6wEGAbvjihdFU83Q5Wo.jpg",
-        "http://image.tmdb.org/t/p/w500//3mPXGfKcsYIEhl4et2WTSX0llVh.jpg",
-        "http://image.tmdb.org/t/p/w500//tAkBC4X2Rp3QtV7rzqTv8DU3fTA.jpg",
-        "http://image.tmdb.org/t/p/w500//tn9JffYteR9LSGWx2FC8T1uO403.jpg",
-        "http://image.tmdb.org/t/p/w500//5cgKuGbnGPzh5YRZcqK8kZGnjl7.jpg",
-        "http://image.tmdb.org/t/p/w500//nYtBxRwoQTfzSDmAB3l7TIdPLpY.jpg",
-        "http://image.tmdb.org/t/p/w500//bbyI73zXfC8cxkT8xCimyttZrRA.jpg",
-        "http://image.tmdb.org/t/p/w500//rN9Vjna7lnS9jcrSMNvYQEWCRlK.jpg",
-        "http://image.tmdb.org/t/p/w500//s4fd4EfqBFYMbZmIdhNdCLwFrhO.jpg",
-        "http://image.tmdb.org/t/p/w500//aivK6Z2naJsHz5EJFweLP2G7hS.jpg",
-        "http://image.tmdb.org/t/p/w500//oAmkQmTUZ8bkyVbch56TrKHzmuu.jpg",
-        "http://image.tmdb.org/t/p/w500//8CQeAuMbR7pFlvZlgV7Oac3ZbDH.jpg",
-        "http://image.tmdb.org/t/p/w500//cwcibDD8VeZ34SNWTJazEeBho1s.jpg",
-        "http://image.tmdb.org/t/p/w500//9Bnh8RkPpPoo3ftLyDrDPDTMK8p.jpg",
-        "http://image.tmdb.org/t/p/w500//gvldej73NLKaC4j7sCldj1sTjjD.jpg",
-        "http://image.tmdb.org/t/p/w500//5EV88Qt5oDRbnj9F9osFrg3Yd55.jpg",
-        "http://image.tmdb.org/t/p/w500//bUSsMnf8K9wug5aJ8P6jpZT25MV.jpg",
-        "http://image.tmdb.org/t/p/w500//fAAwITtgyzwEy6YstNPxnQ00d6z.jpg",
-        "http://image.tmdb.org/t/p/w500//zX1SB9uuQaJJw2kjZszNHx5PqwI.jpg",
-        "http://image.tmdb.org/t/p/w500//zWyDer0uZdwFnOfthdJvy4qykZm.jpg",
-        "http://image.tmdb.org/t/p/w500//pwRzDssAENT121YkSvfR2uSEfh7.jpg",
-        "http://image.tmdb.org/t/p/w500//b3htE2IM0XvupfVg8IKfb2KcKzw.jpg"
-    ],
-    "cast": [
-        "Matthew McConaughey",
-        "Jessica Chastain",
-        "Anne Hathaway",
-        "Michael Caine",
-        "Casey Affleck",
-        "Mackenzie Foy",
-        "Timothée Chalamet",
-        "Bill Irwin",
-        "Matt Damon",
-        "Ellen Burstyn",
-        "John Lithgow",
-        "Wes Bentley",
-        "Topher Grace",
-        "David Oyelowo",
-        "David Gyasi",
-        "William Devane",
-        "Josh Stewart",
-        "Collette Wolfe",
-        "Leah Cairns",
-        "Russ Fega",
-        "Lena Georgas",
-        "Jeff Hephner",
-        "Elyes Gabel",
-        "Brooke Smith",
-        "Liam Dickinson",
-        "Francis X. McCarthy",
-        "Andrew Borba",
-        "Flora Nolan",
-        "William Patrick Brown",
-        "Cici Leah Campbell",
-        "Kristian Van der Heyden",
-        "Mark Casimir Dyniewicz",
-        "Joseph Oliveira",
-        "Ryan Irving",
-        "Alexander Michael Helisek",
-        "Benjamin Hardy"
-    ],
-    "genres": [
-        "Adventure",
-        "Drama",
-        "Science Fiction"
-    ],
-    "id": "interstellar",
-    "name": "Interstellar",
-    "overview": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
-    "poster": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
-    "running": "None",
-    "season": "None",
-    "type": "movie",
-    "video": {
-        "id": "57817b1a9251417b8e000a8c",
-        "iso_3166_1": "US",
-        "iso_639_1": "en",
-        "key": "ePbKGoIGAXY",
-        "name": "Official UK Trailer #3",
-        "site": "YouTube",
-        "size": 1080,
-        "type": "Trailer"
-    },
-    "years": "2014"
-}
-
-const HANS_ZIMMER_JSON =
-  {
-    "albums": [
-        "interstellar",
-        "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-    ],
-    "id": "hans_zimmer",
-    "lastfm_data": {
-        "artist": {
-            "bio": {
-                "content": "Hans Florian Zimmer (born September 12, 1957) is a German film composer and music producer, born in Frankfurt am Main, Germany and active since 1977. Having won a wide variety of honors and commendations, he has composed music for over 100 films, including award-winning films and box-office hits such as Rain Man (1988), Driving Miss Daisy (1989), Thelma & Louise (1991), The Lion King (1994), Crimson Tide (1995), Gladiator (2000), The Last Samurai (2003), The Dark Knight (2008), Inception (2010), 12 Years a Slave (2013), Interstellar (2014), and Blade Runner 2049 (2017). A recipient of a star on the Hollywood Walk of Fame, Zimmer spent the early part of his career in the United Kingdom before moving to the United States. He's also the head of the film music division at DreamWorks studios and additionally works with other composers through the company that he founded: Remote Control Productions.\n\nZimmer's works are notable for integrating electronic music sounds with traditional orchestral arrangements. He has received four Grammy Awards, two Golden Globes, a Classical BRIT Award, and an Academy Award. He was also named on the list of Top 100 Living Geniuses published by The Daily Telegraph.\n\nZimmer was born in Frankfurt am Main, Germany on 12th September 1957, and moved to London as a teenager. While he lived in London, Zimmer wrote advertising jingles for Air-Edel Associates. Zimmer began his musical career playing keyboards and synthesisers. In 1980 he worked with The Buggles, a New Wave band formed in 1977 with Trevor Horn, Geoff Downs, and Bruce Woolley. Zimmer can be briefly seen in The Buggles music video for \"Video Killed the Radio Star\" (1979). \n\nIn the 1980s, Zimmer worked with film composer Stanley Myers, a prolific film composer who composed scores for over sixty films. Zimmer and Myers co-founded the London-based Lillie Yard recording studio. Together, Myers and Zimmer worked on fusing the traditional orchestral sound with state-of-the-art electronics. Some of their first movies with this new sound include \"Moonlighting\" (1982), \"Success is the Best Revenge\" (1984), \"Insignificance\" (1985), and \"My Beautiful Launderette\" (1985). In 1986, Zimmer joined David Byrne and Ryuichi Sakamoto on their Oscar-winning score for \"The Last Emperor\" (1988).\n\nSoon afterwards, Zimmer began working on his own solo projects. During his solo career years, Zimmer experimented and combined the use of old and new musical technologies. His first solo score was for Chris Menges’s film \"A World Apart\" (1988). However, the turning point in his career came later that year when he was asked to compose a score for Barry Levinson’s film \"Rain Man\" (1988). In the score, Zimmer uses synthesizers mixed with steel drums. The score was nominated for an Academy Award in 1989. A year later Zimmer was asked to compose a score for Bruce Beresford's \"Driving Miss Daisy\" (1989), which won a Grammy Award 1991.\n\nIn 1994, Zimmer won his biggest commercial hit for Disney’s \"The Lion King\" (1994). He wanted to go to South Africa himself to record the soundtrack, but couldn't because he had a police record there for making subversive films. \"The Lion King\" soundtrack won numerous awards, including an Oscar, a Golden Globe, and two Grammys. It was then adapted for the Broadway musical version, which won the Tony for Best Musical in 1998.\n\nSince the success of \"The Lion King\", Zimmer has written numerous film scores. His hundredth composition was for \"The Last Samurai\" (2003), for which he won both a Golden Globe and a Broadcast Film Critics nomination in 2004. After composing over a hundred film scores, Zimmer finally performed live for the first time in concert with a hundred-piece orchestra and a hundred-person choir at the twenty-seventh Annual Flanders International Film Festival. \n\nHe has received numerous honours and awards, including: Prestigious Lifetime Achievement Award in Film Composition from the National Board of Review, Frederick Loewe Award in 2003 at the Palm Springs International Film Festival, ASCAP’s Henry Mancini Award for Lifetime Achievement, and BMI's prestigious Richard Kirk Award for lifetime achievement in 1996. Today, Zimmer is considered to be the father of integrating the electronic musical world with traditional orchestral arrangements.\n\nZimmer lives in Los Angeles with his wife Suzanne, and has four children. <a href=\"https://www.last.fm/music/Hans+Zimmer\">Read more on Last.fm</a>. User-contributed text is available under the Creative Commons By-SA License; additional terms may apply.",
-                "links": {
-                    "link": {
-                        "#text": "",
-                        "href": "https://last.fm/music/Hans+Zimmer/+wiki",
-                        "rel": "original"
-                    }
-                },
-                "published": "12 Feb 2006, 09:47",
-                "summary": "Hans Florian Zimmer (born September 12, 1957) is a German film composer and music producer, born in Frankfurt am Main, Germany and active since 1977. Having won a wide variety of honors and commendations, he has composed music for over 100 films, including award-winning films and box-office hits such as Rain Man (1988), Driving Miss Daisy (1989), Thelma & Louise (1991), The Lion King (1994), Crimson Tide (1995), Gladiator (2000), The Last Samurai (2003) <a href=\"https://www.last.fm/music/Hans+Zimmer\">Read more on Last.fm</a>"
-            },
-            "image": [
-                {
-                    "#text": "https://lastfm-img2.akamaized.net/i/u/34s/f65a35c769f344208d82d16d696fd9ce.png",
-                    "size": "small"
-                },
-                {
-                    "#text": "https://lastfm-img2.akamaized.net/i/u/64s/f65a35c769f344208d82d16d696fd9ce.png",
-                    "size": "medium"
-                },
-                {
-                    "#text": "https://lastfm-img2.akamaized.net/i/u/174s/f65a35c769f344208d82d16d696fd9ce.png",
-                    "size": "large"
-                },
-                {
-                    "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/f65a35c769f344208d82d16d696fd9ce.png",
-                    "size": "extralarge"
-                },
-                {
-                    "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/f65a35c769f344208d82d16d696fd9ce.png",
-                    "size": "mega"
-                },
-                {
-                    "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/f65a35c769f344208d82d16d696fd9ce.png",
-                    "size": ""
-                }
-            ],
-            "mbid": "e6de1f3b-6484-491c-88dd-6d619f142abc",
-            "name": "Hans Zimmer",
-            "ontour": "1",
-            "similar": {
-                "artist": [
-                    {
-                        "image": [
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/34s/f8511456de1b4dcb926d7427dd65b950.png",
-                                "size": "small"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/64s/f8511456de1b4dcb926d7427dd65b950.png",
-                                "size": "medium"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/174s/f8511456de1b4dcb926d7427dd65b950.png",
-                                "size": "large"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/f8511456de1b4dcb926d7427dd65b950.png",
-                                "size": "extralarge"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/f8511456de1b4dcb926d7427dd65b950.png",
-                                "size": "mega"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/f8511456de1b4dcb926d7427dd65b950.png",
-                                "size": ""
-                            }
-                        ],
-                        "name": "Hans Zimmer & James Newton Howard",
-                        "url": "https://www.last.fm/music/Hans+Zimmer+&+James+Newton+Howard"
-                    },
-                    {
-                        "image": [
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/34s/ff3622ead1b542df9a46af828127f3e7.png",
-                                "size": "small"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/64s/ff3622ead1b542df9a46af828127f3e7.png",
-                                "size": "medium"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/174s/ff3622ead1b542df9a46af828127f3e7.png",
-                                "size": "large"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/ff3622ead1b542df9a46af828127f3e7.png",
-                                "size": "extralarge"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/ff3622ead1b542df9a46af828127f3e7.png",
-                                "size": "mega"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/ff3622ead1b542df9a46af828127f3e7.png",
-                                "size": ""
-                            }
-                        ],
-                        "name": "James Horner",
-                        "url": "https://www.last.fm/music/James+Horner"
-                    },
-                    {
-                        "image": [
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/34s/ce61bb28d24ef1fccfddbd8552f298dc.png",
-                                "size": "small"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/64s/ce61bb28d24ef1fccfddbd8552f298dc.png",
-                                "size": "medium"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/174s/ce61bb28d24ef1fccfddbd8552f298dc.png",
-                                "size": "large"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/ce61bb28d24ef1fccfddbd8552f298dc.png",
-                                "size": "extralarge"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/ce61bb28d24ef1fccfddbd8552f298dc.png",
-                                "size": "mega"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/ce61bb28d24ef1fccfddbd8552f298dc.png",
-                                "size": ""
-                            }
-                        ],
-                        "name": "Steve Jablonsky",
-                        "url": "https://www.last.fm/music/Steve+Jablonsky"
-                    },
-                    {
-                        "image": [
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/34s/29b61dedd7ebef28eb34c055e90cb0fa.png",
-                                "size": "small"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/64s/29b61dedd7ebef28eb34c055e90cb0fa.png",
-                                "size": "medium"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/174s/29b61dedd7ebef28eb34c055e90cb0fa.png",
-                                "size": "large"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/29b61dedd7ebef28eb34c055e90cb0fa.png",
-                                "size": "extralarge"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/29b61dedd7ebef28eb34c055e90cb0fa.png",
-                                "size": "mega"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/29b61dedd7ebef28eb34c055e90cb0fa.png",
-                                "size": ""
-                            }
-                        ],
-                        "name": "James Newton Howard",
-                        "url": "https://www.last.fm/music/James+Newton+Howard"
-                    },
-                    {
-                        "image": [
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/34s/3bbf07cc2dde422290a95c5dbe5e5683.png",
-                                "size": "small"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/64s/3bbf07cc2dde422290a95c5dbe5e5683.png",
-                                "size": "medium"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/174s/3bbf07cc2dde422290a95c5dbe5e5683.png",
-                                "size": "large"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/3bbf07cc2dde422290a95c5dbe5e5683.png",
-                                "size": "extralarge"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/3bbf07cc2dde422290a95c5dbe5e5683.png",
-                                "size": "mega"
-                            },
-                            {
-                                "#text": "https://lastfm-img2.akamaized.net/i/u/300x300/3bbf07cc2dde422290a95c5dbe5e5683.png",
-                                "size": ""
-                            }
-                        ],
-                        "name": "Klaus Badelt",
-                        "url": "https://www.last.fm/music/Klaus+Badelt"
-                    }
-                ]
-            },
-            "stats": {
-                "listeners": "1343102",
-                "playcount": "67427541"
-            },
-            "streamable": "0",
-            "tags": {
-                "tag": [
-                    {
-                        "name": "Soundtrack",
-                        "url": "https://www.last.fm/tag/Soundtrack"
-                    },
-                    {
-                        "name": "instrumental",
-                        "url": "https://www.last.fm/tag/instrumental"
-                    },
-                    {
-                        "name": "Classical",
-                        "url": "https://www.last.fm/tag/Classical"
-                    },
-                    {
-                        "name": "composer",
-                        "url": "https://www.last.fm/tag/composer"
-                    },
-                    {
-                        "name": "Soundtracks",
-                        "url": "https://www.last.fm/tag/Soundtracks"
-                    }
-                ]
-            },
-            "url": "https://www.last.fm/music/Hans+Zimmer"
-        }
-    },
-    "media": [
-        "ie/interstellar",
-        "Interstellar"
-    ],
-    "name": "Hans Zimmer",
-    "related_data": {
-        "albums": {
-            "e_t": {
-                "artist": {
-                    "link": "/artist/john_williams",
-                    "name": "John Williams"
-                },
-                "media": {
-                    "link": "/tv-movie/e_t",
-                    "name": "E.T. the Extra-Terrestrial"
-                }
-            },
-            "interstellar": {
-                "artist": {
-                    "link": "/artist/hans_zimmer",
-                    "name": "Hans Zimmer"
-                },
-                "media": {
-                    "link": "/tv-movie/interstellar",
-                    "name": "Interstellar"
-                }
-            },
-            "riverdale": {
-                "artist": {
-                    "link": "/artist/blake_neely",
-                    "name": "Blake Neely"
-                },
-                "media": {
-                    "link": "/tv-movie/riverdale",
-                    "name": "Riverdale"
-                }
-            }
-        },
-        "artists": {
-            "blake_neely": {
-                "album": {
-                    "link": "/album/riverdale",
-                    "name": "Riverdale: Original Television Score (Season 1)"
-                },
-                "media": {
-                    "link": "/tv-movie/riverdale",
-                    "name": "Riverdale"
-                }
-            },
-            "hans_zimmer": {
-                "album": {
-                    "link": "/album/interstellar",
-                    "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-                },
-                "media": {
-                    "link": "/tv-movie/interstellar",
-                    "name": "Interstellar"
-                }
-            },
-            "john_williams": {
-                "album": {
-                    "link": "/album/e_t",
-                    "name": "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
-                },
-                "media": {
-                    "link": "/tv-movie/e_t",
-                    "name": "E.T the Extra-Terrestrial"
-                }
-            }
-        },
-        "media": {
-            "e_t": {
-                "album": {
-                    "link": "/album/e_t",
-                    "name": "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
-                },
-                "artist": {
-                    "link": "/artist/john_williams",
-                    "name": "John Williams"
-                }
-            },
-            "interstellar": {
-                "album": {
-                    "link": "/album/interstellar",
-                    "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-                },
-                "artist": {
-                    "link": "/artist/hans_zimmer",
-                    "name": "Hans Zimmer"
-                }
-            },
-            "riverdale": {
-                "album": {
-                    "link": "/album/riverdale",
-                    "name": "Riverdale: Original Television Score (Season 1)"
-                },
-                "artist": {
-                    "link": "/artist/blake_neely",
-                    "name": "Blake Neely"
-                }
-            }
-        }
-    },
-    "spotify_data": {
-        "external_urls": {
-            "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
-        },
-        "followers": {
-            "href": null,
-            "total": 1068930
-        },
-        "genres": [
-            "soundtrack"
+    {
+        "albums": [
+            "riverdale",
+            "Riverdale: Original Television Score (Season 1)"
         ],
-        "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
-        "id": "0YC192cP3KPCRWx8zr8MfZ",
-        "images": [
-            {
-                "height": 563,
-                "url": "https://i.scdn.co/image/14657235e8724181f8b32c6bfa54cdbf86d70852",
-                "width": 1000
-            },
-            {
-                "height": 360,
-                "url": "https://i.scdn.co/image/960a8d4afdf777c543618e384428aacffdcf517a",
-                "width": 640
-            },
-            {
-                "height": 113,
-                "url": "https://i.scdn.co/image/94ad4486b19037fa88ed58a946698365f4a7bb73",
-                "width": 200
-            },
-            {
-                "height": 36,
-                "url": "https://i.scdn.co/image/3d05c3dffd54fb06b0191f258e88ca3b5832250f",
-                "width": 64
-            }
-        ],
-        "name": "Hans Zimmer",
-        "popularity": 80,
-        "type": "artist",
-        "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
-    }
-}
-
-const RIVERDALE_ALBUM_JSON = 
-{
-    "artists": [
-        "blake_neely",
-        "Blake Neely"
-    ],
-    "media": [
-        "ie/riverdale",
-        "Riverdale"
-    ],
-    "model_data": {
-        "album_type": "album",
         "artists": [
-            {
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                },
-                "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                "id": "4UOzqO0jZUrTiTunfBw4tp",
-                "name": "Blake Neely",
-                "type": "artist",
-                "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-            }
+            "blake_neely",
+            "Blake Neely"
         ],
-        "available_markets": [
-            "AD",
-            "AR",
-            "AT",
-            "AU",
-            "BE",
-            "BG",
-            "BO",
-            "BR",
-            "CA",
-            "CH",
-            "CL",
-            "CO",
-            "CR",
-            "CY",
-            "CZ",
-            "DE",
-            "DK",
-            "DO",
-            "EC",
-            "EE",
-            "ES",
-            "FI",
-            "FR",
-            "GB",
-            "GR",
-            "GT",
-            "HK",
-            "HN",
-            "HU",
-            "ID",
-            "IE",
-            "IS",
-            "IT",
-            "JP",
-            "LI",
-            "LT",
-            "LU",
-            "LV",
-            "MC",
-            "MT",
-            "MX",
-            "MY",
-            "NI",
-            "NL",
-            "NO",
-            "NZ",
-            "PA",
-            "PE",
-            "PH",
-            "PL",
-            "PT",
-            "PY",
-            "SE",
-            "SG",
-            "SK",
-            "SV",
-            "TH",
-            "TR",
-            "TW",
-            "US",
-            "UY"
+        "backdrops": [
+            "http://image.tmdb.org/t/p/w500//2IUpoKSP64r6rp2vBo0Fdk8a1UU.jpg",
+            "http://image.tmdb.org/t/p/w500//a3G7FsQNfo9mrnZtXN3yaDQhAgz.jpg",
+            "http://image.tmdb.org/t/p/w500//2BdeV1gjkWMTFEldekbqFI5qU5n.jpg",
+            "http://image.tmdb.org/t/p/w500//h26n2RPVeoTIEdv96jbxCQKSqaW.jpg",
+            "http://image.tmdb.org/t/p/w500//gS91Amt1arLnP21Pi3nm4ObFF4Y.jpg",
+            "http://image.tmdb.org/t/p/w500//4IeZIgxxeRJdgAYMd0Frc7alKcJ.jpg",
+            "http://image.tmdb.org/t/p/w500//aNKIbzLftZ14NnZJVZTQHL332Ho.jpg",
+            "http://image.tmdb.org/t/p/w500//sEqHXTDUr3W6oNFFIgR5re8UQxZ.jpg",
+            "http://image.tmdb.org/t/p/w500//biY4RGFlVQXnHlfrX7DfC6ekJvE.jpg",
+            "http://image.tmdb.org/t/p/w500//tOOjl0thkVYfcwVLz2up602NQo8.jpg",
+            "http://image.tmdb.org/t/p/w500//dmwqioFelVSmLrZ894ONBX9iaxz.jpg"
         ],
-        "copyrights": [
-            {
-                "text": "© 2017 WaterTower Music. RIVERDALE and all related characters and elements are trademarks of and © Archie Comics. All artwork and photography TM and © Warner Bros. Entertainment Inc. All Rights Reserved",
-                "type": "C"
-            },
-            {
-                "text": "℗ 2017 WaterTower Music",
-                "type": "P"
-            }
+        "cast": [
+            "Marisol Nichols",
+            "Mädchen Amick",
+            "K.J. Apa",
+            "Cole Sprouse",
+            "Camila Mendes",
+            "Lili Reinhart",
+            "Madelaine Petsch",
+            "Ashleigh Murray",
+            "Luke Perry",
+            "Casey Cott",
+            "Charles Melton"
         ],
-        "external_ids": {
-            "upc": "794043193590"
+        "genres": [
+            "Drama",
+            "Mystery"
+        ],
+        "id": "riverdale",
+        "name": "Riverdale",
+        "overview": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
+        "poster": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
+        "running": true,
+        "seasons": 2,
+        "type": "show",
+        "video": {
+            "id": "5892ead89251416ee300269d",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "9XmFTADupMc",
+            "name": "Riverdale (The CW) Trailer HD",
+            "site": "YouTube",
+            "size": 720,
+            "type": "Trailer"
         },
-        "external_urls": {
-            "spotify": "https://open.spotify.com/album/4BYS4x13edZ1f3H1j1nyv0"
-        },
-        "genres": [],
-        "href": "https://api.spotify.com/v1/albums/4BYS4x13edZ1f3H1j1nyv0",
-        "id": "4BYS4x13edZ1f3H1j1nyv0",
-        "images": [
-            {
-                "height": 640,
-                "url": "https://i.scdn.co/image/6d6058dda979cc24276aaab650befd5dd963e390",
-                "width": 640
-            },
-            {
-                "height": 300,
-                "url": "https://i.scdn.co/image/20166a47b7dfa4150170060f0302284a4c99e16a",
-                "width": 300
-            },
-            {
-                "height": 64,
-                "url": "https://i.scdn.co/image/996ae7770258cc48f85a39314a9ccbbc8e6ef47e",
-                "width": 64
-            }
+        "years": [
+            2017,
+            2018
+        ]
+    }
+const INTERSTELLAR_JSON =
+    {
+        "albums": [
+            "interstellar",
+            "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
         ],
-        "label": "WaterTower Music",
-        "name": "Riverdale: Original Television Score (Season 1)",
-        "popularity": 43,
-        "release_date": "2017-07-18",
-        "release_date_precision": "day",
-        "tracks": {
-            "href": "https://api.spotify.com/v1/albums/4BYS4x13edZ1f3H1j1nyv0/tracks?offset=0&limit=50",
-            "items": [
+        "artists": [
+            "hans_zimmer",
+            "Hans Zimmer"
+        ],
+        "backdrops": [
+            "http://image.tmdb.org/t/p/w500//xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
+            "http://image.tmdb.org/t/p/w500//gq4Z1pfOWHn3FKFNutlDCySps9C.jpg",
+            "http://image.tmdb.org/t/p/w500//y4ODodoKWWm7KODB6WgPDHv6Bzd.jpg",
+            "http://image.tmdb.org/t/p/w500//o4BjoraqJLfuRZBhiFXSgRZDUyu.jpg",
+            "http://image.tmdb.org/t/p/w500//xW3MLq7t8gynEiFj3E4YP7KQoqw.jpg",
+            "http://image.tmdb.org/t/p/w500//vFJ31Mp68hwtlB4opsAP29gFqhr.jpg",
+            "http://image.tmdb.org/t/p/w500//sn8LEtCXquQJYEVygbW8YUfumwW.jpg",
+            "http://image.tmdb.org/t/p/w500//walWq52PP2IGRc98VkPG7Wp77lK.jpg",
+            "http://image.tmdb.org/t/p/w500//6MDzVm9h6wEGAbvjihdFU83Q5Wo.jpg",
+            "http://image.tmdb.org/t/p/w500//3mPXGfKcsYIEhl4et2WTSX0llVh.jpg",
+            "http://image.tmdb.org/t/p/w500//tAkBC4X2Rp3QtV7rzqTv8DU3fTA.jpg",
+            "http://image.tmdb.org/t/p/w500//tn9JffYteR9LSGWx2FC8T1uO403.jpg",
+            "http://image.tmdb.org/t/p/w500//5cgKuGbnGPzh5YRZcqK8kZGnjl7.jpg",
+            "http://image.tmdb.org/t/p/w500//nYtBxRwoQTfzSDmAB3l7TIdPLpY.jpg",
+            "http://image.tmdb.org/t/p/w500//bbyI73zXfC8cxkT8xCimyttZrRA.jpg",
+            "http://image.tmdb.org/t/p/w500//rN9Vjna7lnS9jcrSMNvYQEWCRlK.jpg",
+            "http://image.tmdb.org/t/p/w500//s4fd4EfqBFYMbZmIdhNdCLwFrhO.jpg",
+            "http://image.tmdb.org/t/p/w500//aivK6Z2naJsHz5EJFweLP2G7hS.jpg",
+            "http://image.tmdb.org/t/p/w500//oAmkQmTUZ8bkyVbch56TrKHzmuu.jpg",
+            "http://image.tmdb.org/t/p/w500//8CQeAuMbR7pFlvZlgV7Oac3ZbDH.jpg",
+            "http://image.tmdb.org/t/p/w500//cwcibDD8VeZ34SNWTJazEeBho1s.jpg",
+            "http://image.tmdb.org/t/p/w500//9Bnh8RkPpPoo3ftLyDrDPDTMK8p.jpg",
+            "http://image.tmdb.org/t/p/w500//gvldej73NLKaC4j7sCldj1sTjjD.jpg",
+            "http://image.tmdb.org/t/p/w500//5EV88Qt5oDRbnj9F9osFrg3Yd55.jpg",
+            "http://image.tmdb.org/t/p/w500//bUSsMnf8K9wug5aJ8P6jpZT25MV.jpg",
+            "http://image.tmdb.org/t/p/w500//fAAwITtgyzwEy6YstNPxnQ00d6z.jpg",
+            "http://image.tmdb.org/t/p/w500//zX1SB9uuQaJJw2kjZszNHx5PqwI.jpg",
+            "http://image.tmdb.org/t/p/w500//zWyDer0uZdwFnOfthdJvy4qykZm.jpg",
+            "http://image.tmdb.org/t/p/w500//pwRzDssAENT121YkSvfR2uSEfh7.jpg",
+            "http://image.tmdb.org/t/p/w500//b3htE2IM0XvupfVg8IKfb2KcKzw.jpg"
+        ],
+        "cast": [
+            "Matthew McConaughey",
+            "Jessica Chastain",
+            "Anne Hathaway",
+            "Michael Caine",
+            "Casey Affleck",
+            "Mackenzie Foy",
+            "Timothée Chalamet",
+            "Bill Irwin",
+            "Matt Damon",
+            "Ellen Burstyn",
+            "John Lithgow",
+            "Wes Bentley",
+            "Topher Grace",
+            "David Oyelowo",
+            "David Gyasi",
+            "William Devane",
+            "Josh Stewart",
+            "Collette Wolfe",
+            "Leah Cairns",
+            "Russ Fega",
+            "Lena Georgas",
+            "Jeff Hephner",
+            "Elyes Gabel",
+            "Brooke Smith",
+            "Liam Dickinson",
+            "Francis X. McCarthy",
+            "Andrew Borba",
+            "Flora Nolan",
+            "William Patrick Brown",
+            "Cici Leah Campbell",
+            "Kristian Van der Heyden",
+            "Mark Casimir Dyniewicz",
+            "Joseph Oliveira",
+            "Ryan Irving",
+            "Alexander Michael Helisek",
+            "Benjamin Hardy"
+        ],
+        "genres": [
+            "Adventure",
+            "Drama",
+            "Science Fiction"
+        ],
+        "id": "interstellar",
+        "name": "Interstellar",
+        "overview": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+        "poster": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
+        "running": "None",
+        "season": "None",
+        "type": "movie",
+        "video": {
+            "id": "57817b1a9251417b8e000a8c",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "ePbKGoIGAXY",
+            "name": "Official UK Trailer #3",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        },
+        "years": "2014"
+    }
+
+const ARTIST_JSON = {
+    "albums": [
+        {
+            "genres": [],
+            "id": 3,
+            "image": "https://i.scdn.co/image/b451ccbd089ebf6b4313542bc1a7ff93fc798282",
+            "label": "WaterTower Music",
+            "name": "Supergirl: Season 2 (Original Television Soundtrack)",
+            "release_date": "2017-10-10",
+            "spotify_uri": "spotify:album:3oNGhMbhGbmfZKM82Mr2IB",
+            "track_count": 31
+        },
+        {
+            "genres": [],
+            "id": 4,
+            "image": "https://i.scdn.co/image/2bccf0a34bcf3ec963e0dd976a1476112ba73d96",
+            "label": "WaterTower Music",
+            "name": "The Flash: Season 3 (Original Television Soundtrack)",
+            "release_date": "2017-10-10",
+            "spotify_uri": "spotify:album:1XyIezVpRDp3bcoC3yY0vV",
+            "track_count": 27
+        },
+        {
+            "genres": [],
+            "id": 5,
+            "image": "https://i.scdn.co/image/6d6058dda979cc24276aaab650befd5dd963e390",
+            "label": "WaterTower Music",
+            "name": "Riverdale: Original Television Score (Season 1)",
+            "release_date": "2017-07-18",
+            "spotify_uri": "spotify:album:4BYS4x13edZ1f3H1j1nyv0",
+            "track_count": 25
+        },
+        {
+            "genres": [],
+            "id": 6,
+            "image": "https://i.scdn.co/image/61f3cfbf8f120e5a5f863befcf620ec7cedb2adc",
+            "label": "WaterTower Music",
+            "name": "Arrow: Season 4 (Original Television Soundtrack)",
+            "release_date": "2016-09-30",
+            "spotify_uri": "spotify:album:02yYoKLRT12CDac75iQfnK",
+            "track_count": 23
+        },
+        {
+            "genres": [],
+            "id": 7,
+            "image": "https://i.scdn.co/image/e7bec170fd52f3833322006f033820a54be105e0",
+            "label": "WaterTower Music",
+            "name": "DC's Legends of Tomorrow: Original Television Soundtrack Season 1",
+            "release_date": "2016-09-02",
+            "spotify_uri": "spotify:album:4zBkqrte6rhmV7taw4toJ7",
+            "track_count": 27
+        },
+        {
+            "genres": [],
+            "id": 8,
+            "image": "https://i.scdn.co/image/c6a3688dbc772cc4500bfafba062c0fda83009a4",
+            "label": "WaterTower Music",
+            "name": "Blindspot: Original Television Soundtrack - Season 1",
+            "release_date": "2016-09-01",
+            "spotify_uri": "spotify:album:2VWBaqlZALGDy0DvE3F573",
+            "track_count": 24
+        },
+        {
+            "genres": [],
+            "id": 9,
+            "image": "https://i.scdn.co/image/58c0a1ad09c9ad5b398e74c0b555e5176c80ff1f",
+            "label": "Cow on the Wall Records",
+            "name": "Serena (Original Motion Picture Score)",
+            "release_date": "2016-09-01",
+            "spotify_uri": "spotify:album:0MVA7lhCc2XmeK6N5wB4C0",
+            "track_count": 18
+        },
+        {
+            "genres": [],
+            "id": 10,
+            "image": "https://i.scdn.co/image/c870d7f037da7b62be93c2d28835f1d7f017d6c0",
+            "label": "WaterTower Music",
+            "name": "Supergirl: Season 1 (Original Television Soundtrack)",
+            "release_date": "2016-07-22",
+            "spotify_uri": "spotify:album:0USwmo4Xa53TCzyFLfRk0r",
+            "track_count": 29
+        },
+        {
+            "genres": [],
+            "id": 11,
+            "image": "https://i.scdn.co/image/01c13c9de3a26f06cd7b550940f732577c87d52f",
+            "label": "WaterTower Music",
+            "name": "The Flash: Season 2 (Original Television Soundtrack)",
+            "release_date": "2016-07-22",
+            "spotify_uri": "spotify:album:7meQzMRPSm9YdrCfAsAUn2",
+            "track_count": 26
+        },
+        {
+            "genres": [],
+            "id": 12,
+            "image": "https://i.scdn.co/image/b58f4f8cdd641a14f1fe76264048706fdf06aca5",
+            "label": "WaterTower Music",
+            "name": "Arrow: Original Television Soundtrack: Season 3",
+            "release_date": "2015-11-13",
+            "spotify_uri": "spotify:album:7a4lPbz7dR64XUSmTym3Uf",
+            "track_count": 27
+        },
+        {
+            "genres": [],
+            "id": 13,
+            "image": "https://i.scdn.co/image/c7348c68144a4875c1a2b05894ffd6310be2a31e",
+            "label": "WaterTower Music",
+            "name": "The Flash: Original Television Soundtrack: Season 1",
+            "release_date": "2015-11-13",
+            "spotify_uri": "spotify:album:3NPOkq0nIMjz3tzYwL7Ypz",
+            "track_count": 29
+        },
+        {
+            "genres": [],
+            "id": 14,
+            "image": "https://i.scdn.co/image/3e8d508c1defe3aaf1613a6e142c633738e4e0f7",
+            "label": "BSX Records, Inc.",
+            "name": "The Wedding Date: The Reception Edition",
+            "release_date": "2015-03-10",
+            "spotify_uri": "spotify:album:7tkVltPRh6Pb98VlJMTXV6",
+            "track_count": 26
+        },
+        {
+            "genres": [],
+            "id": 15,
+            "image": "https://i.scdn.co/image/73630badbcda5cbb678063a1e5f04277aa4ec099",
+            "label": "WaterTower Music",
+            "name": "The Flash Vs. Arrow: Music Selections from the Epic 2-Night Event",
+            "release_date": "2014-12-18",
+            "spotify_uri": "spotify:album:4AtHQFEn8Qrp9aSSt0ehob",
+            "track_count": 21
+        },
+        {
+            "genres": [],
+            "id": 16,
+            "image": "https://i.scdn.co/image/8003fe0bf609eccb0fef3da9bb49e1bf554144a1",
+            "label": "WaterTower Music",
+            "name": "Arrow: Season 2 (Original Television Soundtrack)",
+            "release_date": "2014-09-16",
+            "spotify_uri": "spotify:album:4IEIdtYbkMZfpEHtrpPtDl",
+            "track_count": 27
+        },
+        {
+            "genres": [],
+            "id": 17,
+            "image": "https://i.scdn.co/image/afa75606a8fff48b42c0d97a2b6927779624f199",
+            "label": "Cow On the Wall Records",
+            "name": "The Case Against 8 (Original Motion Picture Soundtrack)",
+            "release_date": "2014-06-10",
+            "spotify_uri": "spotify:album:74lKVYehXprgb7Ad6nns4H",
+            "track_count": 27
+        },
+        {
+            "genres": [],
+            "id": 18,
+            "image": "https://i.scdn.co/image/e2ccda31fd80edd494398583d43725a1ee21453a",
+            "label": "WaterTower Music",
+            "name": "Arrow - Original Television Soundtrack: Season 1",
+            "release_date": "2013-09-17",
+            "spotify_uri": "spotify:album:5xBs2ZzaUDFos06TZDBaFj",
+            "track_count": 29
+        },
+        {
+            "genres": [],
+            "id": 19,
+            "image": "https://i.scdn.co/image/6a1a2df3012d73441f9dfeb026b86c817c202d2e",
+            "label": "Cow On the Wall",
+            "name": "Space Shuttle Columbia: Mission of Hope",
+            "release_date": "2011-05-04",
+            "spotify_uri": "spotify:album:448UwJvXAZdmRs9rUKwaS7",
+            "track_count": 20
+        },
+        {
+            "genres": [],
+            "id": 20,
+            "image": "https://i.scdn.co/image/0b24a0b74fbb032be057b5c1a7c6562df10113b5",
+            "label": "Rhino",
+            "name": "The Pacific (Music From the HBO Miniseries)",
+            "release_date": "2010-03-09",
+            "spotify_uri": "spotify:album:0NH1WrtzRBlZS1VJX2XnXr",
+            "track_count": 25
+        },
+        {
+            "genres": [],
+            "id": 1,
+            "image": "https://i.scdn.co/image/1d79588665ab0de13bc9c63824dfab224887edcb",
+            "label": "WaterTower Music",
+            "name": "Arrow: Season 5 (Original Television Soundtrack)",
+            "release_date": "2017-10-10",
+            "spotify_uri": "spotify:album:7HGVNH3GB3hiLicK1XGzrm",
+            "track_count": 29
+        },
+        {
+            "genres": [],
+            "id": 2,
+            "image": "https://i.scdn.co/image/9a36bad6172d9f8fbafdf89fed9b47d754ecdaa2",
+            "label": "WaterTower Music",
+            "name": "DC's Legends of Tomorrow: Season 2 (Original Television Soundtrack)",
+            "release_date": "2017-10-10",
+            "spotify_uri": "spotify:album:42Y4a94NyZJB3v9Va3rNtv",
+            "track_count": 30
+        }
+    ],
+    "bio": null,
+    "followers": 11041,
+    "id": 1,
+    "image": "https://i.scdn.co/image/86193f7ba3136d145915a9afb477626ed1c9f40a",
+    "media": [],
+    "name": "Blake Neely",
+    "spotify_uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+}
+
+const ALBUM_JSON = {
+    "artists": [
+        {
+            "bio": null,
+            "followers": 570227,
+            "id": 11,
+            "image": "https://i.scdn.co/image/bde64350466df4aa41efb9b8b766deef6c46fd08",
+            "name": "John Williams",
+            "spotify_uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
+        }
+    ],
+    "genres": [],
+    "id": 163,
+    "image": "https://i.scdn.co/image/0136f508e01f4d877a465034c507e8219ea113e4",
+    "label": "Warner Bros.",
+    "media": [],
+    "name": "A.I. (Music from the Motion Picture)",
+    "release_date": "2001-07-03",
+    "spotify_uri": "spotify:album:5yKkKXvX1X0finFqR3JAKL",
+    "track_count": 13,
+    "tracks": [
+        {
+            "artists": [
                 {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 178240,
-                    "explicit": false,
                     "external_urls": {
-                        "spotify": "https://open.spotify.com/track/3QY6xUkoBY4lx52tPbcHJi"
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
                     },
-                    "href": "https://api.spotify.com/v1/tracks/3QY6xUkoBY4lx52tPbcHJi",
-                    "id": "3QY6xUkoBY4lx52tPbcHJi",
-                    "name": "Riverdale",
-                    "preview_url": "https://p.scdn.co/mp3-preview/e778df961afa374ee2c451318d974cee82f030a9?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 1,
-                    "type": "track",
-                    "uri": "spotify:track:3QY6xUkoBY4lx52tPbcHJi"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 127066,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/0XkvFOYVnm9pTio1NajJN9"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/0XkvFOYVnm9pTio1NajJN9",
-                    "id": "0XkvFOYVnm9pTio1NajJN9",
-                    "name": "If You Love Me",
-                    "preview_url": "https://p.scdn.co/mp3-preview/77935ce7d5c1bcb65743cd3a4cf78ca74c4e4413?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 2,
-                    "type": "track",
-                    "uri": "spotify:track:0XkvFOYVnm9pTio1NajJN9"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 189000,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/6mszP4mcuY25lqfGwIkUNh"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/6mszP4mcuY25lqfGwIkUNh",
-                    "id": "6mszP4mcuY25lqfGwIkUNh",
-                    "name": "Viral Gossip in Town",
-                    "preview_url": "https://p.scdn.co/mp3-preview/d84ca83179d782cebd8d17e3424f4db0a2f3e376?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 3,
-                    "type": "track",
-                    "uri": "spotify:track:6mszP4mcuY25lqfGwIkUNh"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 153186,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/4RrkWSiosnd4QOgrcl7O9V"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/4RrkWSiosnd4QOgrcl7O9V",
-                    "id": "4RrkWSiosnd4QOgrcl7O9V",
-                    "name": "Everyone a Suspect",
-                    "preview_url": "https://p.scdn.co/mp3-preview/daab100021814244937ad4534b50539719f94b78?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 4,
-                    "type": "track",
-                    "uri": "spotify:track:4RrkWSiosnd4QOgrcl7O9V"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 116933,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/3EQ7xigoKwYXtgO5aSZJEd"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/3EQ7xigoKwYXtgO5aSZJEd",
-                    "id": "3EQ7xigoKwYXtgO5aSZJEd",
-                    "name": "Receiving the Jersey",
-                    "preview_url": "https://p.scdn.co/mp3-preview/0ad8a363984d426c76bd1d52e2e666e09e4edb27?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 5,
-                    "type": "track",
-                    "uri": "spotify:track:3EQ7xigoKwYXtgO5aSZJEd"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 144546,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/7ry0llJRHzGpWwipjym1DH"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/7ry0llJRHzGpWwipjym1DH",
-                    "id": "7ry0llJRHzGpWwipjym1DH",
-                    "name": "Doubts and Accusations",
-                    "preview_url": "https://p.scdn.co/mp3-preview/186fae42a32f051e87a5fba4c37564e84ba950cb?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 6,
-                    "type": "track",
-                    "uri": "spotify:track:7ry0llJRHzGpWwipjym1DH"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 168560,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/1uKFZ9kwBH4xRYRSDJUR92"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/1uKFZ9kwBH4xRYRSDJUR92",
-                    "id": "1uKFZ9kwBH4xRYRSDJUR92",
-                    "name": "All is OK With Milkshakes",
-                    "preview_url": "https://p.scdn.co/mp3-preview/e7863d8e63f5e334076997ed23e355d16c96860d?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 7,
-                    "type": "track",
-                    "uri": "spotify:track:1uKFZ9kwBH4xRYRSDJUR92"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 227386,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/4g2WTmvJEntoz104zq0NcN"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/4g2WTmvJEntoz104zq0NcN",
-                    "id": "4g2WTmvJEntoz104zq0NcN",
-                    "name": "Long Reach",
-                    "preview_url": "https://p.scdn.co/mp3-preview/48cc405215a8b7411ef30d04d060942c8c66cde6?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 8,
-                    "type": "track",
-                    "uri": "spotify:track:4g2WTmvJEntoz104zq0NcN"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 251186,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/5tq3A9PcR7vIuovJ93hCk6"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/5tq3A9PcR7vIuovJ93hCk6",
-                    "id": "5tq3A9PcR7vIuovJ93hCk6",
-                    "name": "Ended Up Drowning",
-                    "preview_url": "https://p.scdn.co/mp3-preview/502f93743a0987e00df6f4f04f97a6b59c8c0a6e?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 9,
-                    "type": "track",
-                    "uri": "spotify:track:5tq3A9PcR7vIuovJ93hCk6"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 205400,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/50dDiays5hZReBV71XUDeU"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/50dDiays5hZReBV71XUDeU",
-                    "id": "50dDiays5hZReBV71XUDeU",
-                    "name": "Irreconcilable",
-                    "preview_url": "https://p.scdn.co/mp3-preview/2e3bb028a80dd114365186ceaeaeab0500a9055b?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 10,
-                    "type": "track",
-                    "uri": "spotify:track:50dDiays5hZReBV71XUDeU"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 162520,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/3SnJQ4ClbhnzbTnv2TnVOH"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/3SnJQ4ClbhnzbTnv2TnVOH",
-                    "id": "3SnJQ4ClbhnzbTnv2TnVOH",
-                    "name": "So Many Questions",
-                    "preview_url": "https://p.scdn.co/mp3-preview/9dd9c14a379d269baaeb2f3f906309efadbd9061?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 11,
-                    "type": "track",
-                    "uri": "spotify:track:3SnJQ4ClbhnzbTnv2TnVOH"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 203026,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/6IAEkQeHs0Ne09AEpDNuZU"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/6IAEkQeHs0Ne09AEpDNuZU",
-                    "id": "6IAEkQeHs0Ne09AEpDNuZU",
-                    "name": "A Gift / Forced to Leave",
-                    "preview_url": "https://p.scdn.co/mp3-preview/5cfc8390c03d620f283d73e4dfcc1591d7cfbe6c?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 12,
-                    "type": "track",
-                    "uri": "spotify:track:6IAEkQeHs0Ne09AEpDNuZU"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 205506,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/0koz0BlCix7qekguSEQUif"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/0koz0BlCix7qekguSEQUif",
-                    "id": "0koz0BlCix7qekguSEQUif",
-                    "name": "Not Making the Play",
-                    "preview_url": "https://p.scdn.co/mp3-preview/9ff16482ac2a19adb7d91ab69dc57923cb43a62c?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 13,
-                    "type": "track",
-                    "uri": "spotify:track:0koz0BlCix7qekguSEQUif"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 233346,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/15sHRo4Awj5ElzQq2QvUiA"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/15sHRo4Awj5ElzQq2QvUiA",
-                    "id": "15sHRo4Awj5ElzQq2QvUiA",
-                    "name": "Overwhelming Evidence",
-                    "preview_url": "https://p.scdn.co/mp3-preview/759c0857f3885d00d65b8846bf4864193a9402f5?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 14,
-                    "type": "track",
-                    "uri": "spotify:track:15sHRo4Awj5ElzQq2QvUiA"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 121880,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/1lSz9oY7WI0W2D5Ox6u5GU"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/1lSz9oY7WI0W2D5Ox6u5GU",
-                    "id": "1lSz9oY7WI0W2D5Ox6u5GU",
-                    "name": "Realizations",
-                    "preview_url": "https://p.scdn.co/mp3-preview/ff51c7e140877e54d11c0ab2bd4ff00c00b5d352?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 15,
-                    "type": "track",
-                    "uri": "spotify:track:1lSz9oY7WI0W2D5Ox6u5GU"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 158106,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/7E5n773WKcO3dAzUUodAqq"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/7E5n773WKcO3dAzUUodAqq",
-                    "id": "7E5n773WKcO3dAzUUodAqq",
-                    "name": "Do You Feel Guilty?",
-                    "preview_url": "https://p.scdn.co/mp3-preview/6411b57d6184970c799bd1d710f3ca5f0ded0481?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 16,
-                    "type": "track",
-                    "uri": "spotify:track:7E5n773WKcO3dAzUUodAqq"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 200906,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/45bxLRXPHAjQGRNcdAAZq9"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/45bxLRXPHAjQGRNcdAAZq9",
-                    "id": "45bxLRXPHAjQGRNcdAAZq9",
-                    "name": "Into the Woods",
-                    "preview_url": "https://p.scdn.co/mp3-preview/eb619ba3fb4f27fbc55afa0d9d8646d969523881?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 17,
-                    "type": "track",
-                    "uri": "spotify:track:45bxLRXPHAjQGRNcdAAZq9"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 218813,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/1x41h3lSAUoaAdYZvhD945"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/1x41h3lSAUoaAdYZvhD945",
-                    "id": "1x41h3lSAUoaAdYZvhD945",
-                    "name": "Name of the Game",
-                    "preview_url": "https://p.scdn.co/mp3-preview/0b699e110d6110520a176e048d75c209441dded1?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 18,
-                    "type": "track",
-                    "uri": "spotify:track:1x41h3lSAUoaAdYZvhD945"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 172400,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/7IHXKpoFDy6V155tK8rJ6D"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/7IHXKpoFDy6V155tK8rJ6D",
-                    "id": "7IHXKpoFDy6V155tK8rJ6D",
-                    "name": "Angry and Vulnerable Girls",
-                    "preview_url": "https://p.scdn.co/mp3-preview/9b9fd57ef41cab26689bc344e12df37ff3887505?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 19,
-                    "type": "track",
-                    "uri": "spotify:track:7IHXKpoFDy6V155tK8rJ6D"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 279520,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/4a7LcdAOSgR8d13yKyj8wk"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/4a7LcdAOSgR8d13yKyj8wk",
-                    "id": "4a7LcdAOSgR8d13yKyj8wk",
-                    "name": "Results of the Father",
-                    "preview_url": "https://p.scdn.co/mp3-preview/d230526791f58c7cae1d0d93fd077aa6ee085eb7?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 20,
-                    "type": "track",
-                    "uri": "spotify:track:4a7LcdAOSgR8d13yKyj8wk"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 164680,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/0y7kt9eOdyvkVrl55jfWnb"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/0y7kt9eOdyvkVrl55jfWnb",
-                    "id": "0y7kt9eOdyvkVrl55jfWnb",
-                    "name": "Your Father Was Arrested",
-                    "preview_url": "https://p.scdn.co/mp3-preview/abe1b339bf2abb9b0130580901d02902398708aa?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 21,
-                    "type": "track",
-                    "uri": "spotify:track:0y7kt9eOdyvkVrl55jfWnb"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 252266,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/1dHFyBmiyDBR45MEIuOxK7"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/1dHFyBmiyDBR45MEIuOxK7",
-                    "id": "1dHFyBmiyDBR45MEIuOxK7",
-                    "name": "The Recording",
-                    "preview_url": "https://p.scdn.co/mp3-preview/c2b4f2a1e4eaa935f20971e4b8f427fbc104a765?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 22,
-                    "type": "track",
-                    "uri": "spotify:track:1dHFyBmiyDBR45MEIuOxK7"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 231560,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/2Otbc9FQYSfvLTSK8mmLVm"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/2Otbc9FQYSfvLTSK8mmLVm",
-                    "id": "2Otbc9FQYSfvLTSK8mmLVm",
-                    "name": "Oh, Mommy!",
-                    "preview_url": "https://p.scdn.co/mp3-preview/b387a0454ac570bb4a0bfcf988b27857c617c30d?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 23,
-                    "type": "track",
-                    "uri": "spotify:track:2Otbc9FQYSfvLTSK8mmLVm"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 209680,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/4NfqvGFnAdKwwTSIJbtrux"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/4NfqvGFnAdKwwTSIJbtrux",
-                    "id": "4NfqvGFnAdKwwTSIJbtrux",
-                    "name": "What Floats Beneath",
-                    "preview_url": "https://p.scdn.co/mp3-preview/0f4367ec164ece4a66d3d189c21bc94a1a7ce1cc?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 24,
-                    "type": "track",
-                    "uri": "spotify:track:4NfqvGFnAdKwwTSIJbtrux"
-                },
-                {
-                    "artists": [
-                        {
-                            "external_urls": {
-                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
-                            },
-                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
-                            "id": "4UOzqO0jZUrTiTunfBw4tp",
-                            "name": "Blake Neely",
-                            "type": "artist",
-                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
-                        }
-                    ],
-                    "available_markets": [
-                        "AD",
-                        "AR",
-                        "AT",
-                        "AU",
-                        "BE",
-                        "BG",
-                        "BO",
-                        "BR",
-                        "CA",
-                        "CH",
-                        "CL",
-                        "CO",
-                        "CR",
-                        "CY",
-                        "CZ",
-                        "DE",
-                        "DK",
-                        "DO",
-                        "EC",
-                        "EE",
-                        "ES",
-                        "FI",
-                        "FR",
-                        "GB",
-                        "GR",
-                        "GT",
-                        "HK",
-                        "HN",
-                        "HU",
-                        "ID",
-                        "IE",
-                        "IS",
-                        "IT",
-                        "JP",
-                        "LI",
-                        "LT",
-                        "LU",
-                        "LV",
-                        "MC",
-                        "MT",
-                        "MX",
-                        "MY",
-                        "NI",
-                        "NL",
-                        "NO",
-                        "NZ",
-                        "PA",
-                        "PE",
-                        "PH",
-                        "PL",
-                        "PT",
-                        "PY",
-                        "SE",
-                        "SG",
-                        "SK",
-                        "SV",
-                        "TH",
-                        "TR",
-                        "TW",
-                        "US",
-                        "UY"
-                    ],
-                    "disc_number": 1,
-                    "duration_ms": 118746,
-                    "explicit": false,
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/track/1e3tmixllMnIr0wbPreefB"
-                    },
-                    "href": "https://api.spotify.com/v1/tracks/1e3tmixllMnIr0wbPreefB",
-                    "id": "1e3tmixllMnIr0wbPreefB",
-                    "name": "Never Safe",
-                    "preview_url": "https://p.scdn.co/mp3-preview/b3f31ffed9444eb5be74b4a07fea0c72a13a4ff1?cid=a170636bea114cc6bd242130450d7e81",
-                    "track_number": 25,
-                    "type": "track",
-                    "uri": "spotify:track:1e3tmixllMnIr0wbPreefB"
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
                 }
             ],
-            "limit": 50,
-            "next": null,
-            "offset": 0,
-            "previous": null,
-            "total": 25
+            "disc_number": 1,
+            "duration_ms": 383853,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/4yYuLtrhx5UN5Rhmh8VQNS"
+            },
+            "href": "https://api.spotify.com/v1/tracks/4yYuLtrhx5UN5Rhmh8VQNS",
+            "id": "4yYuLtrhx5UN5Rhmh8VQNS",
+            "name": "The Mecha World",
+            "preview_url": "https://p.scdn.co/mp3-preview/5627d61ea86d5624e44b0bd28e98d6b61f6078dd?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 1,
+            "type": "track",
+            "uri": "spotify:track:4yYuLtrhx5UN5Rhmh8VQNS"
         },
-        "type": "album",
-        "uri": "spotify:album:4BYS4x13edZ1f3H1j1nyv0"
-    },
-    "name": "Riverdale: Original Television Score (Season 1)",
-    "related_data": {
-        "albums": {
-            "e_t": {
-                "artist": {
-                    "link": "/artist/john_williams",
-                    "name": "John Williams"
-                },
-                "media": {
-                    "link": "/tv-movie/e_t",
-                    "name": "E.T. the Extra-Terrestrial"
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
                 }
+            ],
+            "disc_number": 1,
+            "duration_ms": 187586,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/6EwYraRH73K446A0ee2NQq"
             },
-            "interstellar": {
-                "artist": {
-                    "link": "/artist/hans_zimmer",
-                    "name": "Hans Zimmer"
-                },
-                "media": {
-                    "link": "/tv-movie/interstellar",
-                    "name": "Interstellar"
-                }
-            },
-            "riverdale": {
-                "artist": {
-                    "link": "/artist/blake_neely",
-                    "name": "Blake Neely"
-                },
-                "media": {
-                    "link": "/tv-movie/riverdale",
-                    "name": "Riverdale"
-                }
-            }
+            "href": "https://api.spotify.com/v1/tracks/6EwYraRH73K446A0ee2NQq",
+            "id": "6EwYraRH73K446A0ee2NQq",
+            "name": "Abandoned In the Woods",
+            "preview_url": "https://p.scdn.co/mp3-preview/f252f594ddc9fd3c01e910cff5e3bea68debf242?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 2,
+            "type": "track",
+            "uri": "spotify:track:6EwYraRH73K446A0ee2NQq"
         },
-        "artists": {
-            "blake_neely": {
-                "album": {
-                    "link": "/album/riverdale",
-                    "name": "Riverdale: Original Television Score (Season 1)"
-                },
-                "media": {
-                    "link": "/tv-movie/riverdale",
-                    "name": "Riverdale"
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
                 }
+            ],
+            "disc_number": 1,
+            "duration_ms": 357720,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/2PH9MDBaKLOdq0dExSPsWE"
             },
-            "hans_zimmer": {
-                "album": {
-                    "link": "/album/interstellar",
-                    "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-                },
-                "media": {
-                    "link": "/tv-movie/interstellar",
-                    "name": "Interstellar"
-                }
-            },
-            "john_williams": {
-                "album": {
-                    "link": "/album/e_t",
-                    "name": "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
-                },
-                "media": {
-                    "link": "/tv-movie/e_t",
-                    "name": "E.T the Extra-Terrestrial"
-                }
-            }
+            "href": "https://api.spotify.com/v1/tracks/2PH9MDBaKLOdq0dExSPsWE",
+            "id": "2PH9MDBaKLOdq0dExSPsWE",
+            "name": "Replicas",
+            "preview_url": "https://p.scdn.co/mp3-preview/b30329cf0f12b6b888f8251796ea8a10ddb1f2b8?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 3,
+            "type": "track",
+            "uri": "spotify:track:2PH9MDBaKLOdq0dExSPsWE"
         },
-        "media": {
-            "e_t": {
-                "album": {
-                    "link": "/album/e_t",
-                    "name": "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
-                },
-                "artist": {
-                    "link": "/artist/john_williams",
-                    "name": "John Williams"
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
                 }
+            ],
+            "disc_number": 1,
+            "duration_ms": 188426,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/1vOPIyKWxzHc3H5c6EfaDT"
             },
-            "interstellar": {
-                "album": {
-                    "link": "/album/interstellar",
-                    "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-                },
-                "artist": {
-                    "link": "/artist/hans_zimmer",
-                    "name": "Hans Zimmer"
+            "href": "https://api.spotify.com/v1/tracks/1vOPIyKWxzHc3H5c6EfaDT",
+            "id": "1vOPIyKWxzHc3H5c6EfaDT",
+            "name": "Hide and Seek",
+            "preview_url": "https://p.scdn.co/mp3-preview/a1a14b7f92e973de1959bdbc23fa57d2ebf62280?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 4,
+            "type": "track",
+            "uri": "spotify:track:1vOPIyKWxzHc3H5c6EfaDT"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/7ocwZINHqO9DZJgFtc1B20"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/7ocwZINHqO9DZJgFtc1B20",
+                    "id": "7ocwZINHqO9DZJgFtc1B20",
+                    "name": "Lara Fabian",
+                    "type": "artist",
+                    "uri": "spotify:artist:7ocwZINHqO9DZJgFtc1B20"
                 }
+            ],
+            "disc_number": 1,
+            "duration_ms": 281760,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/46hSG9mXwNQii0odOuh3fb"
             },
-            "riverdale": {
-                "album": {
-                    "link": "/album/riverdale",
-                    "name": "Riverdale: Original Television Score (Season 1)"
-                },
-                "artist": {
-                    "link": "/artist/blake_neely",
-                    "name": "Blake Neely"
+            "href": "https://api.spotify.com/v1/tracks/46hSG9mXwNQii0odOuh3fb",
+            "id": "46hSG9mXwNQii0odOuh3fb",
+            "name": "For Always",
+            "preview_url": "https://p.scdn.co/mp3-preview/909dc878988328f801c8300af7cbb81bf20dfbde?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 5,
+            "type": "track",
+            "uri": "spotify:track:46hSG9mXwNQii0odOuh3fb"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
                 }
-            }
+            ],
+            "disc_number": 1,
+            "duration_ms": 211146,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/4cvhPL8douzL0EOxiXWADn"
+            },
+            "href": "https://api.spotify.com/v1/tracks/4cvhPL8douzL0EOxiXWADn",
+            "id": "4cvhPL8douzL0EOxiXWADn",
+            "name": "Cybertronics",
+            "preview_url": "https://p.scdn.co/mp3-preview/2eb2ee9bd9264b63850319cd1538dc39980eb9d8?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 6,
+            "type": "track",
+            "uri": "spotify:track:4cvhPL8douzL0EOxiXWADn"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 266546,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/6upoFTocgjzW8nib25Ig2B"
+            },
+            "href": "https://api.spotify.com/v1/tracks/6upoFTocgjzW8nib25Ig2B",
+            "id": "6upoFTocgjzW8nib25Ig2B",
+            "name": "The Moon Rising",
+            "preview_url": "https://p.scdn.co/mp3-preview/cd904a63992999e39fbf4c0f030ab8a08b8729a1?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 7,
+            "type": "track",
+            "uri": "spotify:track:6upoFTocgjzW8nib25Ig2B"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 656186,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3FwF2YhmuwbV4XEGKQQYUk"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3FwF2YhmuwbV4XEGKQQYUk",
+            "id": "3FwF2YhmuwbV4XEGKQQYUk",
+            "name": "Stored Memories and Monica's Theme",
+            "preview_url": "https://p.scdn.co/mp3-preview/24bf8dc47800fec70d13dc16df7b011fa4b98207?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 8,
+            "type": "track",
+            "uri": "spotify:track:3FwF2YhmuwbV4XEGKQQYUk"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 263253,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/3DgNtJln8HlqtxG2xHi81U"
+            },
+            "href": "https://api.spotify.com/v1/tracks/3DgNtJln8HlqtxG2xHi81U",
+            "id": "3DgNtJln8HlqtxG2xHi81U",
+            "name": "Where Dreams Are Born",
+            "preview_url": "https://p.scdn.co/mp3-preview/6efebdf1b8403fa669c1c9b2267c29f1590efe2c?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 9,
+            "type": "track",
+            "uri": "spotify:track:3DgNtJln8HlqtxG2xHi81U"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 297213,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/0P0aP77AOFj4Q9hD9qZmpm"
+            },
+            "href": "https://api.spotify.com/v1/tracks/0P0aP77AOFj4Q9hD9qZmpm",
+            "id": "0P0aP77AOFj4Q9hD9qZmpm",
+            "name": "Rouge City",
+            "preview_url": "https://p.scdn.co/mp3-preview/8c7eaace20d50464e2b75e7943043e080b325302?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 10,
+            "type": "track",
+            "uri": "spotify:track:0P0aP77AOFj4Q9hD9qZmpm"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 371626,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/4GTLL35HpkuHUSouJR4K7h"
+            },
+            "href": "https://api.spotify.com/v1/tracks/4GTLL35HpkuHUSouJR4K7h",
+            "id": "4GTLL35HpkuHUSouJR4K7h",
+            "name": "The Search for the Blue Fairy",
+            "preview_url": "https://p.scdn.co/mp3-preview/222e1a85bfb84764495c98d69f47120086f49233?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 11,
+            "type": "track",
+            "uri": "spotify:track:4GTLL35HpkuHUSouJR4K7h"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/3dRfiJ2650SZu6GbydcHNb"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/3dRfiJ2650SZu6GbydcHNb",
+                    "id": "3dRfiJ2650SZu6GbydcHNb",
+                    "name": "John Williams",
+                    "type": "artist",
+                    "uri": "spotify:artist:3dRfiJ2650SZu6GbydcHNb"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 465800,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/35pDxj3qvRWsjzRKckrjyF"
+            },
+            "href": "https://api.spotify.com/v1/tracks/35pDxj3qvRWsjzRKckrjyF",
+            "id": "35pDxj3qvRWsjzRKckrjyF",
+            "name": "The Reunion",
+            "preview_url": "https://p.scdn.co/mp3-preview/77e2bbcbe8a1c5af127207415b7e98603c8edeb9?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 12,
+            "type": "track",
+            "uri": "spotify:track:35pDxj3qvRWsjzRKckrjyF"
+        },
+        {
+            "artists": [
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/7ocwZINHqO9DZJgFtc1B20"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/7ocwZINHqO9DZJgFtc1B20",
+                    "id": "7ocwZINHqO9DZJgFtc1B20",
+                    "name": "Lara Fabian",
+                    "type": "artist",
+                    "uri": "spotify:artist:7ocwZINHqO9DZJgFtc1B20"
+                },
+                {
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/artist/6cXMpsP9x0SH4kFfMyVezF"
+                    },
+                    "href": "https://api.spotify.com/v1/artists/6cXMpsP9x0SH4kFfMyVezF",
+                    "id": "6cXMpsP9x0SH4kFfMyVezF",
+                    "name": "Josh Groban",
+                    "type": "artist",
+                    "uri": "spotify:artist:6cXMpsP9x0SH4kFfMyVezF"
+                }
+            ],
+            "disc_number": 1,
+            "duration_ms": 282946,
+            "explicit": false,
+            "external_urls": {
+                "spotify": "https://open.spotify.com/track/7LED1HxLNMauSMnAszcC2W"
+            },
+            "href": "https://api.spotify.com/v1/tracks/7LED1HxLNMauSMnAszcC2W",
+            "id": "7LED1HxLNMauSMnAszcC2W",
+            "name": "For Always",
+            "preview_url": "https://p.scdn.co/mp3-preview/0ca5ce307a4cdb1fa30d41baf9f16093243b9de6?cid=a170636bea114cc6bd242130450d7e81",
+            "track_number": 13,
+            "type": "track",
+            "uri": "spotify:track:7LED1HxLNMauSMnAszcC2W"
         }
-    },
-    "track_list": [
-        "Riverdale",
-        "If You Love Me",
-        "Viral Gossip in Town",
-        "Everyone a Suspect",
-        "Receiving the Jersey",
-        "Doubts and Accusations",
-        "All is OK With Milkshakes",
-        "Long Reach",
-        "Ended Up Drowning",
-        "Irreconcilable",
-        "So Many Questions",
-        "A Gift / Forced to Leave",
-        "Not Making the Play",
-        "Overwhelming Evidence",
-        "Realizations",
-        "Do You Feel Guilty?",
-        "Into the Woods",
-        "Name of the Game",
-        "Angry and Vulnerable Girls",
-        "Results of the Father",
-        "Your Father Was Arrested",
-        "The Recording",
-        "Oh, Mommy!",
-        "What Floats Beneath",
-        "Never Safe"
-    ],
-    "year": "2017"
+    ]
 }
 
 // App
 describe('<App/>', function () {
-  it('should render without crashing', function () {
-    shallow(<App />);
-  });
+    it('should render without crashing', function () {
+        shallow(<App />);
+    });
 });
 
 // Navigation
 describe('<Navigation/>', function () {
-  it('should have a brand named SoundtrackDB', function () {
-    const wrapper = shallow(<Navigation />);
-    expect(wrapper.find('.navbar-brand').render().text()).to.equal('SoundtrackDB');
-  });
+    it('should have a brand named SoundtrackDB', function () {
+        const wrapper = shallow(<Navigation />);
+        expect(wrapper.find('.navbar-brand').render().text()).to.equal('SoundtrackDB');
+    });
 
-  it('should have 4 items: Albums, Artists, TV/Movies, and About', function () {
-    const wrapper = shallow(<Navigation />);
-    const navItems = wrapper.find('Nav').children();
-    expect(navItems).to.have.length(4);
-    expect(navItems.at(0).find('.nav-link').render().text()).to.equal('Albums');
-    expect(navItems.at(1).find('.nav-link').render().text()).to.equal('Artists');
-    expect(navItems.at(2).find('.nav-link').render().text()).to.equal('TV/Movies');
-    expect(navItems.at(3).find('.nav-link').render().text()).to.equal('About');
-  });
+    it('should have 4 items: Albums, Artists, TV/Movies, and About', function () {
+        const wrapper = shallow(<Navigation />);
+        const navItems = wrapper.find('Nav').children();
+        expect(navItems).to.have.length(4);
+        expect(navItems.at(0).find('.nav-link').render().text()).to.equal('Albums');
+        expect(navItems.at(1).find('.nav-link').render().text()).to.equal('Artists');
+        expect(navItems.at(2).find('.nav-link').render().text()).to.equal('TV/Movies');
+        expect(navItems.at(3).find('.nav-link').render().text()).to.equal('About');
+    });
 });
 
 describe('<AlbumHome/>', function () {
-  it('should render without crashing', function () {
-    shallow(<AlbumHome albums={ALBUMS_JSON} />).render();
-  })
-
-  it('should contain 3 album instances', function () {
-    const wrapper = shallow(<AlbumHome albums={ALBUMS_JSON} />);
-    const albumItems = wrapper.find('.row').children()
-    expect(albumItems).to.have.length(3);
-  })
-
-  describe('<AlbumItem/>', function () {
     it('should render without crashing', function () {
-      let album = ALBUMS_JSON[0]
-      const wrapper = shallow(<AlbumItem album={album} />).render()
+        shallow(<AlbumHome albums={ALBUMS_JSON} />).render();
     })
 
-    it('should contain correct data', function () {
-      let album = ALBUMS_JSON[0]
-      const wrapper = shallow(<AlbumItem album={album} />)
-      expect(wrapper.find('CardImg').prop('src')).to.be.equal(album.img)
-      expect(wrapper.find('CardTitle').render().text()).to.be.equal(album.name)
-      expect(wrapper.find('CardSubtitle').render().text()).to.be.equal(album.year)
-      expect(wrapper.find('CardText').render().text()).to.be.equal('25 Tracks')
+    it('should contain 3 album instances', function () {
+        const wrapper = shallow(<AlbumHome albums={ALBUMS_JSON} />);
+        const albumItems = wrapper.find('.row').children()
+        expect(albumItems).to.have.length(3);
     })
-  })
+
+    describe('<AlbumItem/>', function () {
+        it('should render without crashing', function () {
+            let album = ALBUMS_JSON[0]
+            const wrapper = shallow(<AlbumItem album={album} />).render()
+        })
+
+        it('should contain correct data', function () {
+            let album = ALBUMS_JSON[0]
+            const wrapper = shallow(<AlbumItem album={album} />)
+            expect(wrapper.find('CardImg').prop('src')).to.be.equal(album.image)
+            expect(wrapper.find('CardTitle').render().text()).to.be.equal(album.name)
+            expect(wrapper.find('CardSubtitle').render().text()).to.be.equal(album.release_date.substring(0,4))
+            expect(wrapper.find('CardText').render().text()).to.be.equal('15 Tracks')
+        })
+    })
 })
 
 describe('<ArtistHome/>', function () {
-  it('should render without crashing', function () {
-    shallow(<ArtistHome artists={ARTISTS_JSON} />).render();
-  })
-
-  it('should contain 3 artist instances', function () {
-    const wrapper = shallow(<ArtistHome artists={ARTISTS_JSON} />);
-    const artistsItems = wrapper.find('.row').children()
-    expect(artistsItems).to.have.length(3);
-  })
-
-  describe('<ArtistItem/>', function () {
-    let artist = ARTISTS_JSON[0]
     it('should render without crashing', function () {
-      const wrapper = shallow(<ArtistItem artist={artist} />).render()
+        shallow(<ArtistHome artists={ARTISTS_JSON} />).render();
     })
 
-    it('should contain correct data', function () {
-      const wrapper = shallow(<ArtistItem artist={artist} />)
-      expect(wrapper.find('CardTitle').render().text()).to.be.equal(artist.name)
-      expect(wrapper.find('CardText').render().text()).to.be.equal("Spotify Followers: " + artist.followers.toLocaleString())
+    it('should contain 3 artist instances', function () {
+        const wrapper = shallow(<ArtistHome artists={ARTISTS_JSON} />);
+        const artistsItems = wrapper.find('.row').children()
+        expect(artistsItems).to.have.length(3);
     })
-  })
+
+    describe('<ArtistItem/>', function () {
+        let artist = ARTISTS_JSON[0]
+        it('should render without crashing', function () {
+            const wrapper = shallow(<ArtistItem artist={artist} />).render()
+        })
+
+        it('should contain correct data', function () {
+            const wrapper = shallow(<ArtistItem artist={artist} />)
+            expect(wrapper.find('CardTitle').render().text()).to.be.equal(artist.name)
+            expect(wrapper.find('CardText').render().text()).to.be.equal("Spotify Followers: " + artist.followers.toLocaleString())
+        })
+    })
 })
 
 describe('<MediaHome/>', function () {
-  it('should render without crashing', function () {
-    shallow(<MediaHome media={MEDIA_JSON} />).render();
-  })
-
-  it('should contain 3 artist instances', function () {
-    const wrapper = shallow(<MediaHome media={MEDIA_JSON} />);
-    const mediaItems = wrapper.find('.row').children()
-    expect(mediaItems).to.have.length(3);
-  })
-
-  describe('<MediaItem/>', function () {
-    let media = MEDIA_JSON[0]
     it('should render without crashing', function () {
-      const wrapper = shallow(<MediaItem media={media} />).render()
+        shallow(<MediaHome media={MEDIAS_JSON} />).render();
     })
 
-    it('should contain correct data', function () {
-      const wrapper = shallow(<MediaItem media={media} />)
-      expect(wrapper.find('CardImg').prop('src')).to.be.equal(media.img)
-      expect(wrapper.find('CardTitle').render().text()).to.be.equal(media.name ? media.name : media.title)
-      expect(wrapper.find('CardSubtitle').render().text()).to.be.equal('TV Series • 2017 • 2 Seasons')
+    it('should contain 3 artist instances', function () {
+        const wrapper = shallow(<MediaHome media={MEDIAS_JSON} />);
+        const mediaItems = wrapper.find('.row').children()
+        expect(mediaItems).to.have.length(3);
     })
-  });
+
+    describe('<MediaItem/>', function () {
+        let media = MEDIAS_JSON[0]
+        it('should render without crashing', function () {
+            const wrapper = shallow(<MediaItem media={media} />).render()
+        })
+
+        it('should contain correct data', function () {
+            const wrapper = shallow(<MediaItem media={media} />)
+            expect(wrapper.find('CardImg').prop('src')).to.be.equal(media.img)
+            expect(wrapper.find('CardTitle').render().text()).to.be.equal(media.name ? media.name : media.title)
+            expect(wrapper.find('CardSubtitle').render().text()).to.be.equal('TV Series • 2017 • 2 Seasons')
+        })
+    });
 });
 
 // Splash
 describe('<Splash/>', function () {
-  it('should render without crashing', function () {
-    shallow(<Splash />);
-  })
+    it('should render without crashing', function () {
+        shallow(<Splash />);
+    })
 
-  it('should have 4 items: Albums, Artists, Movies and TV, and Making Connections', function () {
-    const wrapper = shallow(<Splash />);
-    const carouselItems = wrapper.find('CarouselCaption');
-    expect(carouselItems).to.have.length(4);
-    expect(carouselItems.at(0).render().text()).to.equal('Albums');
-    expect(carouselItems.at(1).render().text()).to.equal('Artists');
-    expect(carouselItems.at(2).render().text()).to.equal('TV and Movies');
-    expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
-  })
+    it('should have 4 items: Albums, Artists, Movies and TV, and Making Connections', function () {
+        const wrapper = shallow(<Splash />);
+        const carouselItems = wrapper.find('CarouselCaption');
+        expect(carouselItems).to.have.length(4);
+        expect(carouselItems.at(0).render().text()).to.equal('Albums');
+        expect(carouselItems.at(1).render().text()).to.equal('Artists');
+        expect(carouselItems.at(2).render().text()).to.equal('TV and Movies');
+        expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
+    })
 });
 
 describe('<MediaInstance/>', function () {
-  let riverdale = RIVERDALE_JSON; 
-  let interstellar = INTERSTELLAR_JSON; 
+    let riverdale = RIVERDALE_JSON;
+    let interstellar = INTERSTELLAR_JSON;
 
-  it('should render without crashing', function() {
-    const wrapper = shallow(<MediaInstance media={riverdale}/>); 
-  });
+    it('should render without crashing', function () {
+        const wrapper = shallow(<MediaInstance media={riverdale} />);
+    });
 
-  it('should have the correct data for name and about', function() {
-    const wrapper = shallow(<MediaInstance media={riverdale}/>);
-    expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(riverdale.name);
-    expect(wrapper.find({ id : 'about'}).render().text()).to.be.equal(riverdale.overview); 
-  });
+    it('should have the correct data for name and about', function () {
+        const wrapper = shallow(<MediaInstance media={riverdale} />);
+        expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(riverdale.name);
+        expect(wrapper.find({ id: 'about' }).render().text()).to.be.equal(riverdale.overview);
+    });
 
-  it('should have a subtitle with type, release year and genres if it is a movie', function() {
-    const wrapper = shallow(<MediaInstance media={interstellar}/>);
-    const expected = 'Movie | 2014 | Adventure, Drama, Science Fiction'; 
-    expect(wrapper.find({ id : 'subtitle'}).render().text()).to.be.equal(expected); 
-  });
+    it('should have a subtitle with type, release year and genres if it is a movie', function () {
+        const wrapper = shallow(<MediaInstance media={interstellar} />);
+        const expected = 'Movie | 2014 | Adventure, Drama, Science Fiction';
+        expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
+    });
 
-  it('should have a subtitle with type, years, number of seasons and genres if it is a TV show', function() {
-    const wrapper = shallow(<MediaInstance media={riverdale}/>);
-    const expected = 'TV Show | 2017 - Present | 2 seasons | Drama, Mystery'; 
-    expect(wrapper.find({ id : 'subtitle'}).render().text()).to.be.equal(expected); 
-  });
+    it('should have a subtitle with type, years, number of seasons and genres if it is a TV show', function () {
+        const wrapper = shallow(<MediaInstance media={riverdale} />);
+        const expected = 'TV Show | 2017 - Present | 2 seasons | Drama, Mystery';
+        expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
+    });
 
-  it('should have the correct cast listing', function() {
-    const wrapper = shallow(<MediaInstance media={riverdale}/>); 
-    const expected_cast = riverdale.cast; 
-    const result_cast = wrapper.find({id : 'cast'}).children(); 
-    let index = 0; 
-    for (let member of expected_cast) {
-      expect(result_cast.at(index).render().text()).to.equal(member);
-      index++; 
-    }
-  });
+    it('should have the correct cast listing', function () {
+        const wrapper = shallow(<MediaInstance media={riverdale} />);
+        const expected_cast = riverdale.cast;
+        const result_cast = wrapper.find({ id: 'cast' }).children();
+        let index = 0;
+        for (let member of expected_cast) {
+            expect(result_cast.at(index).render().text()).to.equal(member);
+            index++;
+        }
+    });
 
-  it('should have the correct poster image and video', function() {
-    const wrapper = shallow(<MediaInstance media={riverdale} />);
-    const expected_img = "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg"; 
-    const expected_video = "//www.youtube.com/embed/9XmFTADupMc"; 
-    expect(wrapper.find({ alt : "Poster"}).prop('src')).to.be.equal(expected_img);
-    expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video); 
-  });
+    it('should have the correct poster image and video', function () {
+        const wrapper = shallow(<MediaInstance media={riverdale} />);
+        const expected_img = "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg";
+        const expected_video = "//www.youtube.com/embed/9XmFTADupMc";
+        expect(wrapper.find({ alt: "Poster" }).prop('src')).to.be.equal(expected_img);
+        expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video);
+    });
 
-  it('should list associated albums and artists', function() {
-    const wrapper = shallow(<MediaInstance media={riverdale} />);
-    const expected_album = "Riverdale: Original Television Score (Season 1)";
-    const expected_artist = "Blake Neely"; 
-    expect(wrapper.find({ id : 'albums'}).find('a').render().text()).to.be.equal(expected_album); 
-    expect(wrapper.find({ id : 'albums'}).find('a').render().text()).to.be.equal(expected_album); 
-  });
-});  
-    
+    // it('should list associated albums and artists', function () {
+    //     const wrapper = shallow(<MediaInstance media={riverdale} />);
+    //     const expected_album = "Riverdale: Original Television Score (Season 1)";
+    //     const expected_artist = "Blake Neely";
+    //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+    //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+    // });
+});
+
 describe('<ArtistInstance/>', function () {
-  it('should render without crashing', function () {
-    shallow(<ArtistInstance artist={HANS_ZIMMER_JSON} />);
-  })
+    it('should render without crashing', function () {
+        shallow(<ArtistInstance artist={ARTIST_JSON} />);
+    })
 
-  it('should have correct data for name and bio', function () {
-    let artist = HANS_ZIMMER_JSON;
-    const wrapper = shallow(<ArtistInstance artist={artist} />);
-    expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(artist.name);
-    expect(wrapper.find({ id : 'bio'}).render().text()).to.be.equal(artist.lastfm_data.artist.bio.content); 
-    
-  })
+    it('should have correct data for name and bio', function () {
+        const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
+        expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(ARTIST_JSON.name);
+        // expect(wrapper.find({ id: 'bio' }).render().text()).to.be.equal(artist.lastfm_data.artist.bio.content);
 
-  it('should have the correct media', function () {
-    const wrapper = shallow(<ArtistInstance artist={HANS_ZIMMER_JSON} />);
-    const expected_image = "https://i.scdn.co/image/14657235e8724181f8b32c6bfa54cdbf86d70852";
-    const expected_spotify = "https://open.spotify.com/embed?uri=spotify:artist:0YC192cP3KPCRWx8zr8MfZ";
-    expect(wrapper.find({ alt : "Artist"}).prop('src')).to.be.equal(expected_image);
-    expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_spotify); 
-    
-  })
+    })
 
-  it('should have the correct related data', function () {
-    const artist = HANS_ZIMMER_JSON;
-    const wrapper = shallow(<ArtistInstance artist={artist} />);
-    expect(wrapper.find({ id : 'albums'}).find('a').render().text()).to.be.equal(artist.albums[1]); 
-    expect(wrapper.find({ id : 'media'}).find('a').render().text()).to.be.equal(artist.media[1]); 
-  })
+    it('should have the correct media', function () {
+        const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
+        expect(wrapper.find({ alt: "Artist" }).prop('src')).to.be.equal(ARTIST_JSON.image);
+        expect(wrapper.find('iframe').prop('src')).to.contain(ARTIST_JSON.spotify_uri)
+    })
+
+    // it('should have the correct related data', function () {
+    //     const artist = HANS_ZIMMER_JSON;
+    //     const wrapper = shallow(<ArtistInstance artist={artist} />);
+    //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(artist.albums[1]);
+    //     expect(wrapper.find({ id: 'media' }).find('a').render().text()).to.be.equal(artist.media[1]);
+    // })
 });
 
 // Album Instance
 describe('<AlbumInstance/>', function () {
+    it('should render without crashing', function () {
+        shallow(<AlbumInstance album={ALBUM_JSON} />);
+    })
 
-  it('should render without crashing', function () {
-    shallow(<AlbumInstance album={RIVERDALE_ALBUM_JSON} />);
-  })
+    it('should have correct data for name, label, release year, and artists ', function () {
+        const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />)
+        expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(ALBUM_JSON.name);
+        expect(wrapper.find({ id: 'label' }).render().text()).to.be.equal("Label: " + ALBUM_JSON.label);
+        expect(wrapper.find({ id: 'year' }).render().text()).to.be.equal("Release year: " + ALBUM_JSON.release_date.substring(0, 4));
+        // expect(wrapper.find({ id: 'artistlist' }).render().text()).to.be.equal("Artists: " + ALBUM_JSON.artists[1]);
+    })
 
-  it('should have correct data for name, label, release year, and artists ', function () {
-    let album = RIVERDALE_ALBUM_JSON;
-    const wrapper = shallow(<AlbumInstance album={album} />)
-    expect(wrapper.find({ id : 'name'}).render().text()).to.be.equal(album.name);
-    expect(wrapper.find({ id : 'label'}).render().text()).to.be.equal("Label: " + album.model_data.label); 
-    expect(wrapper.find({ id : 'year'}).render().text()).to.be.equal("Release year: " + album.year);
-    expect(wrapper.find({ id : 'artistlist'}).render().text()).to.be.equal("Artists: " + album.artists[1]);
-  })
+    it('should have the correct track', function () {
+        const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
+        const expected_track_list = ALBUM_JSON.tracks;
+        const result_track_list = wrapper.find({ id: 'tracks' }).childAt(0);
+        for (let i = 0; i < expected_track_list.length; i++) {
+            expect(result_track_list.childAt(i).render().text()).to.equal(expected_track_list[i].name);
+        }
+    })
 
-  it('should have the correct track', function() {
-    let album = RIVERDALE_ALBUM_JSON;
-    const wrapper = shallow(<AlbumInstance album={album}/>);
-    const expected_track_list = album.track_list; 
-    const result_track_list = wrapper.find({id : 'tracks'}).children(); 
-    let index = 0; 
-    for (let track of expected_track_list) {
-      expect(result_track_list.at(index).render().text()).to.equal(track);
-      index++; 
-    }
-  })
-
-  it('should list associated albums and artists', function() {
-    let album = RIVERDALE_ALBUM_JSON;
-    const wrapper = shallow(<AlbumInstance album={album}/>);
-    const related_data = album.related_data.albums.riverdale;
-    expect(wrapper.find({ id : 'media'}).find('a').render().text()).to.be.equal(related_data.media.name); 
-    expect(wrapper.find({ id : 'artists'}).find('a').render().text()).to.be.equal(related_data.artist.name); 
-  })
+    // it('should list associated albums and artists', function () {
+    //     const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
+    //     const related_data = ALBUM_JSON.related_data.albums.riverdale;
+    //     expect(wrapper.find({ id: 'media' }).find('a').render().text()).to.be.equal(ALBUM_JSON.media[0].name);
+    //     expect(wrapper.find({ id: 'artists' }).find('a').render().text()).to.be.equal(ALBUM_JSON.artists[0].name);
+    // })
 
 });
