@@ -38,5 +38,6 @@ class AlbumSchema(Schema):
     label = fields.Str()
     genres = fields.List(fields.Str())
     tracks = fields.Dict()
-    media = fields.Nested('MediaSchema', exclude=('artists', 'albums'))
-    artists = fields.Nested('ArtistSchema', exclude=('media', 'albums'))
+    spotify_uri = fields.Str()
+    media = fields.Nested('MediaSchema', many=True, exclude=('artists', 'albums'))
+    artists = fields.Nested('ArtistSchema', many=True, exclude=('media', 'albums'))

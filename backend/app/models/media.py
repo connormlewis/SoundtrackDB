@@ -56,5 +56,5 @@ class MediaSchema(Schema):
     tagline = fields.Str()
     popularity = fields.Float()
     average_rating = fields.Float()
-    artists = fields.Nested('ArtistSchema', exclude=('media', 'albums'))
-    albums = fields.Nested('AlbumSchema', exclude=('media', 'artist'))
+    artists = fields.Nested('ArtistSchema', many=True, exclude=('media', 'albums'))
+    albums = fields.Nested('AlbumSchema', many=True, exclude=('media', 'artist'))

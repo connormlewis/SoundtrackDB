@@ -6,30 +6,56 @@ import { UISref } from '@uirouter/react';
 export class AlbumInstance extends Component {
 
   getTracklist() {
-    const track_list = this.props.album.track_list; 
-    return track_list.map((track, index) => <li key={index}>{track}</li>);
+    const track_list = this.props.album.tracks.items; 
+    return (
+      <Fragment>
+      {
+        track_list.map((track) => {
+          return (
+            <li key={track.id}>{track.name}</li>
+          )
+        })
+      }
+      </Fragment>
+    )
   }
 
   getArtists() {
     const artists = this.props.album.artists; 
     return (
-      <li key={artists[0]}>
-        <UISref to="artistInstance" params={{artistID:artists[0]}}>
-          <a>{artists[1]}</a>
-        </UISref>
-      </li>
+      <Fragment>
+      {
+        artists.map((artist) => {
+          return (
+            <li key={artist.id}>
+              <UISref to="artistInstance" params={{ artistID: artist.id }}>
+                <a>{ artist.name }</a>
+              </UISref>
+            </li>
+          )
+        })
+      }
+      </Fragment>
     ); 
   }
 
   getMedia() {
     const media = this.props.album.media; 
     return (
-      <li key={media[0]}>
-        <UISref to="mediaInstance" params={{mediaID:media[0]}}>
-          <a>{media[1]}</a>
-        </UISref>
-      </li>
-    ); 
+      <Fragment>
+      {
+        media.map((item) => {
+          return (
+            <li key={media.id}>
+              <UISref to="mediaInstance" params={{ mediaID: media.id }}>
+                <a>{media.name}</a>
+              </UISref>
+            </li>
+          )
+        })
+      }
+      </Fragment>
+    )
   }
 
   render() {
@@ -39,15 +65,14 @@ export class AlbumInstance extends Component {
           <Col sm="8">
             <h2 id="name">{this.props.album.name}</h2>
             <h3>About</h3>
-            <p id="label">Label: {this.props.album.model_data.label}</p>
-            <p id="year">Release year: {this.props.album.year}</p>
-            <p id="artistlist">Artists: {this.props.album.artists[1]}</p>
+            <p id="label">Label: {this.props.album.label}</p>
+            <p id="year">Release year: {this.props.album.release_date.substring(0,4)}</p>
             <h3>Tracklist</h3>
-              <ol id="tracks">{this.getTracklist()}</ol>
+            <ol id="tracks">{this.getTracklist()}</ol>
           </Col>
           <Col sm="4">
-            <img className="w-100" src={this.props.album.model_data.images[1].url} alt="Poster" vspace="20"/>
-            <iframe className="embed-responsive-item w-100" title="Spotify Player" src={"https://open.spotify.com/embed?uri=" + this.props.album.model_data.uri} height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <img className="w-100" src={this.props.album.image} alt="Poster" vspace="20"/>
+            <iframe className="embed-responsive-item w-100" title="Spotify Player" src={"https://open.spotify.com/embed?uri=" + this.props.album.spotify_uri} height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </Col>
         </Row>
         <Row>
