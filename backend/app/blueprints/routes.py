@@ -1,5 +1,4 @@
 """Application routes"""
-import json
 import os
 
 import requests
@@ -177,9 +176,10 @@ def get_issues():
                  'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
     all_issues = 0
     try:
-        #TODO parse through the pagination using the request headers 
+        #DO parse through the pagination using the request headers 
         url = 'https://api.github.com/repos/connormlewis/idb/issues?state=all&filter=all&per_page=100'
-        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        data = requests.get(url, \
+                   headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         json_list = data.json()
         for entry in json_list:
             if 'pull_request' not in entry:
