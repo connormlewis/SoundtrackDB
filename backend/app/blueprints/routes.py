@@ -14,12 +14,6 @@ album_schema = AlbumSchema()
 media_schema = MediaSchema()
 
 
-@BP.route('/')
-def get_home():
-    """Get the home page"""
-    return jsonify({'response': 'success'})
-
-
 @BP.route('/about')
 def get_about():
     """Get commits and data"""
@@ -37,67 +31,72 @@ def get_about():
 def get_artists():
     """Get all of the artists"""
     session = get_session()
-    query = session.query(Artist)
 
-    if request.args.get('limit') is not None:
-        query = query.limit(int(request.args.get('limit')))
+    try:
+        query = session.query(Artist)
 
-    if request.args.get('offset') is not None:
-        query = query.offset(int(request.args.get('offset')))
+        query = query.order_by('name')
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
+        else:
+            query = query.limit(12)
 
-    query = query.order_by('name')
-    artists = query.all()
-    return artist_schema.dumps(artists, many=True)
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.limit(12)
+
+        artists = query.all()
+        return jsonify(artist_schema.dump(artists, many=True).data)
+    finally:
+        session.close()
+
 
 @BP.route('/artist/<artist_id>')
-def get_artist(artist_id: str):
+def get_artist(artist_id: int):
     """Get a specific artist"""
-    if artist_id not in ['hans_zimmer', 'blake_neely', 'john_williams']:
-        abort(404)
-
     session = get_session()
-    query = session.query(Artist).get(artist_id)
-    return jsonify(artist_schema.dump(query).data)
+    try:
+        query = session.query(Artist).get(artist_id)
+        return jsonify(artist_schema.dump(query).data)
+    finally:
+        session.close()
+
 
 @BP.route('/album')
 def get_albums():
     """Get all of the albums"""
-    albums = ['riverdale', 'interstellar', 'e_t']
-    albums_data = []
-    related_data = json.load(open('static/instances/related_info.json'))
-    counter = 0
-    for album in albums:
-        loaded_data = json.load(open('static/instances/album_' + album + '.json'))
-        track_data = json.load(open('static/instances/track_' + album + '.json'))
-        new_album = {}
-        new_album['name'] = loaded_data['name']
-        new_album['track_list'] = []
-        new_album['artists'] = [related_data['albums'][album]['artist']['name']]
-        for track in track_data['tracks']:
-            new_album['track_list'].append(track['name'])
-        new_album['year'] = loaded_data['release_date'][0:4]
-        new_album['label'] = loaded_data['label']
-        new_album['img'] = loaded_data['images'][0]['url']
-        new_album['movies-tv_show'] = [related_data['albums'][album]['media']['name']]
-        new_album['id'] = album
-        albums_data.append(new_album)
-        counter += 1
-    return jsonify(albums_data)
+    session = get_session()
+
+    try:
+        query = session.query(Album)
+
+        query = query.order_by('name')
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
+        else:
+            query = query.limit(12)
+
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.limit(12)
+
+        albums = query.all()
+        return jsonify(album_schema.dump(albums, many=True).data)
+    finally:
+        session.close()
 
 
-@BP.route('/album/<album_name>')
-def get_album(album_name: str):
+@BP.route('/album/<album_id>')
+def get_album(album_id: id):
     """Get a specific album"""
-    if album_name not in ['riverdale', 'interstellar', 'e_t']:
-        abort(404)
-    related_data = json.load(open('static/instances/related_info.json'))
-    model_data = json.load(open('static/instances/album_' + album_name + '.json'))
-    track_data = json.load(open('static/instances/track_' + album_name + '.json'))
-    new_album = {}
-    new_album['related_data'] = related_data
-    new_album['model_data'] = model_data
-    new_album['track_data'] = track_data
-    return jsonify(new_album)
+    session = get_session()
+    try:
+        query = session.query(Album).get(album_id)
+        return jsonify(album_schema.dump(query).data)
+    finally:
+        session.close()
 
 
 @BP.route('/tv-movie')
