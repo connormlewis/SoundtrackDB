@@ -25,9 +25,14 @@ const ALBUM_HOME = {
   name: 'albumHome',
   url: '/album',
   component: AlbumHome,
+  params: {
+    offset: 0,
+    limit: 12
+  },
   resolve: [{
     token: 'albums',
-    resolveFn: () => ApiService.getAlbums()
+    deps: ['$transition$'],
+    resolveFn: (trans) => ApiService.getAlbums(trans.params().offset, trans.params().limit)
   }]
 };
 
@@ -35,9 +40,14 @@ const ARTIST_HOME = {
   name: 'artistHome',
   url: '/artist',
   component: ArtistHome,
+  params: {
+    offset: 0,
+    limit: 12
+  },
   resolve: [{
     token: 'artists',
-    resolveFn: () => ApiService.getArtists()
+    deps: ['$transition$'],
+    resolveFn: (trans) => ApiService.getArtists(trans.params().offset, trans.params().limit)
   }]
 };
 
@@ -45,9 +55,14 @@ const MEDIA_HOME = {
   name: 'mediaHome',
   url: '/tv-movie',
   component: MediaHome,
+  params: {
+    offset: 0,
+    limit: 12
+  },
   resolve: [{
     token: 'media',
-    resolveFn: () => ApiService.getAllMedia()
+    deps: ['$transition$'],
+    resolveFn: (trans) => ApiService.getAllMedia(trans.params().offset, trans.params().limit)
   }]
 };
 

@@ -1,10 +1,8 @@
 """Application routes"""
-import json
-
 import requests
-from flask import Blueprint, abort, jsonify, request
+from flask import Blueprint, jsonify, request
 
-from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema
+from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
 from app.shared.db import get_session
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
@@ -50,7 +48,11 @@ def get_artists():
             query = query.limit(12)
 
         artists = query.all()
-        return jsonify(artists_schema.dump(artists, many=True).data)
+        count = session.query(Artist).count()
+        return jsonify({
+            'items': artists_schema.dump(artists, many=True).data,
+            'count': count
+        })
     finally:
         session.close()
 
@@ -86,8 +88,11 @@ def get_albums():
             query = query.limit(12)
 
         albums = query.all()
-
-        return jsonify(albums_schema.dump(albums, many=True).data)
+        count = session.query(Album).count()
+        return jsonify({
+            'items': albums_schema.dump(albums, many=True).data,
+            'count': count
+        })
     finally:
         session.close()
 
@@ -106,87 +111,40 @@ def get_album(album_id: id):
 @BP.route('/tv-movie')
 def get_media():
     """Get all of the tv-movies"""
-    media = ['riverdale', 'interstellar', 'e_t']
-    media_data = []
-    related_data = json.load(open('static/instances/related_info.json'))
-    for media_name in media:
-        new_media = {}
-        model_data = json.load(open('static/instances/show_' + media_name + '.json'))
-        cast_data = json.load(open('static/instances/cast_' + media_name + '.json'))
-        video_data = json.load(open('static/instances/video_' + media_name + '.json'))
-        image_data = json.load(open('static/instances/images_' + media_name + '.json'))
-        media_url = 'http://image.tmdb.org/t/p/w500/'
-        if 'seasons' in model_data:
-            new_media['name'] = model_data['name']
-            new_media['type'] = 'show'
-            first = int(model_data['first_air_date'][0:4])
-            last = int(model_data['last_air_date'][0:4])
-            new_media['years'] = [year for year in range(first, last+1)]
-            new_media['seasons'] = len(model_data['seasons'])
-            new_media['running'] = (model_data['status'] == 'Returning Series')
+    session = get_session()
+    try:
+        query = session.query(Media)
+
+        query = query.order_by('name')
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
         else:
-            new_media['name'] = model_data['title']
-            new_media['type'] = 'movie'
-            new_media['years'] = model_data['release_date'][0:4]
-            new_media['season'] = 'None'
-            new_media['running'] = 'None'
-        #Set data that doesn't change based on type
-        new_media['genres'] = [genre['name'] for genre in model_data['genres']]
-        new_media['overview'] = model_data['overview']
-        new_media['cast'] = [member['name'] for member in cast_data['cast']]
-        new_media['poster'] = media_url + model_data['poster_path']
-        new_media['video'] = video_data['results'][0]
-        new_media['backdrops'] = [media_url+image['file_path'] for image in image_data['backdrops']]
-        album = related_data['media'][media_name]['album']
-        artist = related_data['media'][media_name]['artist']
-        new_media['albums'] = [album['link'][7:]]
-        new_media['artists'] = [artist['link'][8:]]
-        new_media['id'] = media_name
-        media_data.append(new_media)
-    return jsonify(media_data)
+            query = query.limit(12)
 
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.limit(12)
 
-@BP.route('/tv-movie/<media_name>')
-def get_single_media(media_name: str):
+        medias = query.all()
+
+        count = query.count()
+        return jsonify({
+            'items': medias_schema.dump(medias, many=True).data,
+            'count': count
+        })
+    finally:
+        session.close()
+
+@BP.route('/tv-movie/<media_id>')
+def get_single_media(media_id: int):
     """Get a specific tv-movie instance"""
-    if media_name not in ['riverdale', 'interstellar', 'e_t']:
-        abort(404)
-    #Load data
-    related_data = json.load(open('static/instances/related_info.json'))
-    model_data = json.load(open('static/instances/show_' + media_name + '.json'))
-    cast_data = json.load(open('static/instances/cast_' + media_name + '.json'))
-    video_data = json.load(open('static/instances/video_' + media_name + '.json'))
-    image_data = json.load(open('static/instances/images_' + media_name + '.json'))
-    media_url = 'http://image.tmdb.org/t/p/w500/'
-    new_media = {}
-    #Set data based on type
-    if 'seasons' in model_data:
-        new_media['name'] = model_data['name']
-        new_media['type'] = 'show'
-        first = int(model_data['first_air_date'][0:4])
-        last = int(model_data['last_air_date'][0:4])
-        new_media['years'] = [year for year in range(first, last+1)]
-        new_media['seasons'] = len(model_data['seasons'])
-        new_media['running'] = (model_data['status'] == 'Returning Series')
-    else:
-        new_media['name'] = model_data['title']
-        new_media['type'] = 'movie'
-        new_media['years'] = model_data['release_date'][0:4]
-        new_media['season'] = 'None'
-        new_media['running'] = 'None'
-    #Set data that doesn't change based on type
-    new_media['genres'] = [genre['name'] for genre in model_data['genres']]
-    new_media['overview'] = model_data['overview']
-    new_media['cast'] = [member['name'] for member in cast_data['cast']]
-    new_media['poster'] = media_url + model_data['poster_path']
-    new_media['video'] = video_data['results'][0]
-    new_media['backdrops'] = [media_url + image['file_path'] for image in image_data['backdrops']]
-    album = related_data['media'][media_name]['album']['link'][7:]
-    artist = related_data['media'][media_name]['artist']['link'][8:]
-    new_media['albums'] = (album, related_data['media'][media_name]['album']['name'])
-    new_media['artists'] = (artist, related_data['media'][media_name]['artist']['name'])
-    new_media['id'] = media_name
-    return jsonify(new_media)
+    session = get_session()
+    try:
+        query = session.query(Media).get(media_id)
+        return jsonify(media_schema.dump(query).data)
+    finally:
+        session.close()
 
 def get_commits():
     """
