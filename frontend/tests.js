@@ -1,7 +1,8 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import * as sinon from 'sinon'
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 
 import App from './src/components/App';
 import Navigation from './src/components/Navigation';
@@ -1041,7 +1042,6 @@ describe('<ArtistHome/>', function () {
       sinon.assert.calledOnce(spy);
     })
   })
-})
 
 describe('<MediaHome/>', function () {
     it('should render without crashing', function () {
@@ -1084,6 +1084,57 @@ describe('<Splash/>', function () {
         expect(carouselItems.at(2).render().text()).to.equal('TV and Movies');
         expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
     })
+
+  describe('<Carousel/>', () => {
+    const items = [
+      { src: '', altText: 'item A', caption: 'caption A' },
+      { src: '', altText: 'item B', caption: 'caption B' },
+      { src: '', altText: 'item C', caption: 'caption C' }
+    ];
+
+    it('should render a header and a caption', () => {
+      const wrapper = mount(<CarouselCaption captionHeader="headerText" captionText="bodyText" />);
+      expect(wrapper.find('h3').length).to.equal(1);
+      expect(wrapper.find('p').length).to.equal(1);
+    });
+
+    it('should render a list with the right number of items', () => {
+      const wrapper = mount(<CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />);
+      expect(wrapper.find('ol').length).to.equal(1);
+      expect(wrapper.find('li').length).to.equal(3);
+    });
+
+    it('should append the correct active class', () => {
+      const wrapper = mount(<CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />);
+      expect(wrapper.find('.active').hostNodes().length).to.equal(1);
+    });
+
+    it('should render an anchor tag', () => {
+      const wrapper = mount(<CarouselControl direction="next" onClickHandler={() => { }} />);
+      expect(wrapper.find('a').length).to.equal(1);
+    });
+
+    it('should call the onClickHandler', () => {
+      const onClick = sinon.spy();
+      const slides = items.map((item, idx) => {
+        return (
+          <CarouselItem onExiting={() => { }} onExited={() => { }} key={idx}>
+            <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+          </CarouselItem>
+        );
+      });
+
+      const wrapper = mount(
+        <Carousel activeIndex={0} next={() => { }} previous={() => { }}>
+          <CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />
+          {slides}
+          <CarouselControl direction="next" directionText="Next" onClickHandler={onClick} />
+        </Carousel>
+      );
+      wrapper.find('a').first().simulate('click');
+      sinon.assert.called(onClick);
+    });
+  });
 });
 
 describe('<MediaInstance/>', function () {

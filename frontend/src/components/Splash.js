@@ -1,11 +1,6 @@
 import React, { Component } from 'react';
 import styles from "../style/Splash.css"; 
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption } from 'reactstrap';
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
 
 const items = [
   {
