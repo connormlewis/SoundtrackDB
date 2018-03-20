@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types'
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
+import { UISref } from '@uirouter/react';
 
 const titleStyles = {
   'overflow': 'hidden',
@@ -49,12 +50,16 @@ export class AlbumHome extends Component {
   }
 
   render() {
+    this.params = this.props.transition.params()
+    this.totalPages = Math.ceil(this.props.albums.count / this.params.limit);
+    this.currentPage = this.params.offset / this.params.limit;
+
     return (
       <Fragment>
         <h2>Albums</h2>
         <div className="row">
           {
-            this.props.albums.map((album) => {
+            this.props.albums.items.map((album) => {
               return (
                 <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={album.id}>
                   <AlbumItem album={album} navigateToInstance={this.navigateToInstance} />
@@ -63,6 +68,31 @@ export class AlbumHome extends Component {
             })
           }
         </div>
+        <div className="col-12">
+          <Pagination className="justify-content-center">
+            <PaginationItem>
+              { 
+                this.currentPage === 0 ? <PaginationLink previous disabled/> :
+                <UISref to="albumHome" params={{ offset: this.params.offset - this.params.limit }}>
+                  <PaginationLink previous/>
+                </UISref>
+              }
+            </PaginationItem>
+
+            <PaginationItem>
+              <PaginationLink disabled>{ this.currentPage + 1 }</PaginationLink>
+            </PaginationItem>
+
+            <PaginationItem>
+            { 
+                this.currentPage === this.totalPages - 1 ? <PaginationLink next disabled/> :
+                <UISref to="albumHome" params={{ offset: this.params.offset + this.params.limit }}>
+                <PaginationLink next/>
+                </UISref>
+              }
+            </PaginationItem>
+          </Pagination>
+        </div>
       </Fragment>
     );
   }
@@ -70,6 +100,6 @@ export class AlbumHome extends Component {
 
 AlbumHome.propTypes = {
   resolves: PropTypes.shape({
-    albums: PropTypes.arrayOf(PropTypes.object)
+    albums: PropTypes.arrayOf(PropTypes.object),
   })
 }
