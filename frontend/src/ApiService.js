@@ -27,4 +27,8 @@ export default class ApiService {
   static getMedia(id) {
     return $.get(API_URL + '/tv-movie/' + id)
   }
+
+  static getAbout() {
+    return $.get(API_URL + '/about')
+  }
 }
