@@ -1,5 +1,6 @@
 import React from 'react'; 
 import Splash from './components/Splash';
+import About from './components/About';
 
 import { MediaHome } from './components/home-pages/MediaHome'
 import { AlbumHome } from './components/home-pages/AlbumsHome';
@@ -18,7 +19,11 @@ const HOME = {
 const ABOUT = {
   name: 'about',
   url: '/about',
-  component: () => <h3>about</h3>
+  component: (About),
+  resolve: [{
+    token: 'about',
+    resolveFn: () => ApiService.getAbout()
+  }]
 };
 
 const ALBUM_HOME = {
