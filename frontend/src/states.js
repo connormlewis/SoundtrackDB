@@ -1,6 +1,6 @@
-import React from 'react'; 
 import Splash from './components/Splash';
 import About from './components/About';
+import ErrorPage from './components/Error';
 
 import { MediaHome } from './components/home-pages/MediaHome'
 import { AlbumHome } from './components/home-pages/AlbumsHome';
@@ -12,9 +12,17 @@ import { ArtistInstance } from './components/instance-pages/ArtistInstance';
 
 const HOME = {
   name: 'home',
-  url: '',
+  url: '/',
   component: (Splash)
 };
+
+const ERROR = {
+  name: 'error',
+  component: ErrorPage,
+  params: {
+    code: null
+  }
+}
 
 const ABOUT = {
   name: 'about',
@@ -104,4 +112,4 @@ const MEDIA_INSTANCE = {
   }]
 };
 
-export default [HOME, ABOUT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE]; 
+export default [HOME, ABOUT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE, ERROR]; 

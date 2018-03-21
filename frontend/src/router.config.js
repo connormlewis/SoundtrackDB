@@ -7,4 +7,11 @@ router.plugin(pushStateLocationPlugin);
 
 states.forEach(state => router.stateRegistry.register(state));
 
+router.transitionService.onError({}, (transition) => {
+    if (transition.success === false) {
+        let error = transition.error()
+        return transition.router.stateService.go('error', { code: error.detail.status })
+    }
+})
+
 router.urlService.rules.initial({state: 'home'});
