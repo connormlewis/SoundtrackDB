@@ -1,5 +1,6 @@
 """Application routes"""
 import os
+from datetime import datetime, timedelta
 
 import requests
 from flask import Blueprint, jsonify, request
@@ -16,15 +17,28 @@ artists_schema = ArtistSchema(exclude=('albums', 'media'))
 albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
 medias_schema = MediaSchema(exclude=('albums', 'artists'))
 
+commit_data = None
+issue_data = None
+updated_at = None
+
 
 @BP.route('/about')
 def get_about():
     """Get commits and data"""
-    commits = get_commits()
+    global updated_at, commit_data, issue_data
+
+    last_hour_date_time = datetime.now() - timedelta(hours=1)
+    if updated_at is None or updated_at < last_hour_date_time:
+        commit_data = get_commits()
+        issue_data = get_issues()
+        updated_at = datetime.now()
+
+    commits = commit_data
+    issues = issue_data
+
     about_data = {}
     about_data['commits'] = commits[0]
     about_data['total_commits'] = commits[1]
-    issues = get_issues()
     about_data['issues'] = issues[0]
     about_data['total_issues'] = issues[1]
     return jsonify(about_data)
@@ -138,6 +152,7 @@ def get_media():
     finally:
         session.close()
 
+
 @BP.route('/tv-movie/<media_id>')
 def get_single_media(media_id: int):
     """Get a specific tv-movie instance"""
@@ -148,13 +163,14 @@ def get_single_media(media_id: int):
     finally:
         session.close()
 
-def get_commits():
+
+def get_commits(): # pragma: no cover
     """
     Get commits from github
     """
     all_commits = 0
-    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0, \
-                'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0,
+            'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
     try:
         url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
         data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
@@ -164,27 +180,25 @@ def get_commits():
             user_name = entry['author']['login']
             team[user_name] = total
             all_commits += total
-    except TypeError:
-        return (team, all_commits)
-    return (team, all_commits)
+    finally:
+        return team, all_commits
 
-def get_issues():
+
+def get_issues(): # pragma: no cover
     """
     Get issues from github
     """
-    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0, \
-                 'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0,
+            'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
     all_issues = 0
     try:
         url = ('https://api.github.com/repos/connormlewis/idb/'
                'issues?state=all&filter=all&per_page=100')
-        data = requests.get(url, \
-                   headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         json_list = data.json()
         for entry in json_list:
             if 'pull_request' not in entry:
                 team[entry['user']['login']] += 1
                 all_issues += 1
-    except TypeError:
-        return (team, all_issues)
-    return (team, all_issues)
+    finally:
+        return team, all_issues

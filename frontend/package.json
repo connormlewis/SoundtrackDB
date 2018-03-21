@@ -61,7 +61,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node_modules/.bin/mocha --require babel-core/register ./scripts/test.js --require babel-core/register -R spec tests.js",
+    "test": "nyc --color --check-coverage mocha --require babel-core/register ./scripts/test.js -R spec tests.js",
     "test:watch": "yarn test -- -w"
   },
   "babel": {
@@ -72,5 +72,17 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "nyc": "^11.4.1",
+    "sinon": "^4.4.2",
+    "supports-color": "^5.3.0"
+  },
+  "nyc": {
+    "all": false,
+    "include": [
+      "src/components/**/*.js"
+    ],
+    "lines": 80
   }
 }
