@@ -1,6 +1,6 @@
 """ORM for Media items"""
 from marshmallow import Schema, fields
-from sqlalchemy import Column, Integer, String, Date, Boolean, Float
+from sqlalchemy import Column, Integer, String, Boolean, Float
 from sqlalchemy.orm import relationship
 
 from app.models.associations import media_artist, album_media
@@ -27,7 +27,7 @@ class Media(Base):
     overview = Column(String)
     other_images = Column(Json)
     videos = Column(Json)
-    imdb_id = Column(String, unique=True)
+    imdb_id = Column(String)
     tmdb_id = Column(Integer, unique=True)
     runtime = Column(Integer)
     tagline = Column(String)
@@ -49,7 +49,7 @@ class MediaSchema(Schema):
     genres = fields.List(fields.Dict())
     seasons = fields.Int()
     release_date = fields.Str()
-    last_aired = fields.Str() 
+    last_aired = fields.Str()
     image = fields.Str()
     running = fields.Bool()
     overview = fields.Str()

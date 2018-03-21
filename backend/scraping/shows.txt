@@ -2,7 +2,7 @@
 62643	TV	DC's Legends of Tomorrow: Season 2 (Original Television Soundtrack)
 62688	TV	Supergirl: Season 2 (Original Television Soundtrack)
 60735	TV	The Flash: Season 3 (Original Television Soundtrack)
-10298	TV	Riverdale: Original Television Score (Season 1)
+69050	TV	Riverdale: Original Television Score (Season 1)
 1412	TV	Arrow: Season 4 (Original Television Soundtrack)
 62643	TV	DC's Legends of Tomorrow: Original Television Soundtrack Season 1
 62710	TV	Blindspot: Original Television Soundtrack - Season 1

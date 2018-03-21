@@ -7,9 +7,12 @@ import json
 import time
 
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import IntegrityError
 
 from app.shared.db import init_db, get_session
 from app.models.media import Media
+from app.models.album import Album
+from app.models.associations import album_media, artist_album
 
 def get_movie(id: int):
     session = get_session()
@@ -122,7 +125,7 @@ def get_tv(id: int):
         else:
             print('already in database')
     except Exception as e:
-        print(e)
+        print(id + '-' + str(e))
 
     finally:
         session.close()
@@ -137,6 +140,39 @@ def check_for_duplicates(id: int):
     finally:
         session.close()
 
+def associate_with_album():
+    with open('scraping/shows.txt') as media_data, open("scraping/album_list.txt") as album_data: 
+        for media_line, album_line in zip(media_data, album_data):
+            tmdb_id = media_line.split()[0]
+            album_name = album_line.strip()
+            session = get_session()
+            if tmdb_id != 'NULL':
+                try:
+                    media = session.query(Media).filter(Media.tmdb_id == tmdb_id).one()
+                    album = session.query(Album).filter(Album.name == album_name).one()
+                    try: 
+                        media.albums.append(album)
+                    except IntegrityError as e:
+                        print('relation between media and album already exists')
+                    # session.commit()
+                    print(tmdb_id + ' - ' + album_name)
+                except NoResultFound as e:
+                    print('media or album not found')
+                finally:
+                    session.close()
+
+def associate_with_artist():
+    session = get_session()
+    media = session.query(Media).all()
+    for item in media: 
+        for album in item.albums: 
+            for artist in album.artists:
+                try:
+                    item.artists.append(artist)
+                except IntegrityError as e:
+                    print('relation between media and album already exists')
+    session.commit()
+    session.close()
 
 def parse_file(input: str):
     with open(input, 'r') as file:
@@ -161,4 +197,4 @@ if __name__ == '__main__':
          os.getenv('POSTGRES_DB')
 
     init_db(uri)
-    parse_file('scraping/shows.txt')
+    associate_with_artist()

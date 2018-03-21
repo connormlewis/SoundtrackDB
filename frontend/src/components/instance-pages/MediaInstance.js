@@ -57,22 +57,38 @@ export class MediaInstance extends Component {
   getAlbums() {
     const albums = this.props.media.albums; 
     return (
-      <li key={albums[0]}>
-        <UISref to="albumInstance" params={{albumID:albums[0]}}>
-          <a>{albums[1]}</a>
-        </UISref>
-      </li>
+      <Fragment>
+      {
+        albums.map((album) => {
+          return (
+            <li key={album.id}>
+              <UISref to="albumInstance" params={{ albumID: album.id }}>
+                <a>{album.name}</a>
+              </UISref>
+            </li>
+          )
+        })
+      }
+      </Fragment>
     ); 
   }
 
   getArtists() {
     const artists = this.props.media.artists; 
     return (
-      <li key={artists[0]}>
-        <UISref to="artistInstance" params={{artistID:artists[0]}}>
-          <a>{artists[1]}</a>
-        </UISref>
-      </li>
+      <Fragment>
+      {
+        artists.map((artist) => {
+          return (
+            <li key={artist.id}>
+              <UISref to="artistInstance" params={{ artistID: artist.id }}>
+                <a>{ artist.name }</a>
+              </UISref>
+            </li>
+          )
+        })
+      }
+      </Fragment>
     ); 
   }
 

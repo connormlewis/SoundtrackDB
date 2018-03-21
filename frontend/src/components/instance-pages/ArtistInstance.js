@@ -31,9 +31,9 @@ export class ArtistInstance extends Component {
       {
         media.map((item) => {
           return (
-            <li key={media.id}>
-              <UISref to="mediaInstance" params={{ mediaID: media.id }}>
-                <a>{media.name}</a>
+            <li key={item.id}>
+              <UISref to="mediaInstance" params={{ mediaID: item.id }}>
+                <a>{item.name}</a>
               </UISref>
             </li>
           )
