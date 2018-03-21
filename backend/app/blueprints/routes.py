@@ -1,13 +1,12 @@
 """Application routes"""
 import os
+from datetime import datetime, timedelta
 
 import requests
-from flask import Blueprint, jsonify, request, current_app
+from flask import Blueprint, jsonify, request
 
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
 from app.shared.db import get_session
-from datetime import datetime, timedelta
-
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
@@ -165,7 +164,7 @@ def get_single_media(media_id: int):
         session.close()
 
 
-def get_commits():
+def get_commits(): # pragma: no cover
     """
     Get commits from github
     """
@@ -185,7 +184,7 @@ def get_commits():
         return team, all_commits
 
 
-def get_issues():
+def get_issues(): # pragma: no cover
     """
     Get issues from github
     """

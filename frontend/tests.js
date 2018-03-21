@@ -15,7 +15,6 @@ import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
-import * as sinon from 'sinon';
 import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON} from './testsData'; 
 
 // App
@@ -47,17 +46,17 @@ let fakeTransition = { params: function () { return { offset: 0, limit: 12 } } }
 
 describe('<AlbumHome/>', function () {
   it('should render without crashing', function () {
-    shallow(<AlbumHome albums={ALBUMS_JSON} />).render();
+    shallow(<AlbumHome albums={ALBUMS_JSON} transition={fakeTransition} />).render();
   })
 
   it('should contain 3 album instances', function () {
-    const wrapper = shallow(<AlbumHome albums={ALBUMS_JSON} />);
+    const wrapper = shallow(<AlbumHome albums={ALBUMS_JSON} transition={fakeTransition}/>);
     const albumItems = wrapper.find('.row').children()
     expect(albumItems).to.have.length(3);
   })
 
   describe('<AlbumItem/>', function () {
-    let album = ALBUMS_JSON[0]
+    let album = ALBUMS_JSON.items[0]
 
     it('should render without crasing', function () {
       const wrapper = shallow(<AlbumItem album={album} />).render()
@@ -65,9 +64,9 @@ describe('<AlbumHome/>', function () {
 
     it('should contain correct data', function () {
       const wrapper = shallow(<AlbumItem album={album} />)
-      expect(wrapper.find('CardImg').prop('src')).to.be.equal(album.images[0].url)
+      expect(wrapper.find('CardImg').prop('src')).to.be.equal(album.image)
       expect(wrapper.find('CardTitle').render().text()).to.be.equal(album.name)
-      expect(wrapper.find('CardSubtitle').render().text()).to.be.equal(album.release_date)
+      expect(wrapper.find('CardSubtitle').render().text()).to.be.equal(album.release_date.substring(0,4))
     })
 
     it('should pass a click to its parent', function () {
@@ -104,18 +103,18 @@ describe('<ArtistHome/>', function () {
             expect(wrapper.find('CardTitle').render().text()).to.be.equal(artist.name)
             expect(wrapper.find('CardText').render().text()).to.be.equal("Spotify Followers: " + artist.followers.toLocaleString())
         })
-    })
 
-    it('should pass a click to its parent', function () {
-      let spy = sinon.spy();
-      let wrapper = shallow(<ArtistItem artist={artist} navigateToInstance={spy} />)
-      let clickItem = wrapper.find('Card')
-      clickItem.simulate('click', {
-        preventDefault: () => { }
-      });
-      sinon.assert.calledOnce(spy);
+        it('should pass a click to its parent', function () {
+            let spy = sinon.spy();
+            let wrapper = shallow(<ArtistItem artist={artist} navigateToInstance={spy} />)
+            let clickItem = wrapper.find('Card')
+            clickItem.simulate('click', {
+              preventDefault: () => { }
+            });
+            sinon.assert.calledOnce(spy);
+        })
     })
-  })
+})
 
 describe('<MediaHome/>', function () {
     it('should render without crashing', function () {
