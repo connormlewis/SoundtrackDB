@@ -113,7 +113,7 @@ export class MediaInstance extends Component {
           <Col sm="4">
             <img className="w-100" src={this.props.media.image} alt="Poster" vspace="20"/>
             <div className="embed-responsive embed-responsive-16by9 w-100">
-              <iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + this.props.media.videos[0].key} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />
+              <iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + this.props.media.videos[0].key} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
             </div>
           </Col>
         </Row>
