@@ -124,9 +124,9 @@ def get_album(album_id: id):
         session.close()
 
 
-@BP.route('/tv-movie')
+@BP.route('/media')
 def get_media():
-    """Get all of the tv-movies"""
+    """Get all media"""
     session = get_session()
     try:
         query = session.query(Media)
@@ -153,9 +153,9 @@ def get_media():
         session.close()
 
 
-@BP.route('/tv-movie/<media_id>')
+@BP.route('/media/<media_id>')
 def get_single_media(media_id: int):
-    """Get a specific tv-movie instance"""
+    """Get a specific media instance"""
     session = get_session()
     try:
         query = session.query(Media).get(media_id)
