@@ -1,10 +1,11 @@
 """ORM for Media items"""
 from marshmallow import Schema, fields
-from sqlalchemy import Column, Integer, String, Date, Boolean, Float
+from sqlalchemy import Column, Integer, String, Boolean, Float
 from sqlalchemy.orm import relationship
 
 from app.models.associations import media_artist, album_media
 from app.shared.db import Base
+from app.shared.json_encoder import Json
 
 
 class Media(Base):
@@ -16,15 +17,17 @@ class Media(Base):
     id = Column(Integer, primary_key=True)
     type = Column(Integer)
     name = Column(String)
-    cast = Column(String)
-    genres = Column(String)
+    cast = Column(Json)
+    genres = Column(Json)
     seasons = Column(Integer)
-    release_date = Column(Date)
+    release_date = Column(String)
+    last_aired = Column(String)
     image = Column(String)
     running = Column(Boolean)
     overview = Column(String)
-    other_images = Column(String)
-    imdb_id = Column(String, unique=True)
+    other_images = Column(Json)
+    videos = Column(Json)
+    imdb_id = Column(String)
     tmdb_id = Column(Integer, unique=True)
     runtime = Column(Integer)
     tagline = Column(String)
@@ -42,14 +45,16 @@ class MediaSchema(Schema):
     id = fields.Int()
     type = fields.Int()
     name = fields.Str()
-    cast = fields.Str()
-    genres = fields.Str()
+    cast = fields.List(fields.Dict())
+    genres = fields.List(fields.Dict())
     seasons = fields.Int()
     release_date = fields.Str()
+    last_aired = fields.Str()
     image = fields.Str()
     running = fields.Bool()
     overview = fields.Str()
-    other_images = fields.Str()
+    other_images = fields.List(fields.Dict())
+    videos = fields.List(fields.Dict())
     imdb_id = fields.Str()
     tmdb_id = fields.Int()
     runtime = fields.Int()

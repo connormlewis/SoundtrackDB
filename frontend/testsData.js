@@ -63,300 +63,2535 @@ export const ARTISTS_JSON = {
 }
 
 export const MEDIAS_JSON = {
-    items: [{
-            "albums": [
-                "Riverdale: Original Television Score (Season 1)"
-            ],
-            "artists": [
-                "Blake Neely"
-            ],
-            "cast": [
-                "Marisol Nichols",
-                "M\u00e4dchen Amick",
-                "K.J. Apa",
-                "Cole Sprouse",
-                "Camila Mendes",
-                "Lili Reinhart",
-                "Madelaine Petsch",
-                "Ashleigh Murray",
-                "Luke Perry",
-                "Casey Cott",
-                "Charles Melton"
-            ],
-            "description": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale\u2019s wholesome facade.",
+    "count": 235,
+    "items": [
+        {
+            "average_rating": 6,
             "genres": [
-                "Drama",
-                "Mystery"
+                {
+                    "id": 10759,
+                    "name": "Action & Adventure"
+                },
+                {
+                    "id": 18,
+                    "name": "Drama"
+                }
             ],
-            "id": "riverdale",
-            "img": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
-            "name": "Riverdale",
-            "seasons": 2,
-            "type": 0,
-            "years": "2017"
+            "id": 158,
+            "image": "http://image.tmdb.org/t/p/w500/bMj6iM7TBcceG44vpireA2Axeab.jpg",
+            "imdb_id": null,
+            "last_aired": "2006",
+            "name": "Alias",
+            "overview": "Sydney Bristow, an agent who has been tricked to believe she is working for the U.S. government, is actually working for a criminal organization named the Alliance of Twelve. Upon learning this, Sydney becomes a double agent for the real CIA.",
+            "popularity": 68.096463,
+            "release_date": "2001",
+            "running": false,
+            "runtime": 60,
+            "seasons": 5,
+            "tagline": null,
+            "tmdb_id": 2046,
+            "type": 0
         },
         {
-            "albums": [
-                "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
-            ],
-            "artists": [
-                "Hans Zimmer"
-            ],
-            "cast": [
-                "Matthew McConaughey",
-                "Jessica Chastain",
-                "Anne Hathaway",
-                "Michael Caine",
-                "Casey Affleck",
-                "Mackenzie Foy",
-                "Timoth\u00e9e Chalamet",
-                "Bill Irwin",
-                "Matt Damon",
-                "Ellen Burstyn",
-                "John Lithgow",
-                "Wes Bentley",
-                "Topher Grace",
-                "David Oyelowo",
-                "David Gyasi",
-                "William Devane",
-                "Josh Stewart",
-                "Collette Wolfe",
-                "Leah Cairns",
-                "Russ Fega",
-                "Lena Georgas",
-                "Jeff Hephner",
-                "Elyes Gabel",
-                "Brooke Smith",
-                "Liam Dickinson",
-                "Francis X. McCarthy",
-                "Andrew Borba",
-                "Flora Nolan",
-                "William Patrick Brown",
-                "Cici Leah Campbell",
-                "Kristian Van der Heyden",
-                "Mark Casimir Dyniewicz",
-                "Joseph Oliveira",
-                "Ryan Irving",
-                "Alexander Michael Helisek",
-                "Benjamin Hardy"
-            ],
-            "description": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
+            "average_rating": 6.6,
             "genres": [
-                "Adventure",
-                "Drama",
-                "Science Fiction"
+                {
+                    "id": 18,
+                    "name": "Drama"
+                },
+                {
+                    "id": 36,
+                    "name": "History"
+                },
+                {
+                    "id": 10770,
+                    "name": "TV Movie"
+                }
             ],
-            "id": "interstellar",
-            "img": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
-            "name": "Interstellar",
+            "id": 217,
+            "image": "http://image.tmdb.org/t/p/w500/eeIYbMTdvDttB1trnPBbRo8jDPx.jpg",
+            "imdb_id": "tt3791216",
+            "last_aired": "2016",
+            "name": "All the Way",
+            "overview": "Lyndon B. Johnson's amazing 11-month journey from taking office after JFK's assassination, through the fight to pass the 1964 Civil Rights Act and his own presidential campaign, culminating on the night LBJ is actually elected to the office – no longer the 'accidental President.'",
+            "popularity": 6.594439,
+            "release_date": "2016",
+            "running": false,
+            "runtime": 132,
             "seasons": 0,
-            "type": 1,
-            "years": "2014"
+            "tagline": "Politics is war.",
+            "tmdb_id": 347123,
+            "type": 1
         },
         {
-            "albums": [
-                "E.T. The Extra-Terrestrial (Music From The Original Motion Picture Soundtrack)"
-            ],
-            "artists": [
-                "John Williams"
-            ],
-            "cast": [
-                "Henry Thomas",
-                "Drew Barrymore",
-                "Robert MacNaughton",
-                "Dee Wallace",
-                "Peter Coyote",
-                "Erika Eleniak",
-                "Sean Frye",
-                "C. Thomas Howell",
-                "K. C. Martel",
-                "David M. O'Dell",
-                "Richard Swingler",
-                "Frank Toth",
-                "Pat Welsh"
-            ],
-            "description": "After a gentle alien becomes stranded on Earth, the being is discovered and befriended by a young boy named Elliott. Bringing the extraterrestrial into his suburban California house, Elliott introduces E.T., as the alien is dubbed, to his brother and his little sister, Gertie, and the children decide to keep its existence a secret. Soon, however, E.T. falls ill, resulting in government intervention and a dire situation for both Elliott and the alien.",
+            "average_rating": 6.9,
             "genres": [
-                "Science Fiction",
-                "Adventure",
-                "Family",
-                "Fantasy"
+                {
+                    "id": 18,
+                    "name": "Drama"
+                }
             ],
-            "id": "e_t",
-            "img": "http://image.tmdb.org/t/p/w500//8htLKK03TJjKZOXJgihZCu8v0P.jpg",
-            "name": "E.T. the Extra-Terrestrial",
+            "id": 79,
+            "image": "http://image.tmdb.org/t/p/w500/gSipFYPRTESPf9RD6c6nX9JRtqT.jpg",
+            "imdb_id": "tt0454776",
+            "last_aired": "2006",
+            "name": "Amazing Grace",
+            "overview": "The true story of William Wilberforce's courageous quest to end the British slave trade. Although meeting intense opposition, his minister, John Newton, urges him to see the cause through.",
+            "popularity": 7.839115,
+            "release_date": "2006",
+            "running": false,
+            "runtime": 117,
             "seasons": 0,
-            "type": 1,
-            "years": "1982"
+            "tagline": "Behind the song you love is a story you will never forget.",
+            "tmdb_id": 15163,
+            "type": 1
         }
-    ],
-    count: 3
+    ]
 }
 
 export const RIVERDALE_JSON = {
     "albums": [
-        "riverdale",
-        "Riverdale: Original Television Score (Season 1)"
+        {
+            "artists": [
+                {
+                    "bio": null,
+                    "followers": 11041,
+                    "id": 1,
+                    "image": "https://i.scdn.co/image/86193f7ba3136d145915a9afb477626ed1c9f40a",
+                    "name": "Blake Neely",
+                    "spotify_uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                }
+            ],
+            "genres": [],
+            "id": 5,
+            "image": "https://i.scdn.co/image/6d6058dda979cc24276aaab650befd5dd963e390",
+            "label": "WaterTower Music",
+            "name": "Riverdale: Original Television Score (Season 1)",
+            "release_date": "2017-07-18",
+            "spotify_uri": "spotify:album:4BYS4x13edZ1f3H1j1nyv0",
+            "track_count": 25,
+            "tracks": [
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 178240,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3QY6xUkoBY4lx52tPbcHJi"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3QY6xUkoBY4lx52tPbcHJi",
+                    "id": "3QY6xUkoBY4lx52tPbcHJi",
+                    "name": "Riverdale",
+                    "preview_url": "https://p.scdn.co/mp3-preview/e778df961afa374ee2c451318d974cee82f030a9?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 1,
+                    "type": "track",
+                    "uri": "spotify:track:3QY6xUkoBY4lx52tPbcHJi"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 127066,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0XkvFOYVnm9pTio1NajJN9"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0XkvFOYVnm9pTio1NajJN9",
+                    "id": "0XkvFOYVnm9pTio1NajJN9",
+                    "name": "If You Love Me",
+                    "preview_url": "https://p.scdn.co/mp3-preview/77935ce7d5c1bcb65743cd3a4cf78ca74c4e4413?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 2,
+                    "type": "track",
+                    "uri": "spotify:track:0XkvFOYVnm9pTio1NajJN9"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 189000,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6mszP4mcuY25lqfGwIkUNh"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6mszP4mcuY25lqfGwIkUNh",
+                    "id": "6mszP4mcuY25lqfGwIkUNh",
+                    "name": "Viral Gossip in Town",
+                    "preview_url": "https://p.scdn.co/mp3-preview/d84ca83179d782cebd8d17e3424f4db0a2f3e376?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 3,
+                    "type": "track",
+                    "uri": "spotify:track:6mszP4mcuY25lqfGwIkUNh"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 153186,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4RrkWSiosnd4QOgrcl7O9V"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4RrkWSiosnd4QOgrcl7O9V",
+                    "id": "4RrkWSiosnd4QOgrcl7O9V",
+                    "name": "Everyone a Suspect",
+                    "preview_url": "https://p.scdn.co/mp3-preview/daab100021814244937ad4534b50539719f94b78?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 4,
+                    "type": "track",
+                    "uri": "spotify:track:4RrkWSiosnd4QOgrcl7O9V"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 116933,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3EQ7xigoKwYXtgO5aSZJEd"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3EQ7xigoKwYXtgO5aSZJEd",
+                    "id": "3EQ7xigoKwYXtgO5aSZJEd",
+                    "name": "Receiving the Jersey",
+                    "preview_url": "https://p.scdn.co/mp3-preview/0ad8a363984d426c76bd1d52e2e666e09e4edb27?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 5,
+                    "type": "track",
+                    "uri": "spotify:track:3EQ7xigoKwYXtgO5aSZJEd"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 144546,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/7ry0llJRHzGpWwipjym1DH"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/7ry0llJRHzGpWwipjym1DH",
+                    "id": "7ry0llJRHzGpWwipjym1DH",
+                    "name": "Doubts and Accusations",
+                    "preview_url": "https://p.scdn.co/mp3-preview/186fae42a32f051e87a5fba4c37564e84ba950cb?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 6,
+                    "type": "track",
+                    "uri": "spotify:track:7ry0llJRHzGpWwipjym1DH"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 168560,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1uKFZ9kwBH4xRYRSDJUR92"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1uKFZ9kwBH4xRYRSDJUR92",
+                    "id": "1uKFZ9kwBH4xRYRSDJUR92",
+                    "name": "All is OK With Milkshakes",
+                    "preview_url": "https://p.scdn.co/mp3-preview/e7863d8e63f5e334076997ed23e355d16c96860d?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 7,
+                    "type": "track",
+                    "uri": "spotify:track:1uKFZ9kwBH4xRYRSDJUR92"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 227386,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4g2WTmvJEntoz104zq0NcN"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4g2WTmvJEntoz104zq0NcN",
+                    "id": "4g2WTmvJEntoz104zq0NcN",
+                    "name": "Long Reach",
+                    "preview_url": "https://p.scdn.co/mp3-preview/48cc405215a8b7411ef30d04d060942c8c66cde6?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 8,
+                    "type": "track",
+                    "uri": "spotify:track:4g2WTmvJEntoz104zq0NcN"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 251186,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/5tq3A9PcR7vIuovJ93hCk6"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/5tq3A9PcR7vIuovJ93hCk6",
+                    "id": "5tq3A9PcR7vIuovJ93hCk6",
+                    "name": "Ended Up Drowning",
+                    "preview_url": "https://p.scdn.co/mp3-preview/502f93743a0987e00df6f4f04f97a6b59c8c0a6e?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 9,
+                    "type": "track",
+                    "uri": "spotify:track:5tq3A9PcR7vIuovJ93hCk6"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 205400,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/50dDiays5hZReBV71XUDeU"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/50dDiays5hZReBV71XUDeU",
+                    "id": "50dDiays5hZReBV71XUDeU",
+                    "name": "Irreconcilable",
+                    "preview_url": "https://p.scdn.co/mp3-preview/2e3bb028a80dd114365186ceaeaeab0500a9055b?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 10,
+                    "type": "track",
+                    "uri": "spotify:track:50dDiays5hZReBV71XUDeU"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 162520,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3SnJQ4ClbhnzbTnv2TnVOH"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3SnJQ4ClbhnzbTnv2TnVOH",
+                    "id": "3SnJQ4ClbhnzbTnv2TnVOH",
+                    "name": "So Many Questions",
+                    "preview_url": "https://p.scdn.co/mp3-preview/9dd9c14a379d269baaeb2f3f906309efadbd9061?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 11,
+                    "type": "track",
+                    "uri": "spotify:track:3SnJQ4ClbhnzbTnv2TnVOH"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 203026,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6IAEkQeHs0Ne09AEpDNuZU"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6IAEkQeHs0Ne09AEpDNuZU",
+                    "id": "6IAEkQeHs0Ne09AEpDNuZU",
+                    "name": "A Gift / Forced to Leave",
+                    "preview_url": "https://p.scdn.co/mp3-preview/5cfc8390c03d620f283d73e4dfcc1591d7cfbe6c?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 12,
+                    "type": "track",
+                    "uri": "spotify:track:6IAEkQeHs0Ne09AEpDNuZU"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 205506,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0koz0BlCix7qekguSEQUif"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0koz0BlCix7qekguSEQUif",
+                    "id": "0koz0BlCix7qekguSEQUif",
+                    "name": "Not Making the Play",
+                    "preview_url": "https://p.scdn.co/mp3-preview/9ff16482ac2a19adb7d91ab69dc57923cb43a62c?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 13,
+                    "type": "track",
+                    "uri": "spotify:track:0koz0BlCix7qekguSEQUif"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 233346,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/15sHRo4Awj5ElzQq2QvUiA"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/15sHRo4Awj5ElzQq2QvUiA",
+                    "id": "15sHRo4Awj5ElzQq2QvUiA",
+                    "name": "Overwhelming Evidence",
+                    "preview_url": "https://p.scdn.co/mp3-preview/759c0857f3885d00d65b8846bf4864193a9402f5?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 14,
+                    "type": "track",
+                    "uri": "spotify:track:15sHRo4Awj5ElzQq2QvUiA"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 121880,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1lSz9oY7WI0W2D5Ox6u5GU"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1lSz9oY7WI0W2D5Ox6u5GU",
+                    "id": "1lSz9oY7WI0W2D5Ox6u5GU",
+                    "name": "Realizations",
+                    "preview_url": "https://p.scdn.co/mp3-preview/ff51c7e140877e54d11c0ab2bd4ff00c00b5d352?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 15,
+                    "type": "track",
+                    "uri": "spotify:track:1lSz9oY7WI0W2D5Ox6u5GU"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 158106,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/7E5n773WKcO3dAzUUodAqq"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/7E5n773WKcO3dAzUUodAqq",
+                    "id": "7E5n773WKcO3dAzUUodAqq",
+                    "name": "Do You Feel Guilty?",
+                    "preview_url": "https://p.scdn.co/mp3-preview/6411b57d6184970c799bd1d710f3ca5f0ded0481?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 16,
+                    "type": "track",
+                    "uri": "spotify:track:7E5n773WKcO3dAzUUodAqq"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 200906,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/45bxLRXPHAjQGRNcdAAZq9"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/45bxLRXPHAjQGRNcdAAZq9",
+                    "id": "45bxLRXPHAjQGRNcdAAZq9",
+                    "name": "Into the Woods",
+                    "preview_url": "https://p.scdn.co/mp3-preview/eb619ba3fb4f27fbc55afa0d9d8646d969523881?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 17,
+                    "type": "track",
+                    "uri": "spotify:track:45bxLRXPHAjQGRNcdAAZq9"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 218813,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1x41h3lSAUoaAdYZvhD945"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1x41h3lSAUoaAdYZvhD945",
+                    "id": "1x41h3lSAUoaAdYZvhD945",
+                    "name": "Name of the Game",
+                    "preview_url": "https://p.scdn.co/mp3-preview/0b699e110d6110520a176e048d75c209441dded1?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 18,
+                    "type": "track",
+                    "uri": "spotify:track:1x41h3lSAUoaAdYZvhD945"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 172400,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/7IHXKpoFDy6V155tK8rJ6D"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/7IHXKpoFDy6V155tK8rJ6D",
+                    "id": "7IHXKpoFDy6V155tK8rJ6D",
+                    "name": "Angry and Vulnerable Girls",
+                    "preview_url": "https://p.scdn.co/mp3-preview/9b9fd57ef41cab26689bc344e12df37ff3887505?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 19,
+                    "type": "track",
+                    "uri": "spotify:track:7IHXKpoFDy6V155tK8rJ6D"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 279520,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4a7LcdAOSgR8d13yKyj8wk"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4a7LcdAOSgR8d13yKyj8wk",
+                    "id": "4a7LcdAOSgR8d13yKyj8wk",
+                    "name": "Results of the Father",
+                    "preview_url": "https://p.scdn.co/mp3-preview/d230526791f58c7cae1d0d93fd077aa6ee085eb7?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 20,
+                    "type": "track",
+                    "uri": "spotify:track:4a7LcdAOSgR8d13yKyj8wk"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 164680,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0y7kt9eOdyvkVrl55jfWnb"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0y7kt9eOdyvkVrl55jfWnb",
+                    "id": "0y7kt9eOdyvkVrl55jfWnb",
+                    "name": "Your Father Was Arrested",
+                    "preview_url": "https://p.scdn.co/mp3-preview/abe1b339bf2abb9b0130580901d02902398708aa?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 21,
+                    "type": "track",
+                    "uri": "spotify:track:0y7kt9eOdyvkVrl55jfWnb"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 252266,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1dHFyBmiyDBR45MEIuOxK7"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1dHFyBmiyDBR45MEIuOxK7",
+                    "id": "1dHFyBmiyDBR45MEIuOxK7",
+                    "name": "The Recording",
+                    "preview_url": "https://p.scdn.co/mp3-preview/c2b4f2a1e4eaa935f20971e4b8f427fbc104a765?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 22,
+                    "type": "track",
+                    "uri": "spotify:track:1dHFyBmiyDBR45MEIuOxK7"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 231560,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2Otbc9FQYSfvLTSK8mmLVm"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2Otbc9FQYSfvLTSK8mmLVm",
+                    "id": "2Otbc9FQYSfvLTSK8mmLVm",
+                    "name": "Oh, Mommy!",
+                    "preview_url": "https://p.scdn.co/mp3-preview/b387a0454ac570bb4a0bfcf988b27857c617c30d?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 23,
+                    "type": "track",
+                    "uri": "spotify:track:2Otbc9FQYSfvLTSK8mmLVm"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 209680,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4NfqvGFnAdKwwTSIJbtrux"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4NfqvGFnAdKwwTSIJbtrux",
+                    "id": "4NfqvGFnAdKwwTSIJbtrux",
+                    "name": "What Floats Beneath",
+                    "preview_url": "https://p.scdn.co/mp3-preview/0f4367ec164ece4a66d3d189c21bc94a1a7ce1cc?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 24,
+                    "type": "track",
+                    "uri": "spotify:track:4NfqvGFnAdKwwTSIJbtrux"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4UOzqO0jZUrTiTunfBw4tp"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4UOzqO0jZUrTiTunfBw4tp",
+                            "id": "4UOzqO0jZUrTiTunfBw4tp",
+                            "name": "Blake Neely",
+                            "type": "artist",
+                            "uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 118746,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1e3tmixllMnIr0wbPreefB"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1e3tmixllMnIr0wbPreefB",
+                    "id": "1e3tmixllMnIr0wbPreefB",
+                    "name": "Never Safe",
+                    "preview_url": "https://p.scdn.co/mp3-preview/b3f31ffed9444eb5be74b4a07fea0c72a13a4ff1?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 25,
+                    "type": "track",
+                    "uri": "spotify:track:1e3tmixllMnIr0wbPreefB"
+                }
+            ]
+        }
     ],
     "artists": [
-        "blake_neely",
-        "Blake Neely"
+        {
+            "bio": null,
+            "followers": 11041,
+            "id": 1,
+            "image": "https://i.scdn.co/image/86193f7ba3136d145915a9afb477626ed1c9f40a",
+            "name": "Blake Neely",
+            "spotify_uri": "spotify:artist:4UOzqO0jZUrTiTunfBw4tp"
+        }
     ],
-    "backdrops": [
-        "http://image.tmdb.org/t/p/w500//2IUpoKSP64r6rp2vBo0Fdk8a1UU.jpg",
-        "http://image.tmdb.org/t/p/w500//a3G7FsQNfo9mrnZtXN3yaDQhAgz.jpg",
-        "http://image.tmdb.org/t/p/w500//2BdeV1gjkWMTFEldekbqFI5qU5n.jpg",
-        "http://image.tmdb.org/t/p/w500//h26n2RPVeoTIEdv96jbxCQKSqaW.jpg",
-        "http://image.tmdb.org/t/p/w500//gS91Amt1arLnP21Pi3nm4ObFF4Y.jpg",
-        "http://image.tmdb.org/t/p/w500//4IeZIgxxeRJdgAYMd0Frc7alKcJ.jpg",
-        "http://image.tmdb.org/t/p/w500//aNKIbzLftZ14NnZJVZTQHL332Ho.jpg",
-        "http://image.tmdb.org/t/p/w500//sEqHXTDUr3W6oNFFIgR5re8UQxZ.jpg",
-        "http://image.tmdb.org/t/p/w500//biY4RGFlVQXnHlfrX7DfC6ekJvE.jpg",
-        "http://image.tmdb.org/t/p/w500//tOOjl0thkVYfcwVLz2up602NQo8.jpg",
-        "http://image.tmdb.org/t/p/w500//dmwqioFelVSmLrZ894ONBX9iaxz.jpg"
-    ],
+    "average_rating": 7.2,
     "cast": [
-        "Marisol Nichols",
-        "Mädchen Amick",
-        "K.J. Apa",
-        "Cole Sprouse",
-        "Camila Mendes",
-        "Lili Reinhart",
-        "Madelaine Petsch",
-        "Ashleigh Murray",
-        "Luke Perry",
-        "Casey Cott",
-        "Charles Melton"
+        {
+            "character": "Hermione Lodge",
+            "credit_id": "589645bc9251415a5b00a82d",
+            "gender": 1,
+            "id": 84457,
+            "name": "Marisol Nichols",
+            "order": 500,
+            "profile_path": "/qdnvLJghwN0NZPY3UDv4Zf6q9Un.jpg"
+        },
+        {
+            "character": "Alice Cooper",
+            "credit_id": "586e8e759251412963009b73",
+            "gender": 1,
+            "id": 6714,
+            "name": "Mädchen Amick",
+            "order": 7,
+            "profile_path": "/WEUyhEwheG5kUZLwKKW8sNY0NP.jpg"
+        },
+        {
+            "character": "Archie Andrews",
+            "credit_id": "584e4a9892514118e400a193",
+            "gender": 2,
+            "id": 1680339,
+            "name": "K.J. Apa",
+            "order": 0,
+            "profile_path": "/pm0exKBsLrwRD4V1DxJ9HPJxOp.jpg"
+        },
+        {
+            "character": "Jughead Jones",
+            "credit_id": "584e4ab892514118e0009e09",
+            "gender": 2,
+            "id": 56730,
+            "name": "Cole Sprouse",
+            "order": 3,
+            "profile_path": "/aJxTvZjse8hAljcvljqTaH45eaB.jpg"
+        },
+        {
+            "character": "Veronica Lodge",
+            "credit_id": "584e4aebc3a368322400a5c9",
+            "gender": 1,
+            "id": 1721740,
+            "name": "Camila Mendes",
+            "order": 1,
+            "profile_path": "/iqafgjARjK3eZ7ZG4gI5THXyTdc.jpg"
+        },
+        {
+            "character": "Betty Cooper",
+            "credit_id": "584e4b0d92514118e400a1e1",
+            "gender": 1,
+            "id": 1136940,
+            "name": "Lili Reinhart",
+            "order": 2,
+            "profile_path": "/iyG660kcBeQImBF4XvieZ9X5GD1.jpg"
+        },
+        {
+            "character": "Cheryl Blossom",
+            "credit_id": "5857f7709251416f1005e967",
+            "gender": 1,
+            "id": 1592855,
+            "name": "Madelaine Petsch",
+            "order": 4,
+            "profile_path": "/lK3zusgeNnQeMVSz6ikd6rBa1jJ.jpg"
+        },
+        {
+            "character": "Josie McCoy",
+            "credit_id": "5857f78a925141594100a2db",
+            "gender": 1,
+            "id": 1717473,
+            "name": "Ashleigh Murray",
+            "order": 6,
+            "profile_path": "/3Rx1lGj3ZMBu1qQ6TJPvQ3xrSfY.jpg"
+        },
+        {
+            "character": "Fred Andrews",
+            "credit_id": "5857f7bec3a368258f057ee8",
+            "gender": 2,
+            "id": 8395,
+            "name": "Luke Perry",
+            "order": 5,
+            "profile_path": "/78TAr0wLoRHyubnYxjyHNCt70V2.jpg"
+        },
+        {
+            "character": "Kevin Keller",
+            "credit_id": "5857f8029251416f1005e9d5",
+            "gender": 2,
+            "id": 1724690,
+            "name": "Casey Cott",
+            "order": 8,
+            "profile_path": "/bMWn0qPfgYjl7zJoMI7asvychRw.jpg"
+        },
+        {
+            "character": "Reggie Mantle",
+            "credit_id": "59e57893925141024e001a7f",
+            "gender": 0,
+            "id": 1907002,
+            "name": "Charles Melton",
+            "order": 500,
+            "profile_path": "/s3vP8xqKneDnCk5rS6eL8rWxM3t.jpg"
+        }
     ],
     "genres": [
-        "Drama",
-        "Mystery"
+        {
+            "id": 18,
+            "name": "Drama"
+        },
+        {
+            "id": 9648,
+            "name": "Mystery"
+        },
+        {
+            "id": 35,
+            "name": "Comedy"
+        }
     ],
-    "id": "riverdale",
+    "id": 294,
+    "image": "http://image.tmdb.org/t/p/w500/1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
+    "imdb_id": null,
+    "last_aired": "2018",
     "name": "Riverdale",
+    "other_images": [
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/2IUpoKSP64r6rp2vBo0Fdk8a1UU.jpg",
+            "height": 1125,
+            "iso_639_1": null,
+            "vote_average": 5.454,
+            "vote_count": 3,
+            "width": 2000
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/a3G7FsQNfo9mrnZtXN3yaDQhAgz.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.39,
+            "vote_count": 6,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/2BdeV1gjkWMTFEldekbqFI5qU5n.jpg",
+            "height": 1080,
+            "iso_639_1": "en",
+            "vote_average": 5.312,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/h26n2RPVeoTIEdv96jbxCQKSqaW.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.246,
+            "vote_count": 2,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.778385772913817,
+            "file_path": "/gS91Amt1arLnP21Pi3nm4ObFF4Y.jpg",
+            "height": 731,
+            "iso_639_1": "en",
+            "vote_average": 5.172,
+            "vote_count": 1,
+            "width": 1300
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/4IeZIgxxeRJdgAYMd0Frc7alKcJ.jpg",
+            "height": 1395,
+            "iso_639_1": null,
+            "vote_average": 5.172,
+            "vote_count": 1,
+            "width": 2480
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/aNKIbzLftZ14NnZJVZTQHL332Ho.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/sEqHXTDUr3W6oNFFIgR5re8UQxZ.jpg",
+            "height": 720,
+            "iso_639_1": null,
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1280
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/biY4RGFlVQXnHlfrX7DfC6ekJvE.jpg",
+            "height": 720,
+            "iso_639_1": null,
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1280
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/tOOjl0thkVYfcwVLz2up602NQo8.jpg",
+            "height": 1080,
+            "iso_639_1": "en",
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/dmwqioFelVSmLrZ894ONBX9iaxz.jpg",
+            "height": 1080,
+            "iso_639_1": "en",
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1920
+        }
+    ],
     "overview": "Set in the present, the series offers a bold, subversive take on Archie, Betty, Veronica and their friends, exploring the surreality of small-town life, the darkness and weirdness bubbling beneath Riverdale’s wholesome facade.",
-    "poster": "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg",
+    "popularity": 68.949492,
+    "release_date": "2017",
     "running": true,
+    "runtime": 45,
     "seasons": 2,
-    "type": "show",
-    "video": {
-        "id": "5892ead89251416ee300269d",
-        "iso_3166_1": "US",
-        "iso_639_1": "en",
-        "key": "9XmFTADupMc",
-        "name": "Riverdale (The CW) Trailer HD",
-        "site": "YouTube",
-        "size": 720,
-        "type": "Trailer"
-    },
-    "years": [
-        2017,
-        2018
+    "tagline": null,
+    "tmdb_id": 69050,
+    "type": 0,
+    "videos": [
+        {
+            "id": "5892ead89251416ee300269d",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "9XmFTADupMc",
+            "name": "Riverdale (The CW) Trailer HD",
+            "site": "YouTube",
+            "size": 720,
+            "type": "Trailer"
+        }
     ]
 }
 
 export const INTERSTELLAR_JSON = {
     "albums": [
-        "interstellar",
-        "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)"
+        {
+            "artists": [
+                {
+                    "bio": null,
+                    "followers": 1100529,
+                    "id": 13,
+                    "image": "https://i.scdn.co/image/14657235e8724181f8b32c6bfa54cdbf86d70852",
+                    "name": "Hans Zimmer",
+                    "spotify_uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                }
+            ],
+            "genres": [],
+            "id": 297,
+            "image": "https://i.scdn.co/image/eed15df0d0849836293b9f787fabf077ce9e9f2e",
+            "label": "WaterTower Music",
+            "name": "Interstellar: Original Motion Picture Soundtrack (Deluxe Digital Version)",
+            "release_date": "2014-11-21",
+            "spotify_uri": "spotify:album:5OVGwMCexoHavOar6v4al5",
+            "track_count": 24,
+            "tracks": [
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 235837,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4BvjHosOH8UhWloGmoMTAC"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4BvjHosOH8UhWloGmoMTAC",
+                    "id": "4BvjHosOH8UhWloGmoMTAC",
+                    "name": "Dreaming of the Crash",
+                    "preview_url": "https://p.scdn.co/mp3-preview/cf23c7182cf352325b7c87273a53482a805e04f8?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 1,
+                    "type": "track",
+                    "uri": "spotify:track:4BvjHosOH8UhWloGmoMTAC"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 126959,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/15WRWc3qqlyAzTne9q5tQK"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/15WRWc3qqlyAzTne9q5tQK",
+                    "id": "15WRWc3qqlyAzTne9q5tQK",
+                    "name": "Cornfield Chase",
+                    "preview_url": "https://p.scdn.co/mp3-preview/2be1387d787a1e1c7c2b7ddb5370126a769ca0f1?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 2,
+                    "type": "track",
+                    "uri": "spotify:track:15WRWc3qqlyAzTne9q5tQK"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 341395,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6NNW7XLQ5BecXtPumwkPd5"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6NNW7XLQ5BecXtPumwkPd5",
+                    "id": "6NNW7XLQ5BecXtPumwkPd5",
+                    "name": "Dust",
+                    "preview_url": "https://p.scdn.co/mp3-preview/ab31493c9117d1b89210de16fa77130cb46dc878?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 3,
+                    "type": "track",
+                    "uri": "spotify:track:6NNW7XLQ5BecXtPumwkPd5"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 199422,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2kDBZhuazsPJYUXFUHUnJY"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2kDBZhuazsPJYUXFUHUnJY",
+                    "id": "2kDBZhuazsPJYUXFUHUnJY",
+                    "name": "Day One",
+                    "preview_url": "https://p.scdn.co/mp3-preview/c0010fd7b7c3700ef6f5db0c99e138cf5cfb469f?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 4,
+                    "type": "track",
+                    "uri": "spotify:track:2kDBZhuazsPJYUXFUHUnJY"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 412424,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3yt6lebWxZqZQTdtYmmLvN"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3yt6lebWxZqZQTdtYmmLvN",
+                    "id": "3yt6lebWxZqZQTdtYmmLvN",
+                    "name": "Stay",
+                    "preview_url": "https://p.scdn.co/mp3-preview/bebce4572dcac48266118ab893da5422b15e3711?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 5,
+                    "type": "track",
+                    "uri": "spotify:track:3yt6lebWxZqZQTdtYmmLvN"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 100877,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/7ifyQ8PXhpc32SFa6t6luJ"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/7ifyQ8PXhpc32SFa6t6luJ",
+                    "id": "7ifyQ8PXhpc32SFa6t6luJ",
+                    "name": "Message from Home",
+                    "preview_url": "https://p.scdn.co/mp3-preview/c22dd801699f697a49adb6d97414e80c290e1a97?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 6,
+                    "type": "track",
+                    "uri": "spotify:track:7ifyQ8PXhpc32SFa6t6luJ"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 90569,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/7vJRMHWCk64xHgGaL9lYTq"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/7vJRMHWCk64xHgGaL9lYTq",
+                    "id": "7vJRMHWCk64xHgGaL9lYTq",
+                    "name": "The Wormhole",
+                    "preview_url": "https://p.scdn.co/mp3-preview/ee6f57c338d90189b11e7a2290a364a988a083e4?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 7,
+                    "type": "track",
+                    "uri": "spotify:track:7vJRMHWCk64xHgGaL9lYTq"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 219092,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/50KpZ6oMPMwuOgpAg1bA0K"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/50KpZ6oMPMwuOgpAg1bA0K",
+                    "id": "50KpZ6oMPMwuOgpAg1bA0K",
+                    "name": "Mountains",
+                    "preview_url": "https://p.scdn.co/mp3-preview/9b8c078407a881d8b16cd2cda53f984c0346655e?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 8,
+                    "type": "track",
+                    "uri": "spotify:track:50KpZ6oMPMwuOgpAg1bA0K"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 152672,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/7lSoQ4jDIP6sTyzrMMe2Ex"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/7lSoQ4jDIP6sTyzrMMe2Ex",
+                    "id": "7lSoQ4jDIP6sTyzrMMe2Ex",
+                    "name": "Afraid of Time",
+                    "preview_url": "https://p.scdn.co/mp3-preview/9d3f6883bbba6bab52c0a79f39a69c30ce173281?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 9,
+                    "type": "track",
+                    "uri": "spotify:track:7lSoQ4jDIP6sTyzrMMe2Ex"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 207117,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/32AaGMEOR21inErpbCpUnq"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/32AaGMEOR21inErpbCpUnq",
+                    "id": "32AaGMEOR21inErpbCpUnq",
+                    "name": "A Place Among the Stars",
+                    "preview_url": "https://p.scdn.co/mp3-preview/11cf0a99dbeaa92824447c9ba90113a240d6f77a?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 10,
+                    "type": "track",
+                    "uri": "spotify:track:32AaGMEOR21inErpbCpUnq"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 117241,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0I9WXFMCidIOawoZYdWHFw"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0I9WXFMCidIOawoZYdWHFw",
+                    "id": "0I9WXFMCidIOawoZYdWHFw",
+                    "name": "Running Out",
+                    "preview_url": "https://p.scdn.co/mp3-preview/188e7fd70e169ac6e1480479e78cf80c2b23c640?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 11,
+                    "type": "track",
+                    "uri": "spotify:track:0I9WXFMCidIOawoZYdWHFw"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 348552,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0TYY20j7GIY2nNvCqdjiZb"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0TYY20j7GIY2nNvCqdjiZb",
+                    "id": "0TYY20j7GIY2nNvCqdjiZb",
+                    "name": "I'm Going Home",
+                    "preview_url": "https://p.scdn.co/mp3-preview/3751988c6a7b38e64ae0fff581d306192e3af428?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 12,
+                    "type": "track",
+                    "uri": "spotify:track:0TYY20j7GIY2nNvCqdjiZb"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 506876,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6rDYKHBFzhpD1epBImBRB0"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6rDYKHBFzhpD1epBImBRB0",
+                    "id": "6rDYKHBFzhpD1epBImBRB0",
+                    "name": "Coward",
+                    "preview_url": "https://p.scdn.co/mp3-preview/99f563ca03c4a32347e1de6c3e0b7674abb199f2?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 13,
+                    "type": "track",
+                    "uri": "spotify:track:6rDYKHBFzhpD1epBImBRB0"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 402202,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0I0lodWcHxJUvU9Norz7ZL"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0I0lodWcHxJUvU9Norz7ZL",
+                    "id": "0I0lodWcHxJUvU9Norz7ZL",
+                    "name": "Detach",
+                    "preview_url": "https://p.scdn.co/mp3-preview/29cd9cb1c4a430fb83046e5fdd2ace13837d68a4?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 14,
+                    "type": "track",
+                    "uri": "spotify:track:0I0lodWcHxJUvU9Norz7ZL"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 383513,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6Kryy0BDFtQLRQZl31sPSu"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6Kryy0BDFtQLRQZl31sPSu",
+                    "id": "6Kryy0BDFtQLRQZl31sPSu",
+                    "name": "S.T.A.Y.",
+                    "preview_url": "https://p.scdn.co/mp3-preview/5d18c8bcbc514309eb49aafa660c1e29657801f3?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 15,
+                    "type": "track",
+                    "uri": "spotify:track:6Kryy0BDFtQLRQZl31sPSu"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 461268,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6CYgAIHRRDEJmOfEOj7fW4"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6CYgAIHRRDEJmOfEOj7fW4",
+                    "id": "6CYgAIHRRDEJmOfEOj7fW4",
+                    "name": "Where We're Going",
+                    "preview_url": "https://p.scdn.co/mp3-preview/fce6b97a8c645cbb203f90d88d2d631cdfe9124c?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 16,
+                    "type": "track",
+                    "uri": "spotify:track:6CYgAIHRRDEJmOfEOj7fW4"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 107767,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3CU97aGUQH8Kc46Fbuc2be"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3CU97aGUQH8Kc46Fbuc2be",
+                    "id": "3CU97aGUQH8Kc46Fbuc2be",
+                    "name": "First Step",
+                    "preview_url": "https://p.scdn.co/mp3-preview/36e8db5936f861dae6d21b269342a796eb2cf045?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 17,
+                    "type": "track",
+                    "uri": "spotify:track:3CU97aGUQH8Kc46Fbuc2be"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 113193,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/40V3wJuUYpCDSjY8wKOP92"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/40V3wJuUYpCDSjY8wKOP92",
+                    "id": "40V3wJuUYpCDSjY8wKOP92",
+                    "name": "Flying Drone",
+                    "preview_url": "https://p.scdn.co/mp3-preview/667ab8c742185292f265351176b849b91095ca1c?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 18,
+                    "type": "track",
+                    "uri": "spotify:track:40V3wJuUYpCDSjY8wKOP92"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 100985,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0yO6NY07p5p8U4eXHj4xzl"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0yO6NY07p5p8U4eXHj4xzl",
+                    "id": "0yO6NY07p5p8U4eXHj4xzl",
+                    "name": "Atmospheric Entry",
+                    "preview_url": "https://p.scdn.co/mp3-preview/b5c5e285d54be47101278a651fb6b2c866bf8674?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 19,
+                    "type": "track",
+                    "uri": "spotify:track:0yO6NY07p5p8U4eXHj4xzl"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 272909,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3uPB63FBosqBVHolyToCqp"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3uPB63FBosqBVHolyToCqp",
+                    "id": "3uPB63FBosqBVHolyToCqp",
+                    "name": "No Need to Come Back",
+                    "preview_url": "https://p.scdn.co/mp3-preview/28bdb03c86f6e4ab66c05db4a6ed01b9e00e0eb8?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 20,
+                    "type": "track",
+                    "uri": "spotify:track:3uPB63FBosqBVHolyToCqp"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 414896,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3reMA9dO9GXNlG9RDjkITL"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3reMA9dO9GXNlG9RDjkITL",
+                    "id": "3reMA9dO9GXNlG9RDjkITL",
+                    "name": "Imperfect Lock",
+                    "preview_url": "https://p.scdn.co/mp3-preview/10c5659347ff9b4c4a44f96b4a82800ce1f0bb55?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 21,
+                    "type": "track",
+                    "uri": "spotify:track:3reMA9dO9GXNlG9RDjkITL"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 246271,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1yzSSn5Sj1azuo7RgwvDb3"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1yzSSn5Sj1azuo7RgwvDb3",
+                    "id": "1yzSSn5Sj1azuo7RgwvDb3",
+                    "name": "No Time for Caution",
+                    "preview_url": "https://p.scdn.co/mp3-preview/3bf629af2f741c4fd1b67a6091a019cb1a98baaf?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 22,
+                    "type": "track",
+                    "uri": "spotify:track:1yzSSn5Sj1azuo7RgwvDb3"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0YC192cP3KPCRWx8zr8MfZ"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0YC192cP3KPCRWx8zr8MfZ",
+                            "id": "0YC192cP3KPCRWx8zr8MfZ",
+                            "name": "Hans Zimmer",
+                            "type": "artist",
+                            "uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 146181,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/45unIQNJXE4T6vIxIlD6ud"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/45unIQNJXE4T6vIxIlD6ud",
+                    "id": "45unIQNJXE4T6vIxIlD6ud",
+                    "name": "What Happens Now?",
+                    "preview_url": "https://p.scdn.co/mp3-preview/b7ed991105dd3c45920876d805a82f9069777dc1?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 23,
+                    "type": "track",
+                    "uri": "spotify:track:45unIQNJXE4T6vIxIlD6ud"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/1KApqVthworS08PUownIe3"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/1KApqVthworS08PUownIe3",
+                            "id": "1KApqVthworS08PUownIe3",
+                            "name": "John Lithgow",
+                            "type": "artist",
+                            "uri": "spotify:artist:1KApqVthworS08PUownIe3"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0T3ox1TUGdNqRgsxJWl3rS"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0T3ox1TUGdNqRgsxJWl3rS",
+                            "id": "0T3ox1TUGdNqRgsxJWl3rS",
+                            "name": "Ellen Burstyn",
+                            "type": "artist",
+                            "uri": "spotify:artist:0T3ox1TUGdNqRgsxJWl3rS"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/3G5gD8BhY1VQMYBzGkcpQs"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/3G5gD8BhY1VQMYBzGkcpQs",
+                            "id": "3G5gD8BhY1VQMYBzGkcpQs",
+                            "name": "Casey Affleck",
+                            "type": "artist",
+                            "uri": "spotify:artist:3G5gD8BhY1VQMYBzGkcpQs"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/4NTQfilj8qEZ14xqtpF8KF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/4NTQfilj8qEZ14xqtpF8KF",
+                            "id": "4NTQfilj8qEZ14xqtpF8KF",
+                            "name": "Jessica Chastain",
+                            "type": "artist",
+                            "uri": "spotify:artist:4NTQfilj8qEZ14xqtpF8KF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7DZCDlWtuVA88oQoAR4Lsv"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7DZCDlWtuVA88oQoAR4Lsv",
+                            "id": "7DZCDlWtuVA88oQoAR4Lsv",
+                            "name": "Matthew McConaughey",
+                            "type": "artist",
+                            "uri": "spotify:artist:7DZCDlWtuVA88oQoAR4Lsv"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/3kIbuZy0YqgLk6H2WK50f7"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/3kIbuZy0YqgLk6H2WK50f7",
+                            "id": "3kIbuZy0YqgLk6H2WK50f7",
+                            "name": "Mackenzie Foy",
+                            "type": "artist",
+                            "uri": "spotify:artist:3kIbuZy0YqgLk6H2WK50f7"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 99104,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2yd9ETb7cW2vb0SwRDlaot"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2yd9ETb7cW2vb0SwRDlaot",
+                    "id": "2yd9ETb7cW2vb0SwRDlaot",
+                    "name": "Do Not Go Gentle into That Good Night",
+                    "preview_url": "https://p.scdn.co/mp3-preview/98fdfeb21918660abe54eb0fc69ce862d81e53dc?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 24,
+                    "type": "track",
+                    "uri": "spotify:track:2yd9ETb7cW2vb0SwRDlaot"
+                }
+            ]
+        }
     ],
     "artists": [
-        "hans_zimmer",
-        "Hans Zimmer"
+        {
+            "bio": null,
+            "followers": 1100529,
+            "id": 13,
+            "image": "https://i.scdn.co/image/14657235e8724181f8b32c6bfa54cdbf86d70852",
+            "name": "Hans Zimmer",
+            "spotify_uri": "spotify:artist:0YC192cP3KPCRWx8zr8MfZ"
+        }
     ],
-    "backdrops": [
-        "http://image.tmdb.org/t/p/w500//xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
-        "http://image.tmdb.org/t/p/w500//gq4Z1pfOWHn3FKFNutlDCySps9C.jpg",
-        "http://image.tmdb.org/t/p/w500//y4ODodoKWWm7KODB6WgPDHv6Bzd.jpg",
-        "http://image.tmdb.org/t/p/w500//o4BjoraqJLfuRZBhiFXSgRZDUyu.jpg",
-        "http://image.tmdb.org/t/p/w500//xW3MLq7t8gynEiFj3E4YP7KQoqw.jpg",
-        "http://image.tmdb.org/t/p/w500//vFJ31Mp68hwtlB4opsAP29gFqhr.jpg",
-        "http://image.tmdb.org/t/p/w500//sn8LEtCXquQJYEVygbW8YUfumwW.jpg",
-        "http://image.tmdb.org/t/p/w500//walWq52PP2IGRc98VkPG7Wp77lK.jpg",
-        "http://image.tmdb.org/t/p/w500//6MDzVm9h6wEGAbvjihdFU83Q5Wo.jpg",
-        "http://image.tmdb.org/t/p/w500//3mPXGfKcsYIEhl4et2WTSX0llVh.jpg",
-        "http://image.tmdb.org/t/p/w500//tAkBC4X2Rp3QtV7rzqTv8DU3fTA.jpg",
-        "http://image.tmdb.org/t/p/w500//tn9JffYteR9LSGWx2FC8T1uO403.jpg",
-        "http://image.tmdb.org/t/p/w500//5cgKuGbnGPzh5YRZcqK8kZGnjl7.jpg",
-        "http://image.tmdb.org/t/p/w500//nYtBxRwoQTfzSDmAB3l7TIdPLpY.jpg",
-        "http://image.tmdb.org/t/p/w500//bbyI73zXfC8cxkT8xCimyttZrRA.jpg",
-        "http://image.tmdb.org/t/p/w500//rN9Vjna7lnS9jcrSMNvYQEWCRlK.jpg",
-        "http://image.tmdb.org/t/p/w500//s4fd4EfqBFYMbZmIdhNdCLwFrhO.jpg",
-        "http://image.tmdb.org/t/p/w500//aivK6Z2naJsHz5EJFweLP2G7hS.jpg",
-        "http://image.tmdb.org/t/p/w500//oAmkQmTUZ8bkyVbch56TrKHzmuu.jpg",
-        "http://image.tmdb.org/t/p/w500//8CQeAuMbR7pFlvZlgV7Oac3ZbDH.jpg",
-        "http://image.tmdb.org/t/p/w500//cwcibDD8VeZ34SNWTJazEeBho1s.jpg",
-        "http://image.tmdb.org/t/p/w500//9Bnh8RkPpPoo3ftLyDrDPDTMK8p.jpg",
-        "http://image.tmdb.org/t/p/w500//gvldej73NLKaC4j7sCldj1sTjjD.jpg",
-        "http://image.tmdb.org/t/p/w500//5EV88Qt5oDRbnj9F9osFrg3Yd55.jpg",
-        "http://image.tmdb.org/t/p/w500//bUSsMnf8K9wug5aJ8P6jpZT25MV.jpg",
-        "http://image.tmdb.org/t/p/w500//fAAwITtgyzwEy6YstNPxnQ00d6z.jpg",
-        "http://image.tmdb.org/t/p/w500//zX1SB9uuQaJJw2kjZszNHx5PqwI.jpg",
-        "http://image.tmdb.org/t/p/w500//zWyDer0uZdwFnOfthdJvy4qykZm.jpg",
-        "http://image.tmdb.org/t/p/w500//pwRzDssAENT121YkSvfR2uSEfh7.jpg",
-        "http://image.tmdb.org/t/p/w500//b3htE2IM0XvupfVg8IKfb2KcKzw.jpg"
-    ],
+    "average_rating": 8.1,
     "cast": [
-        "Matthew McConaughey",
-        "Jessica Chastain",
-        "Anne Hathaway",
-        "Michael Caine",
-        "Casey Affleck",
-        "Mackenzie Foy",
-        "Timothée Chalamet",
-        "Bill Irwin",
-        "Matt Damon",
-        "Ellen Burstyn",
-        "John Lithgow",
-        "Wes Bentley",
-        "Topher Grace",
-        "David Oyelowo",
-        "David Gyasi",
-        "William Devane",
-        "Josh Stewart",
-        "Collette Wolfe",
-        "Leah Cairns",
-        "Russ Fega",
-        "Lena Georgas",
-        "Jeff Hephner",
-        "Elyes Gabel",
-        "Brooke Smith",
-        "Liam Dickinson",
-        "Francis X. McCarthy",
-        "Andrew Borba",
-        "Flora Nolan",
-        "William Patrick Brown",
-        "Cici Leah Campbell",
-        "Kristian Van der Heyden",
-        "Mark Casimir Dyniewicz",
-        "Joseph Oliveira",
-        "Ryan Irving",
-        "Alexander Michael Helisek",
-        "Benjamin Hardy"
+        {
+            "cast_id": 9,
+            "character": "Joseph Cooper",
+            "credit_id": "52fe4bbf9251416c910e47cb",
+            "gender": 2,
+            "id": 10297,
+            "name": "Matthew McConaughey",
+            "order": 0,
+            "profile_path": "/jdRmHrG0TWXGhs4tO6TJNSoL25T.jpg"
+        },
+        {
+            "cast_id": 17,
+            "character": "Murph Cooper",
+            "credit_id": "52fe4bbf9251416c910e47f1",
+            "gender": 1,
+            "id": 83002,
+            "name": "Jessica Chastain",
+            "order": 1,
+            "profile_path": "/nkFrkn5NZVGWb4b2X0yIcXezhyt.jpg"
+        },
+        {
+            "cast_id": 169,
+            "character": "Dr. Amelia Brand",
+            "credit_id": "57fe146fc3a368504a00261e",
+            "gender": 1,
+            "id": 1813,
+            "name": "Anne Hathaway",
+            "order": 2,
+            "profile_path": "/xENM3XJAtdpolwELYDy9iaCtU4m.jpg"
+        },
+        {
+            "cast_id": 18,
+            "character": "Professor John Brand",
+            "credit_id": "52fe4bbf9251416c910e47f5",
+            "gender": 2,
+            "id": 3895,
+            "name": "Michael Caine",
+            "order": 3,
+            "profile_path": "/vvj0JMSFpOajXCE46Hy4dyqSP2U.jpg"
+        },
+        {
+            "cast_id": 21,
+            "character": "Tom Cooper",
+            "credit_id": "52fe4bbf9251416c910e4805",
+            "gender": 2,
+            "id": 1893,
+            "name": "Casey Affleck",
+            "order": 4,
+            "profile_path": "/kPNMpiZHsAzeQar4DiNsrekwHBU.jpg"
+        },
+        {
+            "cast_id": 24,
+            "character": "Young Murph Cooper",
+            "credit_id": "52fe4bbf9251416c910e4811",
+            "gender": 1,
+            "id": 851784,
+            "name": "Mackenzie Foy",
+            "order": 5,
+            "profile_path": "/u6Dt9C6VwWt4kRTGEcr3p2shxgt.jpg"
+        },
+        {
+            "cast_id": 23,
+            "character": "Young Tom Cooper",
+            "credit_id": "52fe4bbf9251416c910e480d",
+            "gender": 2,
+            "id": 1190668,
+            "name": "Timothée Chalamet",
+            "order": 6,
+            "profile_path": "/gz5kyVsUzOratQmGHdDg3AnxP9h.jpg"
+        },
+        {
+            "cast_id": 26,
+            "character": "TARS (voice)",
+            "credit_id": "52fe4bbf9251416c910e4819",
+            "gender": 2,
+            "id": 58549,
+            "name": "Bill Irwin",
+            "order": 7,
+            "profile_path": "/zjvhlCC1LA5JUwfScQTwS1xLciP.jpg"
+        },
+        {
+            "cast_id": 31,
+            "character": "Dr. Mann",
+            "credit_id": "52fe4bbf9251416c910e482d",
+            "gender": 2,
+            "id": 1892,
+            "name": "Matt Damon",
+            "order": 8,
+            "profile_path": "/elSlNgV8xVifsbHpFsqrPGxJToZ.jpg"
+        },
+        {
+            "cast_id": 22,
+            "character": "Old Murph Cooper",
+            "credit_id": "52fe4bbf9251416c910e4809",
+            "gender": 1,
+            "id": 9560,
+            "name": "Ellen Burstyn",
+            "order": 9,
+            "profile_path": "/kxWFljG3JjJMbOMCLm0SkrPQjhf.jpg"
+        },
+        {
+            "cast_id": 25,
+            "character": "Donald",
+            "credit_id": "52fe4bbf9251416c910e4815",
+            "gender": 2,
+            "id": 12074,
+            "name": "John Lithgow",
+            "order": 10,
+            "profile_path": "/uquz3dZ0fs0lAK57lCXwxaslVkb.jpg"
+        },
+        {
+            "cast_id": 28,
+            "character": "Dr. Doyle",
+            "credit_id": "52fe4bbf9251416c910e4821",
+            "gender": 2,
+            "id": 8210,
+            "name": "Wes Bentley",
+            "order": 11,
+            "profile_path": "/fbHHalL9CS52zvJp015G31vwX23.jpg"
+        },
+        {
+            "cast_id": 27,
+            "character": "Getty",
+            "credit_id": "52fe4bbf9251416c910e481d",
+            "gender": 2,
+            "id": 17052,
+            "name": "Topher Grace",
+            "order": 12,
+            "profile_path": "/nM4H9Uqn2V4shWCxxnDqT6ZaJOu.jpg"
+        },
+        {
+            "cast_id": 29,
+            "character": "Principal",
+            "credit_id": "52fe4bbf9251416c910e4825",
+            "gender": 2,
+            "id": 35013,
+            "name": "David Oyelowo",
+            "order": 13,
+            "profile_path": "/uhFLGQqNmhLgcqgITkoGoHy9FTl.jpg"
+        },
+        {
+            "cast_id": 30,
+            "character": "Dr. Romilly",
+            "credit_id": "52fe4bbf9251416c910e4829",
+            "gender": 2,
+            "id": 55411,
+            "name": "David Gyasi",
+            "order": 14,
+            "profile_path": "/jkqSPSGNaWZuGLDBUrL9grAXLkM.jpg"
+        },
+        {
+            "cast_id": 37,
+            "character": "NASA Board Member",
+            "credit_id": "54259750c3a3680876005f94",
+            "gender": 2,
+            "id": 21416,
+            "name": "William Devane",
+            "order": 15,
+            "profile_path": "/SYI4fML7EmZDghuieWf6SpiyRF.jpg"
+        },
+        {
+            "cast_id": 38,
+            "character": "CASE (voice)",
+            "credit_id": "545db7ab0e0a261fb6005d65",
+            "gender": 2,
+            "id": 40039,
+            "name": "Josh Stewart",
+            "order": 16,
+            "profile_path": "/x9ZQibxASPwVWGeQn4Y5dcU2ZJG.jpg"
+        },
+        {
+            "cast_id": 39,
+            "character": "Ms. Kelly",
+            "credit_id": "545db7d70e0a261fb6005d6f",
+            "gender": 1,
+            "id": 86624,
+            "name": "Collette Wolfe",
+            "order": 17,
+            "profile_path": "/aSD4h5379b2eEw3bLou9ByLimmq.jpg"
+        },
+        {
+            "cast_id": 40,
+            "character": "Lois Cooper",
+            "credit_id": "545db7f5c3a3686cbb000db6",
+            "gender": 1,
+            "id": 32202,
+            "name": "Leah Cairns",
+            "order": 18,
+            "profile_path": "/Asuotouxe6Se3stoMP7vrLE1EaD.jpg"
+        },
+        {
+            "cast_id": 141,
+            "character": "Crew Chief",
+            "credit_id": "55191d18c3a3684b6b002414",
+            "gender": 2,
+            "id": 535,
+            "name": "Russ Fega",
+            "order": 19,
+            "profile_path": "/7JFQueMbXqGIz16wKBlok7WfNNz.jpg"
+        },
+        {
+            "cast_id": 142,
+            "character": "Nurse Practitioner",
+            "credit_id": "55191d5b9251416f0000706f",
+            "gender": 0,
+            "id": 171901,
+            "name": "Lena Georgas",
+            "order": 20,
+            "profile_path": "/a16eFCpLMJ6n2RoOPej372XzWX.jpg"
+        },
+        {
+            "cast_id": 143,
+            "character": "Doctor",
+            "credit_id": "55191d8bc3a3682aa8000cb4",
+            "gender": 2,
+            "id": 212689,
+            "name": "Jeff Hephner",
+            "order": 21,
+            "profile_path": "/bNnvbOCBS0LZAqdT1cW2UcrnRw2.jpg"
+        },
+        {
+            "cast_id": 144,
+            "character": "Administrator",
+            "credit_id": "55191db092514115000044c3",
+            "gender": 2,
+            "id": 78050,
+            "name": "Elyes Gabel",
+            "order": 22,
+            "profile_path": "/tNAexPOefzEJEpnOVBWs34BNLsh.jpg"
+        },
+        {
+            "cast_id": 145,
+            "character": "Nurse",
+            "credit_id": "55191dd7c3a3684bd80022dc",
+            "gender": 1,
+            "id": 31649,
+            "name": "Brooke Smith",
+            "order": 23,
+            "profile_path": "/fiR32HbDUWCZuRjdlknQMIyIsrw.jpg"
+        },
+        {
+            "cast_id": 146,
+            "character": "Coop",
+            "credit_id": "55287dde92514111d600086d",
+            "gender": 2,
+            "id": 1452481,
+            "name": "Liam Dickinson",
+            "order": 24,
+            "profile_path": "/ih6hto8rsKZg71Qk4vniU8Xj8cj.jpg"
+        },
+        {
+            "cast_id": 147,
+            "character": "Boots",
+            "credit_id": "55ea8067c3a3682c62008d3d",
+            "gender": 2,
+            "id": 100650,
+            "name": "Francis X. McCarthy",
+            "order": 25,
+            "profile_path": "/kJe5FQXtccOzAzhO9RZaPKhWht2.jpg"
+        },
+        {
+            "cast_id": 148,
+            "character": "Smith",
+            "credit_id": "55ea8068c3a3682c5d009739",
+            "gender": 2,
+            "id": 167720,
+            "name": "Andrew Borba",
+            "order": 26,
+            "profile_path": "/knHlGxYCOO3tqFTiSoYWusjzdm1.jpg"
+        },
+        {
+            "cast_id": 149,
+            "character": "Girl on Truck",
+            "credit_id": "55ea80689251413e3a008ab7",
+            "gender": 1,
+            "id": 1505363,
+            "name": "Flora Nolan",
+            "order": 27,
+            "profile_path": "/f4NdIEvsknD6fMH9GGN2yRciwpN.jpg"
+        },
+        {
+            "cast_id": 150,
+            "character": "NASA Employee (uncredited)",
+            "credit_id": "56b63be09251413ca1002d04",
+            "gender": 2,
+            "id": 1452865,
+            "name": "William Patrick Brown",
+            "order": 28,
+            "profile_path": "/7ap8ZBoGn20W6DwFKRUdzycMBTa.jpg"
+        },
+        {
+            "cast_id": 151,
+            "character": "NASA Scientist (uncredited)",
+            "credit_id": "56b63c06c3a36806f100962f",
+            "gender": 1,
+            "id": 1503849,
+            "name": "Cici Leah Campbell",
+            "order": 29,
+            "profile_path": "/eV5g6RZ5OVVg2kEYkYu8MndanD6.jpg"
+        },
+        {
+            "cast_id": 152,
+            "character": "Scientist (uncredited)",
+            "credit_id": "56b63c949251414a3a004185",
+            "gender": 2,
+            "id": 1573547,
+            "name": "Kristian Van der Heyden",
+            "order": 30,
+            "profile_path": "/m3p1V8rit1kcab2arukZRPoddiM.jpg"
+        },
+        {
+            "cast_id": 153,
+            "character": "NASA Inspector (uncredited)",
+            "credit_id": "56b63ce792514112b9008b59",
+            "gender": 2,
+            "id": 97447,
+            "name": "Mark Casimir Dyniewicz",
+            "order": 31,
+            "profile_path": "/k50HeN23G34LixmL3sHGTyJU93p.jpg"
+        },
+        {
+            "cast_id": 154,
+            "character": "Astronaut (uncredited)",
+            "credit_id": "56b63d5d9251413ca1002d32",
+            "gender": 2,
+            "id": 1360008,
+            "name": "Joseph Oliveira",
+            "order": 32,
+            "profile_path": "/nFJX5qWKlHyew7AHKUFE3EQnMO5.jpg"
+        },
+        {
+            "cast_id": 170,
+            "character": "Popcorn Seller (uncredited)",
+            "credit_id": "580e5fc09251416e0a002b6d",
+            "gender": 2,
+            "id": 1699056,
+            "name": "Ryan Irving",
+            "order": 33,
+            "profile_path": "/2GoGL9jsg6bfmhfGfChkqDuRe1N.jpg"
+        },
+        {
+            "cast_id": 171,
+            "character": "Construction Boss (uncredited)",
+            "credit_id": "580e5fe3c3a3683867000507",
+            "gender": 2,
+            "id": 1663832,
+            "name": "Alexander Michael Helisek",
+            "order": 34,
+            "profile_path": "/gR6ykV3iQVZlA3KnuOk5hmFKDi7.jpg"
+        },
+        {
+            "cast_id": 172,
+            "character": "NASA Scientist (uncredited)",
+            "credit_id": "580e5ff5c3a36859aa002f2e",
+            "gender": 2,
+            "id": 1699057,
+            "name": "Benjamin Hardy",
+            "order": 35,
+            "profile_path": "/o08lN3cGLguomAozF1uuDQTIl7r.jpg"
+        }
     ],
     "genres": [
-        "Adventure",
-        "Drama",
-        "Science Fiction"
+        {
+            "id": 12,
+            "name": "Adventure"
+        },
+        {
+            "id": 18,
+            "name": "Drama"
+        },
+        {
+            "id": 878,
+            "name": "Science Fiction"
+        }
     ],
-    "id": "interstellar",
+    "id": 172,
+    "image": "http://image.tmdb.org/t/p/w500/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
+    "imdb_id": "tt0816692",
+    "last_aired": "2014",
     "name": "Interstellar",
+    "other_images": [
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/xu9zaAevzQ5nnrsXN6JcahLnG4i.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.498,
+            "vote_count": 16,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/gq4Z1pfOWHn3FKFNutlDCySps9C.jpg",
+            "height": 1080,
+            "iso_639_1": "xx",
+            "vote_average": 5.464,
+            "vote_count": 11,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/y4ODodoKWWm7KODB6WgPDHv6Bzd.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.454,
+            "vote_count": 3,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/o4BjoraqJLfuRZBhiFXSgRZDUyu.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.444,
+            "vote_count": 4,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/xW3MLq7t8gynEiFj3E4YP7KQoqw.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.438,
+            "vote_count": 4,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/vFJ31Mp68hwtlB4opsAP29gFqhr.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.401174168297455,
+            "vote_count": 10,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/sn8LEtCXquQJYEVygbW8YUfumwW.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.384615384615385,
+            "vote_count": 2,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/walWq52PP2IGRc98VkPG7Wp77lK.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.384,
+            "vote_count": 2,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/6MDzVm9h6wEGAbvjihdFU83Q5Wo.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.34065934065934,
+            "vote_count": 2,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/3mPXGfKcsYIEhl4et2WTSX0llVh.jpg",
+            "height": 1080,
+            "iso_639_1": "en",
+            "vote_average": 5.320910973084887,
+            "vote_count": 6,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/tAkBC4X2Rp3QtV7rzqTv8DU3fTA.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.3125,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/tn9JffYteR9LSGWx2FC8T1uO403.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.305059523809524,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/5cgKuGbnGPzh5YRZcqK8kZGnjl7.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.297619047619047,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/nYtBxRwoQTfzSDmAB3l7TIdPLpY.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.290178571428571,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/bbyI73zXfC8cxkT8xCimyttZrRA.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.282738095238095,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/rN9Vjna7lnS9jcrSMNvYQEWCRlK.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.282738095238095,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/s4fd4EfqBFYMbZmIdhNdCLwFrhO.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.282051282051282,
+            "vote_count": 2,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/aivK6Z2naJsHz5EJFweLP2G7hS.jpg",
+            "height": 1080,
+            "iso_639_1": "xx",
+            "vote_average": 5.238095238095238,
+            "vote_count": 2,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/oAmkQmTUZ8bkyVbch56TrKHzmuu.jpg",
+            "height": 1152,
+            "iso_639_1": null,
+            "vote_average": 5.238095238095238,
+            "vote_count": 4,
+            "width": 2048
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/8CQeAuMbR7pFlvZlgV7Oac3ZbDH.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.230654761904762,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/cwcibDD8VeZ34SNWTJazEeBho1s.jpg",
+            "height": 1080,
+            "iso_639_1": "en",
+            "vote_average": 5.178571428571429,
+            "vote_count": 1,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/9Bnh8RkPpPoo3ftLyDrDPDTMK8p.jpg",
+            "height": 1152,
+            "iso_639_1": null,
+            "vote_average": 5.165945165945166,
+            "vote_count": 3,
+            "width": 2048
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/gvldej73NLKaC4j7sCldj1sTjjD.jpg",
+            "height": 1080,
+            "iso_639_1": "en",
+            "vote_average": 5.142857142857143,
+            "vote_count": 2,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/5EV88Qt5oDRbnj9F9osFrg3Yd55.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 5.134,
+            "vote_count": 5,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.775280898876404,
+            "file_path": "/bUSsMnf8K9wug5aJ8P6jpZT25MV.jpg",
+            "height": 801,
+            "iso_639_1": null,
+            "vote_average": 5.105042016806722,
+            "vote_count": 5,
+            "width": 1422
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/fAAwITtgyzwEy6YstNPxnQ00d6z.jpg",
+            "height": 1152,
+            "iso_639_1": null,
+            "vote_average": 5.079365079365079,
+            "vote_count": 3,
+            "width": 2048
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/zX1SB9uuQaJJw2kjZszNHx5PqwI.jpg",
+            "height": 2160,
+            "iso_639_1": "en",
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 3840
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/zWyDer0uZdwFnOfthdJvy4qykZm.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/pwRzDssAENT121YkSvfR2uSEfh7.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1920
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/b3htE2IM0XvupfVg8IKfb2KcKzw.jpg",
+            "height": 1080,
+            "iso_639_1": null,
+            "vote_average": 0,
+            "vote_count": 0,
+            "width": 1920
+        }
+    ],
     "overview": "Interstellar chronicles the adventures of a group of explorers who make use of a newly discovered wormhole to surpass the limitations on human space travel and conquer the vast distances involved in an interstellar voyage.",
-    "poster": "http://image.tmdb.org/t/p/w500//nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg",
-    "running": "None",
-    "season": "None",
-    "type": "movie",
-    "video": {
-        "id": "57817b1a9251417b8e000a8c",
-        "iso_3166_1": "US",
-        "iso_639_1": "en",
-        "key": "ePbKGoIGAXY",
-        "name": "Official UK Trailer #3",
-        "site": "YouTube",
-        "size": 1080,
-        "type": "Trailer"
-    },
-    "years": "2014"
+    "popularity": 44.03079,
+    "release_date": "2014",
+    "running": false,
+    "runtime": 169,
+    "seasons": 0,
+    "tagline": "Mankind was born on Earth. It was never meant to die here.",
+    "tmdb_id": 157336,
+    "type": 1,
+    "videos": [
+        {
+            "id": "57817b1a9251417b8e000a8c",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "ePbKGoIGAXY",
+            "name": "Official UK Trailer #3",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        },
+        {
+            "id": "5794fffbc3a36829ab00056f",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "2LqzF5WauAw",
+            "name": "Official Trailer",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        },
+        {
+            "id": "57817a91c3a36873ea000adf",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "nyc6RJEEe0U",
+            "name": "Official Teaser",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Teaser"
+        },
+        {
+            "id": "57817aa69251417bfc000a58",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "zSWdZVtXT7E",
+            "name": "Official UK Trailer",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        },
+        {
+            "id": "57817ab4c3a36813870024b7",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "KlyknsTJk0w",
+            "name": "Own it today",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Teaser"
+        },
+        {
+            "id": "57817accc3a368592500392e",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "0vxOhd4qlnA",
+            "name": "Official Trailer #3",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        },
+        {
+            "id": "57817ada9251417c28000b02",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "827FNDpQWrQ",
+            "name": "Official UK Teaser Trailer",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        },
+        {
+            "id": "57817b0fc3a368592500394d",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "LY19rHKAaAg",
+            "name": "Official UK Trailer 4",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        },
+        {
+            "id": "5795006f92514142390035ae",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "Rt2LHkSwdPQ",
+            "name": "Official Trailer #2",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Trailer"
+        }
+    ]
 }
 
 export const ARTIST_JSON = {
@@ -926,6 +3161,1084 @@ export const ALBUM_JSON = {
         }
     ]
 }
+
+export const BEOWULF_JSON = {
+    "albums": [
+        {
+            "artists": [
+                {
+                    "bio": null,
+                    "followers": 1659,
+                    "id": 5,
+                    "image": "https://i.scdn.co/image/d32885bd9ac19dbcf6317419bd78bc53b65c46f4",
+                    "name": "Rob Lane",
+                    "spotify_uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                }
+            ],
+            "genres": [],
+            "id": 72,
+            "image": "https://i.scdn.co/image/e068321505904e25ed2e29162d739a1c347abb1e",
+            "label": "Sony Classical",
+            "name": "Beowulf (Original Television Soundtrack)",
+            "release_date": "2016-03-18",
+            "spotify_uri": "spotify:album:3LWJV1lnVbkXp9I3F0wmyM",
+            "track_count": 16,
+            "tracks": [
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 64706,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2kO6Jnz2m4CrrCUgT6BJNM"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2kO6Jnz2m4CrrCUgT6BJNM",
+                    "id": "2kO6Jnz2m4CrrCUgT6BJNM",
+                    "name": "Main Theme (From \"Beowulf\")",
+                    "preview_url": "https://p.scdn.co/mp3-preview/8716bc101a500614182a994eb1c6d3357ebe96b9?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 1,
+                    "type": "track",
+                    "uri": "spotify:track:2kO6Jnz2m4CrrCUgT6BJNM"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 246266,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/13F0DbKXBZpwJCeCgdmktO"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/13F0DbKXBZpwJCeCgdmktO",
+                    "id": "13F0DbKXBZpwJCeCgdmktO",
+                    "name": "Troll Attack",
+                    "preview_url": "https://p.scdn.co/mp3-preview/a3e4ea59d0256941ed0a39ecfbf1f63748135881?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 2,
+                    "type": "track",
+                    "uri": "spotify:track:13F0DbKXBZpwJCeCgdmktO"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2A0aUbQQQsKp7XINepflo6"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2A0aUbQQQsKp7XINepflo6",
+                            "id": "2A0aUbQQQsKp7XINepflo6",
+                            "name": "Eivor Spottisdor",
+                            "type": "artist",
+                            "uri": "spotify:artist:2A0aUbQQQsKp7XINepflo6"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 246493,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6a47Qmqz86RuggZWDVuKN0"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6a47Qmqz86RuggZWDVuKN0",
+                    "id": "6a47Qmqz86RuggZWDVuKN0",
+                    "name": "Arriving at Herot",
+                    "preview_url": "https://p.scdn.co/mp3-preview/4e78e1aef5ebc5e77752461df720d834ff48b283?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 3,
+                    "type": "track",
+                    "uri": "spotify:track:6a47Qmqz86RuggZWDVuKN0"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 222080,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0FMTouJdDBjIUM4xDUocF4"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0FMTouJdDBjIUM4xDUocF4",
+                    "id": "0FMTouJdDBjIUM4xDUocF4",
+                    "name": "The Shadow of Grendel",
+                    "preview_url": "https://p.scdn.co/mp3-preview/a603257ba938a8d5b2d55895352ac1da806000fe?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 4,
+                    "type": "track",
+                    "uri": "spotify:track:0FMTouJdDBjIUM4xDUocF4"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 225880,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/2f3gGeac0whzwi4g7iispQ"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/2f3gGeac0whzwi4g7iispQ",
+                    "id": "2f3gGeac0whzwi4g7iispQ",
+                    "name": "Beowulf Escapes the Law",
+                    "preview_url": "https://p.scdn.co/mp3-preview/ef16a8336d06b080433fe83e62bbdef8ab62f338?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 5,
+                    "type": "track",
+                    "uri": "spotify:track:2f3gGeac0whzwi4g7iispQ"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 251680,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1OXp3N1ZzV4ZlTlgwmO8oo"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1OXp3N1ZzV4ZlTlgwmO8oo",
+                    "id": "1OXp3N1ZzV4ZlTlgwmO8oo",
+                    "name": "Rescuing Elvina",
+                    "preview_url": "https://p.scdn.co/mp3-preview/b32b1d2ee447da08ccc693481e0e3fb5b801c241?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 6,
+                    "type": "track",
+                    "uri": "spotify:track:1OXp3N1ZzV4ZlTlgwmO8oo"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 91880,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/0GV1jqUFkIBX0hfzdo4GiL"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/0GV1jqUFkIBX0hfzdo4GiL",
+                    "id": "0GV1jqUFkIBX0hfzdo4GiL",
+                    "name": "Funeral Rites",
+                    "preview_url": "https://p.scdn.co/mp3-preview/c64ee04f8466a73c44171402929e70c0ebe88800?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 7,
+                    "type": "track",
+                    "uri": "spotify:track:0GV1jqUFkIBX0hfzdo4GiL"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7MrkzYsqWS17ZCnbQpDKYS"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7MrkzYsqWS17ZCnbQpDKYS",
+                            "id": "7MrkzYsqWS17ZCnbQpDKYS",
+                            "name": "Jan Hendrikse",
+                            "type": "artist",
+                            "uri": "spotify:artist:7MrkzYsqWS17ZCnbQpDKYS"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2A0aUbQQQsKp7XINepflo6"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2A0aUbQQQsKp7XINepflo6",
+                            "id": "2A0aUbQQQsKp7XINepflo6",
+                            "name": "Eivor Spottisdor",
+                            "type": "artist",
+                            "uri": "spotify:artist:2A0aUbQQQsKp7XINepflo6"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 64853,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/40GFXpVaReLIsLAokd5mBR"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/40GFXpVaReLIsLAokd5mBR",
+                    "id": "40GFXpVaReLIsLAokd5mBR",
+                    "name": "Hrothgar's Lament",
+                    "preview_url": "https://p.scdn.co/mp3-preview/df4ccfaef6e9e0a8d1bfb381fb8d5adeba41f1e2?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 8,
+                    "type": "track",
+                    "uri": "spotify:track:40GFXpVaReLIsLAokd5mBR"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 221973,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4dIWCSerevQS8Diwdteca7"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4dIWCSerevQS8Diwdteca7",
+                    "id": "4dIWCSerevQS8Diwdteca7",
+                    "name": "Children's Games & the Skin Shifter",
+                    "preview_url": "https://p.scdn.co/mp3-preview/8e6c77443824d69422cd6ade3096ec0f04f19175?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 9,
+                    "type": "track",
+                    "uri": "spotify:track:4dIWCSerevQS8Diwdteca7"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/10FYLkfC0hvVkjf8aEV5W8"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/10FYLkfC0hvVkjf8aEV5W8",
+                            "id": "10FYLkfC0hvVkjf8aEV5W8",
+                            "name": "Simon O'Dwyer",
+                            "type": "artist",
+                            "uri": "spotify:artist:10FYLkfC0hvVkjf8aEV5W8"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6nKvn9KWmdIdRmZ6iqy5Ja"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "id": "6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "name": "Nick Cooper",
+                            "type": "artist",
+                            "uri": "spotify:artist:6nKvn9KWmdIdRmZ6iqy5Ja"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 244053,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/6t2BhDL0lZpV3zf6Nkcqcb"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/6t2BhDL0lZpV3zf6Nkcqcb",
+                    "id": "6t2BhDL0lZpV3zf6Nkcqcb",
+                    "name": "Bandits",
+                    "preview_url": "https://p.scdn.co/mp3-preview/7a6d1655646da5e8799a853f5c8c928eb9f4b69f?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 10,
+                    "type": "track",
+                    "uri": "spotify:track:6t2BhDL0lZpV3zf6Nkcqcb"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 133080,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/23bqQPB9q1nM1EXCbuS5AP"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/23bqQPB9q1nM1EXCbuS5AP",
+                    "id": "23bqQPB9q1nM1EXCbuS5AP",
+                    "name": "Scorran Dies",
+                    "preview_url": "https://p.scdn.co/mp3-preview/4eeead802f230778839644e62e0ffa7fbb65839b?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 11,
+                    "type": "track",
+                    "uri": "spotify:track:23bqQPB9q1nM1EXCbuS5AP"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7MrkzYsqWS17ZCnbQpDKYS"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7MrkzYsqWS17ZCnbQpDKYS",
+                            "id": "7MrkzYsqWS17ZCnbQpDKYS",
+                            "name": "Jan Hendrikse",
+                            "type": "artist",
+                            "uri": "spotify:artist:7MrkzYsqWS17ZCnbQpDKYS"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6nKvn9KWmdIdRmZ6iqy5Ja"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "id": "6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "name": "Nick Cooper",
+                            "type": "artist",
+                            "uri": "spotify:artist:6nKvn9KWmdIdRmZ6iqy5Ja"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2jEfNRf2T9KJUWTuJjJNVz"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2jEfNRf2T9KJUWTuJjJNVz",
+                            "id": "2jEfNRf2T9KJUWTuJjJNVz",
+                            "name": "Bruce White",
+                            "type": "artist",
+                            "uri": "spotify:artist:2jEfNRf2T9KJUWTuJjJNVz"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 115106,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/4v85A68sLdzjXYbpnsmbTc"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/4v85A68sLdzjXYbpnsmbTc",
+                    "id": "4v85A68sLdzjXYbpnsmbTc",
+                    "name": "The Dowry",
+                    "preview_url": "https://p.scdn.co/mp3-preview/40ed26576aeb361d5f9ede8023efad28a9b75c15?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 12,
+                    "type": "track",
+                    "uri": "spotify:track:4v85A68sLdzjXYbpnsmbTc"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6nKvn9KWmdIdRmZ6iqy5Ja"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "id": "6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "name": "Nick Cooper",
+                            "type": "artist",
+                            "uri": "spotify:artist:6nKvn9KWmdIdRmZ6iqy5Ja"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 169946,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/1HxCbBP2kCroH5adqbQN1A"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/1HxCbBP2kCroH5adqbQN1A",
+                    "id": "1HxCbBP2kCroH5adqbQN1A",
+                    "name": "The Wulfing's Attack",
+                    "preview_url": "https://p.scdn.co/mp3-preview/049a27757367623b866711bd4b2a820aaf2b6d80?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 13,
+                    "type": "track",
+                    "uri": "spotify:track:1HxCbBP2kCroH5adqbQN1A"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/50U7v83QyvjGAww3Saw4e9"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/50U7v83QyvjGAww3Saw4e9",
+                            "id": "50U7v83QyvjGAww3Saw4e9",
+                            "name": "Klara Ketelaars",
+                            "type": "artist",
+                            "uri": "spotify:artist:50U7v83QyvjGAww3Saw4e9"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6nKvn9KWmdIdRmZ6iqy5Ja"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "id": "6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "name": "Nick Cooper",
+                            "type": "artist",
+                            "uri": "spotify:artist:6nKvn9KWmdIdRmZ6iqy5Ja"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 251106,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/00WVuJNKbpAK5K4io7lDK1"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/00WVuJNKbpAK5K4io7lDK1",
+                    "id": "00WVuJNKbpAK5K4io7lDK1",
+                    "name": "Mara Dies",
+                    "preview_url": "https://p.scdn.co/mp3-preview/26c3160bc255e39a6bfb144d7035c95f345d8068?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 14,
+                    "type": "track",
+                    "uri": "spotify:track:00WVuJNKbpAK5K4io7lDK1"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6NtF5n7c4F2qpDWl5Of2mH"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6NtF5n7c4F2qpDWl5Of2mH",
+                            "id": "6NtF5n7c4F2qpDWl5Of2mH",
+                            "name": "Chris Garrick",
+                            "type": "artist",
+                            "uri": "spotify:artist:6NtF5n7c4F2qpDWl5Of2mH"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2jEfNRf2T9KJUWTuJjJNVz"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2jEfNRf2T9KJUWTuJjJNVz",
+                            "id": "2jEfNRf2T9KJUWTuJjJNVz",
+                            "name": "Bruce White",
+                            "type": "artist",
+                            "uri": "spotify:artist:2jEfNRf2T9KJUWTuJjJNVz"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/6nKvn9KWmdIdRmZ6iqy5Ja"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "id": "6nKvn9KWmdIdRmZ6iqy5Ja",
+                            "name": "Nick Cooper",
+                            "type": "artist",
+                            "uri": "spotify:artist:6nKvn9KWmdIdRmZ6iqy5Ja"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 164186,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/39COJYzDaPR9pzJ0DZ7HTJ"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/39COJYzDaPR9pzJ0DZ7HTJ",
+                    "id": "39COJYzDaPR9pzJ0DZ7HTJ",
+                    "name": "The Isle of Dunes",
+                    "preview_url": "https://p.scdn.co/mp3-preview/118e9a0aabb0564f095cc3004b0fbb6766de089c?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 15,
+                    "type": "track",
+                    "uri": "spotify:track:39COJYzDaPR9pzJ0DZ7HTJ"
+                },
+                {
+                    "artists": [
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7nlwfEaz3EFAq4rJBvLy5k"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7nlwfEaz3EFAq4rJBvLy5k",
+                            "id": "7nlwfEaz3EFAq4rJBvLy5k",
+                            "name": "Rob Lane",
+                            "type": "artist",
+                            "uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/0DSDbr9cHKiZq7nN1E5YSE"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/0DSDbr9cHKiZq7nN1E5YSE",
+                            "id": "0DSDbr9cHKiZq7nN1E5YSE",
+                            "name": "The Budapest Film Orchestra and Choir",
+                            "type": "artist",
+                            "uri": "spotify:artist:0DSDbr9cHKiZq7nN1E5YSE"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/7KXJtEMVDUfVM9BZ88xHyF"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/7KXJtEMVDUfVM9BZ88xHyF",
+                            "id": "7KXJtEMVDUfVM9BZ88xHyF",
+                            "name": "Circle Percussion Ensemble",
+                            "type": "artist",
+                            "uri": "spotify:artist:7KXJtEMVDUfVM9BZ88xHyF"
+                        },
+                        {
+                            "external_urls": {
+                                "spotify": "https://open.spotify.com/artist/2GwrkEbcYi6RODxm5hYSMO"
+                            },
+                            "href": "https://api.spotify.com/v1/artists/2GwrkEbcYi6RODxm5hYSMO",
+                            "id": "2GwrkEbcYi6RODxm5hYSMO",
+                            "name": "Peter Pejtsik",
+                            "type": "artist",
+                            "uri": "spotify:artist:2GwrkEbcYi6RODxm5hYSMO"
+                        }
+                    ],
+                    "disc_number": 1,
+                    "duration_ms": 77733,
+                    "explicit": false,
+                    "external_urls": {
+                        "spotify": "https://open.spotify.com/track/3zG5s5BGjWFIYJuZ983eG7"
+                    },
+                    "href": "https://api.spotify.com/v1/tracks/3zG5s5BGjWFIYJuZ983eG7",
+                    "id": "3zG5s5BGjWFIYJuZ983eG7",
+                    "name": "Closing Credits (From \"Beowulf\")",
+                    "preview_url": "https://p.scdn.co/mp3-preview/7d7e3b653f1f602c59c86f0e7fa6c322caafdb6a?cid=a170636bea114cc6bd242130450d7e81",
+                    "track_number": 16,
+                    "type": "track",
+                    "uri": "spotify:track:3zG5s5BGjWFIYJuZ983eG7"
+                }
+            ]
+        }
+    ],
+    "artists": [
+        {
+            "bio": null,
+            "followers": 1659,
+            "id": 5,
+            "image": "https://i.scdn.co/image/d32885bd9ac19dbcf6317419bd78bc53b65c46f4",
+            "name": "Rob Lane",
+            "spotify_uri": "spotify:artist:7nlwfEaz3EFAq4rJBvLy5k"
+        }
+    ],
+    "average_rating": 5.1,
+    "cast": [
+        {
+            "character": "Beowulf",
+            "credit_id": "5663bc42c3a3682bd8007330",
+            "gender": 2,
+            "id": 176199,
+            "name": "Kieran Bew",
+            "order": 0,
+            "profile_path": "/8vxcFlUeIwNH0uIoZq34uagaLAr.jpg"
+        },
+        {
+            "character": "Hrothgar",
+            "credit_id": "5663bc719251412ac40069a9",
+            "gender": 2,
+            "id": 227,
+            "name": "William Hurt",
+            "order": 1,
+            "profile_path": "/zp6UOht6c1iyHDbpYn1hkX103lG.jpg"
+        },
+        {
+            "character": "Rheda",
+            "credit_id": "5663bc889251412acd006a28",
+            "gender": 1,
+            "id": 12656,
+            "name": "Joanne Whalley",
+            "order": 2,
+            "profile_path": "/fvufjTvUcY6ctqryO5sks0XDav2.jpg"
+        },
+        {
+            "character": "Slean",
+            "credit_id": "5663bcd69251412ad9006e65",
+            "gender": 2,
+            "id": 25438,
+            "name": "Ed Speleers",
+            "order": 3,
+            "profile_path": "/7FIPZ8fZupVSp7yTpCWGLyWtYlS.jpg"
+        },
+        {
+            "character": "Rate",
+            "credit_id": "5663bceec3a3682c01006b1e",
+            "gender": 2,
+            "id": 971049,
+            "name": "David Ajala",
+            "order": 4,
+            "profile_path": "/oVVARWDY7NISsqKEp5nBG4NTcas.jpg"
+        },
+        {
+            "character": "Breca",
+            "credit_id": "568552f3c3a36860e901bc64",
+            "gender": 2,
+            "id": 587354,
+            "name": "Gísli Örn Garðarsson",
+            "order": 500,
+            "profile_path": "/2ANjdLHbKhrrWAwcm75pmYgr2VD.jpg"
+        },
+        {
+            "character": "Lila",
+            "credit_id": "568553119251412e5201a739",
+            "gender": 0,
+            "id": 75057,
+            "name": "Lolita Chakrabarti",
+            "order": 500,
+            "profile_path": "/kGTCGZTe8HijQR5tHpR0EQB4nWz.jpg"
+        },
+        {
+            "character": "Varr",
+            "credit_id": "5685532ac3a36836280039f2",
+            "gender": 2,
+            "id": 114252,
+            "name": "Edward Hogg",
+            "order": 500,
+            "profile_path": "/cZ9Iqj7l0vmpHcJBA26JYKgqVLP.jpg"
+        },
+        {
+            "character": "Abrecan",
+            "credit_id": "568553469251417e15003810",
+            "gender": 2,
+            "id": 51120,
+            "name": "Elliot Cowan",
+            "order": 500,
+            "profile_path": "/2qfMXSC5zjPEQ8iYluK7t7IpG1s.jpg"
+        },
+        {
+            "character": "Vishka",
+            "credit_id": "5685535fc3a36836280039fd",
+            "gender": 0,
+            "id": 1457454,
+            "name": "Ellora Torchia",
+            "order": 500,
+            "profile_path": "/aWop1yEP5Il62bbhCtLxwa7YxaL.jpg"
+        },
+        {
+            "character": "Young Beowulf",
+            "credit_id": "5685537f92514169d0007952",
+            "gender": 0,
+            "id": 1512449,
+            "name": "Jack Hollington",
+            "order": 500,
+            "profile_path": "/72wz7cq4nMfak2JdgcOyHQpvsqW.jpg"
+        },
+        {
+            "character": "Brinni / Brini",
+            "credit_id": "58fd9ca992514163e302df84",
+            "gender": 2,
+            "id": 1796798,
+            "name": "Jack Rowan",
+            "order": 500,
+            "profile_path": "/bHzItz4oVEscebrcTqwGwRTQAzX.jpg"
+        }
+    ],
+    "genres": [
+        {
+            "id": 10759,
+            "name": "Action & Adventure"
+        },
+        {
+            "id": 18,
+            "name": "Drama"
+        },
+        {
+            "id": 10765,
+            "name": "Sci-Fi & Fantasy"
+        }
+    ],
+    "id": 56,
+    "image": "http://image.tmdb.org/t/p/w500/ilaOygVfljWqC5S9COJ3fV4zjqJ.jpg",
+    "imdb_id": null,
+    "last_aired": "2016",
+    "name": "Beowulf: Return to the Shieldlands",
+    "other_images": [
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/6QN5BySh9OqtGizi62JzxSIIgYY.jpg",
+            "height": 2160,
+            "iso_639_1": null,
+            "vote_average": 5.36996336996337,
+            "vote_count": 2,
+            "width": 3840
+        },
+        {
+            "aspect_ratio": 1.777777777777778,
+            "file_path": "/yaAb0fELZ2RUL5EMNabRaSqrMSw.jpg",
+            "height": 2160,
+            "iso_639_1": null,
+            "vote_average": 5.282738095238095,
+            "vote_count": 1,
+            "width": 3840
+        },
+        {
+            "aspect_ratio": 1.779136104319478,
+            "file_path": "/swSx2QODmZfDoZdsEzWLOmPMI8E.jpg",
+            "height": 1227,
+            "iso_639_1": null,
+            "vote_average": 5.282738095238095,
+            "vote_count": 1,
+            "width": 2183
+        },
+        {
+            "aspect_ratio": 1.777856635911994,
+            "file_path": "/x5AbkFkjuYLskPDlRndRO9J8OFQ.jpg",
+            "height": 1409,
+            "iso_639_1": null,
+            "vote_average": 5.267857142857143,
+            "vote_count": 1,
+            "width": 2505
+        },
+        {
+            "aspect_ratio": 1.779136104319478,
+            "file_path": "/psCGAK7SxLM4AD69jnpEc5bDE2f.jpg",
+            "height": 1227,
+            "iso_639_1": null,
+            "vote_average": 5.267857142857143,
+            "vote_count": 1,
+            "width": 2183
+        }
+    ],
+    "overview": "Beowulf, a hero of the Geats, comes to the aid of Hrothgar, the king of the Danes, whose mead hall in Heorot has been under attack by a monster known as Grendel.",
+    "popularity": 5.801399,
+    "release_date": "2016",
+    "running": false,
+    "runtime": 45,
+    "seasons": 1,
+    "tagline": null,
+    "tmdb_id": 64593,
+    "type": 0,
+    "videos": [
+        {
+            "id": "566e98d1c3a3682e9800e722",
+            "iso_3166_1": "US",
+            "iso_639_1": "en",
+            "key": "S7UZCn2Gens",
+            "name": "Teaser",
+            "site": "YouTube",
+            "size": 1080,
+            "type": "Teaser"
+        }
+    ]
+}
+
 export const ABOUT_JSON = {
     "commits": {
         "TheSchaft": 23,
