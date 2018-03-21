@@ -50,7 +50,7 @@ export class MediaItem extends Component {
       <Card className="mb-3" onClick={this.handleClick}>
         <CardImg top width="100%" src={this.props.media.image} alt="Card image cap" />
         <CardBody>
-          <CardTitle className="text-left">{this.props.media.name ? this.props.media.name : this.props.media.title}</CardTitle>
+          <CardTitle className="text-left">{this.props.media.name}</CardTitle>
           <CardSubtitle className="text-muted text-left">{this.getSubtitleText()}</CardSubtitle>
         </CardBody>
       </Card>

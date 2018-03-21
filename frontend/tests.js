@@ -15,7 +15,7 @@ import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
-import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON} from './testsData'; 
+import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON} from './testsData'; 
 
 // App
 describe('<App/>', function () {
@@ -118,7 +118,7 @@ describe('<ArtistHome/>', function () {
 
 describe('<MediaHome/>', function () {
     it('should render without crashing', function () {
-        shallow(<MediaHome media={MEDIAS_JSON} transition={fakeTransition}/>).render();
+        shallow(<MediaHome media={MEDIAS_JSON} transition={fakeTransition}/>)
     })
 
     it('should contain 3 artist instances', function () {
@@ -133,11 +133,19 @@ describe('<MediaHome/>', function () {
             const wrapper = shallow(<MediaItem media={media} />).render()
         })
 
-        it('should contain correct data', function () {
+        it('should contain correct data for a TV show', function () {
             const wrapper = shallow(<MediaItem media={media} />)
-            expect(wrapper.find('CardImg').prop('src')).to.be.equal(media.img)
-            expect(wrapper.find('CardTitle').render().text()).to.be.equal(media.name ? media.name : media.title)
-            expect(wrapper.find('CardSubtitle').render().text()).to.be.equal('TV Series • 2017 • 2 Seasons')
+            expect(wrapper.find('CardImg').prop('src')).to.be.equal(media.image)
+            expect(wrapper.find('CardTitle').render().text()).to.be.equal(media.name)
+            expect(wrapper.find('CardSubtitle').render().text()).to.be.equal('TV Series • 2001 - 2006 • 5 Seasons')
+        })
+
+        it('should contain correct data for a movie', function () {
+            let movie = MEDIAS_JSON.items[1]; 
+            const wrapper = shallow(<MediaItem media={movie} />)
+            expect(wrapper.find('CardImg').prop('src')).to.be.equal(movie.image)
+            expect(wrapper.find('CardTitle').render().text()).to.be.equal(movie.name)
+            expect(wrapper.find('CardSubtitle').render().text()).to.be.equal('Movie • 2016')
         })
     });
 });
@@ -262,6 +270,12 @@ describe('<MediaInstance/>', function () {
       expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
       expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
   });
+
+  it('should display the final year aired if it is a finished series', function (){
+      const wrapper = shallow(<MediaInstance media={BEOWULF_JSON} />);
+      const expected = 'TV Show | 2016 | 1 seasons | Action & Adventure, Drama, Sci-Fi & Fantasy'; 
+      expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
+  }); 
 
   describe('<MediaCarousel/>', function() {
     it('should render without crashing', function () {
