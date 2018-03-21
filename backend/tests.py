@@ -69,24 +69,24 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
 
     def test_get_tv_movie_all(self):
-        response = self.client.get('/tv-movie')
+        response = self.client.get('/media')
         json_response = json.loads(response.data)
         self.assertEqual(json_response['count'], 1)
         self.assertEqual(len(json_response['items']), 1)
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_all_page_2(self):
-        response = self.client.get('/tv-movie', query_string={'offset': '10', 'limit': '10'})
+        response = self.client.get('/media', query_string={'offset': '10', 'limit': '10'})
         json_response = json.loads(response.data)
         self.assertEqual(len(json_response['items']), 0)
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_individual(self):
-        response = self.client.get('/tv-movie/1')
+        response = self.client.get('/media/1')
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_missing(self):
-        response = self.client.get('/tv-movie/2')
+        response = self.client.get('/media/2')
         self.assertEqual(response.status_code, 404)
 
     @staticmethod

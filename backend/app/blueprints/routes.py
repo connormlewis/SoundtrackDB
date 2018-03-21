@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timedelta
 
 import requests
-from flask import Blueprint, jsonify, request, abort, current_app
+from flask import Blueprint, jsonify, request, abort
 
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
 from app.shared.db import get_session
@@ -133,9 +133,9 @@ def get_album(album_id: id):
         session.close()
 
 
-@BP.route('/tv-movie')
+@BP.route('/media')
 def get_media():
-    """Get all of the tv-movies"""
+    """Get all media"""
     session = get_session()
     try:
         query = session.query(Media)
@@ -162,9 +162,9 @@ def get_media():
         session.close()
 
 
-@BP.route('/tv-movie/<media_id>')
+@BP.route('/media/<media_id>')
 def get_single_media(media_id: int):
-    """Get a specific tv-movie instance"""
+    """Get a specific media instance"""
     session = get_session()
     try:
         media = session.query(Media).get(media_id)
