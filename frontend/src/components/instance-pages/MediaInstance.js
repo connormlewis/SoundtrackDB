@@ -8,14 +8,14 @@ export class MediaInstance extends Component {
 
   getSubtitle() {
     let model_data = this.props.media;
-    if(model_data.type === 'show') {
-      let first = model_data.years[0];  
+    if(model_data.type === 0) {
+      let first = model_data.release_date;  
       let last = ''; 
       if (model_data.running === true) {
         last = 'Present'; 
       }
       else {
-        last = model_data.years[model_data.years.length - 1]; 
+        last = model_data.last_aired;
       }
 
       let years = ''; 
@@ -27,18 +27,30 @@ export class MediaInstance extends Component {
       }
 
       let seasons = model_data.seasons; 
-      let genres = model_data.genres.join(', ');
+      let genres = [];
+      for(let i = 0; i < model_data.genres.length; i++) {
+        genres.push(model_data.genres[i].name); 
+      }
+      genres = genres.join(', ');
       return 'TV Show | ' + years + ' | ' + seasons + " seasons | " + genres; 
     }
     else {
-      let year = model_data.years; 
-      let genres = model_data.genres.join(', ');
+      let year = model_data.release_date; 
+      let genres = [];
+      for(let i = 0; i < model_data.genres.length; i++) {
+        genres.push(model_data.genres[i].name); 
+      }
+      genres = genres.join(', ');
       return 'Movie | ' + year + ' | ' + genres; 
     }
   }
 
   getCast() {
-    const cast = this.props.media.cast; 
+    const cast_data = this.props.media.cast; 
+    let cast = [];
+    for(let i = 0; i < cast_data.length; i++) {
+      cast.push(cast_data[i].name); 
+    }
     return cast.map((member, index) => <li key={index}>{member}</li>); 
   }
 
@@ -78,14 +90,14 @@ export class MediaInstance extends Component {
                 <h3>Cast</h3>
                 <ul id="cast">{this.getCast()}</ul>
                 <h3>Photos</h3>
-                <MediaCarousel photos={this.props.media.backdrops}/>
+                <MediaCarousel photos={this.props.media.other_images}/>
               </Col>
             </Row>
           </Col> 
           <Col sm="4">
-            <img className="w-100" src={this.props.media.poster} alt="Poster" vspace="20"/>
+            <img className="w-100" src={this.props.media.image} alt="Poster" vspace="20"/>
             <div className="embed-responsive embed-responsive-16by9 w-100">
-              <iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + this.props.media.video.key} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />
+              <iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + this.props.media.videos[0].key} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />
             </div>
           </Col>
         </Row>
