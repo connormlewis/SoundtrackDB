@@ -3,7 +3,7 @@ import os
 from datetime import datetime, timedelta
 
 import requests
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, abort
 
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
 from app.shared.db import get_session
@@ -61,7 +61,7 @@ def get_artists():
         if request.args.get('offset') is not None:
             query = query.offset(int(request.args.get('offset')))
         else:
-            query = query.limit(12)
+            query = query.offset(0)
 
         artists = query.all()
         count = session.query(Artist).count()
@@ -78,8 +78,12 @@ def get_artist(artist_id: int):
     """Get a specific artist"""
     session = get_session()
     try:
-        query = session.query(Artist).get(artist_id)
-        return jsonify(artist_schema.dump(query).data)
+        artist = session.query(Artist).get(artist_id)
+
+        if artist is None:
+            return abort(404)
+
+        return jsonify(artist_schema.dump(artist).data)
     finally:
         session.close()
 
@@ -93,6 +97,7 @@ def get_albums():
         query = session.query(Album)
 
         query = query.order_by('name')
+
         if request.args.get('limit') is not None:
             query = query.limit(int(request.args.get('limit')))
         else:
@@ -101,7 +106,7 @@ def get_albums():
         if request.args.get('offset') is not None:
             query = query.offset(int(request.args.get('offset')))
         else:
-            query = query.limit(12)
+            query = query.offset(0)
 
         albums = query.all()
         count = session.query(Album).count()
@@ -118,8 +123,12 @@ def get_album(album_id: id):
     """Get a specific album"""
     session = get_session()
     try:
-        query = session.query(Album).get(album_id)
-        return jsonify(album_schema.dump(query).data)
+        album = session.query(Album).get(album_id)
+
+        if album is None:
+            return abort(404)
+
+        return jsonify(album_schema.dump(album).data)
     finally:
         session.close()
 
@@ -140,7 +149,7 @@ def get_media():
         if request.args.get('offset') is not None:
             query = query.offset(int(request.args.get('offset')))
         else:
-            query = query.limit(12)
+            query = query.offset(0)
 
         medias = query.all()
 
@@ -158,8 +167,12 @@ def get_single_media(media_id: int):
     """Get a specific media instance"""
     session = get_session()
     try:
-        query = session.query(Media).get(media_id)
-        return jsonify(media_schema.dump(query).data)
+        media = session.query(Media).get(media_id)
+
+        if media is None:
+            return abort(404)
+
+        return jsonify(media_schema.dump(media).data)
     finally:
         session.close()
 

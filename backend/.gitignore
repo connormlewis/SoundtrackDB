@@ -99,6 +99,6 @@ ENV/
 # mypy
 .mypy_cache/
 
-backend/.pytest_cache/*
+.pytest_cache/
 
 private.env
