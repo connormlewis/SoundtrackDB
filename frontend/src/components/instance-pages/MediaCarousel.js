@@ -42,13 +42,17 @@ export class MediaCarousel extends Component {
     this.setState({ activeIndex: newIndex });
   }
 
+  getImgSrc(photo) {
+    return "http://image.tmdb.org/t/p/w500" + photo.file_path;
+  }
+
   render() {
     const { activeIndex } = this.state;
 
     const slides = this.props.photos.map((photo) => {
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={photo}>
-          <img src={photo} alt="" className="w-100 h-100"/>
+        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={photo.file_path}>
+          <img src={this.getImgSrc(photo)} alt="" className="w-100 h-100"/>
         </CarouselItem>
       );
     });

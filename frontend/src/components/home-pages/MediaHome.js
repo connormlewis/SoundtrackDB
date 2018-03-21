@@ -15,21 +15,42 @@ export class MediaItem extends Component {
     this.props.navigateToInstance(this.props.media.id);
   }
 
+  getTVYears() {
+    let first = this.props.media.release_date;  
+    let last = ''; 
+    if (this.props.media.running === true) {
+      last = 'Present'; 
+    }
+    else {
+      last = this.props.media.last_aired;  
+    }
+
+    let years = ''; 
+    if (first === last) {
+      years = first; 
+    }
+    else {
+      years = first + ' - ' + last; 
+    }
+
+    return years; 
+  }
+
   getSubtitleText() {
     if (this.props.media.type === 0) {
       // TV Show
-      return `TV Series • ${this.props.media.years} • ${this.props.media.seasons} Seasons`
+      return `TV Series • ${this.getTVYears()} • ${this.props.media.seasons} Seasons`
     } else {
-      return `Movie • ${this.props.media.years}`      
+      return `Movie • ${this.props.media.release_date}`      
     }
   }
 
   render() {
     return (
       <Card className="mb-3" onClick={this.handleClick}>
-        <CardImg top width="100%" src={this.props.media.img} alt="Card image cap" />
+        <CardImg top width="100%" src={this.props.media.image} alt="Card image cap" />
         <CardBody>
-          <CardTitle className="text-left">{this.props.media.name ? this.props.media.name : this.props.media.title}</CardTitle>
+          <CardTitle className="text-left">{this.props.media.name}</CardTitle>
           <CardSubtitle className="text-muted text-left">{this.getSubtitleText()}</CardSubtitle>
         </CardBody>
       </Card>
