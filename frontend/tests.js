@@ -338,12 +338,12 @@ describe('<About/>', function () {
     it('should Desc render without crashing', function () {
         shallow(<Desc />);
     })
-    it('should render Bio without crashing', function () {
-        shallow(<Bio />);
-    });
-    it('should render Statistics without crashing', function () {
-        shallow(<Statistics />);
-    });
+    // it('should render Bio without crashing', function () {
+    //     shallow(<Bio />);
+    // });
+    // it('should render Statistics without crashing', function () {
+    //     shallow(<Statistics />);
+    // });
     it('should render Data without crashing', function () {
         shallow(<Data />);
     })
