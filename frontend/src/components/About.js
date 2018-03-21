@@ -7,7 +7,7 @@ class About extends Component {
     render() {
       return (
         <React.Fragment>
-          <h1>About</h1>
+          <h1 className="about-style-header">About</h1>
           <Desc />
           <Bio bios={this.props.about}/>
           <Statistics stats={this.props.about}/>
