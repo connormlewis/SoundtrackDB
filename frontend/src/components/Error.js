@@ -4,14 +4,14 @@ import { UISref } from '@uirouter/react';
 
 class ErrorPage extends Component {
     renderContent(code) {
-        if (code == 500) {
+        if (code === 500) {
             return (
                 <Fragment>
                     <h1 className="display-1">Our bad!</h1>
                     <div className="text-muted">Our server encountered an error.<br/>Please try again, or return <UISref to="home"><a>home</a></UISref>.</div>
                 </Fragment>
             )
-        } else if (code == 404) {
+        } else if (code === 404) {
             return (
                 <Fragment>
                     <h1 className="display-1">Oh no!</h1>
