@@ -66,7 +66,7 @@ const ARTIST_HOME = {
 
 const MEDIA_HOME = {
   name: 'mediaHome',
-  url: '/tv-movie',
+  url: '/media',
   component: MediaHome,
   params: {
     offset: 0,
@@ -103,7 +103,7 @@ const ARTIST_INSTANCE = {
 
 const MEDIA_INSTANCE = {
   name: 'mediaInstance',
-  url: '/tv-movie/:mediaID',
+  url: '/media/:mediaID',
   component: MediaInstance,
   resolve: [{
     token: 'media',
