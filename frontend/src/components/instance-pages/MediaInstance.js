@@ -69,7 +69,7 @@ export class MediaInstance extends Component {
     return (
       <Fragment>
       {
-        albums.map((album) => {
+        albums.map((album) => { 
           return (
             <li key={album.id}>
               <UISref to="albumInstance" params={{ albumID: album.id }}>
