@@ -42,17 +42,17 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_all(self):
-        response = self.client.get('/tv-movie')
+        response = self.client.get('/media')
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_all_page_2(self):
-        response = self.client.get('/tv-movie', query_string={'offset': '10', 'limit': '10'})
+        response = self.client.get('/media', query_string={'offset': '10', 'limit': '10'})
         self.assertEqual(response.status_code, 200)
 
     def test_get_tv_movie_individual_s(self):
-        response = self.client.get('/tv-movie/riverdale')
+        response = self.client.get('/media/riverdale')
         self.assertEqual(response.status_code, 200)
     
     def test_get_tv_movie_individual_m(self):
-        response = self.client.get('/tv-movie/interstellar')
+        response = self.client.get('/media/interstellar')
         self.assertEqual(response.status_code, 200)
