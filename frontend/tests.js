@@ -232,7 +232,7 @@ describe('<MediaInstance/>', function () {
 
   it('should have a subtitle with type, years, number of seasons and genres if it is a TV show', function () {
       const wrapper = shallow(<MediaInstance media={riverdale} />);
-      const expected = 'TV Show | 2017 - Present | 2 seasons | Drama, Mystery';
+      const expected = 'TV Show | 2017 - Present | 2 seasons | Drama, Mystery, Comedy';
       expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
   });
 
@@ -242,30 +242,30 @@ describe('<MediaInstance/>', function () {
       const result_cast = wrapper.find({ id: 'cast' }).children();
       let index = 0;
       for (let member of expected_cast) {
-          expect(result_cast.at(index).render().text()).to.equal(member);
+          expect(result_cast.at(index).render().text()).to.equal(member.name);
           index++;
       }
   });
 
   it('should have the correct poster image and video', function () {
       const wrapper = shallow(<MediaInstance media={riverdale} />);
-      const expected_img = "http://image.tmdb.org/t/p/w500//1TsbOTztAJtzTRXAhoLsX9a83XX.jpg";
+      const expected_img = "http://image.tmdb.org/t/p/w500/1TsbOTztAJtzTRXAhoLsX9a83XX.jpg";
       const expected_video = "//www.youtube.com/embed/9XmFTADupMc";
       expect(wrapper.find({ alt: "Poster" }).prop('src')).to.be.equal(expected_img);
       expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video);
   });
 
-  // it('should list associated albums and artists', function () {
-  //     const wrapper = shallow(<MediaInstance media={riverdale} />);
-  //     const expected_album = "Riverdale: Original Television Score (Season 1)";
-  //     const expected_artist = "Blake Neely";
-  //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
-  //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
-  // });
+  it('should list associated albums and artists', function () {
+      const wrapper = shallow(<MediaInstance media={riverdale} />);
+      const expected_album = "Riverdale: Original Television Score (Season 1)";
+      const expected_artist = "Blake Neely";
+      expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+      expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+  });
 
   describe('<MediaCarousel/>', function() {
     it('should render without crashing', function () {
-      shallow(<MediaCarousel photos={RIVERDALE_JSON.backdrops}/>); 
+      shallow(<MediaCarousel photos={RIVERDALE_JSON.other_images}/>); 
     }); 
   });
 });
@@ -288,12 +288,23 @@ describe('<ArtistInstance/>', function () {
         expect(wrapper.find('iframe').prop('src')).to.contain(ARTIST_JSON.spotify_uri)
     })
 
-    // it('should have the correct related data', function () {
-    //     const artist = HANS_ZIMMER_JSON;
-    //     const wrapper = shallow(<ArtistInstance artist={artist} />);
-    //     expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(artist.albums[1]);
-    //     expect(wrapper.find({ id: 'media' }).find('a').render().text()).to.be.equal(artist.media[1]);
-    // })
+    it('should have the correct related data', function () {
+        const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
+        const expected_albums = ARTIST_JSON.albums;
+        const result_albums = wrapper.find({ id: 'albums' }).children();
+        let i = 0; 
+        for (let album of expected_albums) {
+          expect(result_albums.find('a').at(i).render().text()).to.be.equal(album.name);
+          ++i;  
+        }
+        const expected_media = ARTIST_JSON.media; 
+        const result_media = wrapper.find({ id: 'media' }).children();
+        let j = 0; 
+        for (let media of expected_media) {
+          expect(result_media.find('a').at(j).render().text()).to.be.equal(media.name);
+          ++j;  
+        }
+    })
 });
 
 // Album Instance
@@ -302,12 +313,11 @@ describe('<AlbumInstance/>', function () {
         shallow(<AlbumInstance album={ALBUM_JSON} />);
     })
 
-    it('should have correct data for name, label, release year, and artists ', function () {
+    it('should have correct data for name, label and release year', function () {
         const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />)
         expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(ALBUM_JSON.name);
         expect(wrapper.find({ id: 'label' }).render().text()).to.be.equal("Label: " + ALBUM_JSON.label);
         expect(wrapper.find({ id: 'year' }).render().text()).to.be.equal("Release year: " + ALBUM_JSON.release_date.substring(0, 4));
-        // expect(wrapper.find({ id: 'artistlist' }).render().text()).to.be.equal("Artists: " + ALBUM_JSON.artists[1]);
     })
 
     it('should have the correct track', function () {
@@ -319,11 +329,21 @@ describe('<AlbumInstance/>', function () {
         }
     })
 
-    // it('should list associated media and artists', function () {
-    //     const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
-    //     const related_data = ALBUM_JSON.related_data.albums.riverdale;
-    //     expect(wrapper.find({ id: 'media' }).find('a').render().text()).to.be.equal(ALBUM_JSON.media[0].name);
-    //     expect(wrapper.find({ id: 'artists' }).find('a').render().text()).to.be.equal(ALBUM_JSON.artists[0].name);
-    // })
-
+    it('should have the correct related data', function () {
+        const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
+        const expected_artists = ALBUM_JSON.artists;
+        const result_artists = wrapper.find({ id: 'artists' }).children();
+        let i = 0; 
+        for (let artist of expected_artists) {
+          expect(result_artists.find('a').at(i).render().text()).to.be.equal(artist.name);
+          ++i;  
+        }
+        const expected_media = ARTIST_JSON.media; 
+        const result_media = wrapper.find({ id: 'media' }).children();
+        let j = 0; 
+        for (let media of expected_media) {
+          expect(result_media.find('a').at(j).render().text()).to.be.equal(media.name);
+          ++j;  
+        }
+    })
 });

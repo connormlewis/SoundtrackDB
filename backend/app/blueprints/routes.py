@@ -15,7 +15,7 @@ album_schema = AlbumSchema()
 media_schema = MediaSchema()
 artists_schema = ArtistSchema(exclude=('albums', 'media'))
 albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
-medias_schema = MediaSchema(exclude=('albums', 'artists'))
+medias_schema = MediaSchema(exclude=('albums', 'artists', 'cast', 'other_images', 'videos'))
 
 commit_data = None
 issue_data = None
@@ -153,7 +153,7 @@ def get_media():
 
         medias = query.all()
 
-        count = query.count()
+        count = session.query(Media).count()
         return jsonify({
             'items': medias_schema.dump(medias, many=True).data,
             'count': count
