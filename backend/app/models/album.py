@@ -46,4 +46,6 @@ class AlbumSchema(Schema):
     @classmethod
     def track_counter(cls, obj):
         """Returns the number of tracks in the album"""
+        if obj.tracks is None:
+            return 0
         return len(obj.tracks)
