@@ -54,6 +54,16 @@ export class MediaInstance extends Component {
     return cast.map((member, index) => <li key={index}>{member}</li>); 
   }
 
+  getVideo() {
+    if (this.props.media.videos.length !== 0) {
+      let id = this.props.media.videos[0].key;
+      return (<iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + id} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />)
+    }
+    else {
+      return; 
+    }
+  }
+
   getAlbums() {
     const albums = this.props.media.albums; 
     return (
@@ -113,7 +123,7 @@ export class MediaInstance extends Component {
           <Col sm="4">
             <img className="w-100" src={this.props.media.image} alt="Poster" vspace="20"/>
             <div className="embed-responsive embed-responsive-16by9 w-100">
-              <iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + this.props.media.videos[0].key} frameborder="0" allow="autoplay; encrypted-media" allowfullscreen />
+              {this.getVideo()}
             </div>
           </Col>
         </Row>
