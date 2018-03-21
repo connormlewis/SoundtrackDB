@@ -30,7 +30,7 @@ export default class ApiService {
 
   static getAllMedia(offset=0, limit=12) {
     return $.ajax({
-      url: API_URL + '/tv-movie',
+      url: API_URL + '/media',
       type: "get",
       data: { 
         offset: offset,
@@ -47,7 +47,7 @@ export default class ApiService {
   }
 
   static getMedia(id) {
-    return $.get(API_URL + '/tv-movie/' + id)
+    return $.get(API_URL + '/media/' + id)
   }
 
   static getAbout() {
