@@ -9,4 +9,7 @@ services:
         restart: always
         image: backend
         env_file:
-          - backend/private.env
+           - backend/db.env
+           - backend/private.env
+        environment:
+          - POSTGRES_URL=soundtrackdb.c0qwjarqhqxf.us-east-2.rds.amazonaws.com
