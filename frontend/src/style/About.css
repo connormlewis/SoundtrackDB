@@ -1,14 +1,19 @@
-h1 {
+.about-style-header {
   text-align: center;
   padding: 10px;
 }
-p {
+.about-style-p {
   text-align: center;
 }
 
 .desc {
+  text-align: center;
   padding-right: 25px;
   padding-left: 25px;
+}
+
+.responsibilities {
+  text-align: center;
 }
 
 .avatar {
@@ -25,6 +30,7 @@ p {
 
 .stats {
   padding: 10px;
+  text-align: center;
 }
 
 .column {

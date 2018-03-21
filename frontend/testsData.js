@@ -4238,3 +4238,24 @@ export const BEOWULF_JSON = {
         }
     ]
 }
+
+export const ABOUT_JSON = {
+    "commits": {
+        "TheSchaft": 23,
+        "aylish19": 36,
+        "connormlewis": 52,
+        "melxtru": 17,
+        "stevex196x": 13,
+        "tsukkisuki": 11
+    },
+    "issues": {
+        "TheSchaft": 1,
+        "aylish19": 20,
+        "connormlewis": 25,
+        "melxtru": 3,
+        "stevex196x": 1,
+        "tsukkisuki": 2
+    },
+    "total_commits": 152,
+    "total_issues": 52
+}

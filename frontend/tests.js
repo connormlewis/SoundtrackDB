@@ -11,11 +11,13 @@ import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
 import Splash from './src/components/Splash';
+import About from './src/components/About';
+import { Desc, Bio, Statistics, Data, Tools } from './src/components/About';
 import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
-import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON} from './testsData'; 
+import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, ABOUT_JSON} from './testsData'; 
 
 // App
 describe('<App/>', function () {
@@ -360,4 +362,31 @@ describe('<AlbumInstance/>', function () {
           ++j;  
         }
     })
+});
+
+//About
+describe('<About/>', function () {
+    it('should About render without crashing', function () {
+        shallow(<About />);
+    })
+
+    it('should Desc render without crashing', function () {
+        shallow(<Desc />);
+    })
+
+    it('should render Bio without crashing', function () {
+        shallow(<Bio bios={ABOUT_JSON} />);
+    });
+
+    it('should render Statistics without crashing', function () {
+        shallow(<Statistics stats={ABOUT_JSON}/>);
+    });
+
+    it('should render Data without crashing', function () {
+        shallow(<Data />);
+    });
+
+    it('should render Tools without crashing', function () {
+        shallow(<Tools />);
+    });
 });
