@@ -17,7 +17,7 @@ import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
-import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON} from './testsData'; 
+import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, ABOUT_JSON} from './testsData'; 
 
 // App
 describe('<App/>', function () {
@@ -338,12 +338,12 @@ describe('<About/>', function () {
     it('should Desc render without crashing', function () {
         shallow(<Desc />);
     })
-    // it('should render Bio without crashing', function () {
-    //     shallow(<Bio />);
-    // });
-    // it('should render Statistics without crashing', function () {
-    //     shallow(<Statistics />);
-    // });
+    it('should render Bio without crashing', function () {
+        shallow(<Bio bios={ABOUT_JSON} />);
+    });
+    it('should render Statistics without crashing', function () {
+        shallow(<Statistics stats={ABOUT_JSON}/>);
+    });
     it('should render Data without crashing', function () {
         shallow(<Data />);
     })

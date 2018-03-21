@@ -926,3 +926,59 @@ export const ALBUM_JSON = {
         }
     ]
 }
+
+export const ALBUMS_JSON = {
+    items: [{
+            "genres": [],
+            "id": 91,
+            "image": "https://i.scdn.co/image/8384d7572ca98a5158aa8132187b83d5cda8e01c",
+            "label": "Studiocanal",
+            "name": "African Safari 3D (Ben Stassen's Original Motion Picture Soundtrack)",
+            "release_date": "2014-04-14",
+            "spotify_uri": "spotify:album:76VCN1e85g0d7p18Nyt60C",
+            "track_count": 15
+        },
+        {
+            "genres": [],
+            "id": 367,
+            "image": "https://i.scdn.co/image/bab5fb09923ec397845c97e2d2f118a46bf6943a",
+            "label": "Sony Classical",
+            "name": "After Earth",
+            "release_date": "2013-05-24",
+            "spotify_uri": "spotify:album:4HZ3KQvXte5re72F65ssv3",
+            "track_count": 28
+        },
+        {
+            "genres": [],
+            "id": 163,
+            "image": "https://i.scdn.co/image/0136f508e01f4d877a465034c507e8219ea113e4",
+            "label": "Warner Bros.",
+            "name": "A.I. (Music from the Motion Picture)",
+            "release_date": "2001-07-03",
+            "spotify_uri": "spotify:album:5yKkKXvX1X0finFqR3JAKL",
+            "track_count": 13
+        }
+    ],
+    count: 3
+}
+
+export const ABOUT_JSON = {
+    "commits": {
+        "TheSchaft": 23,
+        "aylish19": 36,
+        "connormlewis": 52,
+        "melxtru": 17,
+        "stevex196x": 13,
+        "tsukkisuki": 11
+    },
+    "issues": {
+        "TheSchaft": 1,
+        "aylish19": 20,
+        "connormlewis": 25,
+        "melxtru": 3,
+        "stevex196x": 1,
+        "tsukkisuki": 2
+    },
+    "total_commits": 152,
+    "total_issues": 52
+}
