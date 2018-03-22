@@ -29,7 +29,7 @@ class Navigation extends Component {
               <UISrefActive class="active">
                 <NavItem>
                   <UISref to="mediaHome">
-                    <div className="nav-link" style={{ cursor: 'pointer' }}>TV/Movies</div>
+                    <div className="nav-link" style={{ cursor: 'pointer' }}>Media</div>
                   </UISref>
                 </NavItem>
               </UISrefActive>
