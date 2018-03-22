@@ -2796,7 +2796,7 @@ export const ARTIST_JSON = {
             "track_count": 30
         }
     ],
-    "bio": null,
+    "bio": "Blake Neely (born 1969 in Paris, Texas) is a composer, arranger, orchestrator, conductor, and author. His father was a rancher and his brother Tom Neely is an artist in Los Angeles. Neely has contributed to and been credited on dozens of film and TV projects over the years such as: Everwood (which earned him a 2003 Emmy Award nomination for the theme), all three Pirates of the Caribbean films, King Kong, The Last Samurai and many more. Other film projects in which he is the sole composer are Elvis and Anabelle, Starter for 10, and The Wedding Date. In addition, Neely has composed the music for over twenty television series. He has frequently collaborated with writer/director/producer Greg Berlanti, including Everwood, Jack & Bobby, Brothers & Sisters, Eli Stone, Dirty Sexy Money. He has also been credited alongside several well known composers such as Michael Kamen, James Newton Howard, Vangelis, and Hans Zimmer. As an author, he has written over 25 instrumental method books such as the best-selling piano method Piano For Dummies. He recorded his score for the HBO documentary on David McCullough at the Conway Studios in Hollywood on February 23, 2008.",
     "followers": 11041,
     "id": 1,
     "image": "https://i.scdn.co/image/86193f7ba3136d145915a9afb477626ed1c9f40a",
@@ -2807,7 +2807,7 @@ export const ARTIST_JSON = {
 
 export const ALBUM_JSON = {
     "artists": [{
-        "bio": null,
+        "bio": "Blake Neely (born 1969 in Paris, Texas) is a composer, arranger, orchestrator, conductor, and author. His father was a rancher and his brother Tom Neely is an artist in Los Angeles. Neely has contributed to and been credited on dozens of film and TV projects over the years such as: Everwood (which earned him a 2003 Emmy Award nomination for the theme), all three Pirates of the Caribbean films, King Kong, The Last Samurai and many more. Other film projects in which he is the sole composer are Elvis and Anabelle, Starter for 10, and The Wedding Date. In addition, Neely has composed the music for over twenty television series. He has frequently collaborated with writer/director/producer Greg Berlanti, including Everwood, Jack & Bobby, Brothers & Sisters, Eli Stone, Dirty Sexy Money. He has also been credited alongside several well known composers such as Michael Kamen, James Newton Howard, Vangelis, and Hans Zimmer. As an author, he has written over 25 instrumental method books such as the best-selling piano method Piano For Dummies. He recorded his score for the HBO documentary on David McCullough at the Conway Studios in Hollywood on February 23, 2008.",
         "followers": 570227,
         "id": 11,
         "image": "https://i.scdn.co/image/bde64350466df4aa41efb9b8b766deef6c46fd08",
