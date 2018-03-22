@@ -50,7 +50,7 @@ export class ArtistInstance extends Component {
           <Col sm="8">
             <h2 id="name">{this.props.artist.name}</h2>
             <h3>Biography</h3>
-            <p id="bio">{this.props.artist.bio}</p>
+            <p id="bio">{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
           </Col>
           <Col sm="4">
             <img className="w-100" src={this.props.artist.image} alt="Artist" vspace="20"/>
