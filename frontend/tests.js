@@ -18,6 +18,7 @@ import { MediaCarousel } from './src/components/instance-pages/MediaCarousel';
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
 import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, ABOUT_JSON} from './testsData'; 
+import ErrorPage from './src/components/Error';
 
 // App
 describe('<App/>', function () {
@@ -389,4 +390,26 @@ describe('<About/>', function () {
     it('should render Tools without crashing', function () {
         shallow(<Tools />);
     });
+});
+
+// Error
+describe('<ErrorPage/>', function () {
+  it('should render without crashing', function () {
+    shallow(<ErrorPage transition = {{params: function () {return {code: 100}}}} />);
+  });
+
+  it('should return the correct response for (404) Not Found ', function () {
+    const wrapper = shallow(<ErrorPage transition = {{params: function () {return {code: 404}}}} />);
+    expect(wrapper.find('h1').render().text()).to.be.equal('Oh no!');  
+  });
+
+  it('should return the correct response for (500) Internal Server Error', function () {
+    const wrapper = shallow(<ErrorPage transition = {{params: function () {return {code: 500}}}} />);
+    expect(wrapper.find('h1').render().text()).to.be.equal('Our bad!');  
+  });
+
+  it('should return the correct response for all other errors', function () {
+    const wrapper = shallow(<ErrorPage transition = {{params: function () {return {code: 999}}}} />);
+    expect(wrapper.find('h1').render().text()).to.be.equal('Uh oh!');  
+  });
 });
