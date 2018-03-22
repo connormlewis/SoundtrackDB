@@ -51,7 +51,7 @@ export class MediaInstance extends Component {
   getCast() {
     const cast_data = this.props.media.cast; 
     if (cast_data === null || cast_data.length === 0) {
-      return "No cast information available"
+      return (<div id="no_cast">No cast information available</div>)
     }
     let cast = [];
     for(let i = 0; i < cast_data.length; i++) {
@@ -128,7 +128,7 @@ export class MediaInstance extends Component {
                 <h3>Photos</h3>
                 {
                   this.props.media.other_images === undefined || this.props.media.other_images === null || this.props.media.other_images.length === 0 ?
-                  "No photos available" : <MediaCarousel photos={this.props.media.other_images}/>
+                  (<div id="no_photos">No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
                 }
               </Col>
             </Row>
