@@ -17,7 +17,9 @@ import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
-import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, ABOUT_JSON} from './testsData'; 
+import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, 
+        INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, 
+        ABOUT_JSON, BAD_MEDIA_JSON, BAD_ARTIST_JSON} from './testsData'; 
 import ErrorPage from './src/components/Error';
 
 // App
@@ -61,7 +63,7 @@ describe('<AlbumHome/>', function () {
   describe('<AlbumItem/>', function () {
     let album = ALBUMS_JSON.items[0]
 
-    it('should render without crasing', function () {
+    it('should render without crashing', function () {
       const wrapper = shallow(<AlbumItem album={album} />).render()
     })
 
@@ -280,6 +282,16 @@ describe('<MediaInstance/>', function () {
       expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected);
   }); 
 
+  it('should display the correct messages if data is missing', function (){
+      const wrapper = shallow(<MediaInstance media={BAD_MEDIA_JSON} />);
+      const expected_genre = "Movie | 2011 | Unknown Genre"; 
+      const expected_cast = "No cast information available";
+      const expected_images = "No photos available"; 
+      expect(wrapper.find({ id: 'subtitle' }).render().text()).to.be.equal(expected_genre);
+      expect(wrapper.find({ id: 'no_cast' }).render().text()).to.be.equal(expected_cast);
+      expect(wrapper.find({ id: 'no_photos' }).render().text()).to.be.equal(expected_images);
+  }); 
+
   describe('<MediaCarousel/>', function() {
     it('should render without crashing', function () {
       shallow(<MediaCarousel photos={RIVERDALE_JSON.other_images}/>); 
@@ -322,6 +334,13 @@ describe('<ArtistInstance/>', function () {
           ++j;  
         }
     })
+
+    it('should display the correct messages if data is missing', function (){
+        const wrapper = shallow(<ArtistInstance artist={BAD_ARTIST_JSON} />);
+        const expected_bio = "No biographical information available"; 
+        expect(wrapper.find({ id: 'bio' }).render().text()).to.be.equal(expected_bio);
+    }); 
+
 });
 
 // Album Instance
