@@ -40,7 +40,7 @@ describe('<Navigation/>', function () {
         expect(navItems).to.have.length(4);
         expect(navItems.at(0).find('.nav-link').render().text()).to.equal('Albums');
         expect(navItems.at(1).find('.nav-link').render().text()).to.equal('Artists');
-        expect(navItems.at(2).find('.nav-link').render().text()).to.equal('TV/Movies');
+        expect(navItems.at(2).find('.nav-link').render().text()).to.equal('Media');
         expect(navItems.at(3).find('.nav-link').render().text()).to.equal('About');
     });
 });

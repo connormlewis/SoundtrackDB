@@ -76,7 +76,7 @@ export class MediaHome extends Component {
 
     return (
       <Fragment>
-        <h2>Movies/TV Series</h2>
+        <h2>Media - Movies/TV Series</h2>
         <div className="row">
           {
             this.props.media.items.map((mediaItem) => {
