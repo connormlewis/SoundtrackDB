@@ -295,7 +295,7 @@ describe('<ArtistInstance/>', function () {
     it('should have correct data for name and bio', function () {
         const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
         expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(ARTIST_JSON.name);
-        // expect(wrapper.find({ id: 'bio' }).render().text()).to.be.equal(artist.lastfm_data.artist.bio.content);
+        expect(wrapper.find({ id: 'bio' }).render().text()).to.be.equal(ARTIST_JSON.bio);
 
     })
 
