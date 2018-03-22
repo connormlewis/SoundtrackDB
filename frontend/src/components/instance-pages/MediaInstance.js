@@ -55,7 +55,7 @@ export class MediaInstance extends Component {
   }
 
   getVideo() {
-    if (this.props.media.videos.length !== 0) {
+    if (this.props.media.videos.length !== null && this.props.media.videos.length !== 0) {
       let id = this.props.media.videos[0].key;
       return (<iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + id} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />)
     }
