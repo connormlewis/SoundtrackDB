@@ -74,16 +74,19 @@ def get_artists():
 
 
 @BP.route('/artist/<artist_id>')
-def get_artist(artist_id: int):
+def get_artist(artist_id):
     """Get a specific artist"""
     session = get_session()
     try:
+        artist_id = int(artist_id)
         artist = session.query(Artist).get(artist_id)
 
         if artist is None:
             return abort(404)
 
         return jsonify(artist_schema.dump(artist).data)
+    except ValueError:
+        return abort(404)
     finally:
         session.close()
 
@@ -119,16 +122,19 @@ def get_albums():
 
 
 @BP.route('/album/<album_id>')
-def get_album(album_id: id):
+def get_album(album_id):
     """Get a specific album"""
     session = get_session()
     try:
+        album_id = int(album_id)
         album = session.query(Album).get(album_id)
 
         if album is None:
             return abort(404)
 
         return jsonify(album_schema.dump(album).data)
+    except ValueError:
+        return abort(404)
     finally:
         session.close()
 
@@ -163,16 +169,19 @@ def get_media():
 
 
 @BP.route('/media/<media_id>')
-def get_single_media(media_id: int):
+def get_single_media(media_id):
     """Get a specific media instance"""
     session = get_session()
     try:
+        media_id = int(media_id)
         media = session.query(Media).get(media_id)
 
         if media is None:
             return abort(404)
 
         return jsonify(media_schema.dump(media).data)
+    except ValueError:
+        return abort(404)
     finally:
         session.close()
 
