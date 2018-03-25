@@ -7,6 +7,8 @@ router.plugin(pushStateLocationPlugin);
 
 states.forEach(state => router.stateRegistry.register(state));
 
+router.urlRouter.otherwise({ state: 'error', params: {code: 404} })
+
 router.transitionService.onError({}, (transition) => {
     if (transition.success === false) {
         let error = transition.error()

@@ -8,6 +8,18 @@ export class MediaInstance extends Component {
 
   getSubtitle() {
     let model_data = this.props.media;
+
+    var genre_text;
+    if (model_data.genres === null || model_data.genres.length === 0) {
+      genre_text = "Unknown Genre"
+    } else {
+      let genres = [];
+      for (let i = 0; i < model_data.genres.length; i++) {
+        genres.push(model_data.genres[i].name);
+      }
+      genre_text = genres.join(', ');
+    }
+
     if(model_data.type === 0) {
       let first = model_data.release_date;  
       let last = ''; 
@@ -27,35 +39,33 @@ export class MediaInstance extends Component {
       }
 
       let seasons = model_data.seasons; 
-      let genres = [];
-      for(let i = 0; i < model_data.genres.length; i++) {
-        genres.push(model_data.genres[i].name); 
-      }
-      genres = genres.join(', ');
-      return 'TV Show | ' + years + ' | ' + seasons + " seasons | " + genres; 
+
+      return 'TV Show | ' + years + ' | ' + seasons + " seasons | " + genre_text; 
     }
     else {
       let year = model_data.release_date; 
-      let genres = [];
-      for(let i = 0; i < model_data.genres.length; i++) {
-        genres.push(model_data.genres[i].name); 
-      }
-      genres = genres.join(', ');
-      return 'Movie | ' + year + ' | ' + genres; 
+      return 'Movie | ' + year + ' | ' + genre_text; 
     }
   }
 
   getCast() {
     const cast_data = this.props.media.cast; 
+    if (cast_data === null || cast_data.length === 0) {
+      return (<div id="no_cast">No cast information available</div>)
+    }
     let cast = [];
     for(let i = 0; i < cast_data.length; i++) {
       cast.push(cast_data[i].name); 
     }
-    return cast.map((member, index) => <li key={index}>{member}</li>); 
+    return (
+      <ul id="cast">     
+      { cast.map((member, index) => <li key={index}>{member}</li>) }
+      </ul> 
+    )
   }
 
   getVideo() {
-    if (this.props.media.videos.length !== null && this.props.media.videos.length !== 0) {
+    if (this.props.media.videos !== undefined && this.props.media.videos !== null && this.props.media.videos.length !== 0) {
       let id = this.props.media.videos[0].key;
       return (<iframe className="embed-responsive-item" title="Trailer" src={"//www.youtube.com/embed/" + id} frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />)
     }
@@ -114,9 +124,12 @@ export class MediaInstance extends Component {
             <Row className="pb-2">
               <Col sm="6">
                 <h3>Cast</h3>
-                <ul id="cast">{this.getCast()}</ul>
+                {this.getCast()}
                 <h3>Photos</h3>
-                <MediaCarousel photos={this.props.media.other_images}/>
+                {
+                  this.props.media.other_images === undefined || this.props.media.other_images === null || this.props.media.other_images.length === 0 ?
+                  (<div id="no_photos">No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
+                }
               </Col>
             </Row>
           </Col> 
