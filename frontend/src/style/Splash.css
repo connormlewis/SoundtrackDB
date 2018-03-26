@@ -8,3 +8,12 @@
   height: 600px;
   width: 100%; 
 }
+
+.model-img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 200px;
+	height: 200px;
+	border-radius: 15px;
+}

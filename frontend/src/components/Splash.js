@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from "../style/Splash.css"; 
-import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption, Button, Col, Row } from 'reactstrap';
 
 const items = [
   {
@@ -87,6 +87,29 @@ class Splash extends Component {
           <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
           <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
         </Carousel>
+        <Row>
+          <Col sm="4">
+            <h3 className="text-center">Albums</h3>
+              <img className="model-img" src="https://imgur.com/5A4IyV1.jpg" alt="Albums" vspace="20"></img>
+              <p className="text-center">
+                <Button color="secondary" href="/album">Albums</Button>
+              </p> 
+          </Col>
+          <Col sm="4">
+            <h3 className="text-center">Artists</h3>
+              <img className="model-img" src="https://imgur.com/KcslUKJ.jpg" alt="Albums" vspace="20"></img>
+              <p className="text-center">
+                <Button color="secondary" href="/artist">Artists</Button>
+              </p> 
+          </Col>
+          <Col sm="4">
+            <h3 className="text-center">Media</h3>
+              <img className="model-img" src="https://imgur.com/ZEAV6aZ.jpg" alt="Albums" vspace="20"></img>
+              <p className="text-center">
+                <Button color="secondary" href="/media">Media</Button>
+              </p> 
+          </Col>
+        </Row>
       </div>
     );
   }
