@@ -11,8 +11,13 @@ export class AlbumInstance extends Component {
       <Fragment>
       {
         track_list.map((track) => {
+          let artists = [];
+          for (let i = 0; i < track.artists.length; i++) {
+            artists.push(track.artists[i].name);
+          }
+          let artist_names = artists.join(', ');
           return (
-            <li key={track.id}>{track.name}</li>
+            <li key={track.id}><strong>{track.name}</strong> by {artist_names}</li>
           )
         })
       }
@@ -66,7 +71,7 @@ export class AlbumInstance extends Component {
             <h2 id="name">{this.props.album.name}</h2>
             <h3>About</h3>
             <p id="label">Label: {this.props.album.label}</p>
-            <p id="year">Release year: {this.props.album.release_date.substring(0,4)}</p>
+            <p id="year">Release Year: {this.props.album.release_date.substring(0,4)}</p>
             <h3>Tracklist</h3>
             <ol id="tracks">{this.getTracklist()}</ol>
           </Col>
