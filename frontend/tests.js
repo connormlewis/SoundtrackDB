@@ -368,6 +368,12 @@ describe('<AlbumInstance/>', function () {
     }
   })
 
+  it('should have the correct media', function () {
+    const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
+    expect(wrapper.find({ alt: "Poster" }).prop('src')).to.be.equal(ALBUM_JSON.image);
+    expect(wrapper.find('iframe').prop('src')).to.contain(ALBUM_JSON.spotify_uri)
+  })
+
   it('should have the correct related data', function () {
     const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
     const expected_artists = ALBUM_JSON.artists;
