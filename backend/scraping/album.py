@@ -40,7 +40,7 @@ def add_album(album_json):
     finally:
         session.close()
 
-def get_album(id: int):
+def get_albums_from_file():
     client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTIFY_ID'), client_secret=os.getenv('SPOTIFY_SECRET'))
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     seen = set() # to avoid dups
@@ -66,6 +66,23 @@ def get_album(id: int):
 
                 with open("album_list.txt", "a") as album_names:
                     album_names.write(name + '\n')
+
+def get_album(id: int):
+    client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTIFY_ID'), client_secret=os.getenv('SPOTIFY_SECRET'))
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    info = sp.album(album)
+
+    next = info['tracks']['next']
+
+    offset = 50
+    while next is not None: 
+        tracks = sp.album_tracks(album, offset=offset)
+        for track in tracks['items']:
+            info['tracks']['items'].append(track)
+        next = tracks['next']
+        offset += 50
+
+    add_album(info)
 
 def remove_available_markets():
     session = get_session()
