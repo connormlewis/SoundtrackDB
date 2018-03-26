@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row} from 'reactstrap'; 
 import { UISref } from '@uirouter/react';
+import styles from "../../style/Artist.css"; 
 
 export class ArtistInstance extends Component {
 
@@ -49,6 +50,7 @@ export class ArtistInstance extends Component {
         <Row>
           <Col sm="8">
             <h2 id="name">{this.props.artist.name}</h2>
+            <iframe id="followers" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} width="300" height="56" scrolling="no" frameborder="0" allowtransparency="true"> </iframe>
             <h3>Biography</h3>
             <p id="bio">{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
           </Col>
