@@ -5,7 +5,11 @@ import json
 import os
 import requests
 
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import IntegrityError
 
 from app.models.album import Album
 from app.models.artist import Artist
@@ -28,6 +32,43 @@ def process_line(line):
     session.add(artist)
     session.commit()
     session.close()
+
+def add_artist(sp, info):
+    session = get_session()
+    try:
+        artist = Artist()
+
+        artist.genres = json.dumps(info['genres'])
+
+        artist.image = info['images'][0]['url']
+        artist.spotify_uri = info['uri']
+        artist.name = info['name']
+        artist.followers = info['followers']['total']
+
+        albums = []
+        album_results = sp.artist_albums(artist, album_type='album', limit=50, country='US')
+        albums.extend(album_results['items'])
+        while album_results['next']:
+            album_results = sp.next(album_results)
+            albums.extend(album_results['items'])
+
+        for album in albums: 
+            with open("spotify_album_ids.txt", "a") as album_ids:
+                album_ids.write(album['id'] + '\n')
+
+        session.add(artist)
+        session.commit()
+    except IntegrityError as e:
+        print("artist already in database")
+    finally:
+        session.close()
+
+def get_artist(id: int):
+    client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTIFY_ID'), client_secret=os.getenv('SPOTIFY_SECRET'))
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    info = sp.artist(id)
+    add_artist(sp, info)
+
 
 def get_bio(name: str):
     url = "http://ws.audioscrobbler.com/2.0/"
