@@ -17,7 +17,7 @@ export class AlbumInstance extends Component {
           }
           let artist_names = artists.join(', ');
           return (
-            <li key={track.id}><strong>{track.name}</strong> by {artist_names}</li>
+            <li key={track.id}><strong>{track.name}</strong> by <em>{artist_names}</em></li>
           )
         })
       }
