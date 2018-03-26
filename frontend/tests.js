@@ -313,7 +313,7 @@ describe('<ArtistInstance/>', function () {
   it('should have the correct media', function () {
     const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
     expect(wrapper.find({ alt: "Artist" }).prop('src')).to.be.equal(ARTIST_JSON.image);
-    expect(wrapper.find('iframe').prop('src')).to.contain(ARTIST_JSON.spotify_uri)
+    expect(wrapper.find('iframe').find({id: 'player'}).prop('src')).to.contain(ARTIST_JSON.spotify_uri)
   })
 
   it('should have the correct related data', function () {
