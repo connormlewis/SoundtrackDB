@@ -136,7 +136,7 @@ def get_tv(id: int):
 def check_for_duplicates(type: int, id: int):
     session = get_session()
     try:
-        media = session.query(Media).filter(Media.tmdb_id == id).one()
+        media = session.query(Media).filter(Media.type == type, Media.tmdb_id == id).one()
         if media.type == type:
             return True
         else:
@@ -147,15 +147,15 @@ def check_for_duplicates(type: int, id: int):
         session.close()
 
 def associate_with_album():
-    with open('scraping/shows.txt') as media_data, open("scraping/album_list.txt") as album_data: 
-        for media_line, album_line in zip(media_data, album_data):
+    with open('scraping/more_shows.txt') as media_data: 
+        for media_line in media_data:
             tmdb_id = media_line.split()[0]
             type_data = media_line.split()[1]
             if type_data == "TV":
                 t = 0
             elif type_data == "M":
                 t = 1
-            album_name = album_line.strip()
+            album_name = media_line[12:].rstrip()
             session = get_session()
             if tmdb_id != 'NULL':
                 try:
@@ -180,9 +180,9 @@ def associate_with_artist():
             for artist in album.artists:
                 try:
                     item.artists.append(artist)
+                    session.commit()
                 except IntegrityError as e:
                     print('relation between media and album already exists')
-    session.commit()
     session.close()
 
 def parse_file(input: str):
@@ -192,7 +192,10 @@ def parse_file(input: str):
             id = line[0]
             type = line[1]
             if type == 'M' or type == 'TV': 
-                duplicate = check_for_duplicates(id)
+                type_num = 0
+                if type == 'TV':
+                    type_num = 1
+                duplicate = check_for_duplicates(type_num, id)
                 if not duplicate:
                     if type == 'M':
                         get_movie(id)
@@ -208,5 +211,6 @@ if __name__ == '__main__':
          os.getenv('POSTGRES_DB')
 
     init_db(uri)
-    #get_movie(54318)
+    #parse_file('scraping/more_shows.txt')
+    #associate_with_album()
     associate_with_artist()
