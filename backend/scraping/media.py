@@ -211,6 +211,7 @@ if __name__ == '__main__':
          os.getenv('POSTGRES_DB')
 
     init_db(uri)
+    get_tv(58474)
     #parse_file('scraping/more_shows.txt')
     #associate_with_album()
-    associate_with_artist()
+    #associate_with_artist()
