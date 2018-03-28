@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 // eslint-disable-next-line
 import styles from "../style/About.css";
 import PropTypes from 'prop-types'
@@ -6,14 +6,14 @@ import PropTypes from 'prop-types'
 class About extends Component {
     render() {
       return (
-        <React.Fragment>
+        <Fragment>
           <h1 className="about-style-header">About</h1>
           <Desc />
           <Bio bios={this.props.about}/>
           <Statistics stats={this.props.about}/>
           <Data />
           <Tools />
-        </React.Fragment>
+        </Fragment>
       )
     };
 }
@@ -21,7 +21,7 @@ class About extends Component {
 export class Desc extends Component {
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <hr/>
         <p className='desc'>SoundtrackDB connects soundtracks, artists, and
         their associated movies and TV shows. This site allows users to discover
@@ -30,7 +30,7 @@ export class Desc extends Component {
          have worked on.
         </p>
         <hr/>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
@@ -42,7 +42,7 @@ export class Bio extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <div className="container">
           <h1 style={{textAlign: 'center'}}>The Team - SoundDBG</h1>
           <div className="row align-self">
@@ -119,7 +119,7 @@ export class Bio extends Component {
             </div>
           </div>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
@@ -133,7 +133,7 @@ About.propTypes = {
 export class Statistics extends Component {
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <div className="statistics">
           <h1 className="about-style-header">Statistics</h1>
           <p className="about-style-p"><strong>Total Commits: </strong>{this.props.stats.total_commits}<br/>
@@ -143,7 +143,7 @@ export class Statistics extends Component {
             <a href="https://connormlewis.gitbooks.io/api/">API Documentation</a><br/>
           <a href="https://connormlewis.gitbooks.io/report/">GitBook Report</a></p>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
@@ -151,7 +151,7 @@ export class Statistics extends Component {
 export class Data extends Component {
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <div className="data">
           <h1 className="about-style-header">Data Sources</h1>
           <p className="about-style-p"><a href="https://developer.spotify.com/web-api/">Spotify API</a><br/>
@@ -161,7 +161,7 @@ export class Data extends Component {
           </p>
           <p className="desc">Spotify, LastFM, and TheMovieDB were scraped through python scripts. The scripts made calls to the API's and added the information from the responses directly to the database using SQLAlchemy. The GitHub API was scraped using the python requests library and the total commits and issues are updated when the page is refreshed.</p>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
@@ -169,7 +169,7 @@ export class Data extends Component {
 export class Tools extends Component {
   render() {
     return (
-      <React.Fragment>
+      <Fragment>
         <div className="tools">
           <h1 className="about-style-header">Tools Used</h1>
             <p className="about-style-p">
@@ -194,7 +194,7 @@ export class Tools extends Component {
               <strong>StarUML</strong> was used to create the UML diagram for database.<br/>
             </p>
         </div>
-      </React.Fragment>
+      </Fragment>
     );
   }
 }
