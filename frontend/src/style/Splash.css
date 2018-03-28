@@ -1,5 +1,7 @@
-/* modifies the carousel to sit flush against the background on computer monitors */
-@media (min-width: 1200px) {
+/*  modifies the carousel to sit flush against the background on computer monitors 
+ *	reverts back to old image if the screen size gets to small to keep it responsive
+ */
+@media (min-width: 1200px) { 
 	.carousel {
 		position: relative;
 		right: 15px;
