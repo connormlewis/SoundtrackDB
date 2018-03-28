@@ -49,13 +49,13 @@ export class ArtistInstance extends Component {
       <Fragment>
         <Row>
           <Col sm="8">
-            <h1 id="name" className="artist-name" style={styles}>{this.props.artist.name}</h1>
+            <img id="artist-image" className="w-50" src={this.props.artist.image} alt="Artist" vspace="20" style={styles} />
+            <h1 id="name">{this.props.artist.name}</h1>
             <iframe id="followers" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} width="300" height="56" scrolling="no" frameborder="0" allowtransparency="true"> </iframe>
             <h3>Biography</h3>
             <p id="bio">{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
           </Col>
           <Col sm="4">
-            <img className="w-100" src={this.props.artist.image} alt="Artist" vspace="20"/>
             <iframe id="player" className="embed-responsive-item w-100" title="Spotify Player" src={"https://open.spotify.com/embed?uri=" + this.props.artist.spotify_uri} height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </Col>
         </Row>
