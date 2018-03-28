@@ -14,21 +14,21 @@ class Navigation extends Component {
             <Nav className="navbar-collapse" navbar>
               <UISrefActive class="active">
                 <NavItem>
-                  <UISref to="albumHome">
+                  <UISref to="album">
                     <div className="nav-link" style={{ cursor: 'pointer' }}>Albums</div>
                   </UISref>
                 </NavItem>
               </UISrefActive>
               <UISrefActive class="active">
                 <NavItem>
-                  <UISref to="artistHome">
+                  <UISref to="artist">
                     <div className="nav-link" style={{ cursor: 'pointer' }}>Artists</div>
                   </UISref>
                 </NavItem>
               </UISrefActive>
               <UISrefActive class="active">
                 <NavItem>
-                  <UISref to="mediaHome">
+                  <UISref to="media">
                     <div className="nav-link" style={{ cursor: 'pointer' }}>Media</div>
                   </UISref>
                 </NavItem>

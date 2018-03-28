@@ -66,7 +66,7 @@ export class MediaHome extends Component {
 
   navigateToInstance(id) {
     const { stateService } = this.props.transition.router;
-    stateService.go('mediaInstance', { mediaID: id });
+    stateService.go('^.instance', { mediaID: id });
   }
 
   render() {

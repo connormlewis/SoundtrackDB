@@ -25,7 +25,7 @@ export class AlbumInstance extends Component {
     const artists = this.props.album.artists;
     const navigateToInstance = (id) => {
       const { stateService } = this.props.transition.router;
-      stateService.go('artistInstance', { artistID: id });
+      stateService.go('artist.instance', { artistID: id });
     }
     return (<RelatedArtists artists={artists} navigateToInstance={navigateToInstance}/>);
   }
@@ -34,7 +34,7 @@ export class AlbumInstance extends Component {
     const media = this.props.album.media;
     const navigateToInstance = (id) => {
       const { stateService } = this.props.transition.router;
-      stateService.go('mediaInstance', { mediaID: id });
+      stateService.go('media.instance', { mediaID: id });
     }
     return (<RelatedMedia media={media} navigateToInstance={navigateToInstance}/>);
   }

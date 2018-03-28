@@ -79,7 +79,7 @@ export class MediaInstance extends Component {
     const albums = this.props.media.albums;
     const navigateToInstance = (id) => {
       const { stateService } = this.props.transition.router;
-      stateService.go('albumInstance', { albumID: id });
+      stateService.go('album.instance', { albumID: id });
     }
     return (<RelatedAlbums albums={albums} navigateToInstance={navigateToInstance}/>);
   }
@@ -88,7 +88,7 @@ export class MediaInstance extends Component {
     const artists = this.props.media.artists;
     const navigateToInstance = (id) => {
       const { stateService } = this.props.transition.router;
-      stateService.go('artistInstance', { artistID: id });
+      stateService.go('artist.instance', { artistID: id });
     }
     return (<RelatedArtists artists={artists} navigateToInstance={navigateToInstance}/>);
   }

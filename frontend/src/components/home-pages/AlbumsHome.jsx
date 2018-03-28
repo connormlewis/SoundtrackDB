@@ -46,7 +46,7 @@ export class AlbumHome extends Component {
 
   navigateToInstance(id) {
     const { stateService } = this.props.transition.router;
-    stateService.go('albumInstance', { albumID: id });
+    stateService.go('^.instance', { albumID: id });
   }
 
   render() {

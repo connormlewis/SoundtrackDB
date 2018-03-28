@@ -1,3 +1,5 @@
+import React from 'react'
+import { UIView } from '@uirouter/react'
 import Splash from './components/Splash';
 import About from './components/About';
 import ErrorPage from './components/Error';
@@ -34,9 +36,30 @@ const ABOUT = {
   }]
 };
 
+const ALBUM_ABSTRACT = {
+  name: 'album',
+  component: () => <UIView/>,
+  redirectTo: 'album.home',
+  url: '/album'
+}
+
+const ARTIST_ABSTRACT = {
+  name: 'artist',
+  component: () => <UIView/>,
+  redirectTo: 'artist.home',
+  url: '/artist'
+}
+
+const MEDIA_ABSTRACT = {
+  name: 'media',
+  component: () => <UIView/>,
+  redirectTo: 'media.home',
+  url: '/media'
+}
+
 const ALBUM_HOME = {
-  name: 'albumHome',
-  url: '/album',
+  name: 'album.home',
+  url: '',
   component: AlbumHome,
   params: {
     offset: 0,
@@ -50,8 +73,8 @@ const ALBUM_HOME = {
 };
 
 const ARTIST_HOME = {
-  name: 'artistHome',
-  url: '/artist',
+  name: 'artist.home',
+  url: '',
   component: ArtistHome,
   params: {
     offset: 0,
@@ -65,8 +88,8 @@ const ARTIST_HOME = {
 };
 
 const MEDIA_HOME = {
-  name: 'mediaHome',
-  url: '/media',
+  name: 'media.home',
+  url: '',
   component: MediaHome,
   params: {
     offset: 0,
@@ -80,8 +103,8 @@ const MEDIA_HOME = {
 };
 
 const ALBUM_INSTANCE = {
-  name: 'albumInstance',
-  url: '/album/:albumID',
+  name: 'album.instance',
+  url: '/:albumID',
   component: AlbumInstance,
   resolve: [{
     token: 'album',
@@ -91,8 +114,8 @@ const ALBUM_INSTANCE = {
 };
 
 const ARTIST_INSTANCE = {
-  name: 'artistInstance',
-  url: '/artist/:artistID',
+  name: 'artist.instance',
+  url: '/:artistID',
   component: ArtistInstance,
   resolve: [{
     token: 'artist',
@@ -102,8 +125,8 @@ const ARTIST_INSTANCE = {
 };
 
 const MEDIA_INSTANCE = {
-  name: 'mediaInstance',
-  url: '/media/:mediaID',
+  name: 'media.instance',
+  url: '/:mediaID',
   component: MediaInstance,
   resolve: [{
     token: 'media',
@@ -112,4 +135,4 @@ const MEDIA_INSTANCE = {
   }]
 };
 
-export default [HOME, ABOUT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE, ERROR]; 
+export default [HOME, ABOUT, ALBUM_ABSTRACT, ARTIST_ABSTRACT, MEDIA_ABSTRACT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE, ERROR]; 

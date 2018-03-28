@@ -42,7 +42,7 @@ export class ArtistHome extends Component {
 
   navigateToInstance(id) {
     const { stateService } = this.props.transition.router;
-    stateService.go('artistInstance', { artistID: id });
+    stateService.go('^.instance', { artistID: id });
   }
 
   render() {
