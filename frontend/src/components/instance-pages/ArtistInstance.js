@@ -51,7 +51,7 @@ export class ArtistInstance extends Component {
           <Col sm="8">
             <img id="artist-image" className="w-50" src={this.props.artist.image} alt="Artist" vspace="20" style={styles} />
             <h1 id="name">{this.props.artist.name}</h1>
-            <iframe id="followers" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} width="300" height="56" scrolling="no" frameborder="0" allowtransparency="true"> </iframe>
+            <iframe id="followers" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} width="275" height="56" scrolling="no" frameborder="0" allowtransparency="true"> </iframe>
             <h3>Biography</h3>
             <p id="bio">{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
           </Col>

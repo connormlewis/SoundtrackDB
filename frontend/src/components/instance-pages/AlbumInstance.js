@@ -68,7 +68,7 @@ export class AlbumInstance extends Component {
       <Fragment>
         <Row>
           <Col sm="8">
-            <h1 id="name">{this.props.album.name}</h1>
+            <h2 id="name">{this.props.album.name}</h2>
             <h3>About</h3>
             <p id="label">Label: {this.props.album.label}</p>
             <p id="year">Release Year: {this.props.album.release_date.substring(0,4)}</p>
