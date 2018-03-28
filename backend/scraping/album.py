@@ -6,6 +6,9 @@ import os
 from sqlalchemy.orm.exc import NoResultFound
 from sqlalchemy.exc import IntegrityError
 
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+
 from app.models.album import Album
 from app.models.artist import Artist
 from app.models.media import Media
@@ -22,13 +25,14 @@ def add_album(album_json):
     try:
         album = Album()
 
-        album.genres = json.dumps(album_json['genres'])
+        album.genres = album_json['genres']
         track_data = album_json['tracks']['items']
         for track in track_data:
             track.pop('available_markets', None)
-        album.tracks = json.dumps(track_data)
+        album.tracks = track_data
 
-        album.image = album_json['images'][0]['url']
+        if len(album_json['images']) != 0:
+            album.image = album_json['images'][0]['url']
         album.spotify_uri = album_json['uri']
         album.name = album_json['name']
         album.release_date = album_json['release_date']
@@ -44,7 +48,7 @@ def get_albums_from_file():
     client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTIFY_ID'), client_secret=os.getenv('SPOTIFY_SECRET'))
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
     seen = set() # to avoid dups
-    with open ("spotify_album_ids.txt", "r") as album_ids:
+    with open ("scraping/spotify_album_ids.txt", "r") as album_ids:
         for album in album_ids: 
             album = album.strip('\n')
             info = sp.album(album)
@@ -64,13 +68,13 @@ def get_albums_from_file():
 
                 add_album(info)
 
-                with open("album_list.txt", "a") as album_names:
+                with open("scraping/album_list.txt", "a") as album_names:
                     album_names.write(name + '\n')
 
 def get_album(id: int):
     client_credentials_manager = SpotifyClientCredentials(client_id=os.getenv('SPOTIFY_ID'), client_secret=os.getenv('SPOTIFY_SECRET'))
     sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-    info = sp.album(album)
+    info = sp.album(id)
 
     next = info['tracks']['next']
 
@@ -122,7 +126,8 @@ if __name__ == '__main__':
 
     init_db(uri)
 
-    remove_available_markets()
+    associate_albums_with_artists():
+
 
     # with open('scraping/spotify_album_data.json', 'r') as f:
     #     for x in f:

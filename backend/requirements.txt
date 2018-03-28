@@ -9,3 +9,4 @@ marshmallow
 flask-cors
 sqlalchemy
 psycopg2
+spotipy
