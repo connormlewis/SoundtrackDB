@@ -80,14 +80,14 @@ class Splash extends Component {
 
     return (
       <div>
-        <div>
-          <h2 className="text-center">Welcome to SoundtrackDB</h2>
+        <div className="pos-relative">
           <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} ride={"carousel"} >
             <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
             {slides}
             <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
             <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
           </Carousel>
+          <h2 className="text-center home-title">Welcome to SoundtrackDB</h2>
         </div>
         <p><br/></p>
         <div>
