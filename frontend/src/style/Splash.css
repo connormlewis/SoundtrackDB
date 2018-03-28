@@ -1,3 +1,12 @@
+/* modifies the carousel to sit flush against the background on computer monitors */
+@media (min-width: 1200px) {
+	.carousel {
+		position: relative;
+		right: 15px;
+		width: 1200px;
+	}
+}
+
 .carousel-caption {
   text-shadow: 3px 3px black;
 }
@@ -6,7 +15,8 @@
   object-fit: cover;
   object-position: center;
   height: 600px;
-  width: 100%; 
+	width: 100%;
+
 }
 
 .model-img {
