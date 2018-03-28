@@ -73,92 +73,60 @@ class Splash extends Component {
       return (
         <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src} >
           <img src={item.src} alt={item.altText} className="carousel-img" />
-          <CarouselCaption captionHeader={item.caption} captionText={""} cssModule={styles} />
+          <CarouselCaption captionHeader={item.caption} captionText={""} cssModule={"carousel-caption"} />
         </CarouselItem>
       );
     });
 
     return (
       <div>
-        <h2 className="text-center">Welcome to SoundtrackDB</h2>
-        <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} ride={"carousel"} >
-          <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-          {slides}
-          <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-          <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-        </Carousel>
+        <div>
+          <h2 className="text-center">Welcome to SoundtrackDB</h2>
+          <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} ride={"carousel"} >
+            <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
+            {slides}
+            <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
+            <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+          </Carousel>
+        </div>
         <p><br/></p>
-{/*        <Row>
-          <Col sm="4">
-            <h3 className="text-center">Albums</h3>
-            <img className="model-img" src="https://imgur.com/5A4IyV1.jpg" alt="Albums" vspace="20"></img>
-            <p className="text-center">
-              <Button color="secondary" href="/album">Albums >></Button>
-            </p> 
-          </Col>
-          <Col sm="4">
-            <h3 className="text-center">Artists</h3>
-            <img className="model-img" src="https://imgur.com/KcslUKJ.jpg" alt="Albums" vspace="20"></img>
-            <p className="text-center">
-              <Button color="secondary" href="/artist">Artists >></Button>
-            </p> 
-          </Col>
-          <Col sm="4">
-            <h3 className="text-center">Media</h3>
-            <img className="model-img" src="https://imgur.com/ZEAV6aZ.jpg" alt="Albums" vspace="20"></img>
-            <p className="text-center">
-              <Button color="secondary" href="/media">Media >></Button>
-            </p> 
-          </Col>
-        </Row>
-        <hr/>*/}
-        <Row>
-          <Col sm="8">
-            <h3 className="text-left">Find albums to your favorite movie or TV show</h3>
-            <p className="text-left">
-              In the beginning four nations blah blah blah.<br/>
-              That all changed when the -fire- alan started to code.
-            </p>
-            <p className="text-left">
-              <Button color="secondary" href="/media">Media >></Button>
-            </p>
-          </Col>
-          <Col sm="4">
-            <img className="detail-img" src="https://78.media.tumblr.com/eee93ec465ef242d57dd65d1809d41bc/tumblr_p68ztmEsDc1wtdfjzo1_540.png" alt="Albums" vspace="20"></img>
-          </Col>
-        </Row>
-        <hr/>
-        <Row>
-          <Col sm="4">
-            <img className="detail-img" src="https://78.media.tumblr.com/15399dc0c7a6ef555bf7ef4a38d75602/tumblr_p63hy6fG1D1rtk53qo4_r6_540.png" alt="Artists" vspace="20"></img>
-          </Col>
-          <Col sm="8">
-            <h3 className="text-right">Find artists to your favorite music</h3>
-            <p className="text-right">
-              I'm Deku and this is how became the greatest hero.<br/>
-              Plus Ultra!
-            </p>
-            <p className="text-right">
-              <Button color="secondary" href="/artist">Artists >></Button>
-            </p> 
-          </Col>
-        </Row>
-        <hr/>
-        <Row>
-          <Col sm="8">
-            <h3 className="text-left">Find your movie or TV show to your favorite soundtrack</h3>
-            <p className="text-left">
-              Is this really going to compile and look aesthetic???<br/>
-              I'm not sure what's going to happen when I let docker compile this...
-            </p>
-            <p className="text-left">
-              <Button color="secondary" href="/media">Media >></Button>
-            </p> 
-          </Col>
-          <Col sm="4">
-            <img className="detail-img" src="https://78.media.tumblr.com/0c3c0795315942fb2dc00cbfe498d42e/tumblr_p30uucUWdm1ru0b90o1_540.jpg" alt="Media" vspace="20"></img>
-          </Col>
-        </Row>
+        <div>
+          <Row>
+            <Col>
+              <h3 className="text-left">Find albums to your favorite movie and TV show</h3>
+              <div class="text-left">
+                <img className="detail-img-right" src="https://imgur.com/7jSEaYa.jpg" alt="Albums" vspace="20"></img>
+                In the beginning four nations blah blah blah.<br/>
+                That all changed when the -fire- alan started to code. <br/>
+                <Button color="secondary" href="/album">Albums >></Button>
+              </div>
+            </Col>
+          </Row>
+          <hr/>
+          <Row>
+            <Col>
+              <h3 className="text-right">Find artists to your favorite music</h3>
+              <div class="text-right">
+                <img className="detail-img-left" src="https://imgur.com/vdhzXGU.jpg" alt="Artists" vspace="20"></img>
+                I'm Deku and this is how became the greatest hero.<br/>
+                Plus Ultra!<br/>
+                <Button color="secondary" href="/artist">Artists >></Button>
+              </div> 
+            </Col>
+          </Row>
+          <hr/>
+          <Row>
+            <Col>
+              <h3 className="text-left">Find movies and TV shows to your favorite soundtrack</h3>
+              <div class="text-left">
+                <img className="detail-img-right" src="https://imgur.com/OghGiJG.jpg" alt="Media" vspace="20"></img>
+                Is this really going to compile and look aesthetic???<br/>
+                I'm not sure what's going to happen when I let docker compile this...<br/>
+                <Button color="secondary" href="/media">Media >></Button>
+              </div> 
+            </Col>
+          </Row>
+        </div>
       </div>
     );
   }
