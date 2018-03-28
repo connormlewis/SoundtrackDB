@@ -310,6 +310,11 @@ describe('<ArtistInstance/>', function () {
     expect(wrapper.find({ id: 'bio' }).render().text()).to.be.equal(ARTIST_JSON.bio);
   })
 
+  it('should have correct spotify artist follower counter', function() {
+    const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
+    expect(wrapper.find('iframe').find({id: 'followers'}).prop('src')).to.contain(ARTIST_JSON.spotify_uri)
+  })
+
   it('should have the correct media', function () {
     const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
     expect(wrapper.find({ alt: "Artist" }).prop('src')).to.be.equal(ARTIST_JSON.image);
