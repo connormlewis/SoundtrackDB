@@ -44,7 +44,7 @@
 	}
 }
 
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 	.carousel-img {
 		object-fit: cover;
   	object-position: center;
@@ -59,14 +59,6 @@
 		transform: translate(-50%, -50%);
 		color: white;
 		text-shadow: -1px 0 black, 0 3px black, 3px 0 black, 0 -1px black;
-	}
-
-	.text-right {
-		clear: left;
-	}
-
-	.text-left {
-		clear: right;
 	}
 }
 

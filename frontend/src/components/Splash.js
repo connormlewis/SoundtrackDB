@@ -92,38 +92,50 @@ class Splash extends Component {
         <p><br/></p>
         <div>
           <Row>
-            <Col>
+            <Col sm="4" md="6" lg="8">
               <h3 className="text-left">Find albums to your favorite movie and TV show</h3>
-              <div class="text-left">
-                <img className="detail-img-right" src="https://imgur.com/7jSEaYa.jpg" alt="Albums" vspace="20"></img>
+              <p className="text-left">
                 In the beginning four nations blah blah blah.<br/>
-                That all changed when the -fire- alan started to code. <br/>
+                That all changed when the -fire- alan started to code.
+              </p>
+              <p className="text-left">
                 <Button color="secondary" href="/album">Albums >></Button>
-              </div>
+              </p>
+            </Col>
+            <Col sm="auto" md="auto" lg="4">
+                <img className="detail-img-right" src="https://imgur.com/7jSEaYa.jpg" alt="Albums" vspace="20"></img>
             </Col>
           </Row>
           <hr/>
           <Row>
-            <Col>
+            <Col sm="auto" md="6" lg="4">
+              <img className="detail-img-left" src="https://imgur.com/vdhzXGU.jpg" alt="Artists" vspace="20"></img>
+            </Col>
+            <Col sm="4" md="6" lg="8">
               <h3 className="text-right">Find artists to your favorite music</h3>
-              <div class="text-right">
-                <img className="detail-img-left" src="https://imgur.com/vdhzXGU.jpg" alt="Artists" vspace="20"></img>
+              <p className="text-right">
                 I'm Deku and this is how became the greatest hero.<br/>
-                Plus Ultra!<br/>
+                Plus Ultra!
+              </p>
+              <p className="text-right">
                 <Button color="secondary" href="/artist">Artists >></Button>
-              </div> 
+              </p> 
             </Col>
           </Row>
           <hr/>
           <Row>
-            <Col>
+            <Col sm="4" md="6" lg="8">
               <h3 className="text-left">Find movies and TV shows to your favorite soundtrack</h3>
-              <div class="text-left">
-                <img className="detail-img-right" src="https://imgur.com/OghGiJG.jpg" alt="Media" vspace="20"></img>
+              <p className="text-left">
                 Is this really going to compile and look aesthetic???<br/>
-                I'm not sure what's going to happen when I let docker compile this...<br/>
+                I'm not sure what's going to happen when I let docker compile this...
+              </p> 
+              <p className="text-left">
                 <Button color="secondary" href="/media">Media >></Button>
-              </div> 
+              </p>
+            </Col>
+            <Col sm="auto" md="6" lg="4">
+              <img className="detail-img-right" src="https://imgur.com/OghGiJG.jpg" alt="Media" vspace="20"></img>
             </Col>
           </Row>
         </div>
