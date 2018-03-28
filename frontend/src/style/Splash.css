@@ -6,8 +6,37 @@
 		position: relative;
 		right: 15px;
 		width: 1200px;
+		top: -8px;
+		text-align: center;
 	}
 }
+
+.pos-relative {
+	position: relative;
+}
+
+@media (min-width: 1200px) {
+	.home-title {
+		position: absolute;
+		top: 1%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+}
+
+@media (max-width: 1200px) {
+	.home-title {
+		position: absolute;
+		top: 2%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
+}
+
 
 .carousel-caption {
   text-shadow: 3px 3px black;
@@ -17,8 +46,7 @@
   object-fit: cover;
   object-position: center;
   height: 600px;
-	width: 100%;
-
+  width: 100%;
 }
 
 .model-img {

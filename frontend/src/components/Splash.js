@@ -79,8 +79,7 @@ class Splash extends Component {
     });
 
     return (
-      <div>
-        <h2 className="text-center">Welcome to SoundtrackDB</h2>
+      <div className="pos-relative">
         <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous} ride={"carousel"} >
           <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
           {slides}
@@ -113,6 +112,7 @@ class Splash extends Component {
         </Row>
         <hr/>*/}
         <Row>
+          
           <Col sm="8">
             <h3 className="text-left">Find albums to your favorite movie or TV show</h3>
             <p className="text-left">
@@ -144,6 +144,7 @@ class Splash extends Component {
           </Col>
         </Row>
         <hr/>
+        <h2 className="text-center home-title">Welcome to SoundtrackDB</h2>
         <Row>
           <Col sm="8">
             <h3 className="text-left">Find your movie or TV show to your favorite soundtrack</h3>
