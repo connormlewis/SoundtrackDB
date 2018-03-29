@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row} from 'reactstrap'; 
-import { UISref } from '@uirouter/react';
+import { RelatedArtists } from './RelatedArtists'; 
+import { RelatedMedia } from './RelatedMedia'; 
 
 export class AlbumInstance extends Component {
 
@@ -21,41 +22,21 @@ export class AlbumInstance extends Component {
   }
 
   getArtists() {
-    const artists = this.props.album.artists; 
-    return (
-      <Fragment>
-      {
-        artists.map((artist) => {
-          return (
-            <li key={artist.id}>
-              <UISref to="artistInstance" params={{ artistID: artist.id }}>
-                <a>{ artist.name }</a>
-              </UISref>
-            </li>
-          )
-        })
-      }
-      </Fragment>
-    ); 
+    const artists = this.props.album.artists;
+    const navigateToInstance = (id) => {
+      const { stateService } = this.props.transition.router;
+      stateService.go('artistInstance', { artistID: id });
+    }
+    return (<RelatedArtists artists={artists} navigateToInstance={navigateToInstance}/>);
   }
 
   getMedia() {
-    const media = this.props.album.media; 
-    return (
-      <Fragment>
-      {
-        media.map((item) => {
-          return (
-            <li key={item.id}>
-              <UISref to="mediaInstance" params={{ mediaID: item.id }}>
-                <a>{item.name}</a>
-              </UISref>
-            </li>
-          )
-        })
-      }
-      </Fragment>
-    )
+    const media = this.props.album.media;
+    const navigateToInstance = (id) => {
+      const { stateService } = this.props.transition.router;
+      stateService.go('mediaInstance', { mediaID: id });
+    }
+    return (<RelatedMedia media={media} navigateToInstance={navigateToInstance}/>);
   }
 
   render() {
@@ -76,14 +57,10 @@ export class AlbumInstance extends Component {
           </Col>
         </Row>
         <Row>
-          <Col sm="6">
-            <h3>Media</h3>
-            <ul id="media">{this.getMedia()}</ul>
-          </Col>
-          <Col sm="6">
-            <h3>Artists</h3>
-            <ul id="artists">{this.getArtists()}</ul>
-          </Col>
+          <div id="media">{this.getMedia()}</div>
+        </Row>
+        <Row>
+          <div id="artists"> {this.getArtists()} </div>
         </Row>
       </Fragment>
     );

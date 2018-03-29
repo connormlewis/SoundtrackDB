@@ -49,9 +49,9 @@ export class MediaCarousel extends Component {
   render() {
     const { activeIndex } = this.state;
 
-    const slides = this.props.photos.map((photo) => {
+    const slides = this.props.photos.map((photo, index) => {
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={photo.file_path}>
+        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={index}>
           <img src={this.getImgSrc(photo)} alt="" className="w-100 h-100"/>
         </CarouselItem>
       );

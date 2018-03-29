@@ -6,6 +6,8 @@ import registerServiceWorker from './registerServiceWorker';
 import {UIRouter} from '@uirouter/react';
 import {router} from './router.config'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import '../node_modules/slick-carousel/slick/slick.css'; 
+import '../node_modules/slick-carousel/slick/slick-theme.css';
 
 ReactDOM.render(
   <UIRouter router={router}>
