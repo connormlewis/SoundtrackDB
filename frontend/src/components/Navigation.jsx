@@ -4,7 +4,7 @@ import { UISref, UISrefActive } from '@uirouter/react';
 
 class Navigation extends Component {
 
-  
+
   constructor(props) {
     super(props)
     this.state = {
@@ -60,12 +60,12 @@ class Navigation extends Component {
                   </UISref>
                 </NavItem>
               </UISrefActive>
-              <div className="ml-auto">
-                <form className="form-inline my-2 my-lg-0" onSubmit={evt => this.search(evt)}>
-                  <input className="form-control mr-sm-2" type="search" placeholder="Search" onChange={evt => this.updateInputValue(evt)} aria-label="Search"></input>
-                  <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                </form>
-              </div>
+            </Nav>
+            <Nav className="ml-auto">
+              <form className="form-inline my-2 my-lg-0" onSubmit={evt => this.search(evt)}>
+                <input className="form-control mr-sm-2" type="search" placeholder="Search" onChange={evt => this.updateInputValue(evt)} aria-label="Search"></input>
+                <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+              </form>
             </Nav>
           </Container>
         </Navbar>

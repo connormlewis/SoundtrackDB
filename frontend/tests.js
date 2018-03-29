@@ -24,6 +24,7 @@ import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON,
         INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, 
         ABOUT_JSON, BAD_MEDIA_JSON, BAD_ARTIST_JSON} from './testsData'; 
 import ErrorPage from './src/components/Error';
+import SDBPagination from "./src/components/Pagination";
 
 // App
 describe('<App/>', function () {
@@ -41,7 +42,7 @@ describe('<Navigation/>', function () {
 
   it('should have 4 items: Albums, Artists, TV/Movies, and About', function () {
     const wrapper = shallow(<Navigation />);
-    const navItems = wrapper.find('Nav').children();
+    const navItems = wrapper.find('Nav').at(0).children();
     expect(navItems).to.have.length(4);
     expect(navItems.at(0).find('.nav-link').render().text()).to.equal('Albums');
     expect(navItems.at(1).find('.nav-link').render().text()).to.equal('Artists');
@@ -476,3 +477,14 @@ describe('<RelatedMedia/>', function() {
     expect(wrapper.find('CardImg').prop('src')).to.be.equal(ALBUM_JSON.media[0].image);
   }); 
 });
+
+describe('<SDBPagination/>', function() {
+  it('should render without crashing', function() {
+    shallow(<SDBPagination state="" limit={12} offset={0} total={12}/>)
+  })
+
+  it('should have at max 5 pages (9 items including arrows)', function() {
+    let pagination = shallow(<SDBPagination state="" limit={12} offset={0} total={200}/>)
+    expect(pagination.find('PaginationItem').length).to.be.equal(9)
+  })
+})

@@ -8,7 +8,7 @@ export default class SDBPagination extends Component {
     let previousButtonCount = Math.min(this.toatlRemainingPages >= 2 ? 2 : this.maxOtherPagesToShow - this.toatlRemainingPages, this.totalPreviousPages)
     return _.times(previousButtonCount, (val) => {
       return (
-        <PaginationItem>
+        <PaginationItem key={this.currentPage + 1 - (previousButtonCount - val)}>
           <UISref to={this.props.state} params={{ offset: this.props.offset - this.props.limit }}>
             <PaginationLink>{this.currentPage + 1 - (previousButtonCount - val)}</PaginationLink>
           </UISref>
@@ -21,7 +21,7 @@ export default class SDBPagination extends Component {
     let nextButtonCount = Math.min(this.totalPreviousPages >= 2 ? 2 : this.maxOtherPagesToShow - this.totalPreviousPages, this.toatlRemainingPages)
     return _.times(nextButtonCount, (val) => {
       return (
-        <PaginationItem>
+        <PaginationItem key={this.currentPage + 2 + val}>
           <UISref to={this.props.state} params={{ offset: this.props.offset + (this.props.limit * (val + 1)) }}>
             <PaginationLink>{this.currentPage + 2 + val}</PaginationLink>
           </UISref>
@@ -42,17 +42,17 @@ export default class SDBPagination extends Component {
         <Pagination className="justify-content-center">
           <PaginationItem>
             {
-              this.currentPage === 0 ? <PaginationLink disabled><i class="fas fa-angle-double-left"></i></PaginationLink> :
+              this.currentPage === 0 ? <PaginationLink disabled><i className="fas fa-angle-double-left"></i></PaginationLink> :
                 <UISref to={this.props.state} params={{ offset: 0 }}>
-                  <PaginationLink><i class="fas fa-angle-double-left"></i></PaginationLink>
+                  <PaginationLink><i className="fas fa-angle-double-left"></i></PaginationLink>
                 </UISref>
             }
           </PaginationItem>
           <PaginationItem>
             {
-              this.currentPage === 0 ? <PaginationLink disabled><i class="fas fa-angle-left"></i></PaginationLink> :
+              this.currentPage === 0 ? <PaginationLink disabled><i className="fas fa-angle-left"></i></PaginationLink> :
                 <UISref to={this.props.state} params={{ offset: this.props.offset - this.props.limit }}>
-                  <PaginationLink><i class="fas fa-angle-left"></i></PaginationLink>
+                  <PaginationLink><i className="fas fa-angle-left"></i></PaginationLink>
                 </UISref>
             }
           </PaginationItem>
@@ -67,17 +67,17 @@ export default class SDBPagination extends Component {
 
           <PaginationItem>
             {
-              this.currentPage === this.totalPages - 1 ? <PaginationLink disabled><i class="fas fa-angle-right"></i></PaginationLink> :
+              this.currentPage === this.totalPages - 1 ? <PaginationLink disabled><i className="fas fa-angle-right"></i></PaginationLink> :
                 <UISref to={this.props.state} params={{ offset: this.props.offset + this.props.limit }}>
-                  <PaginationLink><i class="fas fa-angle-right"></i></PaginationLink>
+                  <PaginationLink><i className="fas fa-angle-right"></i></PaginationLink>
                 </UISref>
             }
           </PaginationItem>
           <PaginationItem>
             {
-              this.currentPage === this.totalPages - 1 ? <PaginationLink disabled><i class="fas fa-angle-double-right"></i></PaginationLink> :
+              this.currentPage === this.totalPages - 1 ? <PaginationLink disabled><i className="fas fa-angle-double-right"></i></PaginationLink> :
                 <UISref to={this.props.state} params={{ offset: (this.totalPages - 1) * this.props.limit }}>
-                  <PaginationLink><i class="fas fa-angle-double-right"></i></PaginationLink>
+                  <PaginationLink><i className="fas fa-angle-double-right"></i></PaginationLink>
                 </UISref>
             }
           </PaginationItem>
