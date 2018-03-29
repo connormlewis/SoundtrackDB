@@ -228,7 +228,7 @@ def get_issues(): # pragma: no cover
                 url = ('https://api.github.com/repos/connormlewis/idb/'
                        'issues?state=all&filter=all&per_page=100' + '&page=' + str(i))
                 data = requests.get(
-                       url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+                    url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
                 json_list = data.json()
                 for entry in json_list:
                     if 'pull_request' not in entry:
