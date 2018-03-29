@@ -3,7 +3,6 @@ import os
 from datetime import datetime, timedelta
 
 import re
-from re import search
 import requests
 from flask import Blueprint, jsonify, request, abort
 
@@ -213,27 +212,27 @@ def get_issues(): # pragma: no cover
     Get issues from github
     """
     team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0,
-                'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+            'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
     all_issues = 0
-    try :
+    try:
         url = ('https://api.github.com/repos/connormlewis/idb/'
-                    'issues?state=all&filter=all&per_page=100')
+               'issues?state=all&filter=all&per_page=100')
         data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         link = data.headers.get('Link', None)
-        if link is not None :
+        if link is not None:
             parse_words = list(re.split('; |, | ', link))
             index = parse_words.index('rel="last"') - 1
             temp_string = parse_words[index][:-1]
             last_page = re.split('page=', temp_string)[-1]
-            for i in range(1, int(last_page) + 1) :
+            for i in range(1, int(last_page) + 1):
                 url = ('https://api.github.com/repos/connormlewis/idb/'
                        'issues?state=all&filter=all&per_page=100' + '&page=' + str(i))
-                data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+                data = requests.get(
+                       url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
                 json_list = data.json()
                 for entry in json_list:
                     if 'pull_request' not in entry:
                         team[entry['user']['login']] += 1
                         all_issues += 1
-    finally :
+    finally:
         return team, all_issues
-        
