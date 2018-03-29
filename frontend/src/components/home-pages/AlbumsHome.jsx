@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types'
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
 import { UISref } from '@uirouter/react';
+import SDBPagination from "./../Pagination";
 
 const titleStyles = {
   'overflow': 'hidden',
@@ -51,8 +52,6 @@ export class AlbumHome extends Component {
 
   render() {
     this.params = this.props.transition.params()
-    this.totalPages = Math.ceil(this.props.albums.count / this.params.limit);
-    this.currentPage = this.params.offset / this.params.limit;
 
     return (
       <Fragment>
@@ -68,31 +67,7 @@ export class AlbumHome extends Component {
             })
           }
         </div>
-        <div className="col-12">
-          <Pagination className="justify-content-center">
-            <PaginationItem>
-              { 
-                this.currentPage === 0 ? <PaginationLink previous disabled/> :
-                <UISref to="albumHome" params={{ offset: this.params.offset - this.params.limit }}>
-                  <PaginationLink previous/>
-                </UISref>
-              }
-            </PaginationItem>
-
-            <PaginationItem>
-              <PaginationLink disabled>{ this.currentPage + 1 }</PaginationLink>
-            </PaginationItem>
-
-            <PaginationItem>
-            { 
-                this.currentPage === this.totalPages - 1 ? <PaginationLink next disabled/> :
-                <UISref to="albumHome" params={{ offset: this.params.offset + this.params.limit }}>
-                <PaginationLink next/>
-                </UISref>
-              }
-            </PaginationItem>
-          </Pagination>
-        </div>
+        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.albums.count} state="^.home"/>
       </Fragment>
     );
   }

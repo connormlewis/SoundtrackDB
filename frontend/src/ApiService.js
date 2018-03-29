@@ -53,4 +53,11 @@ export default class ApiService {
   static getAbout() {
     return $.get(API_URL + '/about')
   }
+
+  static getSearchPredictions(query) {
+    
+  }
+
+  static getSearchResults(query) {
+  }
 }

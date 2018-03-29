@@ -11,6 +11,7 @@ import ApiService from './ApiService'
 import { AlbumInstance } from './components/instance-pages/AlbumInstance'; 
 import { MediaInstance } from './components/instance-pages/MediaInstance'; 
 import { ArtistInstance } from './components/instance-pages/ArtistInstance';
+import SearchResults from './components/SearchResults';
 
 const HOME = {
   name: 'home',
@@ -135,4 +136,15 @@ const MEDIA_INSTANCE = {
   }]
 };
 
-export default [HOME, ABOUT, ALBUM_ABSTRACT, ARTIST_ABSTRACT, MEDIA_ABSTRACT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE, ERROR]; 
+const SEARCH_RESULTS = {
+  name: 'searchResults',
+  url: '/search/:searchTerm',
+  component: SearchResults,
+  resolve: [{
+    token: 'results',
+    deps: ['$transition$'],
+    resolveFn: (trans) => null
+  }]
+}
+
+export default [HOME, ABOUT, ALBUM_ABSTRACT, ARTIST_ABSTRACT, MEDIA_ABSTRACT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE, ERROR, SEARCH_RESULTS]; 
