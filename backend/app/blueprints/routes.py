@@ -236,3 +236,4 @@ def get_issues(): # pragma: no cover
                         all_issues += 1
     finally:
         return team, all_issues
+        
