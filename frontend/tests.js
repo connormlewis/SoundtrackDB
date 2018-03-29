@@ -17,6 +17,9 @@ import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
+import { RelatedArtists } from './src/components/instance-pages/RelatedArtists'; 
+import { RelatedAlbums } from './src/components/instance-pages/RelatedAlbums'; 
+import { RelatedMedia } from './src/components/instance-pages/RelatedMedia'; 
 import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, 
         INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, 
         ABOUT_JSON, BAD_MEDIA_JSON, BAD_ARTIST_JSON} from './testsData'; 
@@ -436,4 +439,40 @@ describe('<ErrorPage/>', function () {
     const wrapper = shallow(<ErrorPage transition = {{params: function () {return {code: 999}}}} />);
     expect(wrapper.find('h1').render().text()).to.be.equal('Uh oh!');  
   });
+});
+
+describe('<RelatedArtists/>', function() {
+  it('should render without crashing', function () {
+    shallow(<RelatedArtists artists={RIVERDALE_JSON.artists}/>); 
+  }); 
+
+  it('should have an artist card with correct name and image', function() {
+    const wrapper = mount(<RelatedArtists artists={RIVERDALE_JSON.artists}/>); 
+    expect(wrapper.find('CardTitle').render().text()).to.be.equal(RIVERDALE_JSON.artists[0].name);
+    expect(wrapper.find('CardImg').prop('src')).to.be.equal(RIVERDALE_JSON.artists[0].image);
+  }); 
+});
+
+describe('<RelatedAlbums/>', function() {
+  it('should render without crashing', function () {
+    shallow(<RelatedAlbums albums={RIVERDALE_JSON.albums}/>); 
+  }); 
+
+  it('should have an album card with correct name and image', function() {
+    const wrapper = mount(<RelatedAlbums albums={RIVERDALE_JSON.albums}/>); 
+    expect(wrapper.find('CardTitle').render().text()).to.be.equal(RIVERDALE_JSON.albums[0].name);
+    expect(wrapper.find('CardImg').prop('src')).to.be.equal(RIVERDALE_JSON.albums[0].image);
+  }); 
+}); 
+
+describe('<RelatedMedia/>', function() {
+  it('should render without crashing', function () {
+    shallow(<RelatedMedia media={ALBUM_JSON.media}/>); 
+  }); 
+
+  it('should have a media card with correct name and image', function() {
+    const wrapper = mount(<RelatedMedia media={ALBUM_JSON.media}/>); 
+    expect(wrapper.find('CardTitle').render().text()).to.be.equal(ALBUM_JSON.media[0].name);
+    expect(wrapper.find('CardImg').prop('src')).to.be.equal(ALBUM_JSON.media[0].image);
+  }); 
 });

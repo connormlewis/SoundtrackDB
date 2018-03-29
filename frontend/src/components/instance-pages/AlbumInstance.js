@@ -53,7 +53,7 @@ export class AlbumInstance extends Component {
           </Col>
           <Col sm="4">
             <img className="w-100" src={this.props.album.image} alt="Poster" vspace="20"/>
-            <iframe className="embed-responsive-item w-100" title="Spotify Player" src={"https://open.spotify.com/embed?uri=" + this.props.album.spotify_uri} height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            <iframe className="embed-responsive-item w-100" title="Spotify Player" src={"https://open.spotify.com/embed?uri=" + this.props.album.spotify_uri} height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
           </Col>
         </Row>
         <Row>
