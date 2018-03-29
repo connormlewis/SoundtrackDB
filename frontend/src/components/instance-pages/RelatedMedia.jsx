@@ -61,9 +61,9 @@ export class RelatedMedia extends Component {
         <div className='slider-parent'>
           <Slider ref='slick' {...settings}>
           {
-            this.props.media.map((media) => {
+            this.props.media.map((media, index) => {
               return (
-                <div className='slide-item' key={media.id}>
+                <div className='slide-item' key={index}>
                   <MediaItem media={media} navigateToInstance={this.props.navigateToInstance}/>
                 </div>
               )

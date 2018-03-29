@@ -268,12 +268,15 @@ describe('<MediaInstance/>', function () {
     expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video);
   });
 
-  it('should list associated albums and artists', function () {
-    const wrapper = shallow(<MediaInstance media={riverdale} />);
+  it('should list associated albums and artists (both name and picture)', function () {
+    const wrapper = mount(<MediaInstance media={riverdale} />);
     const expected_album = "Riverdale: Original Television Score (Season 1)";
     const expected_artist = "Blake Neely";
-    expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
-    expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+
+    expect(wrapper.find({ id: 'albums' }).find('CardTitle').render().text()).to.be.equal(expected_album);
+    expect(wrapper.find({ id: 'albums' }).find('CardImg').prop('src')).to.be.equal(riverdale.albums[0].image);
+    expect(wrapper.find({ id: 'artists' }).find('CardTitle').render().text()).to.be.equal(expected_artist);
+    expect(wrapper.find({ id: 'artists' }).find('CardImg').prop('src')).to.be.equal(riverdale.artists[0].image);
   });
 
   it('should display the final year aired if it is a finished series', function (){
@@ -317,19 +320,21 @@ describe('<ArtistInstance/>', function () {
   })
 
   it('should have the correct related data', function () {
-    const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
+    const wrapper = mount(<ArtistInstance artist={ARTIST_JSON} />);
     const expected_albums = ARTIST_JSON.albums;
     const result_albums = wrapper.find({ id: 'albums' }).children();
     let i = 0; 
     for (let album of expected_albums) {
-      expect(result_albums.find('a').at(i).render().text()).to.be.equal(album.name);
+      expect(result_albums.find('CardTitle').at(i).render().text()).to.be.equal(album.name);
+      expect(result_albums.find('CardImg').at(i).prop('src')).to.be.equal(album.image);
       ++i;  
     }
     const expected_media = ARTIST_JSON.media; 
     const result_media = wrapper.find({ id: 'media' }).children();
     let j = 0; 
     for (let media of expected_media) {
-      expect(result_media.find('a').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardTitle').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardImg').at(j).prop('src')).to.be.equal(media.image);
       ++j;  
     }
   })
@@ -364,19 +369,21 @@ describe('<AlbumInstance/>', function () {
   })
 
   it('should have the correct related data', function () {
-    const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
+    const wrapper = mount(<AlbumInstance album={ALBUM_JSON} />);
     const expected_artists = ALBUM_JSON.artists;
     const result_artists = wrapper.find({ id: 'artists' }).children();
     let i = 0; 
     for (let artist of expected_artists) {
-      expect(result_artists.find('a').at(i).render().text()).to.be.equal(artist.name);
+      expect(result_artists.find('CardTitle').at(i).render().text()).to.be.equal(artist.name);
+      expect(result_artists.find('CardImg').at(i).prop('src')).to.be.equal(artist.image);
       ++i;  
     }
     const expected_media = ARTIST_JSON.media; 
     const result_media = wrapper.find({ id: 'media' }).children();
     let j = 0; 
     for (let media of expected_media) {
-      expect(result_media.find('a').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardTitle').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardImg').at(j).prop('src')).to.be.equal(media.image);
       ++j;  
     }
   })

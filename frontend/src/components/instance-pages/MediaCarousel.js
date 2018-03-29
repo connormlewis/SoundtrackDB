@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   Carousel,
   CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
+  CarouselControl
 } from 'reactstrap';
 
 export class MediaCarousel extends Component {
@@ -59,7 +58,6 @@ export class MediaCarousel extends Component {
 
     return (
       <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
-        <CarouselIndicators items={this.props.photos} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
