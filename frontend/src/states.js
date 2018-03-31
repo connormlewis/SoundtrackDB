@@ -140,10 +140,14 @@ const SEARCH_RESULTS = {
   name: 'searchResults',
   url: '/search/:searchTerm',
   component: SearchResults,
+  params: {
+    limit: 10,
+    offset: 0
+  },
   resolve: [{
     token: 'results',
     deps: ['$transition$'],
-    resolveFn: (trans) => null
+    resolveFn: (trans) => ApiService.getSearchResults(trans.params().searchTerm)
   }]
 }
 

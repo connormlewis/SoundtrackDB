@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import { UISref } from '@uirouter/react'
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 

@@ -3,8 +3,6 @@ import { Navbar, Container, Nav, NavItem } from 'reactstrap';
 import { UISref, UISrefActive } from '@uirouter/react';
 
 class Navigation extends Component {
-
-
   constructor(props) {
     super(props)
     this.state = {
