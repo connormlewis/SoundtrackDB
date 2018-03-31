@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import {
   Carousel,
   CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
+  CarouselControl
 } from 'reactstrap';
 
 export class MediaCarousel extends Component {
@@ -49,9 +48,9 @@ export class MediaCarousel extends Component {
   render() {
     const { activeIndex } = this.state;
 
-    const slides = this.props.photos.map((photo) => {
+    const slides = this.props.photos.map((photo, index) => {
       return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={photo.file_path}>
+        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={index}>
           <img src={this.getImgSrc(photo)} alt="" className="w-100 h-100"/>
         </CarouselItem>
       );
@@ -59,7 +58,6 @@ export class MediaCarousel extends Component {
 
     return (
       <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
-        <CarouselIndicators items={this.props.photos} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
