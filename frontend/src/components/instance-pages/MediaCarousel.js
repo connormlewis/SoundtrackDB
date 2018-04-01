@@ -1,44 +1,9 @@
 import React, { Component } from 'react';
-import {
-  Carousel,
-  CarouselItem,
-  CarouselControl
-} from 'reactstrap';
+import Slider from 'react-slick'; 
 
 export class MediaCarousel extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { activeIndex: 0 };
-    this.next = this.next.bind(this);
-    this.previous = this.previous.bind(this);
-    this.goToIndex = this.goToIndex.bind(this);
-    this.onExiting = this.onExiting.bind(this);
-    this.onExited = this.onExited.bind(this);
-  }
-
-  onExiting() {
-    this.animating = true;
-  }
-
-  onExited() {
-    this.animating = false;
-  }
-
-  next() {
-    if (this.animating) return;
-    const nextIndex = this.state.activeIndex === this.props.photos.length - 1 ? 0 : this.state.activeIndex + 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  previous() {
-    if (this.animating) return;
-    const nextIndex = this.state.activeIndex === 0 ? this.props.photos.length - 1 : this.state.activeIndex - 1;
-    this.setState({ activeIndex: nextIndex });
-  }
-
-  goToIndex(newIndex) {
-    if (this.animating) return;
-    this.setState({ activeIndex: newIndex });
+  componentWillReceiveProps(){
+   this.refs.slick.innerSlider.onWindowResized()
   }
 
   getImgSrc(photo) {
@@ -46,22 +11,32 @@ export class MediaCarousel extends Component {
   }
 
   render() {
-    const { activeIndex } = this.state;
-
-    const slides = this.props.photos.map((photo, index) => {
-      return (
-        <CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={index}>
-          <img src={this.getImgSrc(photo)} alt="" className="w-100 h-100"/>
-        </CarouselItem>
-      );
-    });
+    const settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: Math.min(this.props.photos.length, 3),
+      slidesToScroll: Math.min(this.props.photos.length, 3),
+      adaptiveHeight: true,
+      variableWidth: true
+    };
 
     return (
-      <Carousel activeIndex={activeIndex} next={this.next} previous={this.previous}>
-        {slides}
-        <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-        <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-      </Carousel>
+      <div>
+        <div className='slider-parent'>
+          <Slider ref='slick' {...settings}>
+          {
+            this.props.photos.map((photo, index) => {
+              return (
+                <div className='slide-img' key={index}>
+                  <img src={this.getImgSrc(photo)} alt="" className="w-100 h-100" onLoad={() => window.dispatchEvent(new Event('resize'))}/>
+                </div>
+              )
+            })
+          }
+          </Slider>
+        </div>
+      </div>
     );
   }
 }

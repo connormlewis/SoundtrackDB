@@ -106,11 +106,6 @@ export class MediaInstance extends Component {
               <Col sm="6">
                 <h3>Cast</h3>
                 {this.getCast()}
-                <h3>Photos</h3>
-                {
-                  this.props.media.other_images === undefined || this.props.media.other_images === null || this.props.media.other_images.length === 0 ?
-                  (<div id="no_photos">No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
-                }
               </Col>
             </Row>
           </Col> 
@@ -120,6 +115,13 @@ export class MediaInstance extends Component {
               {this.getVideo()}
             </div>
           </Col>
+        </Row>
+        <Row>
+         <h3 className="related-header">Photos</h3>
+          {
+            this.props.media.other_images === undefined || this.props.media.other_images === null || this.props.media.other_images.length === 0 ?
+            (<div id="no_photos">No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
+          }
         </Row>
         <Row>
           <div id="albums"> {this.getAlbums()} </div>
