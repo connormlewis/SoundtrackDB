@@ -117,10 +117,12 @@ export class MediaInstance extends Component {
           </Col>
         </Row>
         <Row>
-         <h3 className="related-header">Photos</h3>
+          <h3 className="related-header">Photos</h3>
+        </Row>
+        <Row>
           {
             this.props.media.other_images === undefined || this.props.media.other_images === null || this.props.media.other_images.length === 0 ?
-            (<div id="no_photos">No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
+            (<div id="no_photos" style={{padding: '10px'}}>No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
           }
         </Row>
         <Row>
