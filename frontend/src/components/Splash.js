@@ -97,7 +97,7 @@ class Splash extends Component {
               <p className="text-left">
                 <b><i>Discover</i></b> the title of that song you always sing or hum in the shower.<br/>
                 <b><i>Captive</i></b> yourself with the album art and its symbolism with movie or TV show.<br/>
-                <b><i>Listen</i></b> to the soundtrack right within our website.<br/>
+                <b><i>Listen</i></b> to the soundtrack album right on our page.<br/>
               </p>
               <p className="text-left">
                 <Button color="secondary" href="/album">Albums >></Button>
@@ -116,8 +116,8 @@ class Splash extends Component {
               <h3 className="text-right">Find artists to your favorite music</h3>
               <p className="text-right">
                 <b><i>Uncover</i></b> the artist that wrote the song that has been stuck in your head.<br/>
-                <b><i>Surprise</i></b> yourself with other movies that's written by the same artist.<br/>
-                <b><i>Tune</i></b> in to the best of the best songs that are written by that artist.<br/>
+                <b><i>Surprise</i></b> yourself with other movies that are written by the same artist.<br/>
+                <b><i>Tune</i></b> in to the best songs that are written by that artist on our page.<br/>
               </p>
               <p className="text-right">
                 <Button color="secondary" href="/artist">Artists >></Button>
