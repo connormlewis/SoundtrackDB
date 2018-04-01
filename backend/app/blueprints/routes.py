@@ -6,7 +6,9 @@ import requests
 from flask import Blueprint, jsonify, request, abort
 
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
+from app.models.associations import search
 from app.shared.db import get_session
+from sqlalchemy.sql import select, and_, or_, not_
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
@@ -182,6 +184,36 @@ def get_single_media(media_id):
         return jsonify(media_schema.dump(media).data)
     except ValueError:
         return abort(404)
+    finally:
+        session.close()
+
+@BP.route('/search')
+def search_db():
+    """
+    Search database
+    """
+    #select * from search where LOWER(name) like LOWER('%John%') or LOWER(about) like LOWER('%john%');
+    session = get_session()
+    itr = request.args.values()
+    try:
+        name_param = next(itr).lower()
+        about_param = next(itr).lower()
+        s = select([search]).\
+                where(
+                    or_( search.c.name.ilike('%'+name_param+'%'),
+                         search.c.about.ilike('%'+about_param+'%')
+                    )
+                )
+        result = session.execute(s).fetchall()
+        count = len(result)
+        data = [tuple(tup) for tup in result]
+        """for data in result:
+            if data[1] == 'Album':
+                album_schema.dump()"""
+        return jsonify({
+            'items': data,
+            'count': count
+        })
     finally:
         session.close()
 
