@@ -169,34 +169,59 @@ export class Data extends Component {
 export class Tools extends Component {
   render() {
     return (
-      <Fragment>
+      <Fragment> 
         <div className="tools">
           <h1 className="about-style-header">Tools Used</h1>
-            <p className="about-style-p">
-              <strong>ReactJS</strong> was used to build our front end.<br/>
-              <strong>PostgreSQL</strong> was used as our database to store our artists, albums, movies, and television shows.<br/>
-              <strong>SQLAlchemy</strong> was to used to manage the entries in the database.<br/>
-              <strong>Flask</strong> is a Python micro web framework used for our backend.<br/>
-              <strong>Postman</strong> was used to test and refine the API.<br/>
-              <strong>Mocha</strong> was used for unit testing the frontend.<br/>
-              <strong>unittest</strong> was used for unit testing the backend.<br/>
-              <strong>Selenium</strong> was used for acceptance testing the GUI.<br/>
-              <strong>Amazon Web Services</strong> was used to host our website.<br/>
-              <strong>NameCheap</strong> for domain name registration.<br/>
-              <strong>GitHub</strong> was used for our Version Control System.<br/>
-              <strong>GitBook</strong> to document our API and our technical report.<br/>
-              <strong>Slack</strong> to communicate with our team members.<br/>
-              <br/>
-              <h3>Non-required tools</h3>
-              <strong>BootStrap</strong> as a CSS framework.<br/>
-              <strong>ReactStrap</strong> is a library which allowed us to add BootStrap React components in our frontend.<br/>
-              <strong>Enzyme</strong> is a JS library used to manipulate React components during unit testing.<br/>
-              <strong>StarUML</strong> was used to create the UML diagram for database.<br/>
-            </p>
-        </div>
+            <div className="about-container">
+              <div className="about-grid">
+                <div className="about-cell">
+                  <img src="https://s3.amazonaws.com/media-p.slid.es/uploads/alexanderfarennikov/images/1198519/reactjs.png" class="about-image"></img>
+                </div>
+                <div className="about-cell">
+                  <img src="http://placehold.it/800x800" class="about-image"></img>
+                </div>
+                <div className="about-cell">
+                  <img src="http://placehold.it/1600x900" class="about-image"></img>
+                </div>
+                <div className="about-cell">
+                  <img src="http://placehold.it/800x800" class="about-image"></img>
+                </div>
+                <div className="about-cell">
+                  <img src="http://placehold.it/800x800" class="about-image"></img>
+                </div>
+              </div>
+            </div>
+       </div>
       </Fragment>
     );
   }
 }
 
+
+              /*
+                <div className="about-cell">
+                  <p className="about-style-p">
+                    <strong>ReactJS</strong> was used to build our front end.<br/>
+                    <strong>PostgreSQL</strong> was used as our database to store our artists, albums, movies, and television shows.<br/>
+                    <strong>SQLAlchemy</strong> was to used to manage the entries in the database.<br/>
+                    <strong>Flask</strong> is a Python micro web framework used for our backend.<br/>
+                    <strong>Postman</strong> was used to test and refine the API.<br/>
+                    <strong>Mocha</strong> was used for unit testing the frontend.<br/>
+                    <strong>unittest</strong> was used for unit testing the backend.<br/>
+                    <strong>Selenium</strong> was used for acceptance testing the GUI.<br/>
+                    <strong>Amazon Web Services</strong> was used to host our website.<br/>
+                    <strong>NameCheap</strong> for domain name registration.<br/>
+                    <strong>GitHub</strong> was used for our Version Control System.<br/>
+                    <strong>GitBook</strong> to document our API and our technical report.<br/>
+                    <strong>Slack</strong> to communicate with our team members.<br/>
+                    <br/>
+                  
+                 <h3>Non-required tools</h3>
+                 <strong>BootStrap</strong> as a CSS framework.<br/>
+                 <strong>ReactStrap</strong> is a library which allowed us to add BootStrap React components in our frontend.<br/>
+                 <strong>Enzyme</strong> is a JS library used to manipulate React components during unit testing.<br/>
+                 <strong>StarUML</strong> was used to create the UML diagram for database.<br/>
+               </p>
+             </div>
+             */
 export default About;
