@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 
 class SplashDescription extends Component {
-
   render() {
     return (
       <div>
@@ -19,10 +18,11 @@ class SplashDescription extends Component {
             </p>
           </Col>
           <Col sm="auto" md="auto" lg="4">
-              <img className="detail-img-right" src="https://imgur.com/7jSEaYa.jpg" alt="Albums" vspace="20"></img>
+            <img className="detail-img-right" src="https://imgur.com/7jSEaYa.jpg" alt="Albums" vspace="20"></img>
           </Col>
         </Row>
         <hr/>
+
         <Row>
           <Col sm="auto" md="6" lg="4">
             <img className="detail-img-left" src="https://imgur.com/vdhzXGU.jpg" alt="Artists" vspace="20"></img>
@@ -40,6 +40,7 @@ class SplashDescription extends Component {
           </Col>
         </Row>
         <hr/>
+
         <Row>
           <Col sm="4" md="6" lg="8">
             <h3 className="text-left">Find movies and TV shows with official soundtracks.</h3>

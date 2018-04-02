@@ -3,7 +3,6 @@ import SplashCarousel from './SplashCarousel';
 import SplashDescription from './SplashDescription';
 
 class Splash extends Component {
-
   render() {
     return (
       <div>
