@@ -7,7 +7,7 @@ class SplashDescription extends Component {
       <div>
         <Row>
           <Col sm="4" md="6" lg="8">
-            <h3 className="text-left">Find the soundtracks for your favorite movies and TV shows</h3>
+            <h3 className="text-left">Find the soundtracks from your favorite movies and TV shows</h3>
             <p className="text-left">
               <b><i>Locate</i></b> the title of the song you always sing or hum in the shower.<br/>
               <b><i>Discover</i></b> the artist behind the music and explore their other work.<br/>
@@ -30,7 +30,7 @@ class SplashDescription extends Component {
           <Col sm="4" md="6" lg="8">
             <h3 className="text-right">Find the artists behind your favorite soundtracks</h3>
             <p className="text-right">
-              <b><i>Uncover</i></b> the artist who wrote the song stuck in your head.<br/>
+              <b><i>Uncover</i></b> the artist who wrote that song stuck in your head.<br/>
               <b><i>Explore</i></b> other media they have worked on.<br/>
               <b><i>Enjoy</i></b> popular tracks by the artist.<br/>
             </p>
@@ -43,7 +43,7 @@ class SplashDescription extends Component {
 
         <Row>
           <Col sm="4" md="6" lg="8">
-            <h3 className="text-left">Find movies and TV shows with official soundtracks.</h3>
+            <h3 className="text-left">Find out more about your favorite movie and TV show.</h3>
             <p className="text-left">
               <b><i>Unearth</i></b> information about your favorite media.<br/>
               <b><i>View</i></b> images and videos from movies and TV shows.<br/>
