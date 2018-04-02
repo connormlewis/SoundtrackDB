@@ -93,11 +93,11 @@ class Splash extends Component {
         <div>
           <Row>
             <Col sm="4" md="6" lg="8">
-              <h3 className="text-left">Find albums to your favorite movie and TV show</h3>
+              <h3 className="text-left">Find the soundtracks for your favorite movies and TV shows</h3>
               <p className="text-left">
-                <b><i>Discover</i></b> the title of that song you always sing or hum in the shower.<br/>
-                <b><i>Captive</i></b> yourself with the album art and its symbolism with movie or TV show.<br/>
-                <b><i>Listen</i></b> to the soundtrack album right on our page.<br/>
+                <b><i>Locate</i></b> the title of the song you always sing or hum in the shower.<br/>
+                <b><i>Listen</i></b> to the music on our site.<br/>
+                <b><i>Discover</i></b> the artist behind the music and explore their other work.<br/>
               </p>
               <p className="text-left">
                 <Button color="secondary" href="/album">Albums >></Button>
@@ -113,11 +113,11 @@ class Splash extends Component {
               <img className="detail-img-left" src="https://imgur.com/vdhzXGU.jpg" alt="Artists" vspace="20"></img>
             </Col>
             <Col sm="4" md="6" lg="8">
-              <h3 className="text-right">Find artists to your favorite music</h3>
+              <h3 className="text-right">Find the artists behind your favorite soundtracks</h3>
               <p className="text-right">
-                <b><i>Uncover</i></b> the artist that wrote the song that has been stuck in your head.<br/>
-                <b><i>Surprise</i></b> yourself with other movies that are written by the same artist.<br/>
-                <b><i>Tune</i></b> in to the best songs that are written by that artist on our page.<br/>
+                <b><i>Uncover</i></b> the artist who wrote the song stuck in your head.<br/>
+                <b><i>Explore</i></b> other media they have worked on.<br/>
+                <b><i>Enjoy</i></b> popular tracks by the artist.<br/>
               </p>
               <p className="text-right">
                 <Button color="secondary" href="/artist">Artists >></Button>
@@ -127,11 +127,11 @@ class Splash extends Component {
           <hr/>
           <Row>
             <Col sm="4" md="6" lg="8">
-              <h3 className="text-left">Find movies and TV shows to your favorite soundtrack</h3>
+              <h3 className="text-left">Find movies and TV shows with official soundtracks.</h3>
               <p className="text-left">
-                <b><i>Find</i></b> the cast that sang that amazing song in the movie.<br/>
-                <b><i>Fascinate</i></b> yourself with actual photos from the movie or show.<br/>
-                <b><i>Watch</i></b> the actual trailer directly on our page.<br/>
+                <b><i>Unearth</i></b> information about your favorite media.<br/>
+                <b><i>View</i></b> images and videos from movies and TV shows.<br/>
+                <b><i>Identify</i></b> available soundtracks for your favorite movie or show.<br/>
               </p> 
               <p className="text-left">
                 <Button color="secondary" href="/media">Media >></Button>
