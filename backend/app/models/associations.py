@@ -1,7 +1,7 @@
 """Creates the association tables in the database"""
 from sqlalchemy import Table, Column, Integer, ForeignKey, Text
 
-from app.shared.db import Base, engine
+from app.shared.db import Base
 
 album_media = Table('album_media', Base.metadata,
                     Column('album_id', Integer, ForeignKey('album.id')),

@@ -5,10 +5,10 @@ from datetime import datetime, timedelta
 import requests
 from flask import Blueprint, jsonify, request, abort
 
+from sqlalchemy import select, and_, or_, Text, cast
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
 from app.models.associations import search
 from app.shared.db import get_session
-from sqlalchemy import select, and_, or_, not_, Text, cast
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
 
@@ -192,28 +192,27 @@ def search_db(term):
     """
     Search database
     """
-    #select * from search where LOWER(name) like LOWER('%John%') or LOWER(about) like LOWER('%john%');
+    #select * from search where LOWER(name)
+    # like LOWER('%John%') or LOWER(about) like LOWER('%john%');
     session = get_session()
-    #itr = request.args.values()
+    #query_param_itr = request.args.items()
     try:
         #name_param = next(itr).lower()
         #about_param = next(itr).lower()
         s = select([search]).\
                 where(
-                    or_( search.c.name.ilike('%'+term+'%'),
-                         search.c.about.ilike('%'+term+'%'),
-                         search.c.kind.ilike('%'+term+'%'),
-                         search.c.image.ilike('%'+term+'%'),
-                         cast(search.c.id, Text).ilike('%'+term+'%'),
-                         search.c.release_date.ilike('%'+term+'%')
+                    and_(
+                        or_(search.c.name.ilike('%'+term+'%'),
+                            search.c.about.ilike('%'+term+'%'),
+                            search.c.kind.ilike('%'+term+'%'),
+                            search.c.image.ilike('%'+term+'%'),
+                            cast(search.c.id, Text).ilike('%'+term+'%'),
+                            search.c.release_date.ilike('%'+term+'%'))
                     )
                 )
         result = session.execute(s).fetchall()
         count = len(result)
         data = [tuple(tup) for tup in result]
-        """for data in result:
-            if data[1] == 'Album':
-                album_schema.dump()"""
         return jsonify({
             'items': data,
             'count': count
