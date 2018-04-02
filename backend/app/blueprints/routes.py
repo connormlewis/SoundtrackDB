@@ -6,8 +6,8 @@ import requests
 from flask import Blueprint, jsonify, request, abort
 
 from sqlalchemy import or_, Text, cast
-from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
-from app.models.associations import search
+from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media, \
+    search, SearchSchema
 from app.shared.db import get_session
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
@@ -18,6 +18,7 @@ media_schema = MediaSchema()
 artists_schema = ArtistSchema(exclude=('albums', 'media'))
 albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
 medias_schema = MediaSchema(exclude=('albums', 'artists', 'cast', 'other_images', 'videos'))
+search_schema = SearchSchema(many=True)
 
 commit_data = None
 issue_data = None
@@ -187,6 +188,7 @@ def get_single_media(media_id):
     finally:
         session.close()
 
+
 @BP.route('/search/<term>')
 def search_db(term):
     """
@@ -213,9 +215,8 @@ def search_db(term):
 
         data = query.all()
         count = session.query(search).filter(search_statement).count()
-        data = [tuple(tup) for tup in data]
         return jsonify({
-            'items': data,
+            'items': search_schema.dump(data).data,
             'count': count
         })
     finally:

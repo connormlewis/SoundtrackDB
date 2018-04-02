@@ -147,7 +147,10 @@ const SEARCH_RESULTS = {
   resolve: [{
     token: 'results',
     deps: ['$transition$'],
-    resolveFn: (trans) => ApiService.getSearchResults(trans.params().searchTerm)
+    resolveFn: (trans) => {
+      let params = trans.params() 
+      return ApiService.getSearchResults(params.searchTerm, params.offset, params.limit)
+    }
   }]
 }
 

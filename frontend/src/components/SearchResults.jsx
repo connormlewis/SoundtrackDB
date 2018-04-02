@@ -13,6 +13,9 @@ class Result extends Component {
   }
 
   getAboutExerpt() {
+    if (this.props.item.about === undefined || this.props.item.about === null) {
+      return ""
+    }
     let idx = this.props.item.about.search(new RegExp(this.props.searchTerm, 'gi'))
     if (idx === -1) {
       let str = this.props.item.about.substring(0, Math.min(300, this.props.item.about.length))
@@ -107,7 +110,7 @@ class SearchResults extends Component {
             </select>
           </div> */}
         </div>
-        <div>
+        <div className="mb-2">
           {
             this.props.results.items.map((result, index) => {
               return (
