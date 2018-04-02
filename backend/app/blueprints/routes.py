@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 import requests
 from flask import Blueprint, jsonify, request, abort
 
-from sqlalchemy import select, and_, or_, Text, cast
+from sqlalchemy import or_, Text, cast
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
 from app.models.associations import search
 from app.shared.db import get_session
@@ -190,29 +190,30 @@ def get_single_media(media_id):
 @BP.route('/search/<term>')
 def search_db(term):
     """
-    Search database
+    Search database for a term
     """
-    #select * from search where LOWER(name)
-    # like LOWER('%John%') or LOWER(about) like LOWER('%john%');
     session = get_session()
-    #query_param_itr = request.args.items()
     try:
-        #name_param = next(itr).lower()
-        #about_param = next(itr).lower()
-        s = select([search]).\
-                where(
-                    and_(
-                        or_(search.c.name.ilike('%'+term+'%'),
-                            search.c.about.ilike('%'+term+'%'),
-                            search.c.kind.ilike('%'+term+'%'),
-                            search.c.image.ilike('%'+term+'%'),
-                            cast(search.c.id, Text).ilike('%'+term+'%'),
-                            search.c.release_date.ilike('%'+term+'%'))
-                    )
-                )
-        result = session.execute(s).fetchall()
-        count = len(result)
-        data = [tuple(tup) for tup in result]
+        search_statement = or_(search.c.name.ilike('%'+term+'%'),
+                               search.c.about.ilike('%'+term+'%'),
+                               search.c.kind.ilike('%'+term+'%'),
+                               search.c.image.ilike('%'+term+'%'),
+                               cast(search.c.id, Text).ilike('%'+term+'%'),
+                               search.c.release_date.ilike('%'+term+'%'))
+        query = session.query(search).filter(search_statement)
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
+        else:
+            query = query.limit(12)
+
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.offset(0)
+
+        data = query.all()
+        count = session.query(search).filter(search_statement).count()
+        data = [tuple(tup) for tup in data]
         return jsonify({
             'items': data,
             'count': count
