@@ -52,12 +52,14 @@
     margin: 0 auto;
     max-width: 1200px;
     padding: 0 1rem;
+  
   }
   
 .about-grid {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-evenly;
 }
 
 .about-image { 
