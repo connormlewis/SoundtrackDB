@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'reactstrap';
+import { UISref } from '@uirouter/react';
 
 class SplashDescription extends Component {
   render() {
@@ -14,7 +15,9 @@ class SplashDescription extends Component {
               <b><i>Listen</i></b> to the music on our site.<br/>
             </p>
             <p className="text-left">
-              <Button color="secondary" href="/album">Albums >></Button>
+              <UISref to="albumHome">
+                <Button color="secondary">Albums >></Button>
+              </UISref>
             </p>
           </Col>
           <Col sm="auto" md="auto" lg="4">
@@ -35,7 +38,9 @@ class SplashDescription extends Component {
               <b><i>Enjoy</i></b> popular tracks by the artist.<br/>
             </p>
             <p className="text-right">
-              <Button color="secondary" href="/artist">Artists >></Button>
+              <UISref to="artistHome">
+                <Button color="secondary">Artists >></Button>
+              </UISref>
             </p> 
           </Col>
         </Row>
@@ -50,7 +55,9 @@ class SplashDescription extends Component {
               <b><i>Identify</i></b> available soundtracks for your favorite movie or show.<br/>
             </p> 
             <p className="text-left">
-              <Button color="secondary" href="/media">Media >></Button>
+              <UISref to="mediaHome">
+                <Button color="secondary">Media >></Button>
+              </UISref>
             </p>
           </Col>
           <Col sm="auto" md="6" lg="4">
