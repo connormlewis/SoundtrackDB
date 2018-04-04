@@ -1,10 +1,90 @@
-.carousel-caption {
-  text-shadow: 3px 3px black;
+/*  modifies the carousel to sit flush against the background on computer monitors 
+ *	reverts back to old image if the screen size gets to small to keep it responsive
+ */
+@media (min-width: 1200px) { 
+	.carousel {
+		position: relative;
+		right: 15px;
+		width: 1200px;
+		top: -8px;
+		text-align: center;
+	}
+	.carousel-img {
+	  object-fit: cover;
+	  object-position: center;
+	  height: 600px;
+		width: 100%;
+	}
+
+	.home-title {
+		position: absolute;
+		top: 3%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	}
 }
 
-.carousel-img {
-  object-fit: cover;
-  object-position: center;
-  height: 600px;
-  width: 100%; 
+@media (max-width: 1200px) { 
+	.carousel-img {
+	  object-fit: cover;
+	  object-position: center;
+	  height: 400px;
+		width: 100%;
+	}
+
+	.home-title {
+		position: absolute;
+		top: 5%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		text-shadow: -1px 0 black, 0 3px black, 3px 0 black, 0 -1px black;
+	}
+}
+
+@media (max-width: 800px) {
+	.carousel-img {
+		object-fit: cover;
+  	object-position: center;
+  	height: 300px;
+		width: 100%;
+	}
+
+	.home-title {
+		position: absolute;
+		top: 15%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		color: white;
+		text-shadow: -1px 0 black, 0 3px black, 3px 0 black, 0 -1px black;
+	}
+}
+
+.pos-relative {
+	position: relative;
+}
+
+.carousel-caption {
+  text-shadow: 3px 3px black;
+
+}
+
+.detail-img-right {
+	float: right;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 350px;
+	border-radius: 5px;
+}
+
+.detail-img-left {
+	float: left;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 350px;
+	border-radius: 5px;
 }

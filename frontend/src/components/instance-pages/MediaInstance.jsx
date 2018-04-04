@@ -79,7 +79,7 @@ export class MediaInstance extends Component {
     const albums = this.props.media.albums;
     const navigateToInstance = (id) => {
       const { stateService } = this.props.transition.router;
-      stateService.go('albumInstance', { albumID: id });
+      stateService.go('album.instance', { albumID: id });
     }
     return (<RelatedAlbums albums={albums} navigateToInstance={navigateToInstance}/>);
   }
@@ -88,7 +88,7 @@ export class MediaInstance extends Component {
     const artists = this.props.media.artists;
     const navigateToInstance = (id) => {
       const { stateService } = this.props.transition.router;
-      stateService.go('artistInstance', { artistID: id });
+      stateService.go('artist.instance', { artistID: id });
     }
     return (<RelatedArtists artists={artists} navigateToInstance={navigateToInstance}/>);
   }
@@ -106,11 +106,6 @@ export class MediaInstance extends Component {
               <Col sm="6">
                 <h3>Cast</h3>
                 {this.getCast()}
-                <h3>Photos</h3>
-                {
-                  this.props.media.other_images === undefined || this.props.media.other_images === null || this.props.media.other_images.length === 0 ?
-                  (<div id="no_photos">No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
-                }
               </Col>
             </Row>
           </Col> 
@@ -120,6 +115,15 @@ export class MediaInstance extends Component {
               {this.getVideo()}
             </div>
           </Col>
+        </Row>
+        <Row>
+          <h3 className="related-header">Photos</h3>
+        </Row>
+        <Row>
+          {
+            this.props.media.other_images === undefined || this.props.media.other_images === null || this.props.media.other_images.length === 0 ?
+            (<div id="no_photos" style={{padding: '10px'}}>No photos available</div>) : <MediaCarousel photos={this.props.media.other_images}/>
+          }
         </Row>
         <Row>
           <div id="albums"> {this.getAlbums()} </div>

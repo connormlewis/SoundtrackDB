@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import { UISref } from '@uirouter/react'
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
 import PropTypes from 'prop-types'
+import SDBPagination from "./../Pagination";
 
 
 export class MediaItem extends Component {
@@ -66,7 +66,7 @@ export class MediaHome extends Component {
 
   navigateToInstance(id) {
     const { stateService } = this.props.transition.router;
-    stateService.go('mediaInstance', { mediaID: id });
+    stateService.go('^.instance', { mediaID: id });
   }
 
   render() {
@@ -88,31 +88,7 @@ export class MediaHome extends Component {
             })
           }
         </div>
-        <div className="col-12">
-          <Pagination className="justify-content-center">
-            <PaginationItem>
-              { 
-                this.currentPage === 0 ? <PaginationLink previous disabled/> :
-                <UISref to="." params={{ offset: this.params.offset - this.params.limit }}>
-                  <PaginationLink previous/>
-                </UISref>
-              }
-            </PaginationItem>
-
-            <PaginationItem>
-              <PaginationLink disabled>{ this.currentPage + 1 }</PaginationLink>
-            </PaginationItem>
-
-            <PaginationItem>
-            { 
-                this.currentPage === this.totalPages - 1 ? <PaginationLink next disabled/> :
-                <UISref to="." params={{ offset: this.params.offset + this.params.limit }}>
-                <PaginationLink next/>
-                </UISref>
-              }
-            </PaginationItem>
-          </Pagination>
-        </div>
+        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.media.count} state="^.home"/>
       </Fragment>
     );
   }
