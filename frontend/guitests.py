@@ -32,11 +32,25 @@ def test_title(tester, title):
     html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
     tester.assertIn(title, list(driver.find_elements_by_tag_name("h2"))[0].text)
 
+def test_instance_title(tester, title):
+    driver = tester.driver
+    driver.get(tester.url)
+
+    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+    tester.assertIn(title, list(driver.find_elements_by_id("name"))[0].text)
+
 def test_card_items(tester):
     driver = tester.driver
     driver.get(tester.url)
     html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
     tabs = list(driver.find_elements_by_tag_name("img"))
+    tester.assertEqual(tabs.__len__(), 12)
+
+def test_bio(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+    tester.assertNotEqual("", list(driver.find_elements_by_id("bio"))[0].text)
 
 class HomePage(unittest.TestCase):
     def setUp(self):
@@ -44,10 +58,10 @@ class HomePage(unittest.TestCase):
         self.url = "http://localhost:3000"
 
     def test_welcome_message(self):
-        test_title(self, "Welcome to SoundtrackDB");
+        test_title(self, "Welcome to SoundtrackDB")
 
     def test_navigation(self):
-        test_navbar(self);
+        test_navbar(self)
 
     def tearDown(self):
         self.driver.close()
@@ -58,10 +72,10 @@ class AlbumPage(unittest.TestCase):
         self.url = "http://localhost:3000/album"
 
     def test_title(self):
-        test_title(self, "Albums");
+        test_title(self, "Albums")
 
     def test_navigation(self):
-        test_navbar(self);
+        test_navbar(self)
 
     def test_cards(self):
         test_card_items(self)
@@ -78,7 +92,7 @@ class ArtistPage(unittest.TestCase):
         test_title(self, "Artists");
 
     def test_navigation(self):
-        test_navbar(self);
+        test_navbar(self)
 
     def test_cards(self):
         test_card_items(self)
@@ -92,10 +106,10 @@ class MediaPage(unittest.TestCase):
         self.url = "http://localhost:3000/media"
 
     def test_title(self):
-        test_title(self, "Media - Movies/TV Series");
+        test_title(self, "Media - Movies/TV Series")
 
     def test_navigation(self):
-        test_navbar(self);
+        test_navbar(self)
 
     def test_cards(self):
         test_card_items(self)
@@ -109,10 +123,46 @@ class AboutPage(unittest.TestCase):
         self.url = "http://localhost:3000/about"
 
     def test_navigation(self):
-        test_navbar(self);
+        test_navbar(self)
 
     def tearDown(self):
         self.driver.close()
+
+class AlbumInstance(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/album/1"
+
+    def test_navigation(self):
+        test_navbar(self)
+
+    def test_title(self):
+        test_instance_title(self, "Arrow: Season 5 (Original Television Soundtrack)")
+
+class ArtistInstance(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/artist/1"
+
+    def test_navigation(self):
+        test_navbar(self)
+
+    def test_title(self):
+        test_instance_title(self, "Blake Neely")
+
+    def test_biography(self):
+        test_bio(self);
+
+class MediaInstance(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/media/66"
+
+    def test_navigation(self):
+        test_navbar(self)
+
+    def test_title(self):
+        test_instance_title(self, "African Safari")
 
 if __name__ == "__main__":
     unittest.main()
