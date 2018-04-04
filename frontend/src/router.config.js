@@ -19,4 +19,8 @@ router.transitionService.onError({}, (transition) => {
     }
 })
 
+router.transitionService.onEnter({}, (transition) => {
+    window.scrollTo(0,0);
+})
+
 router.urlService.rules.initial({state: 'home'});

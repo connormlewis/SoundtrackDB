@@ -100,7 +100,7 @@ class SearchResults extends Component {
     console.debug(this.props.results)
     return (
       <React.Fragment>
-        <div>
+        <div className="clearfix">
           <h2 className="float-left mb-3">Showing results for: <span className="text-muted">{this.searchTerm}</span></h2>
           {/* <div className="float-right form-inline">
             <label>Results per page: </label>
@@ -113,6 +113,9 @@ class SearchResults extends Component {
         </div>
         <div className="mb-2">
           {
+            this.props.results.count === 0 ?
+            <div>No matching results were found</div>
+            :
             this.props.results.items.map((result, index) => {
               return (
                 <React.Fragment key={result.kind + result.id}>
