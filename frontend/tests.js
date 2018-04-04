@@ -331,10 +331,15 @@ describe('<ArtistInstance/>', function () {
     expect(wrapper.find({ id: 'bio' }).render().text()).to.be.equal(ARTIST_JSON.bio);
   })
 
+  it('should have correct spotify artist follower counter', function() {
+    const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
+    expect(wrapper.find('iframe').find({id: 'followers'}).prop('src')).to.contain(ARTIST_JSON.spotify_uri)
+  })
+
   it('should have the correct media', function () {
     const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
     expect(wrapper.find({ alt: "Artist" }).prop('src')).to.be.equal(ARTIST_JSON.image);
-    expect(wrapper.find('iframe').prop('src')).to.contain(ARTIST_JSON.spotify_uri)
+    expect(wrapper.find('iframe').find({id: 'player'}).prop('src')).to.contain(ARTIST_JSON.spotify_uri)
   })
 
   it('should have the correct related data', function () {
@@ -374,7 +379,7 @@ describe('<AlbumInstance/>', function () {
     const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />)
     expect(wrapper.find({ id: 'name' }).render().text()).to.be.equal(ALBUM_JSON.name);
     expect(wrapper.find({ id: 'label' }).render().text()).to.be.equal("Label: " + ALBUM_JSON.label);
-    expect(wrapper.find({ id: 'year' }).render().text()).to.be.equal("Release year: " + ALBUM_JSON.release_date.substring(0, 4));
+    expect(wrapper.find({ id: 'year' }).render().text()).to.be.equal("Release Year: " + ALBUM_JSON.release_date.substring(0, 4));
   })
 
   it('should have the correct track', function () {
@@ -382,8 +387,19 @@ describe('<AlbumInstance/>', function () {
     const expected_track_list = ALBUM_JSON.tracks;
     const result_track_list = wrapper.find({ id: 'tracks' }).childAt(0);
     for (let i = 0; i < expected_track_list.length; i++) {
-      expect(result_track_list.childAt(i).render().text()).to.equal(expected_track_list[i].name);
+      let artist = [];
+      for (let j = 0; j < expected_track_list[i].artists.length; j++) {
+        artist.push(expected_track_list[i].artists[j].name);
+      }
+      let artist_names = artist.join(', ');
+      expect(result_track_list.childAt(i).render().text()).to.equal(expected_track_list[i].name + " by " + artist_names);
     }
+  })
+
+  it('should have the correct media', function () {
+    const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
+    expect(wrapper.find({ alt: "Poster" }).prop('src')).to.be.equal(ALBUM_JSON.image);
+    expect(wrapper.find('iframe').prop('src')).to.contain(ALBUM_JSON.spotify_uri)
   })
 
   it('should have the correct related data', function () {
