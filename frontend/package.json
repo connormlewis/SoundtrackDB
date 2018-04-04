@@ -63,7 +63,7 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "nyc --color --check-coverage mocha --require babel-core/register ./scripts/test.js -R spec tests.js",
+    "test": "mocha --require babel-core/register ./scripts/test.js -R spec tests.js",
     "test:watch": "yarn test -- -w"
   },
   "babel": {
