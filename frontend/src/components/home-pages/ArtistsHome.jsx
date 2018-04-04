@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Pagination, PaginationItem, PaginationLink } from 'reactstrap';
-import { UISref } from '@uirouter/react';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import PropTypes from 'prop-types'
+import SDBPagination from "./../Pagination";
 
 
 export class ArtistItem extends Component {
@@ -42,13 +42,11 @@ export class ArtistHome extends Component {
 
   navigateToInstance(id) {
     const { stateService } = this.props.transition.router;
-    stateService.go('artistInstance', { artistID: id });
+    stateService.go('^.instance', { artistID: id });
   }
 
   render() {
     this.params = this.props.transition.params()
-    this.totalPages = Math.ceil(this.props.artists.count / this.params.limit);
-    this.currentPage = this.params.offset / this.params.limit;
 
     return (
       <Fragment>
@@ -64,31 +62,7 @@ export class ArtistHome extends Component {
             })
           }
         </div>
-        <div className="col-12">
-          <Pagination className="justify-content-center">
-            <PaginationItem>
-              { 
-                this.currentPage === 0 ? <PaginationLink previous disabled/> :
-                <UISref to="." params={{ offset: this.params.offset - this.params.limit }}>
-                  <PaginationLink previous/>
-                </UISref>
-              }
-            </PaginationItem>
-
-            <PaginationItem>
-              <PaginationLink disabled>{ this.currentPage + 1 }</PaginationLink>
-            </PaginationItem>
-
-            <PaginationItem>
-              { 
-                this.currentPage === this.totalPages - 1 ? <PaginationLink next disabled/> :
-                <UISref to="." params={{ offset: this.params.offset + this.params.limit }}>
-                <PaginationLink next/>
-                </UISref>
-              }
-            </PaginationItem>
-          </Pagination>
-        </div>
+        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.artists.count} state="^.home"/>
       </Fragment>
     );
   }

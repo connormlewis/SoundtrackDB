@@ -13,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App d-flex flex-column">
-        <Navigation />
+        <Navigation router={this.props.router}/>
         <Container fluid className="flex-grow pt-2" style={conStyle}>
           <UIView />
         </Container>
