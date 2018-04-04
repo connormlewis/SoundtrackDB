@@ -15,7 +15,7 @@ class SplashDescription extends Component {
               <b><i>Listen</i></b> to the music on our site.<br/>
             </p>
             <p className="text-left">
-              <UISref to="album">
+              <UISref to="album.home">
                 <Button color="secondary">Albums >></Button>
               </UISref>
             </p>
@@ -38,7 +38,7 @@ class SplashDescription extends Component {
               <b><i>Enjoy</i></b> popular tracks by the artist.<br/>
             </p>
             <p className="text-right">
-              <UISref to="artist">
+              <UISref to="artist.home">
                 <Button color="secondary">Artists >></Button>
               </UISref>
             </p> 
@@ -55,7 +55,7 @@ class SplashDescription extends Component {
               <b><i>Identify</i></b> available soundtracks for your favorite movie or show.<br/>
             </p> 
             <p className="text-left">
-              <UISref to="media">
+              <UISref to="media.home">
                 <Button color="secondary">Media >></Button>
               </UISref>
             </p>
