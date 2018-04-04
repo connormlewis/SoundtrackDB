@@ -12,7 +12,7 @@ class Navigation extends Component {
   search(e) {
     e.preventDefault();
     const { stateService } = this.props.router;
-    stateService.go('searchResults', { searchTerm: this.state.searchTerm });
+    stateService.go('searchResults', { searchTerm: this.state.searchTerm, offset: 0 });
   }
 
   updateInputValue(evt) {

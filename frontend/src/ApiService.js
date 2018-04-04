@@ -56,10 +56,6 @@ export default class ApiService {
     return $.get(API_URL + '/about')
   }
 
-  static getSearchPredictions(query) {
-
-  }
-
   static getSearchResults(query, offset = 0, limit = 10) {
     return $.ajax({
       url: API_URL + '/search/' + query,
