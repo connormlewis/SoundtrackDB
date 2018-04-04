@@ -38,10 +38,9 @@ def get_about():
     global updated_at, commit_data, issue_data
 
     last_hour_date_time = datetime.now() - timedelta(hours=1)
-    while (
-        updated_at is None or updated_at < last_hour_date_time) and
+    while ((updated_at is None or updated_at < last_hour_date_time) and
         (commit_data is None or commit_data[1] == 0) and
-            (issue_data is None or issue_data[1] == 0):
+            (issue_data is None or issue_data[1] == 0)):
         commit_data = get_commits()
         issue_data = get_issues()
         updated_at = datetime.now()
