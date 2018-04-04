@@ -96,11 +96,12 @@ class Result extends Component {
 class SearchResults extends Component {
   render() {
     this.params = this.props.transition.params();
+    this.searchTerm = decodeURI(this.params.searchTerm)
     console.debug(this.props.results)
     return (
       <React.Fragment>
         <div>
-          <h2 className="float-left mb-3">Showing results for: <span className="text-muted">{this.params.searchTerm}</span></h2>
+          <h2 className="float-left mb-3">Showing results for: <span className="text-muted">{this.searchTerm}</span></h2>
           {/* <div className="float-right form-inline">
             <label>Results per page: </label>
             <select name="" id="" className="form-control" onChange={this.resultsPerPageChanged}>
@@ -115,14 +116,14 @@ class SearchResults extends Component {
             this.props.results.items.map((result, index) => {
               return (
                 <React.Fragment key={result.kind + result.id}>
-                  <Result item={result} searchTerm={this.params.searchTerm} stateService={this.props.transition.router.stateService} />
+                  <Result item={result} searchTerm={this.searchTerm} stateService={this.props.transition.router.stateService} />
                   {index === this.props.results.items.length - 1 ? null : <hr />}
                 </React.Fragment>
               )
             })
           }
         </div>
-        <SDBPagination state="searchResults" params={{ searchTerm: this.params.searchTerm }} limit={this.params.limit} offset={this.params.offset} total={this.props.results.count} />
+        <SDBPagination state="searchResults" params={{ searchTerm: this.searchTerm }} limit={this.params.limit} offset={this.params.offset} total={this.props.results.count} />
       </React.Fragment>
     )
   }
