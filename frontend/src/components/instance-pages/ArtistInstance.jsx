@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Col, Row} from 'reactstrap'; 
-import { UISref } from '@uirouter/react';
 import styles from "../../style/Artist.css"; 
 import { RelatedAlbums } from './RelatedAlbums'; 
 import { RelatedMedia } from './RelatedMedia'; 
@@ -32,7 +31,7 @@ export class ArtistInstance extends Component {
         <Row>
           <Col sm="8">
             <h1 id="name" className="artist-name">{this.props.artist.name}</h1>
-            <iframe id="followers" className="w-30" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} height="56" scrolling="no" frameborder="0" allowtransparency="true"> </iframe>
+            <iframe id="followers" className="w-30" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} height="56" scrolling="no" frameBorder="0" allowtransparency="true"> </iframe>
             <h3>Biography</h3>
             <p id="bio">{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
           </Col>
