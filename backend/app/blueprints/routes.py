@@ -18,7 +18,13 @@ album_schema = AlbumSchema()
 media_schema = MediaSchema()
 artists_schema = ArtistSchema(exclude=('albums', 'media'))
 albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
-medias_schema = MediaSchema(exclude=('albums', 'artists', 'cast', 'other_images', 'videos'))
+medias_schema = MediaSchema(
+    exclude=(
+        'albums',
+        'artists',
+        'cast',
+        'other_images',
+        'videos'))
 search_schema = SearchSchema(many=True)
 
 commit_data = None
@@ -32,7 +38,8 @@ def get_about():
     global updated_at, commit_data, issue_data
 
     last_hour_date_time = datetime.now() - timedelta(hours=1)
-    if updated_at is None or updated_at < last_hour_date_time:
+    while (updated_at is None or updated_at < last_hour_date_time) and (commit_data is None or commit_data[
+            1] == 0) and (issue_data is None or issue_data[1] == 0):
         commit_data = get_commits()
         issue_data = get_issues()
         updated_at = datetime.now()
@@ -197,12 +204,12 @@ def search_db(term):
     """
     session = get_session()
     try:
-        search_statement = or_(search.c.name.ilike('%'+term+'%'),
-                               search.c.about.ilike('%'+term+'%'),
-                               search.c.kind.ilike('%'+term+'%'),
-                               search.c.image.ilike('%'+term+'%'),
-                               cast(search.c.id, Text).ilike('%'+term+'%'),
-                               search.c.release_date.ilike('%'+term+'%'))
+        search_statement = or_(search.c.name.ilike('%' + term + '%'),
+                               search.c.about.ilike('%' + term + '%'),
+                               search.c.kind.ilike('%' + term + '%'),
+                               search.c.image.ilike('%' + term + '%'),
+                               cast(search.c.id, Text).ilike('%' + term + '%'),
+                               search.c.release_date.ilike('%' + term + '%'))
         query = session.query(search).filter(search_statement)
         if request.args.get('limit') is not None:
             query = query.limit(int(request.args.get('limit')))
@@ -224,16 +231,18 @@ def search_db(term):
         session.close()
 
 
-def get_commits(): # pragma: no cover
+def get_commits():  # pragma: no cover
     """
     Get commits from github
     """
     all_commits = 0
-    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0,
-            'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    team = {'stevex196x': 0, 'TheSchaft': 0, 'melxtru': 0,
+            'aylish19': 0, 'connormlewis': 0, 'tsukkisuki': 0}
     try:
         url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
-        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        data = requests.get(
+            url, headers={
+                'Authorization': 'token ' + os.environ['API_TOKEN']})
         json_list = data.json()
         for entry in json_list:
             total = entry['total']
@@ -244,17 +253,19 @@ def get_commits(): # pragma: no cover
         return team, all_commits
 
 
-def get_issues(): # pragma: no cover
+def get_issues():  # pragma: no cover
     """
     Get issues from github
     """
-    team = {'stevex196x':0, 'TheSchaft':0, 'melxtru':0,
-            'aylish19':0, 'connormlewis':0, 'tsukkisuki':0}
+    team = {'stevex196x': 0, 'TheSchaft': 0, 'melxtru': 0,
+            'aylish19': 0, 'connormlewis': 0, 'tsukkisuki': 0}
     all_issues = 0
     try:
         url = ('https://api.github.com/repos/connormlewis/idb/'
                'issues?state=all&filter=all&per_page=100')
-        data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        data = requests.get(
+            url, headers={
+                'Authorization': 'token ' + os.environ['API_TOKEN']})
         link = data.headers.get('Link', None)
         if link is not None:
             parse_words = list(re.split('; |, | ', link))
@@ -262,10 +273,14 @@ def get_issues(): # pragma: no cover
             temp_string = parse_words[index][:-1]
             last_page = re.split('page=', temp_string)[-1]
             for i in range(1, int(last_page) + 1):
-                url = ('https://api.github.com/repos/connormlewis/idb/'
-                       'issues?state=all&filter=all&per_page=100' + '&page=' + str(i))
+                url = (
+                    'https://api.github.com/repos/connormlewis/idb/'
+                    'issues?state=all&filter=all&per_page=100' +
+                    '&page=' +
+                    str(i))
                 data = requests.get(
-                    url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+                    url, headers={
+                        'Authorization': 'token ' + os.environ['API_TOKEN']})
                 json_list = data.json()
                 for entry in json_list:
                     if 'pull_request' not in entry:
@@ -273,4 +288,3 @@ def get_issues(): # pragma: no cover
                         all_issues += 1
     finally:
         return team, all_issues
-        
