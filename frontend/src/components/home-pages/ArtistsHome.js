@@ -80,7 +80,7 @@ export class ArtistHome extends Component {
             </PaginationItem>
 
             <PaginationItem>
-            { 
+              { 
                 this.currentPage === this.totalPages - 1 ? <PaginationLink next disabled/> :
                 <UISref to="." params={{ offset: this.params.offset + this.params.limit }}>
                 <PaginationLink next/>
