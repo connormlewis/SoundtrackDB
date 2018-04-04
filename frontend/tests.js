@@ -11,16 +11,22 @@ import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
 import Splash from './src/components/Splash';
+import SplashCarousel from './src/components/SplashCarousel';
+import SplashDescription from './src/components/SplashDescription';
 import About from './src/components/About';
 import { Desc, Bio, Statistics, Data, Tools } from './src/components/About';
 import { MediaInstance } from './src/components/instance-pages/MediaInstance';
 import { MediaCarousel } from './src/components/instance-pages/MediaCarousel'; 
 import { ArtistInstance } from './src/components/instance-pages/ArtistInstance';
 import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
+import { RelatedArtists } from './src/components/instance-pages/RelatedArtists'; 
+import { RelatedAlbums } from './src/components/instance-pages/RelatedAlbums'; 
+import { RelatedMedia } from './src/components/instance-pages/RelatedMedia'; 
 import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, 
         INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, 
         ABOUT_JSON, BAD_MEDIA_JSON, BAD_ARTIST_JSON} from './testsData'; 
 import ErrorPage from './src/components/Error';
+import SDBPagination from "./src/components/Pagination";
 
 // App
 describe('<App/>', function () {
@@ -38,7 +44,7 @@ describe('<Navigation/>', function () {
 
   it('should have 4 items: Albums, Artists, TV/Movies, and About', function () {
     const wrapper = shallow(<Navigation />);
-    const navItems = wrapper.find('Nav').children();
+    const navItems = wrapper.find('Nav').at(0).children();
     expect(navItems).to.have.length(4);
     expect(navItems.at(0).find('.nav-link').render().text()).to.equal('Albums');
     expect(navItems.at(1).find('.nav-link').render().text()).to.equal('Artists');
@@ -157,12 +163,17 @@ describe('<MediaHome/>', function () {
 
 // Splash
 describe('<Splash/>', function () {
+  it('should render without crashing', function () {
+    shallow(<Splash />);
+  })
+
+  describe('<SplashCarousel/>', function () {
     it('should render without crashing', function () {
-        shallow(<Splash />);
+      shallow(<SplashCarousel />);
     })
 
     it('should have 4 items: Albums, Artists, Movies and TV, and Making Connections', function () {
-      const wrapper = shallow(<Splash />);
+      const wrapper = shallow(<SplashCarousel />);
       const carouselItems = wrapper.find('CarouselCaption');
       expect(carouselItems).to.have.length(4);
       expect(carouselItems.at(0).render().text()).to.equal('Albums');
@@ -171,55 +182,62 @@ describe('<Splash/>', function () {
       expect(carouselItems.at(3).render().text()).to.equal('Making Connections');
     })
 
-  describe('<Carousel/>', () => {
-    const items = [
-      { src: '', altText: 'item A', caption: 'caption A' },
-      { src: '', altText: 'item B', caption: 'caption B' },
-      { src: '', altText: 'item C', caption: 'caption C' }
-    ];
+    describe('<Carousel/>', () => {
+      const items = [
+        { src: '', altText: 'item A', caption: 'caption A' },
+        { src: '', altText: 'item B', caption: 'caption B' },
+        { src: '', altText: 'item C', caption: 'caption C' }
+      ];
 
-    it('should render a header and a caption', () => {
-      const wrapper = mount(<CarouselCaption captionHeader="headerText" captionText="bodyText" />);
-      expect(wrapper.find('h3').length).to.equal(1);
-      expect(wrapper.find('p').length).to.equal(1);
-    });
-
-    it('should render a list with the right number of items', () => {
-      const wrapper = mount(<CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />);
-      expect(wrapper.find('ol').length).to.equal(1);
-      expect(wrapper.find('li').length).to.equal(3);
-    });
-
-    it('should append the correct active class', () => {
-      const wrapper = mount(<CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />);
-      expect(wrapper.find('.active').hostNodes().length).to.equal(1);
-    });
-
-    it('should render an anchor tag', () => {
-      const wrapper = mount(<CarouselControl direction="next" onClickHandler={() => { }} />);
-      expect(wrapper.find('a').length).to.equal(1);
-    });
-
-    it('should call the onClickHandler', () => {
-      const onClick = sinon.spy();
-      const slides = items.map((item, idx) => {
-        return (
-          <CarouselItem onExiting={() => { }} onExited={() => { }} key={idx}>
-            <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-          </CarouselItem>
-        );
+      it('should render a header and a caption', () => {
+        const wrapper = mount(<CarouselCaption captionHeader="headerText" captionText="bodyText" />);
+        expect(wrapper.find('h3').length).to.equal(1);
+        expect(wrapper.find('p').length).to.equal(1);
       });
 
-      const wrapper = mount(
-        <Carousel activeIndex={0} next={() => { }} previous={() => { }}>
-          <CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />
-          {slides}
-          <CarouselControl direction="next" directionText="Next" onClickHandler={onClick} />
-        </Carousel>
-      );
-      wrapper.find('a').first().simulate('click');
-      sinon.assert.called(onClick);
+      it('should render a list with the right number of items', () => {
+        const wrapper = mount(<CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />);
+        expect(wrapper.find('ol').length).to.equal(1);
+        expect(wrapper.find('li').length).to.equal(3);
+      });
+
+      it('should append the correct active class', () => {
+        const wrapper = mount(<CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />);
+        expect(wrapper.find('.active').hostNodes().length).to.equal(1);
+      });
+
+      it('should render an anchor tag', () => {
+        const wrapper = mount(<CarouselControl direction="next" onClickHandler={() => { }} />);
+        expect(wrapper.find('a').length).to.equal(1);
+      });
+
+      it('should call the onClickHandler', () => {
+        const onClick = sinon.spy();
+        const slides = items.map((item, idx) => {
+          return (
+            <CarouselItem onExiting={() => { }} onExited={() => { }} key={idx}>
+              <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+            </CarouselItem>
+          );
+        });
+
+        const wrapper = mount(
+          <Carousel activeIndex={0} next={() => { }} previous={() => { }}>
+            <CarouselIndicators items={items} activeIndex={0} onClickHandler={() => { }} />
+            {slides}
+            <CarouselControl direction="next" directionText="Next" onClickHandler={onClick} />
+          </Carousel>
+        );
+        wrapper.find('a').first().simulate('click');
+        sinon.assert.called(onClick);
+      });
     });
+  });
+
+  describe('<SplashDescription/>', function () {
+    it('should render without crashing', function () {
+        shallow(<SplashDescription />);
+    })
   });
 });
 
@@ -268,12 +286,15 @@ describe('<MediaInstance/>', function () {
     expect(wrapper.find('iframe').prop('src')).to.be.equal(expected_video);
   });
 
-  it('should list associated albums and artists', function () {
-    const wrapper = shallow(<MediaInstance media={riverdale} />);
+  it('should list associated albums and artists (both name and picture)', function () {
+    const wrapper = mount(<MediaInstance media={riverdale} />);
     const expected_album = "Riverdale: Original Television Score (Season 1)";
     const expected_artist = "Blake Neely";
-    expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
-    expect(wrapper.find({ id: 'albums' }).find('a').render().text()).to.be.equal(expected_album);
+
+    expect(wrapper.find({ id: 'albums' }).find('CardTitle').render().text()).to.be.equal(expected_album);
+    expect(wrapper.find({ id: 'albums' }).find('CardImg').prop('src')).to.be.equal(riverdale.albums[0].image);
+    expect(wrapper.find({ id: 'artists' }).find('CardTitle').render().text()).to.be.equal(expected_artist);
+    expect(wrapper.find({ id: 'artists' }).find('CardImg').prop('src')).to.be.equal(riverdale.artists[0].image);
   });
 
   it('should display the final year aired if it is a finished series', function (){
@@ -322,19 +343,21 @@ describe('<ArtistInstance/>', function () {
   })
 
   it('should have the correct related data', function () {
-    const wrapper = shallow(<ArtistInstance artist={ARTIST_JSON} />);
+    const wrapper = mount(<ArtistInstance artist={ARTIST_JSON} />);
     const expected_albums = ARTIST_JSON.albums;
     const result_albums = wrapper.find({ id: 'albums' }).children();
     let i = 0; 
     for (let album of expected_albums) {
-      expect(result_albums.find('a').at(i).render().text()).to.be.equal(album.name);
+      expect(result_albums.find('CardTitle').at(i).render().text()).to.be.equal(album.name);
+      expect(result_albums.find('CardImg').at(i).prop('src')).to.be.equal(album.image);
       ++i;  
     }
     const expected_media = ARTIST_JSON.media; 
     const result_media = wrapper.find({ id: 'media' }).children();
     let j = 0; 
     for (let media of expected_media) {
-      expect(result_media.find('a').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardTitle').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardImg').at(j).prop('src')).to.be.equal(media.image);
       ++j;  
     }
   })
@@ -380,19 +403,21 @@ describe('<AlbumInstance/>', function () {
   })
 
   it('should have the correct related data', function () {
-    const wrapper = shallow(<AlbumInstance album={ALBUM_JSON} />);
+    const wrapper = mount(<AlbumInstance album={ALBUM_JSON} />);
     const expected_artists = ALBUM_JSON.artists;
     const result_artists = wrapper.find({ id: 'artists' }).children();
     let i = 0; 
     for (let artist of expected_artists) {
-      expect(result_artists.find('a').at(i).render().text()).to.be.equal(artist.name);
+      expect(result_artists.find('CardTitle').at(i).render().text()).to.be.equal(artist.name);
+      expect(result_artists.find('CardImg').at(i).prop('src')).to.be.equal(artist.image);
       ++i;  
     }
     const expected_media = ARTIST_JSON.media; 
     const result_media = wrapper.find({ id: 'media' }).children();
     let j = 0; 
     for (let media of expected_media) {
-      expect(result_media.find('a').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardTitle').at(j).render().text()).to.be.equal(media.name);
+      expect(result_media.find('CardImg').at(j).prop('src')).to.be.equal(media.image);
       ++j;  
     }
   })
@@ -446,3 +471,50 @@ describe('<ErrorPage/>', function () {
     expect(wrapper.find('h1').render().text()).to.be.equal('Uh oh!');  
   });
 });
+
+describe('<RelatedArtists/>', function() {
+  it('should render without crashing', function () {
+    shallow(<RelatedArtists artists={RIVERDALE_JSON.artists}/>); 
+  }); 
+
+  it('should have an artist card with correct name and image', function() {
+    const wrapper = mount(<RelatedArtists artists={RIVERDALE_JSON.artists}/>); 
+    expect(wrapper.find('CardTitle').render().text()).to.be.equal(RIVERDALE_JSON.artists[0].name);
+    expect(wrapper.find('CardImg').prop('src')).to.be.equal(RIVERDALE_JSON.artists[0].image);
+  }); 
+});
+
+describe('<RelatedAlbums/>', function() {
+  it('should render without crashing', function () {
+    shallow(<RelatedAlbums albums={RIVERDALE_JSON.albums}/>); 
+  }); 
+
+  it('should have an album card with correct name and image', function() {
+    const wrapper = mount(<RelatedAlbums albums={RIVERDALE_JSON.albums}/>); 
+    expect(wrapper.find('CardTitle').render().text()).to.be.equal(RIVERDALE_JSON.albums[0].name);
+    expect(wrapper.find('CardImg').prop('src')).to.be.equal(RIVERDALE_JSON.albums[0].image);
+  }); 
+}); 
+
+describe('<RelatedMedia/>', function() {
+  it('should render without crashing', function () {
+    shallow(<RelatedMedia media={ALBUM_JSON.media}/>); 
+  }); 
+
+  it('should have a media card with correct name and image', function() {
+    const wrapper = mount(<RelatedMedia media={ALBUM_JSON.media}/>); 
+    expect(wrapper.find('CardTitle').render().text()).to.be.equal(ALBUM_JSON.media[0].name);
+    expect(wrapper.find('CardImg').prop('src')).to.be.equal(ALBUM_JSON.media[0].image);
+  }); 
+});
+
+describe('<SDBPagination/>', function() {
+  it('should render without crashing', function() {
+    shallow(<SDBPagination state="" limit={12} offset={0} total={12}/>)
+  })
+
+  it('should have at max 5 pages (9 items including arrows)', function() {
+    let pagination = shallow(<SDBPagination state="" limit={12} offset={0} total={200}/>)
+    expect(pagination.find('PaginationItem').length).to.be.equal(9)
+  })
+})

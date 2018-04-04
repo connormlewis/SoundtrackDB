@@ -13,6 +13,14 @@ global.document = dom.window.document;
 global.window = document.defaultView;
 global.navigator = {userAgent: 'node.js'};
 
+global.window.matchMedia = window.matchMedia || function() {
+    return {
+        matches : false,
+        addListener : function() {},
+        removeListener: function() {}
+    };
+};
+
 function noop() {
 	return {}; 
 }

@@ -88,6 +88,10 @@ class SoundtrackDBTests(unittest.TestCase):
     def test_get_tv_movie_missing(self):
         response = self.client.get('/media/2')
         self.assertEqual(response.status_code, 404)
+    
+    def test_query(self):
+        response = self.client.get('/search/param')
+        self.assertEqual(response.status_code, 200)
 
     @staticmethod
     def populate_database(session):

@@ -1,7 +1,6 @@
-#artist-image {
-  float: left;
-  margin-right: 15px;
-  margin-bottom: 15px;
+.artist-name {
+	float: left;
+	margin-right: 30px;
 }
 
 #label {

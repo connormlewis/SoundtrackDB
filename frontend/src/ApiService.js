@@ -7,36 +7,38 @@ if (process.env.NODE_ENV === "production") {
 
 export default class ApiService {
 
-  static getArtists(offset=0, limit=12) {
+  static getArtists(offset = 0, limit = 12) {
     return $.ajax({
       url: API_URL + '/artist',
       type: "get",
-      data: { 
-        offset: offset,
-        limit: limit
-      }
-    })  }
-
-  static getAlbums(offset=0, limit=12) {
-    return $.ajax({
-      url: API_URL + '/album',
-      type: "get",
-      data: { 
+      data: {
         offset: offset,
         limit: limit
       }
     })
   }
 
-  static getAllMedia(offset=0, limit=12) {
+  static getAlbums(offset = 0, limit = 12) {
     return $.ajax({
-      url: API_URL + '/media',
+      url: API_URL + '/album',
       type: "get",
-      data: { 
+      data: {
         offset: offset,
         limit: limit
       }
-    })  }
+    })
+  }
+
+  static getAllMedia(offset = 0, limit = 12) {
+    return $.ajax({
+      url: API_URL + '/media',
+      type: "get",
+      data: {
+        offset: offset,
+        limit: limit
+      }
+    })
+  }
 
   static getArtist(id) {
     return $.get(API_URL + '/artist/' + id)
@@ -52,5 +54,16 @@ export default class ApiService {
 
   static getAbout() {
     return $.get(API_URL + '/about')
+  }
+
+  static getSearchResults(query, offset = 0, limit = 10) {
+    return $.ajax({
+      url: API_URL + '/search/' + query,
+      type: 'get',
+      data: {
+        offset: offset,
+        limit: limit
+      }
+    })
   }
 }
