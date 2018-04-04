@@ -172,7 +172,7 @@ export class Tools extends Component {
       <React.Fragment>
         <div className="tools">
           <h1 className="about-style-header">Tools Used</h1>
-            <p className="about-style-p">
+            <div className="about-style-p">
               <strong>ReactJS</strong> was used to build our front end.<br/>
               <strong>PostgreSQL</strong> was used as our database to store our artists, albums, movies, and television shows.<br/>
               <strong>SQLAlchemy</strong> was to used to manage the entries in the database.<br/>
@@ -192,7 +192,7 @@ export class Tools extends Component {
               <strong>ReactStrap</strong> is a library which allowed us to add BootStrap React components in our frontend.<br/>
               <strong>Enzyme</strong> is a JS library used to manipulate React components during unit testing.<br/>
               <strong>StarUML</strong> was used to create the UML diagram for database.<br/>
-            </p>
+            </div>
         </div>
       </React.Fragment>
     );
