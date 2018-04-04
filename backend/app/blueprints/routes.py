@@ -2,6 +2,7 @@
 import os
 from datetime import datetime, timedelta
 
+import re
 import requests
 from flask import Blueprint, jsonify, request, abort
 
@@ -254,10 +255,22 @@ def get_issues(): # pragma: no cover
         url = ('https://api.github.com/repos/connormlewis/idb/'
                'issues?state=all&filter=all&per_page=100')
         data = requests.get(url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
-        json_list = data.json()
-        for entry in json_list:
-            if 'pull_request' not in entry:
-                team[entry['user']['login']] += 1
-                all_issues += 1
+        link = data.headers.get('Link', None)
+        if link is not None:
+            parse_words = list(re.split('; |, | ', link))
+            index = parse_words.index('rel="last"') - 1
+            temp_string = parse_words[index][:-1]
+            last_page = re.split('page=', temp_string)[-1]
+            for i in range(1, int(last_page) + 1):
+                url = ('https://api.github.com/repos/connormlewis/idb/'
+                       'issues?state=all&filter=all&per_page=100' + '&page=' + str(i))
+                data = requests.get(
+                    url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+                json_list = data.json()
+                for entry in json_list:
+                    if 'pull_request' not in entry:
+                        team[entry['user']['login']] += 1
+                        all_issues += 1
     finally:
         return team, all_issues
+        
