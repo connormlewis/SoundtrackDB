@@ -6,7 +6,9 @@ import re
 import requests
 from flask import Blueprint, jsonify, request, abort
 
+from sqlalchemy import or_, Text, cast
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media
+from app.models.associations import search
 from app.shared.db import get_session
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
@@ -183,6 +185,40 @@ def get_single_media(media_id):
         return jsonify(media_schema.dump(media).data)
     except ValueError:
         return abort(404)
+    finally:
+        session.close()
+
+@BP.route('/search/<term>')
+def search_db(term):
+    """
+    Search database for a term
+    """
+    session = get_session()
+    try:
+        search_statement = or_(search.c.name.ilike('%'+term+'%'),
+                               search.c.about.ilike('%'+term+'%'),
+                               search.c.kind.ilike('%'+term+'%'),
+                               search.c.image.ilike('%'+term+'%'),
+                               cast(search.c.id, Text).ilike('%'+term+'%'),
+                               search.c.release_date.ilike('%'+term+'%'))
+        query = session.query(search).filter(search_statement)
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
+        else:
+            query = query.limit(12)
+
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.offset(0)
+
+        data = query.all()
+        count = session.query(search).filter(search_statement).count()
+        data = [tuple(tup) for tup in data]
+        return jsonify({
+            'items': data,
+            'count': count
+        })
     finally:
         session.close()
 
