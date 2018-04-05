@@ -1,24 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Navbar, Container, Nav, NavItem } from 'reactstrap';
 import { UISref, UISrefActive } from '@uirouter/react';
+import SearchBar from './SearchBar'
 
 class Navigation extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      searchTerm: ''
-    }
-  }
-  search(e) {
-    e.preventDefault();
-    const { stateService } = this.props.router;
-    stateService.go('searchResults', { searchTerm: this.state.searchTerm, offset: 0 });
-  }
 
-  updateInputValue(evt) {
-    this.setState({
-      searchTerm: evt.target.value
-    });
+  search(searchTerm) {
+    const { stateService } = this.props.router;
+    stateService.go('searchResults', { searchTerm: searchTerm, offset: 0, limit: 10 });
   }
 
   render() {
@@ -60,10 +49,7 @@ class Navigation extends Component {
               </UISrefActive>
             </Nav>
             <Nav className="ml-auto">
-              <form className="form-inline my-2 my-lg-0" onSubmit={evt => this.search(evt)}>
-                <input className="form-control mr-sm-2" type="search" placeholder="Search" onChange={evt => this.updateInputValue(evt)} aria-label="Search"></input>
-                <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-              </form>
+              <SearchBar onSubmit={(searchTerm) => this.search(searchTerm)} placeholder="Search Everywhere"/>
             </Nav>
           </Container>
         </Navbar>

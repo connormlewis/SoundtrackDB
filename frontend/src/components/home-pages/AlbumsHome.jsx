@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types'
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import SDBPagination from "./../Pagination";
+import SearchBar from './../SearchBar'
 
 const titleStyles = {
   'overflow': 'hidden',
@@ -49,12 +50,21 @@ export class AlbumHome extends Component {
     stateService.go('^.instance', { albumID: id });
   }
 
+  search(searchTerm) {
+    console.log(searchTerm);
+  }
+
   render() {
     this.params = this.props.transition.params()
 
     return (
       <Fragment>
-        <h2>Albums</h2>
+        <div>
+          <h2 className="float-left">Albums</h2>
+          <div className="float-right">
+            <SearchBar placeholder="Search Albums" onSubmit={(searchTerm) => this.search(searchTerm)}/>
+          </div>
+        </div>
         <div className="row">
           {
             this.props.albums.items.map((album) => {
