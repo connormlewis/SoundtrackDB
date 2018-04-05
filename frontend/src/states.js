@@ -142,7 +142,8 @@ const SEARCH_RESULTS = {
   component: SearchResults,
   params: {
     limit: 10,
-    offset: 0
+    offset: 0,
+    criteria: {}
   },
   resolve: [{
     token: 'results',
