@@ -92,6 +92,30 @@ class SoundtrackDBTests(unittest.TestCase):
     def test_query(self):
         response = self.client.get('/search/param')
         self.assertEqual(response.status_code, 200)
+    
+    def test_search_media(self):
+        response = self.client.get('/media?search=param')
+        self.assertEqual(response.status_code, 200)
+
+    def test_search_artist(self):
+        response = self.client.get('/artist?search=param')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_search_album(self):
+        response = self.client.get('/album?search=param')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_media(self):
+        response = self.client.get('/media?release_date=release_date<\'2018\'&type=movie&running=true')
+        self.assertEqual(response.status_code, 200)
+
+    def test_filter_artist(self):
+        response = self.client.get('/artist?followers=followers<100')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_album(self):
+        response = self.client.get('/album?release_date=release_date<\'2015\'')
+        self.assertEqual(response.status_code, 200)
 
     @staticmethod
     def populate_database(session):

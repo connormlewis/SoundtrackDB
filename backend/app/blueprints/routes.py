@@ -16,7 +16,6 @@ BP = Blueprint('category_routes', 'SoundtrackDB')
 artist_schema = ArtistSchema()
 album_schema = AlbumSchema()
 media_schema = MediaSchema()
-search_schema = SearchSchema()
 artists_schema = ArtistSchema(exclude=('albums', 'media'))
 albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
 medias_schema = MediaSchema(
@@ -306,6 +305,9 @@ def get_issues():  # pragma: no cover
         return team, all_issues
 
 def order_query(table, query_params, query):
+    """
+    Order query
+    """
     #if query_params.get('select_only') is not None:
     #    query = query.filter(query_params.get('select_only'))
     if query_params.get('order_by') is not None:
@@ -322,72 +324,91 @@ def order_query(table, query_params, query):
     return query
 
 def artist_filter(query_params, query):
+    """
+    Filter artist table query
+    """
     if 'followers' in query_params:
         query = query.filter(query_params.get('followers'))
     return query
 
 def album_filter(query_params, query):
+    """
+    Filter album table query
+    """
     if 'release_date' in query_params:
         query = query.filter(query_params.get('release_date'))
     return query
 
 def media_filter(query_params, query):
+    """
+    Filter media table query
+    """
+    table = Media.__table__
     if 'type' in query_params:
-        if query_params.get('type') == 'Movie':
-            query = query.filter(Media.c.type == 1)
+        if query_params.get('type').lower() == 'movie':
+            query = query.filter(table.c.type == 1)
         else:
-            query = query.filter(Media.c.type == 0)
+            query = query.filter(table.c.type == 0)
     if 'release_date' in query_params:
         query = query.filter(query_params.get('release_date'))
     if 'running' in query_params:
-        query = query.filter(query_params.get('running'))
+        if query_params.get('running').lower() == 'true':
+            query = query.filter(table.c.running)
+        else:
+            query = query.filter(not table.c.running)
     return query
 
 def artist_search(query, term):
-    id = Column(Integer, primary_key=True)
-    name = Column(Text, nullable=False)
-    bio = Column(Text)
-    image = Column(Text)
-    followers = Column(Integer)
-    spotify_uri = Column(Text, nullable=False)
-    search_statement = or_(cast(Artist.c.id, Text).ilike('%'+term+'%'), #convert
-                           Artist.c.name.ilike('%'+term+'%'),
-                           Artist.c.bio.ilike('%'+term+'%'),
-                           Artist.c.image.ilike('%'+term+'%'),
-                           cast(Artist.c.followers, Text).ilike('%'+term+'%'), #convert
-                           Artist.c.spotify_uri.ilike('%'+term+'%'))
+    """
+    Search artist table for term
+    """
+    table = Artist.__table__
+    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'), #convert
+                           table.c.name.ilike('%'+term+'%'),
+                           table.c.bio.ilike('%'+term+'%'),
+                           table.c.image.ilike('%'+term+'%'),
+                           cast(table.c.followers, Text).ilike('%'+term+'%'), #convert
+                           table.c.spotify_uri.ilike('%'+term+'%'))
     return query.filter(search_statement)
 
 def media_search(query, term):
-    search_statement = or_(cast(Media.c.id, Text).ilike('%'+term+'%'), #convert
-                           cast(Media.c.type, Text).ilike('%'+term+'%'), #convert
-                           Media.c.name.ilike('%'+term+'%'),
-                           Media.c.cast.ilike('%'+term+'%'),
-                           Media.c.genres.ilike('%'+term+'%'),
-                           Media.c.seasons.ilike('%'+term+'%'),
-                           Media.c.release_date.ilike('%'+term+'%'),
-                           Media.c.last_aired.ilike('%'+term+'%'),
-                           Media.c.image.ilike('%'+term+'%'),
-                           Media.c.running.ilike('%'+term+'%'),
-                           Media.c.overview.ilike('%'+term+'%'),
-                           Media.c.other_images.ilike('%'+term+'%'),
-                           Media.c.video.ilike('%'+term+'%'),
-                           cast(Media.c.imdb_id, Text).ilike('%'+term+'%'), #convert
-                           cast(Media.c.tmdb_id, Text).ilike('%'+term+'%'), #convert
-                           cast(Media.c.runtime, Text).ilike('%'+term+'%'), #convert
-                           Media.c.tagline.ilike('%'+term+'%'),
-                           cast(Media.c.popularity, Text).ilike('%'+term+'%'), #convert
-                           cast(Media.c.average_rating, Text).ilike('%'+term+'%')) #convert
+    """
+    Search media table for term
+    """
+    table = Media.__table__
+    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.type, Text).ilike('%'+term+'%'), #convert
+                           table.c.name.ilike('%'+term+'%'),
+                           table.c.cast.ilike('%'+term+'%'),
+                           table.c.genres.ilike('%'+term+'%'),
+                           table.c.seasons.ilike('%'+term+'%'),
+                           table.c.release_date.ilike('%'+term+'%'),
+                           table.c.last_aired.ilike('%'+term+'%'),
+                           table.c.image.ilike('%'+term+'%'),
+                           table.c.running.ilike('%'+term+'%'), #convert?
+                           table.c.overview.ilike('%'+term+'%'),
+                           table.c.other_images.ilike('%'+term+'%'),
+                           table.c.videos.ilike('%'+term+'%'),
+                           cast(table.c.imdb_id, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.tmdb_id, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.runtime, Text).ilike('%'+term+'%'), #convert
+                           table.c.tagline.ilike('%'+term+'%'),
+                           cast(table.c.popularity, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.average_rating, Text).ilike('%'+term+'%')) #convert
     return query.filter(search_statement)
 
 def album_search(query, term):
-    search_statement = or_(Album.c.name.ilike('%'+term+'%'),
-                           Album.c.release_date.ilike('%'+term+'%'),
-                           Album.c.genres.ilike('%'+term+'%'),
-                           Album.c.image.ilike('%'+term+'%'),
-                           Album.c.label.ilike('%'+term+'%'),
-                           Album.c.tracks.ilike('%'+term+'%'),
-                           Album.c.spotify_uri.ilike('%'+term+'%'),
-                           cast(Album.c.id, Text).ilike('%'+term+'%'))
+    """
+    Search album table for term
+    """
+    table = Album.__table__
+    search_statement = or_(table.c.name.ilike('%'+term+'%'),
+                           table.c.release_date.ilike('%'+term+'%'),
+                           table.c.genres.ilike('%'+term+'%'),
+                           table.c.image.ilike('%'+term+'%'),
+                           table.c.label.ilike('%'+term+'%'),
+                           table.c.tracks.ilike('%'+term+'%'),
+                           table.c.spotify_uri.ilike('%'+term+'%'),
+                           cast(table.c.id, Text).ilike('%'+term+'%'))
     return query.filter(search_statement)
          

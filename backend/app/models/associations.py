@@ -1,6 +1,5 @@
 """Creates the association tables in the database"""
-from sqlalchemy import Table, Column, Integer, ForeignKey, Text
-from marshmallow import Schema, fields
+from sqlalchemy import Table, Column, Integer, ForeignKey
 
 from app.shared.db import Base
 
