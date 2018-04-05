@@ -6,7 +6,7 @@ import re
 import requests
 from flask import Blueprint, jsonify, request, abort
 
-from sqlalchemy import or_, Text, cast
+from sqlalchemy import or_, Text, cast, asc, desc
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media, \
     search, SearchSchema
 from app.shared.db import get_session
@@ -30,7 +30,7 @@ search_schema = SearchSchema(many=True)
 commit_data = None
 issue_data = None
 updated_at = None
-
+#Blessed
 
 @BP.route('/about')
 def get_about():
@@ -63,8 +63,12 @@ def get_artists():
 
     try:
         query = session.query(Artist)
+        if request.args.get('search') is not None:
+            query = artist_search(query, request.args.get('search'))
+        query = order_query(Artist.__table__, request.args, query)
+        query = artist_filter(request.args, query)
+        final_query = query
 
-        query = query.order_by('name')
         if request.args.get('limit') is not None:
             query = query.limit(int(request.args.get('limit')))
         else:
@@ -76,7 +80,7 @@ def get_artists():
             query = query.offset(0)
 
         artists = query.all()
-        count = session.query(Artist).count()
+        count = final_query.count()
         return jsonify({
             'items': artists_schema.dump(artists, many=True).data,
             'count': count
@@ -110,8 +114,11 @@ def get_albums():
 
     try:
         query = session.query(Album)
-
-        query = query.order_by('name')
+        if request.args.get('search') is not None:
+            query = album_search(query, request.args.get('search'))
+        query = order_query(Album.__table__, request.args, query)
+        query = album_filter(request.args, query)
+        final_query = query
 
         if request.args.get('limit') is not None:
             query = query.limit(int(request.args.get('limit')))
@@ -124,7 +131,7 @@ def get_albums():
             query = query.offset(0)
 
         albums = query.all()
-        count = session.query(Album).count()
+        count = final_query.count()
         return jsonify({
             'items': albums_schema.dump(albums, many=True).data,
             'count': count
@@ -157,8 +164,12 @@ def get_media():
     session = get_session()
     try:
         query = session.query(Media)
+        if request.args.get('search') is not None:
+            query = media_search(query, request.args.get('search'))
+        query = order_query(Media.__table__, request.args, query)
+        query = media_filter(request.args, query)
+        final_query = query
 
-        query = query.order_by('name')
         if request.args.get('limit') is not None:
             query = query.limit(int(request.args.get('limit')))
         else:
@@ -171,7 +182,7 @@ def get_media():
 
         medias = query.all()
 
-        count = session.query(Media).count()
+        count = final_query.count()
         return jsonify({
             'items': medias_schema.dump(medias, many=True).data,
             'count': count
@@ -212,6 +223,9 @@ def search_db(term):
                                cast(search.c.id, Text).ilike('%' + term + '%'),
                                search.c.release_date.ilike('%' + term + '%'))
         query = session.query(search).filter(search_statement)
+        query = order_query(search, request.args, query)
+        final_query = query
+
         if request.args.get('limit') is not None:
             query = query.limit(int(request.args.get('limit')))
         else:
@@ -223,9 +237,9 @@ def search_db(term):
             query = query.offset(0)
 
         data = query.all()
-        count = session.query(search).filter(search_statement).count()
+        count = final_query.count()
         return jsonify({
-            'items': search_schema.dump(data).data,
+            'items': search_schema.dump(data, many=True).data,
             'count': count
         })
     finally:
@@ -289,3 +303,112 @@ def get_issues():  # pragma: no cover
                         all_issues += 1
     finally:
         return team, all_issues
+
+def order_query(table, query_params, query):
+    """
+    Order query
+    """
+    #if query_params.get('select_only') is not None:
+    #    query = query.filter(query_params.get('select_only'))
+    if query_params.get('order_by') is not None:
+        val = query_params.get('order_by')
+        if val in table.c:
+            if 'asc' in request.args:
+                query = query.order_by(asc(val))
+            elif 'desc' in request.args:
+                query = query.order_by(desc(val))
+            else:
+                query = query.order_by(val)
+    else:
+        query = query.order_by(asc('name'))
+    return query
+
+def artist_filter(query_params, query):
+    """
+    Filter artist table query
+    """
+    if 'followers' in query_params:
+        query = query.filter(query_params.get('followers'))
+    return query
+
+def album_filter(query_params, query):
+    """
+    Filter album table query
+    """
+    if 'release_date' in query_params:
+        query = query.filter(query_params.get('release_date'))
+    return query
+
+def media_filter(query_params, query):
+    """
+    Filter media table query
+    """
+    table = Media.__table__
+    if 'type' in query_params:
+        if query_params.get('type').lower() == 'movie':
+            query = query.filter(table.c.type == 1)
+        else:
+            query = query.filter(table.c.type == 0)
+    if 'release_date' in query_params:
+        query = query.filter(query_params.get('release_date'))
+    if 'running' in query_params:
+        if query_params.get('running').lower() == 'true':
+            query = query.filter(table.c.running)
+        else:
+            query = query.filter(not table.c.running)
+    return query
+
+def artist_search(query, term):
+    """
+    Search artist table for term
+    """
+    table = Artist.__table__
+    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'), #convert
+                           table.c.name.ilike('%'+term+'%'),
+                           table.c.bio.ilike('%'+term+'%'),
+                           table.c.image.ilike('%'+term+'%'),
+                           cast(table.c.followers, Text).ilike('%'+term+'%'), #convert
+                           table.c.spotify_uri.ilike('%'+term+'%'))
+    return query.filter(search_statement)
+
+def media_search(query, term):
+    """
+    Search media table for term
+    """
+    table = Media.__table__
+    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.type, Text).ilike('%'+term+'%'), #convert
+                           table.c.name.ilike('%'+term+'%'),
+                           table.c.cast.ilike('%'+term+'%'),
+                           table.c.genres.ilike('%'+term+'%'),
+                           table.c.seasons.ilike('%'+term+'%'),
+                           table.c.release_date.ilike('%'+term+'%'),
+                           table.c.last_aired.ilike('%'+term+'%'),
+                           table.c.image.ilike('%'+term+'%'),
+                           table.c.running.ilike('%'+term+'%'), #convert?
+                           table.c.overview.ilike('%'+term+'%'),
+                           table.c.other_images.ilike('%'+term+'%'),
+                           table.c.videos.ilike('%'+term+'%'),
+                           cast(table.c.imdb_id, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.tmdb_id, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.runtime, Text).ilike('%'+term+'%'), #convert
+                           table.c.tagline.ilike('%'+term+'%'),
+                           cast(table.c.popularity, Text).ilike('%'+term+'%'), #convert
+                           cast(table.c.average_rating, Text).ilike('%'+term+'%')) #convert
+    return query.filter(search_statement)
+
+def album_search(query, term):
+    """
+    Search album table for term
+    """
+    table = Album.__table__
+    search_statement = or_(table.c.name.ilike('%'+term+'%'),
+                           table.c.release_date.ilike('%'+term+'%'),
+                           table.c.genres.ilike('%'+term+'%'),
+                           table.c.image.ilike('%'+term+'%'),
+                           table.c.label.ilike('%'+term+'%'),
+                           table.c.tracks.ilike('%'+term+'%'),
+                           table.c.spotify_uri.ilike('%'+term+'%'),
+                           cast(table.c.id, Text).ilike('%'+term+'%'))
+    return query.filter(search_statement)
+         
