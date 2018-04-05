@@ -33,7 +33,7 @@ export default class SDBPagination extends Component {
   render() {
     this.maxOtherPagesToShow = 4;
     this.totalPages = Math.ceil(this.props.total / this.props.limit);
-    this.currentPage = this.props.offset / this.props.limit;
+    this.currentPage = Math.floor(this.props.offset / this.props.limit);
     this.totalPreviousPages = this.currentPage;
     this.toatlRemainingPages = this.totalPages - this.currentPage - 1;
     

@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle} from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
+import SearchBar from './../SearchBar'
 
 
 export class MediaItem extends Component {
@@ -16,24 +17,24 @@ export class MediaItem extends Component {
   }
 
   getTVYears() {
-    let first = this.props.media.release_date;  
-    let last = ''; 
+    let first = this.props.media.release_date;
+    let last = '';
     if (this.props.media.running === true) {
-      last = 'Present'; 
+      last = 'Present';
     }
     else {
-      last = this.props.media.last_aired;  
+      last = this.props.media.last_aired;
     }
 
-    let years = ''; 
+    let years = '';
     if (first === last) {
-      years = first; 
+      years = first;
     }
     else {
-      years = first + ' - ' + last; 
+      years = first + ' - ' + last;
     }
 
-    return years; 
+    return years;
   }
 
   getSubtitleText() {
@@ -41,7 +42,7 @@ export class MediaItem extends Component {
       // TV Show
       return `TV Series • ${this.getTVYears()} • ${this.props.media.seasons} Seasons`
     } else {
-      return `Movie • ${this.props.media.release_date}`      
+      return `Movie • ${this.props.media.release_date}`
     }
   }
 
@@ -69,6 +70,16 @@ export class MediaHome extends Component {
     stateService.go('^.instance', { mediaID: id });
   }
 
+  search(searchTerm) {
+    const { stateService } = this.props.transition.router;
+    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: searchTerm });
+  }
+
+  clearSearch() {
+    const { stateService } = this.props.transition.router;
+    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
+  }
+
   render() {
     this.params = this.props.transition.params()
     this.totalPages = Math.ceil(this.props.media.count / this.params.limit);
@@ -76,19 +87,36 @@ export class MediaHome extends Component {
 
     return (
       <Fragment>
-        <h2>Media - Movies/TV Series</h2>
-        <div className="row">
+        <div className="clearfix">
+          <h2 className="float-left">Media{this.params.searchTerm === null || this.params.searchTerm === "" ? "" : <span> – searching for "{this.params.searchTerm}"</span>}</h2>
           {
-            this.props.media.items.map((mediaItem) => {
-              return (
-                <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={mediaItem.id}>
-                  <MediaItem media={mediaItem} navigateToInstance={this.navigateToInstance}/>
-                </div>
-              );
-            })
+            this.params.searchTerm === null || this.params.searchTerm === "" ? null :
+              <div className="float-right">
+                <button className="btn btn-link" type="button" onClick={() => this.clearSearch()}><i className="fas fa-times-circle"></i> Clear</button>
+              </div>
           }
+          <div className="float-right">
+            <SearchBar placeholder="Search Media" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
+          </div>
         </div>
-        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.media.count} state="^.home"/>
+
+        {
+          this.props.media.count === 0 ?
+            <div className="text-center my-4">No matching media were found</div>
+            :
+            <div className="row">
+              {
+                this.props.media.items.map((mediaItem) => {
+                  return (
+                    <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={mediaItem.id}>
+                      <MediaItem media={mediaItem} navigateToInstance={this.navigateToInstance} />
+                    </div>
+                  );
+                })
+              }
+            </div>
+        }
+        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.media.count} state="^.home" />
       </Fragment>
     );
   }

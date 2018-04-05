@@ -23,4 +23,8 @@ router.transitionService.onEnter({}, (transition) => {
     window.scrollTo(0,0);
 })
 
+router.transitionService.onBefore({}, (transition) => {
+    console.debug(`Transitioning from ${transition.from().name} to ${transition.to().name}}`, transition.params());
+})
+
 router.urlService.rules.initial({state: 'home'});
