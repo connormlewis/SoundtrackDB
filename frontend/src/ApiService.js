@@ -7,36 +7,48 @@ if (process.env.NODE_ENV === "production") {
 
 export default class ApiService {
 
-  static getArtists(offset = 0, limit = 12) {
+  static getArtists(offset = 0, limit = 12, searchTerm = null) {
+    let params = {
+      offset: offset,
+      limit: limit
+    };
+    if (searchTerm != null) {
+      params.search = searchTerm;
+    }
     return $.ajax({
       url: API_URL + '/artist',
       type: "get",
-      data: {
-        offset: offset,
-        limit: limit
-      }
+      data: params
     })
   }
 
-  static getAlbums(offset = 0, limit = 12) {
+  static getAlbums(offset = 0, limit = 12, searchTerm = null) {
+    let params = {
+      offset: offset,
+      limit: limit
+    };
+    if (searchTerm != null) {
+      params.search = searchTerm;
+    }
     return $.ajax({
       url: API_URL + '/album',
       type: "get",
-      data: {
-        offset: offset,
-        limit: limit
-      }
+      data: params
     })
   }
 
-  static getAllMedia(offset = 0, limit = 12) {
+  static getAllMedia(offset = 0, limit = 12, searchTerm = null) {
+    let params = {
+      offset: offset,
+      limit: limit
+    };
+    if (searchTerm != null) {
+      params.search = searchTerm;
+    }
     return $.ajax({
       url: API_URL + '/media',
       type: "get",
-      data: {
-        offset: offset,
-        limit: limit
-      }
+      data: params
     })
   }
 

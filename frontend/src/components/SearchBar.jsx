@@ -10,7 +10,7 @@ export default class SearchBar extends Component {
   
   submitSearch(e) {
     e.preventDefault();
-    if (this.state.searchTerm == "") {
+    if (this.state.searchTerm === "") {
       return;
     }
     this.props.onSubmit(this.state.searchTerm);

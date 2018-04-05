@@ -96,7 +96,7 @@ class SearchResults extends Component {
   }
 
   resultsPerPageChanged(e) {
-    this.resultsPerPage = parseInt(e.target.value);
+    this.resultsPerPage = parseInt(e.target.value, 10);
     this.props.transition.router.stateService.go('searchResults', {limit: this.resultsPerPage})
   }
 

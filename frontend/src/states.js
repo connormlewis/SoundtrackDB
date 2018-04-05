@@ -64,12 +64,13 @@ const ALBUM_HOME = {
   component: AlbumHome,
   params: {
     offset: 0,
-    limit: 12
+    limit: 12,
+    searchTerm: null
   },
   resolve: [{
     token: 'albums',
     deps: ['$transition$'],
-    resolveFn: (trans) => ApiService.getAlbums(trans.params().offset, trans.params().limit)
+    resolveFn: (trans) => ApiService.getAlbums(trans.params().offset, trans.params().limit, trans.params().searchTerm)
   }]
 };
 
@@ -79,12 +80,13 @@ const ARTIST_HOME = {
   component: ArtistHome,
   params: {
     offset: 0,
-    limit: 12
+    limit: 12,
+    searchTerm: null
   },
   resolve: [{
     token: 'artists',
     deps: ['$transition$'],
-    resolveFn: (trans) => ApiService.getArtists(trans.params().offset, trans.params().limit)
+    resolveFn: (trans) => ApiService.getArtists(trans.params().offset, trans.params().limit, trans.params().searchTerm)
   }]
 };
 
@@ -94,12 +96,13 @@ const MEDIA_HOME = {
   component: MediaHome,
   params: {
     offset: 0,
-    limit: 12
+    limit: 12,
+    searchTerm: null
   },
   resolve: [{
     token: 'media',
     deps: ['$transition$'],
-    resolveFn: (trans) => ApiService.getAllMedia(trans.params().offset, trans.params().limit)
+    resolveFn: (trans) => ApiService.getAllMedia(trans.params().offset, trans.params().limit, trans.params().searchTerm)
   }]
 };
 

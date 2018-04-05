@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
-
+import SearchBar from './../SearchBar'
 
 export class ArtistItem extends Component {
   constructor(props) {
@@ -45,24 +45,51 @@ export class ArtistHome extends Component {
     stateService.go('^.instance', { artistID: id });
   }
 
+  search(searchTerm) {
+    const { stateService } = this.props.transition.router;
+    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: searchTerm });
+  }
+
+  clearSearch() {
+    const { stateService } = this.props.transition.router;
+    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
+  }
+
   render() {
     this.params = this.props.transition.params()
 
     return (
       <Fragment>
-        <h2>Artists</h2>
-        <div className="row">
+        <div className="clearfix">
+          <h2 className="float-left">Artists{this.params.searchTerm === null || this.params.searchTerm === "" ? "" : <span> – searching for "{this.params.searchTerm}"</span>}</h2>
           {
-            this.props.artists.items.map((artist) => {
-              return (
-                <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={artist.id}>
-                  <ArtistItem artist={artist} navigateToInstance={this.navigateToInstance} />
-                </div>
-              );
-            })
+            this.params.searchTerm === null || this.params.searchTerm === "" ? null :
+              <div className="float-right">
+                <button className="btn btn-link" type="button" onClick={() => this.clearSearch()}><i className="fas fa-times-circle"></i> Clear</button>
+              </div>
           }
+          <div className="float-right">
+            <SearchBar placeholder="Search Artists" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
+          </div>
         </div>
-        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.artists.count} state="^.home"/>
+
+        {
+          this.props.artists.count === 0 ?
+            <div className="text-center my-4">No matching albums were found</div>
+            :
+            <div className="row">
+              {
+                this.props.artists.items.map((artist) => {
+                  return (
+                    <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={artist.id}>
+                      <ArtistItem artist={artist} navigateToInstance={this.navigateToInstance} />
+                    </div>
+                  );
+                })
+              }
+            </div>
+        }
+        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.artists.count} state="^.home" />
       </Fragment>
     );
   }

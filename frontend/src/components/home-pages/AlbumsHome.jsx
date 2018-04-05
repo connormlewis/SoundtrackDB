@@ -31,7 +31,7 @@ export class AlbumItem extends Component {
         <CardImg top width="100%" src={this.props.album.image} alt="Card image cap" />
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.album.name}</CardTitle>
-          <CardSubtitle className="text-muted text-left">{this.props.album.release_date.substring(0,4)}</CardSubtitle>
+          <CardSubtitle className="text-muted text-left">{this.props.album.release_date.substring(0, 4)}</CardSubtitle>
           <CardText className="text-left">{this.props.album.track_count} Track{this.props.album.track_count === 1 ? '' : 's'}</CardText>
         </CardBody>
       </Card>
@@ -43,6 +43,8 @@ export class AlbumHome extends Component {
   constructor(props) {
     super(props)
     this.navigateToInstance = this.navigateToInstance.bind(this);
+    this.search = this.search.bind(this);
+    this.clearSearch = this.clearSearch.bind(this);
   }
 
   navigateToInstance(id) {
@@ -51,7 +53,13 @@ export class AlbumHome extends Component {
   }
 
   search(searchTerm) {
-    console.log(searchTerm);
+    const { stateService } = this.props.transition.router;
+    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: searchTerm });
+  }
+
+  clearSearch() {
+    const { stateService } = this.props.transition.router;
+    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
   }
 
   render() {
@@ -59,24 +67,36 @@ export class AlbumHome extends Component {
 
     return (
       <Fragment>
-        <div>
-          <h2 className="float-left">Albums</h2>
+        <div className="clearfix">
+          <h2 className="float-left">Albums{this.params.searchTerm === null || this.params.searchTerm === "" ? "" : <span> – searching for "{this.params.searchTerm}"</span>}</h2>
+          {
+            this.params.searchTerm === null || this.params.searchTerm === "" ? null :
+              <div className="float-right">
+                <button className="btn btn-link" type="button" onClick={() => this.clearSearch()}><i className="fas fa-times-circle"></i> Clear</button>
+              </div>
+          }
           <div className="float-right">
-            <SearchBar placeholder="Search Albums" onSubmit={(searchTerm) => this.search(searchTerm)}/>
+            <SearchBar placeholder="Search Albums" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
         </div>
-        <div className="row">
-          {
-            this.props.albums.items.map((album) => {
-              return (
-                <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={album.id}>
-                  <AlbumItem album={album} navigateToInstance={this.navigateToInstance} />
-                </div>
-              );
-            })
-          }
-        </div>
-        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.albums.count} state="^.home"/>
+
+        {
+          this.props.albums.count === 0 ?
+            <div className="text-center my-4">No matching albums were found</div>
+            :
+            <div className="row">
+              {
+                this.props.albums.items.map((album) => {
+                  return (
+                    <div className="col-12 col-md-4 col-lg-3" style={{ cursor: 'pointer' }} key={album.id}>
+                      <AlbumItem album={album} navigateToInstance={this.navigateToInstance} />
+                    </div>
+                  );
+                })
+              }
+            </div>
+        }
+        <SDBPagination offset={this.params.offset} limit={this.params.limit} total={this.props.albums.count} state="^.home" />
       </Fragment>
     );
   }
