@@ -106,7 +106,7 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media(self):
-        response = self.client.get('/media?release_date=release_date<\'2018\'&type=movie&running=true')
+        response = self.client.get('/media?release_date=release_date<\'2018\'&type=movie&running=true&order_by=name&asc')
         self.assertEqual(response.status_code, 200)
 
     def test_filter_artist(self):
@@ -116,7 +116,7 @@ class SoundtrackDBTests(unittest.TestCase):
     def test_filter_album(self):
         response = self.client.get('/album?release_date=release_date<\'2015\'')
         self.assertEqual(response.status_code, 200)
-
+    
     @staticmethod
     def populate_database(session):
         artist = Artist()
