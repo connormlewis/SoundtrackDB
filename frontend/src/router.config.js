@@ -12,8 +12,15 @@ router.urlRouter.otherwise({ state: 'error', params: {code: 404} })
 router.transitionService.onError({}, (transition) => {
     if (transition.success === false) {
         let error = transition.error()
-        return transition.router.stateService.go('error', { code: error.detail.status })
+        if (!transition.ignored() && error.type !== 2) {
+            console.error(error);
+            return transition.router.stateService.go('error', { code: error.detail ? error.detail.status : null })
+        }
     }
+})
+
+router.transitionService.onEnter({}, (transition) => {
+    window.scrollTo(0,0);
 })
 
 router.urlService.rules.initial({state: 'home'});

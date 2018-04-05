@@ -51,8 +51,7 @@ export class RelatedAlbums extends Component {
       slidesToShow: Math.min(this.props.albums.length, 4),
       slidesToScroll: Math.min(this.props.albums.length, 4),
       adaptiveHeight: true,
-      variableWidth: true,
-      lazyload: true
+      variableWidth: true
     };
 
     return (

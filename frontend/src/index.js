@@ -11,7 +11,7 @@ import '../node_modules/slick-carousel/slick/slick-theme.css';
 
 ReactDOM.render(
   <UIRouter router={router}>
-    <App />
+    <App router={router}/>
   </UIRouter>
   , document.getElementById('root')
 );
