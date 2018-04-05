@@ -65,8 +65,8 @@ def get_artists():
         query = session.query(Artist)
         if request.args.get('search') is not None:
             query = artist_search(query, request.args.get('search'))
-        query = order_query(Artist.__table__, request.args, query)
         query = artist_filter(request.args, query)
+        query = order_query(Artist.__table__, request.args, query)
         final_query = query
 
         if request.args.get('limit') is not None:
@@ -116,8 +116,8 @@ def get_albums():
         query = session.query(Album)
         if request.args.get('search') is not None:
             query = album_search(query, request.args.get('search'))
-        query = order_query(Album.__table__, request.args, query)
         query = album_filter(request.args, query)
+        query = order_query(Album.__table__, request.args, query)
         final_query = query
 
         if request.args.get('limit') is not None:
@@ -166,8 +166,8 @@ def get_media():
         query = session.query(Media)
         if request.args.get('search') is not None:
             query = media_search(query, request.args.get('search'))
-        query = order_query(Media.__table__, request.args, query)
         query = media_filter(request.args, query)
+        query = order_query(Media.__table__, request.args, query)
         final_query = query
 
         if request.args.get('limit') is not None:
@@ -347,7 +347,7 @@ def media_filter(query_params, query):
     if 'type' in query_params:
         if query_params.get('type').lower() == 'movie':
             query = query.filter(table.c.type == 1)
-        else:
+        elif query_params.get('type').lower() == 'tv_show':
             query = query.filter(table.c.type == 0)
     if 'release_date' in query_params:
         query = query.filter(query_params.get('release_date'))
@@ -385,7 +385,7 @@ def media_search(query, term):
                            table.c.release_date.ilike('%'+term+'%'),
                            table.c.last_aired.ilike('%'+term+'%'),
                            table.c.image.ilike('%'+term+'%'),
-                           table.c.running.ilike('%'+term+'%'), #convert?
+                           cast(table.c.running, Text).ilike('%'+term+'%'), #convert?
                            table.c.overview.ilike('%'+term+'%'),
                            table.c.other_images.ilike('%'+term+'%'),
                            table.c.videos.ilike('%'+term+'%'),
