@@ -1,5 +1,6 @@
 """Creates the association tables in the database"""
 from sqlalchemy import Table, Column, Integer, ForeignKey, Text
+from marshmallow import Schema, fields
 
 from app.shared.db import Base
 
@@ -22,3 +23,14 @@ search = Table('search', Base.metadata,
                Column('image', Text),
                Column('release_date', Text),
                Column('about', Text))
+
+class SearchSchema(Schema):
+    """
+    Search_Schema Implementation
+    """
+    id = fields.Int()
+    kind = fields.Str()
+    name = fields.Str()
+    image = fields.Str()
+    release_date = fields.Str()
+    about = fields.Str()
