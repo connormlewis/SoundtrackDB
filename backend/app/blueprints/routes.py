@@ -325,8 +325,6 @@ def artist_filter(query_params, query):
     """
     Filter artist table query
     """
-    if 'followers' in query_params:
-        query = query.filter(query_params.get('followers'))
     table = Artist.__table__
     col_name = table.c.followers
     if query_params.get('min_followers') is not None \
