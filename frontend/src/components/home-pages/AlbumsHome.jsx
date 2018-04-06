@@ -45,22 +45,24 @@ export class AlbumHome extends Component {
     super(props)
     this.navigateToInstance = this.navigateToInstance.bind(this);
     this.search = this.search.bind(this);
-    this.clearSearch = this.clearSearch.bind(this);
+    this.stateService = this.props.transition.router.stateService;
   }
 
   navigateToInstance(id) {
-    const { stateService } = this.props.transition.router;
-    stateService.go('^.instance', { albumID: id });
+    this.stateService.go('^.instance', { albumID: id });
   }
 
   search(searchTerm) {
-    const { stateService } = this.props.transition.router;
-    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: searchTerm });
+    this.stateService.go('^.home', { limit: 12, offset: 0, searchTerm: searchTerm });
   }
 
   clearSearch() {
-    const { stateService } = this.props.transition.router;
-    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
+    this.stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
+  }
+
+  orderChange(e) {
+    let val = e.target.value.split('.')
+    this.stateService.go('^.home', { limit: 12, offset: 0, orderBy: { field: val[0], direction: val[1]}})
   }
 
   render() {
@@ -78,6 +80,15 @@ export class AlbumHome extends Component {
           }
           <div className="float-right">
             <SearchBar placeholder="Search Albums" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
+          </div>
+          <div className="float-right form-inline mr-2">
+            <label className="mr-2">Order by:</label>
+            <select name="" className="form-control" onChange={(e) => this.orderChange(e)}>
+              <option value="name.asc">Name Asc</option>
+              <option value="name.desc">Name Desc</option>
+              <option value="release_date.asc">Year Asc</option>
+              <option value="release_date.desc">Year Desc</option>
+            </select>
           </div>
         </div>
         <div className="row">

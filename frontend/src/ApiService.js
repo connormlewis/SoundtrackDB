@@ -7,7 +7,7 @@ if (process.env.NODE_ENV === "production") {
 
 export default class ApiService {
 
-  static getArtists(offset = 0, limit = 12, searchTerm = null, filters = {}) {
+  static getArtists(offset = 0, limit = 12, searchTerm = null, filters = {}, orderBy=null) {
     let params = {
       offset: offset,
       limit: limit
@@ -18,6 +18,14 @@ export default class ApiService {
     if (filters != null) {
       for (let filter in filters) {
         params[filter] = filters[filter]; 
+      }
+    }
+    if (orderBy != null) {
+      params.order_by = orderBy.field
+      if (orderBy.direction == 'asc') {
+        params.asc = true
+      } else {
+        params.desc = true
       }
     }
     return $.ajax({
@@ -27,7 +35,7 @@ export default class ApiService {
     })
   }
 
-  static getAlbums(offset = 0, limit = 12, searchTerm = null, filters = {}) {
+  static getAlbums(offset = 0, limit = 12, searchTerm = null, filters = {}, orderBy=null) {
     let params = {
       offset: offset,
       limit: limit
@@ -40,6 +48,14 @@ export default class ApiService {
         params[filter] = filters[filter]; 
       }
     }
+    if (orderBy != null) {
+      params.order_by = orderBy.field
+      if (orderBy.direction == 'asc') {
+        params.asc = true
+      } else {
+        params.desc = true
+      }
+    }
     return $.ajax({
       url: API_URL + '/album',
       type: "get",
@@ -47,7 +63,7 @@ export default class ApiService {
     })
   }
 
-  static getAllMedia(offset = 0, limit = 12, searchTerm = null, filters = {}) {
+  static getAllMedia(offset = 0, limit = 12, searchTerm = null, filters = {}, orderBy=null) {
     let params = {
       offset: offset,
       limit: limit
@@ -58,6 +74,14 @@ export default class ApiService {
     if (filters != null) {
       for (let filter in filters) {
         params[filter] = filters[filter]; 
+      }
+    }
+    if (orderBy != null) {
+      params.order_by = orderBy.field
+      if (orderBy.direction == 'asc') {
+        params.asc = true
+      } else {
+        params.desc = true
       }
     }
     return $.ajax({
@@ -83,7 +107,7 @@ export default class ApiService {
     return $.get(API_URL + '/about')
   }
 
-  static getSearchResults(query, offset = 0, limit = 10) {
+  static getSearchResults(query, offset = 0, limit = 10, orderBy=null) {
     return $.ajax({
       url: API_URL + '/search/' + query,
       type: 'get',

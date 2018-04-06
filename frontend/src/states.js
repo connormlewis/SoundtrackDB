@@ -66,12 +66,13 @@ const ALBUM_HOME = {
     offset: 0,
     limit: 12,
     searchTerm: null,
-    filters: {}
+    filters: {},
+    orderBy: null
   },
   resolve: [{
     token: 'albums',
     deps: ['$transition$'],
-    resolveFn: (trans) => ApiService.getAlbums(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters)
+    resolveFn: (trans) => ApiService.getAlbums(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters, trans.params().orderBy)
   }]
 };
 
@@ -83,12 +84,13 @@ const ARTIST_HOME = {
     offset: 0,
     limit: 12,
     searchTerm: null,
-    filters: {}
+    filters: {},
+    orderBy: null
   },
   resolve: [{
     token: 'artists',
     deps: ['$transition$'],
-    resolveFn: (trans) => ApiService.getArtists(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters)
+    resolveFn: (trans) => ApiService.getArtists(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters, trans.params().orderBy)
   }]
 };
 
@@ -100,12 +102,13 @@ const MEDIA_HOME = {
     offset: 0,
     limit: 12,
     searchTerm: null,
-    filters: {}
+    filters: {},
+    orderBy: null
   },
   resolve: [{
     token: 'media',
     deps: ['$transition$'],
-    resolveFn: (trans) => ApiService.getAllMedia(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters)
+    resolveFn: (trans) => ApiService.getAllMedia(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters, trans.params().orderBy)
   }]
 };
 
