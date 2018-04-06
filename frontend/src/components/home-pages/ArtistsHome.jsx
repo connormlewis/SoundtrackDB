@@ -3,6 +3,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
+import { ArtistForm } from './ArtistForm'; 
 
 export class ArtistItem extends Component {
   constructor(props) {
@@ -71,6 +72,9 @@ export class ArtistHome extends Component {
           <div className="float-right">
             <SearchBar placeholder="Search Artists" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
+        </div>
+        <div className="row">
+          <ArtistForm transition={this.props.transition}/>
         </div>
 
         {

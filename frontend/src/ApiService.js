@@ -7,13 +7,18 @@ if (process.env.NODE_ENV === "production") {
 
 export default class ApiService {
 
-  static getArtists(offset = 0, limit = 12, searchTerm = null) {
+  static getArtists(offset = 0, limit = 12, searchTerm = null, filters = {}) {
     let params = {
       offset: offset,
       limit: limit
     };
     if (searchTerm != null) {
       params.search = searchTerm;
+    }
+    if (filters != null) {
+      for (let filter in filters) {
+        params[filter] = filters[filter]; 
+      }
     }
     return $.ajax({
       url: API_URL + '/artist',
@@ -22,13 +27,18 @@ export default class ApiService {
     })
   }
 
-  static getAlbums(offset = 0, limit = 12, searchTerm = null) {
+  static getAlbums(offset = 0, limit = 12, searchTerm = null, filters = {}) {
     let params = {
       offset: offset,
       limit: limit
     };
     if (searchTerm != null) {
       params.search = searchTerm;
+    }
+    if (filters != null) {
+      for (let filter in filters) {
+        params[filter] = filters[filter]; 
+      }
     }
     return $.ajax({
       url: API_URL + '/album',
@@ -37,13 +47,18 @@ export default class ApiService {
     })
   }
 
-  static getAllMedia(offset = 0, limit = 12, searchTerm = null) {
+  static getAllMedia(offset = 0, limit = 12, searchTerm = null, filters = {}) {
     let params = {
       offset: offset,
       limit: limit
     };
     if (searchTerm != null) {
       params.search = searchTerm;
+    }
+    if (filters != null) {
+      for (let filter in filters) {
+        params[filter] = filters[filter]; 
+      }
     }
     return $.ajax({
       url: API_URL + '/media',

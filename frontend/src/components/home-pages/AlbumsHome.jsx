@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
+import { AlbumForm } from './AlbumForm'; 
 
 const titleStyles = {
   'overflow': 'hidden',
@@ -78,6 +79,9 @@ export class AlbumHome extends Component {
           <div className="float-right">
             <SearchBar placeholder="Search Albums" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
+        </div>
+        <div className="row">
+          <AlbumForm transition={this.props.transition}/>
         </div>
 
         {

@@ -3,6 +3,7 @@ import { Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
+import { MediaForm } from './MediaForm'; 
 
 
 export class MediaItem extends Component {
@@ -98,6 +99,9 @@ export class MediaHome extends Component {
           <div className="float-right">
             <SearchBar placeholder="Search Media" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
+        </div>
+        <div className="row">
+          <MediaForm transition={this.props.transition}/>
         </div>
 
         {
