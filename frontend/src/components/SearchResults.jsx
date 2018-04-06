@@ -61,10 +61,6 @@ class Result extends Component {
     }
   }
 
-  resultsPerPageChanged(e) {
-
-  }
-
   render() {
     const hoveredClass = this.state.isHovered ? " bg-light" : "";
 
@@ -94,22 +90,43 @@ class Result extends Component {
 }
 
 class SearchResults extends Component {
+  constructor(props) {
+    super(props);
+    this.resultsPerPageChanged = this.resultsPerPageChanged.bind(this);
+  }
+
+  resultsPerPageChanged(e) {
+    this.resultsPerPage = parseInt(e.target.value, 10);
+    this.props.transition.router.stateService.go('searchResults', {limit: this.resultsPerPage})
+  }
+
   render() {
     this.params = this.props.transition.params();
     this.searchTerm = decodeURI(this.params.searchTerm)
-    console.debug(this.props.results)
+    this.type = ""
+    this.resultsPerPage = this.params.limit
+
     return (
       <React.Fragment>
         <div className="clearfix">
           <h2 className="float-left mb-3">Showing results for: <span className="text-muted">{this.searchTerm}</span></h2>
-          {/* <div className="float-right form-inline">
-            <label>Results per page: </label>
-            <select name="" id="" className="form-control" onChange={this.resultsPerPageChanged}>
+          <div className="float-right form-inline">
+            <label className="mr-2">Results per page: </label>
+            <select name="" id="" className="form-control" value={this.resultsPerPage} onChange={this.resultsPerPageChanged}>
               <option value="10">10</option>
-              <option value="10">25</option>
-              <option value="10">50</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
             </select>
-          </div> */}
+          </div>
+          <div className="float-right form-inline">
+            <label className="mr-2">Type: </label>
+            <select name="" id="" className="form-control" value={this.type} onChange={this.typeChange}>
+              <option value="">All</option>
+              <option value="Artist">Artists</option>
+              <option value="Album">Albums</option>
+              <option value="Media">Media</option>
+            </select>
+          </div>
         </div>
         <div className="mb-2">
           {
