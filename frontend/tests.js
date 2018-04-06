@@ -53,7 +53,10 @@ describe('<Navigation/>', function () {
   });
 });
 
-let fakeTransition = { params: function () { return { offset: 0, limit: 12 } } };
+let fakeTransition = { 
+  params: function () { return { offset: 0, limit: 12 } }, 
+  router: { stateService: null} 
+};
 
 describe('<AlbumHome/>', function () {
   it('should render without crashing', function () {
@@ -62,7 +65,7 @@ describe('<AlbumHome/>', function () {
 
   it('should contain 3 album instances', function () {
     const wrapper = shallow(<AlbumHome albums={ALBUMS_JSON} transition={fakeTransition}/>);
-    const albumItems = wrapper.find('.row').children()
+    const albumItems = wrapper.find('.row').at(1).children()
     expect(albumItems).to.have.length(3);
   })
 
@@ -99,7 +102,7 @@ describe('<ArtistHome/>', function () {
 
   it('should contain 3 artist instances', function () {
     const wrapper = shallow(<ArtistHome artists={ARTISTS_JSON} transition={fakeTransition}/>);
-    const artistsItems = wrapper.find('.row').children()
+    const artistsItems = wrapper.find('.row').at(1).children()
     expect(artistsItems).to.have.length(3);
   })
 
@@ -134,7 +137,7 @@ describe('<MediaHome/>', function () {
 
   it('should contain 3 artist instances', function () {
     const wrapper = shallow(<MediaHome media={MEDIAS_JSON} transition={fakeTransition}/>);
-    const mediaItems = wrapper.find('.row').children()
+    const mediaItems = wrapper.find('.row').at(1).children()
     expect(mediaItems).to.have.length(3);
   })
 
