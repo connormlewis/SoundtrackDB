@@ -6,7 +6,7 @@ import re
 import requests
 from flask import Blueprint, jsonify, request, abort
 
-from sqlalchemy import or_, Text, cast, asc, desc
+from sqlalchemy import or_, Text, cast, asc, desc, and_
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media, \
     search, SearchSchema
 from app.shared.db import get_session
@@ -308,8 +308,6 @@ def order_query(table, query_params, query):
     """
     Order query
     """
-    #if query_params.get('select_only') is not None:
-    #    query = query.filter(query_params.get('select_only'))
     if query_params.get('order_by') is not None:
         val = query_params.get('order_by')
         if val in table.c:
@@ -327,16 +325,36 @@ def artist_filter(query_params, query):
     """
     Filter artist table query
     """
-    if 'followers' in query_params:
-        query = query.filter(query_params.get('followers'))
+    table = Artist.__table__
+    col_name = table.c.followers
+    if query_params.get('min_followers') is not None \
+        and query_params.get('max_followers') is not None:
+        filt_statement = and_(
+            col_name >= request.args.get('min_followers'),
+            col_name <= request.args.get('max_followers'))
+        query = query.filter(filt_statement)
+    elif query_params.get('min_followers') is not None:
+        query = query.filter(col_name >= request.args.get('min_followers'))
+    elif query_params.get('max_followers') is not None:
+        query = query.filter(col_name <= request.args.get('max_followers'))
     return query
 
 def album_filter(query_params, query):
     """
     Filter album table query
     """
-    if 'release_date' in query_params:
-        query = query.filter(query_params.get('release_date'))
+    table = Album.__table__
+    col_name = table.c.release_date
+    if query_params.get('start_year') is not None \
+        and query_params.get('end_year') is not None:
+        filt_statement = and_(
+            col_name >= str(request.args.get('start_year')),
+            col_name <= str(request.args.get('end_year')))
+        query = query.filter(filt_statement)
+    elif query_params.get('start_year') is not None:
+        query = query.filter(col_name >= str(request.args.get('start_year')))
+    elif query_params.get('end_year') is not None:
+        query = query.filter(col_name <= str(request.args.get('end_year')))
     return query
 
 def media_filter(query_params, query):
@@ -344,14 +362,23 @@ def media_filter(query_params, query):
     Filter media table query
     """
     table = Media.__table__
-    if 'type' in query_params:
+    if query_params.get('type') is not None:
         if query_params.get('type').lower() == 'movie':
             query = query.filter(table.c.type == 1)
         elif query_params.get('type').lower() == 'tv_show':
             query = query.filter(table.c.type == 0)
-    if 'release_date' in query_params:
-        query = query.filter(query_params.get('release_date'))
-    if 'running' in query_params:
+    col_name = table.c.release_date
+    if query_params.get('start_year') is not None \
+        and query_params.get('end_year') is not None:
+        filt_statement = and_(
+            col_name >= str(request.args.get('start_year')),
+            col_name <= str(request.args.get('end_year')))
+        query = query.filter(filt_statement)
+    elif query_params.get('start_year') is not None:
+        query = query.filter(col_name >= str(request.args.get('start_year')))
+    elif query_params.get('end_year') is not None:
+        query = query.filter(col_name <= str(request.args.get('end_year')))
+    if query_params.get('running') is not None:
         if query_params.get('running').lower() == 'true':
             query = query.filter(table.c.running)
         else:

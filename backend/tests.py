@@ -106,15 +106,27 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media(self):
-        response = self.client.get('/media?release_date=release_date<\'2018\'&type=movie&running=true&order_by=name&asc')
+        response = self.client.get('/media?start_year=1950&end_year=2016&running=true&order_by=name&asc')
         self.assertEqual(response.status_code, 200)
 
     def test_filter_artist(self):
-        response = self.client.get('/artist?followers=followers<100')
+        response = self.client.get('/artist?min_followers=9000&max_followers=10000')
         self.assertEqual(response.status_code, 200)
     
     def test_filter_album(self):
-        response = self.client.get('/album?release_date=release_date<\'2015\'')
+        response = self.client.get('/album?start_year=1950&end_year=2012running=true&order_by=name&asc')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_media2(self):
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc')
+        self.assertEqual(response.status_code, 200)
+
+    def test_filter_artist2(self):
+        response = self.client.get('/artist?min_followers=9000&desc&order_by=followers')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_album2(self):
+        response = self.client.get('/album?start_year=1950&running=true&order_by=name&asc')
         self.assertEqual(response.status_code, 200)
     
     @staticmethod
