@@ -18,7 +18,7 @@ export class MediaForm extends Component {
       filters['type'] = 'movie';
     }
     else if(this.state.tv_show && !this.state.movie) {
-      filters['type'] = 'tv show'; 
+      filters['type'] = 'tv_show'; 
     }
     filters['start_year'] = this.state.start; 
     filters['end_year'] = this.state.end;
