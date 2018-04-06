@@ -22,7 +22,7 @@ export default class ApiService {
     }
     if (orderBy != null) {
       params.order_by = orderBy.field
-      if (orderBy.direction == 'asc') {
+      if (orderBy.direction === 'asc') {
         params.asc = true
       } else {
         params.desc = true
@@ -50,7 +50,7 @@ export default class ApiService {
     }
     if (orderBy != null) {
       params.order_by = orderBy.field
-      if (orderBy.direction == 'asc') {
+      if (orderBy.direction === 'asc') {
         params.asc = true
       } else {
         params.desc = true
@@ -78,7 +78,7 @@ export default class ApiService {
     }
     if (orderBy != null) {
       params.order_by = orderBy.field
-      if (orderBy.direction == 'asc') {
+      if (orderBy.direction === 'asc') {
         params.asc = true
       } else {
         params.desc = true
