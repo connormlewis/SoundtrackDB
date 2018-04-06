@@ -3,6 +3,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
+import { ArtistForm } from './ArtistForm'; 
 
 export class ArtistItem extends Component {
   constructor(props) {
@@ -38,21 +39,24 @@ export class ArtistHome extends Component {
   constructor(props) {
     super(props)
     this.navigateToInstance = this.navigateToInstance.bind(this);
+    this.stateService = this.props.transition.router.stateService
   }
 
   navigateToInstance(id) {
-    const { stateService } = this.props.transition.router;
-    stateService.go('^.instance', { artistID: id });
+    this.stateService.go('^.instance', { artistID: id });
   }
 
   search(searchTerm) {
-    const { stateService } = this.props.transition.router;
-    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: searchTerm });
+    this.stateService.go('^.home', { limit: 12, offset: 0, searchTerm: searchTerm });
   }
 
   clearSearch() {
-    const { stateService } = this.props.transition.router;
-    stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
+    this.stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
+  }
+
+  orderChange(e) {
+    let val = e.target.value.split('.')
+    this.stateService.go('^.home', { limit: 12, offset: 0, orderBy: { field: val[0], direction: val[1]}})
   }
 
   render() {
@@ -71,6 +75,18 @@ export class ArtistHome extends Component {
           <div className="float-right">
             <SearchBar placeholder="Search Artists" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
+          <div className="float-right form-inline mr-2">
+            <label className="mr-2">Order by:</label>
+            <select name="" className="form-control" onChange={(e) => this.orderChange(e)}>
+              <option value="name.asc">Name Asc</option>
+              <option value="name.desc">Name Desc</option>
+              <option value="followers.asc">Followers Asc</option>
+              <option value="followers.desc">Followers Desc</option>
+            </select>
+          </div>
+        </div>
+        <div className="row">
+          <ArtistForm transition={this.props.transition}/>
         </div>
 
         {
