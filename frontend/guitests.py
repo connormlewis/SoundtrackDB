@@ -52,6 +52,26 @@ def test_bio(tester):
     html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
     tester.assertNotEqual("", list(driver.find_elements_by_id("bio"))[0].text)
 
+def test_tracklist(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+    tracks = list(driver.find_elements_by_id("track"))
+    tester.assertNotEqual(tracks.__len__(), 0)
+
+def test_about(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+    tester.assertNotEqual("", list(driver.find_elements_by_id("about"))[0].text)
+
+def test_cast(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+    cast = list(driver.find_elements_by_id("cast"))
+    tester.assertNotEqual(cast.__len__(), 0) 
+
 class HomePage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
@@ -106,7 +126,7 @@ class MediaPage(unittest.TestCase):
         self.url = "http://localhost:3000/media"
 
     def test_title(self):
-        test_title(self, "Media - Movies/TV Series")
+        test_title(self, "Media")
 
     def test_navigation(self):
         test_navbar(self)
@@ -139,6 +159,9 @@ class AlbumInstance(unittest.TestCase):
     def test_title(self):
         test_instance_title(self, "Arrow: Season 5 (Original Television Soundtrack)")
 
+    def test_tracks(self):
+        test_tracklist(self)
+
 class ArtistInstance(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
@@ -163,6 +186,12 @@ class MediaInstance(unittest.TestCase):
 
     def test_title(self):
         test_instance_title(self, "African Safari")
+
+    def test_about(self):
+        test_about(self);
+
+    def test_cast(self):
+        test_cast(self)
 
 if __name__ == "__main__":
     unittest.main()
