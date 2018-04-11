@@ -30,6 +30,7 @@ def add_album(album_json):
         for track in track_data:
             track.pop('available_markets', None)
         album.tracks = track_data
+        album.num_tracks = len(track_data)
 
         if len(album_json['images']) != 0:
             album.image = album_json['images'][0]['url']
@@ -116,6 +117,14 @@ def associate_existing_album(album_json):
     session.commit()
     session.close()
 
+def get_num_tracks(): 
+    session = get_session()
+    for album in session.query(Album).all():
+        tracks = album.tracks
+        album.num_tracks = len(tracks)
+    
+    session.commit()
+    session.close()
 
 if __name__ == '__main__':
     uri = 'postgresql://' + \
@@ -126,8 +135,8 @@ if __name__ == '__main__':
 
     init_db(uri)
 
-    associate_albums_with_artists():
-
+    #associate_albums_with_artists()
+    get_num_tracks()
 
     # with open('scraping/spotify_album_data.json', 'r') as f:
     #     for x in f:
