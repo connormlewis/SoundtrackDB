@@ -431,7 +431,7 @@ def album_search(query, term):
     table = Album.__table__
     search_statement = or_(table.c.name.ilike('%'+term+'%'),
                            table.c.release_date.ilike('%'+term+'%'),
-                           table.c.genres.ilike('%'+term+'%'),
+                           #table.c.genres.ilike('%'+term+'%'),
                            table.c.image.ilike('%'+term+'%'),
                            table.c.label.ilike('%'+term+'%'),
                            table.c.tracks.ilike('%'+term+'%'),
