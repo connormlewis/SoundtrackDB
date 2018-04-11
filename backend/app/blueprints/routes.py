@@ -383,6 +383,18 @@ def media_filter(query_params, query):
             query = query.filter(table.c.running)
         else:
             query = query.filter(not table.c.running)
+    if query_params.get('seasons') is not None:
+        query = query.filter(table.c.seasons >= request.args.get('seasons'))
+    if query_params.get('run_time') is not None:
+        
+    if query_params.get('popularity') is not None:
+        
+    if query_params.get('average_rating') is not None:
+        
+    if query_params.get('last_aired') is not None:
+        
+    if query_params.get('seasons') is not None:
+        
     return query
 
 def artist_search(query, term):
