@@ -28,7 +28,7 @@ export class ArtistItem extends Component {
   render() {
     return (
       <Card className="sm-3" onClick={this.handleClick}>
-        <CardImg top width="100%" src={this.props.artist.image} alt="Card image cap"/>
+        <CardImg top height='250px' src={this.props.artist.image} alt="Card image cap"/>
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.artist.name}</CardTitle>
         </CardBody>

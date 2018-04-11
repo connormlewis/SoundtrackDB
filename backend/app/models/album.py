@@ -21,6 +21,7 @@ class Album(Base):
     label = Column(Text)
     tracks = Column(Json)
     spotify_uri = Column(Text, unique=True)
+    num_tracks = Column(Integer)
 
     media = relationship('Media', secondary=album_media)
     artists = relationship('Artist', secondary=artist_album)
@@ -38,6 +39,8 @@ class AlbumSchema(Schema):
     tracks = fields.List(fields.Dict())
     track_count = fields.Method('track_counter')
     spotify_uri = fields.Str()
+    num_tracks = fields.Int()
+
     media = fields.Nested('MediaSchema', many=True, exclude=('artists', 'albums'))
     artists = fields.Nested('ArtistSchema', many=True, exclude=('media', 'albums'))
 

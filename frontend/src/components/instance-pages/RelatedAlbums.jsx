@@ -28,7 +28,7 @@ export class AlbumItem extends Component {
   render() {
     return (
       <Card className="sm-3" onClick={this.handleClick}>
-        <CardImg top width="100%" src={this.props.album.image} alt="Card image cap"/>
+        <CardImg top width="100%" src={this.props.album.image} onLoad={() => {window.dispatchEvent(new Event('resize'));}} alt="Card image cap"/>
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.album.name}</CardTitle>
         </CardBody>
