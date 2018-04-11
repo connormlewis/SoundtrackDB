@@ -33,7 +33,7 @@ export class ArtistInstance extends Component {
             <h1 id="name" className="artist-name">{this.props.artist.name}</h1>
             <iframe id="followers" className="w-30" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} height="56" scrolling="no" frameBorder="0" allowtransparency="true"> </iframe>
             <h3>Biography</h3>
-            <p id="bio">{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
+            <p id="bio" style={{whiteSpace: 'pre-line'}}>{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
           </Col>
           <Col sm="4">
             <img id="artist-image" className="w-100" src={this.props.artist.image} alt="Artist" vspace="20" style={styles} />

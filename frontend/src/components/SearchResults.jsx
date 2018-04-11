@@ -103,7 +103,6 @@ class SearchResults extends Component {
   render() {
     this.params = this.props.transition.params();
     this.searchTerm = decodeURI(this.params.searchTerm)
-    this.type = ""
     this.resultsPerPage = this.params.limit
 
     return (
@@ -116,15 +115,6 @@ class SearchResults extends Component {
               <option value="10">10</option>
               <option value="25">25</option>
               <option value="50">50</option>
-            </select>
-          </div>
-          <div className="float-right form-inline">
-            <label className="mr-2">Type: </label>
-            <select name="" id="" className="form-control" value={this.type} onChange={this.typeChange}>
-              <option value="">All</option>
-              <option value="Artist">Artists</option>
-              <option value="Album">Albums</option>
-              <option value="Media">Media</option>
             </select>
           </div>
         </div>
