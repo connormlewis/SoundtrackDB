@@ -120,6 +120,18 @@ class SoundtrackDBTests(unittest.TestCase):
     def test_filter_media2(self):
         response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc')
         self.assertEqual(response.status_code, 200)
+    
+    def test_filter_media3(self):
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&seasons')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_media4(self):
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&popularity')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_media5(self):
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&type=movie&popularity&run_time&average_rating&last_aired')
+        self.assertEqual(response.status_code, 200)
 
     def test_filter_artist2(self):
         response = self.client.get('/artist?min_followers=9000&desc&order_by=followers')
