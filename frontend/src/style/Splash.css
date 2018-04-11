@@ -47,8 +47,8 @@
 @media (max-width: 800px) {
 	.carousel-img {
 		object-fit: cover;
-  	object-position: center;
-  	height: 300px;
+  		object-position: center;
+  		height: 300px;
 		width: 100%;
 	}
 
