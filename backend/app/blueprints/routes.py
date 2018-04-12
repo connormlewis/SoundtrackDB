@@ -262,7 +262,8 @@ def get_commits():  # pragma: no cover
         for entry in json_list:
             total = entry['total']
             user_name = entry['author']['login']
-            team[user_name] = total
+            if user_name in team:
+                team[user_name] = total
             all_commits += total
     finally:
         return team, all_commits
