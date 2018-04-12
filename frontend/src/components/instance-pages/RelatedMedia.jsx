@@ -28,7 +28,7 @@ export class MediaItem extends Component {
   render() {
     return (
       <Card className="sm-3" onClick={this.handleClick}>
-        <CardImg top width="100%" src={this.props.media.image} alt="Card image cap"/>
+        <CardImg top src={this.props.media.image} alt="Card image cap"/>
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.media.name}</CardTitle>
         </CardBody>
@@ -51,8 +51,40 @@ export class RelatedMedia extends Component {
       slidesToShow: Math.min(this.props.media.length, 4),
       slidesToScroll: Math.min(this.props.media.length, 4),
       adaptiveHeight: true,
-      variableWidth: true,
-      lazyload: true
+      lazyload: true,
+      swipe: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            adaptiveHeight: true,
+            infinite: true,
+            dots: true,
+            lazyload: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            adaptiveHeight: true,
+            lazyload: true
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            lazyload: true,
+            dots: false
+          }
+        }
+      ]
     };
 
     return (
