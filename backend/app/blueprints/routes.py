@@ -302,6 +302,9 @@ def get_issues():  # pragma: no cover
         return team, all_issues
 
 def find_last_page(link): # pragma: no cover
+    """
+    Parses the header of the GitHub API and returns the last page
+    """
     if link is not None:
         parse_words = list(re.split('; |, | ', link))
         index = parse_words.index('rel="last"') - 1
