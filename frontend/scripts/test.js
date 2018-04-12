@@ -25,7 +25,7 @@ function noop() {
 	return {}; 
 }
 
-// prevent mocha tests from breaking when trying to require a css file
+// prevent mocha tests from breaking when trying to require a css or image file
 require.extensions['.css'] = noop;
 require.extensions['.svg'] = noop; 
 require.extensions['.png'] = noop;
