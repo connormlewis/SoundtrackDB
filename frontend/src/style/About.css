@@ -62,16 +62,32 @@
   justify-content: space-evenly;
 }
 
-.about-image { 
+.about-image {
   max-width: 100%;
-  max-height: 200px;
 }
 
 .about-cell {
   margin: 1rem;
-  width: calc(33.3333% - 12rem);
 }
-  
+
+/* Desktop View */
+@media screen and (min-width: 1200px) {
+  .about-image { 
+    max-height: 200px;
+  }
+
+  .about-cell {
+    width: calc(33.3333% - 12rem);
+  }
+}
+
+/* Tablet View */
+@media screen and (min-width: 600px) and (max-width: 1200px) {
+  .about-cell {
+    width: calc(33.33%);
+  }
+}
+
 .about-cell img {
   display: block;    
 }
