@@ -28,7 +28,7 @@ export class AlbumItem extends Component {
   render() {
     return (
       <Card className="sm-3" onClick={this.handleClick}>
-        <CardImg top width="100%" src={this.props.album.image} onLoad={() => {window.dispatchEvent(new Event('resize'));}} alt="Card image cap"/>
+        <CardImg top src={this.props.album.image} onLoad={() => {window.dispatchEvent(new Event('resize'));}} alt="Card image cap"/>
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.album.name}</CardTitle>
         </CardBody>
@@ -51,18 +51,51 @@ export class RelatedAlbums extends Component {
       slidesToShow: Math.min(this.props.albums.length, 4),
       slidesToScroll: Math.min(this.props.albums.length, 4),
       adaptiveHeight: true,
-      variableWidth: true
+      lazyload: true,
+      swipe: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            adaptiveHeight: true,
+            infinite: true,
+            dots: true,
+            lazyload: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            adaptiveHeight: true,
+            lazyload: true
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            lazyload: true,
+            dots: false
+          }
+        }
+      ]
     };
 
     return (
       <div>
-      <h2 className='related-header'> Albums </h2>
+        <h2 className='related-header'> Albums </h2>
         <div className='slider-parent'>
           <Slider ref='slick' {...settings}>
           {
-            this.props.albums.map((album) => {
+            this.props.albums.map((album, index) => {
               return (
-                <div className='slide-item' key={album.id}>
+                <div className='slide-item' key={index}>
                   <AlbumItem album={album} navigateToInstance={this.props.navigateToInstance}/>
                 </div>
               )
