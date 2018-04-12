@@ -223,6 +223,7 @@ def search_db(term):
                                cast(search.c.id, Text).ilike('%' + term + '%'),
                                search.c.release_date.ilike('%' + term + '%'))
         query = session.query(search).filter(search_statement)
+        query = search_filter(request.args, query)
         query = order_query(search, request.args, query)
         final_query = query
 
@@ -327,6 +328,7 @@ def search_filter(query_params, query):
     """
     if query_params.get('type') is not None:
         query = query.filter(search.c.kind == query_params.get('type'))
+    return query
 
 def artist_filter(query_params, query):
     """
