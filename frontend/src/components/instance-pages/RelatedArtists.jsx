@@ -52,6 +52,7 @@ export class RelatedArtists extends Component {
       slidesToScroll: Math.min(this.props.artists.length, 4),
       adaptiveHeight: true,
       lazyload: true,
+      swipe: true,
       responsive: [
         {
           breakpoint: 1024,
@@ -62,7 +63,6 @@ export class RelatedArtists extends Component {
             infinite: true,
             dots: true,
             lazyload: true,
-            swipe: true
           }
         },
         {
@@ -71,8 +71,7 @@ export class RelatedArtists extends Component {
             slidesToShow: 2,
             slidesToScroll: 2,
             adaptiveHeight: true,
-            lazyload: true,
-            swipe: true
+            lazyload: true
           }
         },
         {
@@ -82,8 +81,7 @@ export class RelatedArtists extends Component {
             slidesToScroll: 1,
             adaptiveHeight: true,
             lazyload: true,
-            dots: false,
-            swipe: true
+            dots: false
           }
         }
       ]
@@ -95,9 +93,9 @@ export class RelatedArtists extends Component {
         <div className='slider-parent'>
           <Slider ref='slick' {...settings}>
           {
-            this.props.artists.map((artist) => {
+            this.props.artists.map((artist, index) => {
               return (
-                <div className='slide-item' key={artist.id}>
+                <div className='slide-item' key={index}>
                   <ArtistItem artist={artist} navigateToInstance={this.props.navigateToInstance}/>
                 </div>
               )

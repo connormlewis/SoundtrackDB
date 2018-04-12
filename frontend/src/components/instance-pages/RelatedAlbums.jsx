@@ -89,13 +89,13 @@ export class RelatedAlbums extends Component {
 
     return (
       <div>
-      <h2 className='related-header'> Albums </h2>
+        <h2 className='related-header'> Albums </h2>
         <div className='slider-parent'>
           <Slider ref='slick' {...settings}>
           {
-            this.props.albums.map((album) => {
+            this.props.albums.map((album, index) => {
               return (
-                <div className='slide-item' key={album.id}>
+                <div className='slide-item' key={index}>
                   <AlbumItem album={album} navigateToInstance={this.props.navigateToInstance}/>
                 </div>
               )
