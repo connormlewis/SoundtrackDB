@@ -28,7 +28,7 @@ export class ArtistItem extends Component {
   render() {
     return (
       <Card className="sm-3" onClick={this.handleClick}>
-        <CardImg top height='250px' src={this.props.artist.image} alt="Card image cap"/>
+        <CardImg top src={this.props.artist.image} alt="Card image cap"/>
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.artist.name}</CardTitle>
         </CardBody>
@@ -51,8 +51,40 @@ export class RelatedArtists extends Component {
       slidesToShow: Math.min(this.props.artists.length, 4),
       slidesToScroll: Math.min(this.props.artists.length, 4),
       adaptiveHeight: true,
-      variableWidth: true,
-      lazyLoad: true
+      lazyload: true,
+      swipe: true,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            adaptiveHeight: true,
+            infinite: true,
+            dots: true,
+            lazyload: true,
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            adaptiveHeight: true,
+            lazyload: true
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            adaptiveHeight: true,
+            lazyload: true,
+            dots: false
+          }
+        }
+      ]
     };
 
     return (
@@ -61,9 +93,9 @@ export class RelatedArtists extends Component {
         <div className='slider-parent'>
           <Slider ref='slick' {...settings}>
           {
-            this.props.artists.map((artist) => {
+            this.props.artists.map((artist, index) => {
               return (
-                <div className='slide-item' key={artist.id}>
+                <div className='slide-item' key={index}>
                   <ArtistItem artist={artist} navigateToInstance={this.props.navigateToInstance}/>
                 </div>
               )
