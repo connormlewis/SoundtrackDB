@@ -282,7 +282,7 @@ def get_issues():  # pragma: no cover
         data = requests.get(
             url, headers={
                 'Authorization': 'token ' + os.environ['API_TOKEN']})
-        link = data.headers.get('Link', None)        
+        link = data.headers.get('Link', None)
         for i in range(1, int(find_last_page(link)) + 1):
             url = (
                 'https://api.github.com/repos/connormlewis/idb/'
@@ -301,7 +301,7 @@ def get_issues():  # pragma: no cover
     finally:
         return team, all_issues
 
-def find_last_page(link):
+def find_last_page(link): # pragma: no cover
     if link is not None:
         parse_words = list(re.split('; |, | ', link))
         index = parse_words.index('rel="last"') - 1
