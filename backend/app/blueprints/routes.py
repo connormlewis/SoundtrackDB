@@ -299,8 +299,9 @@ def get_issues():  # pragma: no cover
                 json_list = data.json()
                 for entry in json_list:
                     if 'pull_request' not in entry:
-                        team[entry['user']['login']] += 1
                         all_issues += 1
+                        if (entry['user']['login'] in team):
+                            team[entry['user']['login']] += 1
     finally:
         return team, all_issues
 
