@@ -4,7 +4,7 @@ import styles from "../style/About.css";
 import PropTypes from 'prop-types'
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
 
-//import alan from '../res/avatars/alan.png';
+import alan from '../res/avatars/alan.png';
 import aylish from '../res/avatars/aylish.jpg';
 import melody from '../res/avatars/melody.jpg';
 import connor from '../res/avatars/connor.jpeg';
@@ -74,7 +74,7 @@ export class Bio extends Component {
           <div className="row align-self">
             <div className="column">
               <h1 className="about-style-header">{names[0]}</h1>
-
+              <img className="avatar" src={alan} alt="Alan Yi Avatar"></img>
               <p className="bio"></p><p className="about-style-p">Alan is a third-year CS major who watches a lot
               of anime TV shows and movies. Alan also enjoys listening to
               original soundtracks by various composers such as Yuki Hayashi,

@@ -28,3 +28,6 @@ function noop() {
 // prevent mocha tests from breaking when trying to require a css file
 require.extensions['.css'] = noop;
 require.extensions['.svg'] = noop; 
+require.extensions['.png'] = noop;
+require.extensions['.jpg'] = noop; 
+require.extensions['.jpeg'] = noop;
