@@ -37,9 +37,13 @@ describe('<App/>', function () {
 
 // Navigation
 describe('<Navigation/>', function () {
-  it('should have a brand named SoundtrackDB', function () {
+  it('should render without crashing', function () {
+    shallow(<Navigation />);
+  });
+
+  it('should have a logo', function () {
     const wrapper = shallow(<Navigation />);
-    expect(wrapper.find('.navbar-brand').render().text()).to.equal('SoundtrackDB');
+    expect(wrapper.find('.nav-logo')).to.have.length(1);
   });
 
   it('should have 4 items: Albums, Artists, TV/Movies, and About', function () {

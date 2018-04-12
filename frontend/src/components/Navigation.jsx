@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import { Navbar, Container, Nav, NavItem } from 'reactstrap';
 import { UISref, UISrefActive } from '@uirouter/react';
-import SearchBar from './SearchBar'
+import SearchBar from './SearchBar';
+import "../style/Navigation.css";
+import img from '../../src/static/logo.png'
 
 class Navigation extends Component {
 
@@ -16,7 +18,9 @@ class Navigation extends Component {
         <Navbar light className="navbar-expand-md" style={{ backgroundColor: "#d0e2f2" }}>
           <Container fluid>
             <UISref to="home">
-              <div className="navbar-brand" style={{ cursor: 'pointer' }}>SoundtrackDB</div>
+              <div className="navbar-brand" style={{ cursor: 'pointer' }}>
+                <img className="nav-logo" src={img} alt="logo"></img>
+              </div>
             </UISref>
             <Nav className="navbar-collapse" navbar>
               <UISrefActive class="active">
