@@ -220,8 +220,8 @@ def search_db(term):
                                search.c.about.ilike('%' + term + '%'),
                                search.c.kind.ilike('%' + term + '%'),
                                search.c.image.ilike('%' + term + '%'),
-                               cast(search.c.id, Text).ilike('%' + term + '%'),
-                               search.c.release_date.ilike('%' + term + '%'))
+                               cast(search.c.id, Text).ilike('%' + term + '%'))
+# search.c.release_date.ilike('%' + term + '%'))
         query = session.query(search).filter(search_statement)
         query = search_filter(request.args, query)
         query = order_query(search, request.args, query)
