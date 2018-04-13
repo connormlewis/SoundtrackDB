@@ -223,6 +223,7 @@ def search_db(term):
                                cast(search.c.id, Text).ilike('%' + term + '%'),
                                search.c.release_date.ilike('%' + term + '%'))
         query = session.query(search).filter(search_statement)
+        query = search_filter(request.args, query)
         query = order_query(search, request.args, query)
         final_query = query
 
@@ -329,6 +330,14 @@ def order_query(table, query_params, query):
         query = query.order_by(asc('name'))
     return query
 
+def search_filter(query_params, query):
+    """
+    Filter search by type
+    """
+    if query_params.get('type') is not None:
+        query = query.filter(search.c.kind == query_params.get('type'))
+    return query
+
 def artist_filter(query_params, query):
     """
     Filter artist table query
@@ -338,13 +347,13 @@ def artist_filter(query_params, query):
     if query_params.get('min_followers') is not None \
         and query_params.get('max_followers') is not None:
         filt_statement = and_(
-            col_name >= request.args.get('min_followers'),
-            col_name <= request.args.get('max_followers'))
+            col_name >= query_params.get('min_followers'),
+            col_name <= query_params.get('max_followers'))
         query = query.filter(filt_statement)
     elif query_params.get('min_followers') is not None:
-        query = query.filter(col_name >= request.args.get('min_followers'))
+        query = query.filter(col_name >= query_params.get('min_followers'))
     elif query_params.get('max_followers') is not None:
-        query = query.filter(col_name <= request.args.get('max_followers'))
+        query = query.filter(col_name <= query_params.get('max_followers'))
     return query
 
 def album_filter(query_params, query):
@@ -356,13 +365,13 @@ def album_filter(query_params, query):
     if query_params.get('start_year') is not None \
         and query_params.get('end_year') is not None:
         filt_statement = and_(
-            col_name >= str(request.args.get('start_year')),
-            col_name <= str(request.args.get('end_year')))
+            col_name >= str(query_params.get('start_year')),
+            col_name <= str(query_params.get('end_year')))
         query = query.filter(filt_statement)
     elif query_params.get('start_year') is not None:
-        query = query.filter(col_name >= str(request.args.get('start_year')))
+        query = query.filter(col_name >= str(query_params.get('start_year')))
     elif query_params.get('end_year') is not None:
-        query = query.filter(col_name <= str(request.args.get('end_year')))
+        query = query.filter(col_name <= str(query_params.get('end_year')))
     return query
 
 def media_filter(query_params, query):
@@ -379,18 +388,37 @@ def media_filter(query_params, query):
     if query_params.get('start_year') is not None \
         and query_params.get('end_year') is not None:
         filt_statement = and_(
-            col_name >= str(request.args.get('start_year')),
-            col_name <= str(request.args.get('end_year')))
+            col_name >= str(query_params.get('start_year')),
+            col_name <= str(query_params.get('end_year')))
         query = query.filter(filt_statement)
     elif query_params.get('start_year') is not None:
-        query = query.filter(col_name >= str(request.args.get('start_year')))
+        query = query.filter(col_name >= str(query_params.get('start_year')))
     elif query_params.get('end_year') is not None:
-        query = query.filter(col_name <= str(request.args.get('end_year')))
+        query = query.filter(col_name <= str(query_params.get('end_year')))
     if query_params.get('running') is not None:
         if query_params.get('running').lower() == 'true':
             query = query.filter(table.c.running)
         else:
             query = query.filter(not table.c.running)
+    return extra_media_filter(query_params, query)
+
+def extra_media_filter(query_params, query):
+    """
+    Some more filtering for media
+    """
+    table = Media.__table__
+    if query_params.get('seasons') is not None:
+        query = query.filter(table.c.seasons >= query_params.get('seasons'))
+    if query_params.get('run_time') is not None:
+        query = query.filter(table.c.seasons >= query_params.get('run_time'))
+    if query_params.get('popularity') is not None:
+        query = query.filter(table.c.seasons >= query_params.get('popularity'))
+    if query_params.get('average_rating') is not None:
+        query = query.filter(table.c.seasons >= query_params.get('average_rating'))
+    if query_params.get('last_aired') is not None:
+        query = query.filter(table.c.seasons >= str(query_params.get('last_aired')))
+    if query_params.get('seasons') is not None:
+        query = query.filter(table.c.seasons >= query_params.get('seasons'))
     return query
 
 def artist_search(query, term):
