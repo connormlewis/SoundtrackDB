@@ -46,6 +46,10 @@ export class AlbumHome extends Component {
     this.navigateToInstance = this.navigateToInstance.bind(this);
     this.search = this.search.bind(this);
     this.stateService = this.props.transition.router.stateService;
+    this.state = {
+      field: 'name',
+      direction: 'asc'
+    }
   }
 
   navigateToInstance(id) {
@@ -60,9 +64,25 @@ export class AlbumHome extends Component {
     this.stateService.go('^.home', { limit: 12, offset: 0, searchTerm: null });
   }
 
-  orderChange(e) {
-    let val = e.target.value.split('.')
-    this.stateService.go('^.home', { limit: 12, offset: 0, orderBy: { field: val[0], direction: val[1]}})
+  orderChange() {
+    this.stateService.go('^.home', { limit: 12, offset: 0, orderBy: { field: this.state.field, direction: this.state.direction}})
+  }
+
+  orderFieldChange(e) {
+    this.setState({
+      field: e.target.value
+    }, () => {
+      this.orderChange();
+    });
+    console.debug(this.state)
+  }
+
+  orderDirectionChange(dir) {
+    this.setState({
+      direction: dir
+    }, () => {
+      this.orderChange();
+    });
   }
 
   render() {
@@ -83,12 +103,15 @@ export class AlbumHome extends Component {
           </div>
           <div className="float-right form-inline mr-2">
             <label className="mr-2">Order by:</label>
-            <select name="" className="form-control" onChange={(e) => this.orderChange(e)}>
-              <option value="name.asc">Name Asc</option>
-              <option value="name.desc">Name Desc</option>
-              <option value="release_date.asc">Year Asc</option>
-              <option value="release_date.desc">Year Desc</option>
+            <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>
+              <option value="name">Name</option>
+              <option value="release_date">Year</option>
             </select>
+
+            <div className="btn-group">
+              <button className={"btn " + (this.state.direction == 'asc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('asc')}}>Asc</button>
+              <button className={"btn " + (this.state.direction == 'desc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('desc')}}>Desc</button>
+            </div>
           </div>
         </div>
         <div className="row">
