@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { UISref } from '@uirouter/react';
+import albumImg from '../static/splash/albumInfo.jpg';
+import artistImg from '../static/splash/artistInfo.jpg';
+import mediaImg from '../static/splash/mediaInfo.jpg'
 
 class SplashDescription extends Component {
   render() {
@@ -21,14 +24,14 @@ class SplashDescription extends Component {
             </p>
           </Col>
           <Col sm="auto" md="auto" lg="4">
-            <img className="detail-img-right" src="https://imgur.com/7jSEaYa.jpg" alt="Albums" vspace="20"></img>
+            <img className="detail-img-right" src={albumImg} alt="Albums" vspace="20"></img>
           </Col>
         </Row>
         <hr/>
 
         <Row>
           <Col sm="auto" md="6" lg="4">
-            <img className="detail-img-left" src="https://imgur.com/vdhzXGU.jpg" alt="Artists" vspace="20"></img>
+            <img className="detail-img-left" src={artistImg} alt="Artists" vspace="20"></img>
           </Col>
           <Col sm="4" md="6" lg="8">
             <h3 className="text-right">Find the artists behind your favorite soundtracks</h3>
@@ -61,7 +64,7 @@ class SplashDescription extends Component {
             </p>
           </Col>
           <Col sm="auto" md="6" lg="4">
-            <img className="detail-img-right" src="https://imgur.com/OghGiJG.jpg" alt="Media" vspace="20"></img>
+            <img className="detail-img-right" src={mediaImg} alt="Media" vspace="20"></img>
           </Col>
         </Row>
       </div>
