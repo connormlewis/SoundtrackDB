@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import "../style/Splash.css"; 
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
+import albumImg from '../static/splash/carousel/albumCarousel.jpg';
+import artistImg from '../static/splash/carousel/artistCarousel.jpg';
+import mediaImg from '../static/splash/carousel/mediaCarousel.jpg';
+import connectImg from '../static/splash/carousel/connectionCarousel.jpg';
 
 const items = [
   {
-    src: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/Record-Album-02.jpg',
+    src: albumImg,
     altText: 'Record Player',
     caption: 'Albums',
   },
   {
-    src: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Buddy_Bregman_conducts_at_Westlake_Recording_Studios_-_%28May_2006%29.jpg',
+    src: artistImg,
     altText: 'Buddy Bergman Conducting',
     caption: 'Artists',
   },
   {
-    src: 'http://i.imgur.com/iMJ7Un1.jpg',
+    src: mediaImg,
     altText: 'Titanic: I\'m flying',
     caption: 'TV and Movies',
   },
   {
-    src: 'https://upload.wikimedia.org/wikipedia/commons/c/c6/John_Williams_scoring_Raiders.jpg',
+    src: connectImg,
     altText: 'John Williams Conducting',
     caption: 'Making Connections',
   }
