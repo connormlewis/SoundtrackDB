@@ -19,6 +19,8 @@ class Artist(Base):
     image = Column(Text)
     followers = Column(Integer)
     spotify_uri = Column(Text, nullable=False)
+    num_albums = Column(Integer)
+    num_media = Column(Integer)
 
     media = relationship('Media', secondary=media_artist)
     albums = relationship('Album', secondary=artist_album)
@@ -34,5 +36,7 @@ class ArtistSchema(Schema):
     image = fields.URL()
     followers = fields.Int()
     spotify_uri = fields.Str()
+    num_albums = fields.Int()
+    num_media = fields.Int()
     media = fields.Nested('MediaSchema', many=True, exclude=('artists', 'albums'))
     albums = fields.Nested('AlbumSchema', many=True, exclude=('artists', 'media', 'tracks'))
