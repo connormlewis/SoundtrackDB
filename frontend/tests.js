@@ -412,7 +412,6 @@ describe('<AlbumInstance/>', function () {
   it('should have the correct related data', function () {
     const wrapper = mount(<AlbumInstance album={ALBUM_JSON} />);
     const expected_artists = ALBUM_JSON.artists;
-    console.log(expected_artists.length)
     const result_artists = wrapper.find({ id: 'artists' }).children();
     let i = 0; 
     for (let artist of expected_artists) {
