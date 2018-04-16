@@ -10,7 +10,7 @@ class SplashDescription extends Component {
     return (
       <div>
         <Row>
-          <Col sm="4" md="6" lg="8">
+          <Col sm="5" md="6" lg="8">
             <h3 className="text-left">Find the soundtracks from your favorite movies and TV shows</h3>
             <p className="text-left">
               <b><i>Locate</i></b> the title of the song you always sing or hum in the shower.<br/>
@@ -23,17 +23,17 @@ class SplashDescription extends Component {
               </UISref>
             </p>
           </Col>
-          <Col sm="auto" md="auto" lg="4">
+          <Col sm="7" md="6" lg="4">
             <img className="detail-img-right" src={albumImg} alt="Albums" vspace="20"></img>
           </Col>
         </Row>
         <hr/>
 
         <Row>
-          <Col sm="auto" md="6" lg="4">
+          <Col sm="7" md="6" lg="4">
             <img className="detail-img-left" src={artistImg} alt="Artists" vspace="20"></img>
           </Col>
-          <Col sm="4" md="6" lg="8">
+          <Col sm="5" md="6" lg="8">
             <h3 className="text-right">Find the artists behind your favorite soundtracks</h3>
             <p className="text-right">
               <b><i>Uncover</i></b> the artist who wrote that song stuck in your head.<br/>
@@ -50,7 +50,7 @@ class SplashDescription extends Component {
         <hr/>
 
         <Row>
-          <Col sm="4" md="6" lg="8">
+          <Col sm="5" md="6" lg="8">
             <h3 className="text-left">Find out more about your favorite movie and TV show.</h3>
             <p className="text-left">
               <b><i>Unearth</i></b> information about your favorite media.<br/>
@@ -63,7 +63,7 @@ class SplashDescription extends Component {
               </UISref>
             </p>
           </Col>
-          <Col sm="auto" md="6" lg="4">
+          <Col sm="7" md="6" lg="4">
             <img className="detail-img-right" src={mediaImg} alt="Media" vspace="20"></img>
           </Col>
         </Row>
