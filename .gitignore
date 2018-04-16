@@ -3,3 +3,4 @@
 postgres-data/**/*
 !.gitkeep
 .idea
+node_modules
