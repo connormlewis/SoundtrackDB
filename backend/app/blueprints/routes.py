@@ -354,6 +354,10 @@ def artist_filter(query_params, query):
         query = query.filter(col_name >= query_params.get('min_followers'))
     elif query_params.get('max_followers') is not None:
         query = query.filter(col_name <= query_params.get('max_followers'))
+    if query_params.get('num_albums') is not None:
+        query = query.filter(table.c.num_albums >= query_params.get('num_albums'))
+    if query_params.get('num_media') is not None:
+        query = query.filter(table.c.num_media >= query_params.get('num_media'))
     return query
 
 def album_filter(query_params, query):
@@ -372,6 +376,8 @@ def album_filter(query_params, query):
         query = query.filter(col_name >= date(int(query_params.get('start_year')), 1, 1))
     elif query_params.get('end_year') is not None:
         query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
+    if query_params.get('num_tracks') is not None:
+        query = query.filter(table.c.num_tracks >= query_params.get('num_tracks'))
     return query
 
 def media_filter(query_params, query):
