@@ -102,5 +102,6 @@ ENV/
 .pytest_cache/
 
 private.env
+private_db.env
 
 scraping/*.txt
