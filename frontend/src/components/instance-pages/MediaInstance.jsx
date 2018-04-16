@@ -65,6 +65,15 @@ export class MediaInstance extends Component {
     )
   }
 
+  getURL() {
+    if (this.props.media.type == 0) {
+      return "https://www.themoviedb.org/tv/" + this.props.media.tmdb_id; 
+    }
+    else {
+      return "https://www.themoviedb.org/movie/" + this.props.media.tmdb_id; 
+    }
+  }
+
   getVideo() {
     if (this.props.media.videos !== undefined && this.props.media.videos !== null && this.props.media.videos.length !== 0) {
       let id = this.props.media.videos[0].key;
@@ -108,6 +117,8 @@ export class MediaInstance extends Component {
                 {this.getCast()}
               </Col>
             </Row>
+            <h3>Learn More</h3>
+            <a className="external-links" href={this.getURL()} target="_blank" style={{padding: '10px'}}>The Movie DB</a>
           </Col> 
           <Col sm="4">
             <img className="w-100" src={this.props.media.image} alt="Poster" vspace="20"/>
@@ -117,7 +128,7 @@ export class MediaInstance extends Component {
           </Col>
         </Row>
         <Row>
-          <h3 className="related-header">Photos</h3>
+          <h3 style={{paddingTop: "10px"}} className="related-header">Photos</h3>
         </Row>
         <Row>
           {
