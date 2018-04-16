@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "53c31916-ac3c-4b4a-a7a5-1e985db3b63d",
+		"_postman_id": "32177155-fe9f-4440-b11e-875f373aff79",
 		"name": "API Unit Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -26,14 +26,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist/1",
+							"raw": "http://{{server_url}}/artist/1",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist",
 								"1"
@@ -59,14 +61,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist/2",
+							"raw": "http://{{server_url}}/artist/2",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist",
 								"2"
@@ -92,14 +96,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist/3",
+							"raw": "http://{{server_url}}/artist/3",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist",
 								"3"
@@ -125,14 +131,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist/4",
+							"raw": "http://{{server_url}}/artist/4",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist",
 								"4"
@@ -158,14 +166,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist/5",
+							"raw": "http://{{server_url}}/artist/5",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist",
 								"5"
@@ -239,14 +249,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album/1",
+							"raw": "http://{{server_url}}/album/1",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album",
 								"1"
@@ -260,14 +272,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album/2",
+							"raw": "http://{{server_url}}/album/2",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album",
 								"2"
@@ -281,14 +295,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album/3",
+							"raw": "http://{{server_url}}/album/3",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album",
 								"3"
@@ -302,14 +318,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album/4",
+							"raw": "http://{{server_url}}/album/4",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album",
 								"4"
@@ -323,14 +341,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album/5",
+							"raw": "http://{{server_url}}/album/5",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album",
 								"5"
@@ -408,14 +428,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media/51",
+							"raw": "http://{{server_url}}/media/51",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media",
 								"51"
@@ -429,14 +451,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media/52",
+							"raw": "http://{{server_url}}/media/52",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media",
 								"52"
@@ -450,14 +474,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media/53",
+							"raw": "http://{{server_url}}/media/53",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media",
 								"53"
@@ -471,14 +497,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media/54",
+							"raw": "http://{{server_url}}/media/54",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media",
 								"54"
@@ -492,14 +520,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media/55",
+							"raw": "http://{{server_url}}/media/55",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media",
 								"55"
@@ -602,7 +632,7 @@
 		},
 		{
 			"name": "Multiple Tests",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Get Multiple Media",
@@ -644,14 +674,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media",
+							"raw": "http://{{server_url}}/media",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media"
 							]
@@ -699,14 +731,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media?search=poo",
+							"raw": "http://{{server_url}}/media?search=poo",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media"
 							],
@@ -760,14 +794,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/media?end_year=2018&start_year=1980&order_by=release_date&asc",
+							"raw": "http://{{server_url}}/media?end_year=2018&start_year=1980&order_by=release_date&asc",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"media"
 							],
@@ -824,14 +860,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist",
+							"raw": "http://{{server_url}}/artist",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist"
 							]
@@ -870,14 +908,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist?search=nerd",
+							"raw": "http://{{server_url}}/artist?search=nerd",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist"
 							],
@@ -922,14 +962,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/artist?min_followers=8000&max_followers=10000&order_by=followers&asc",
+							"raw": "http://{{server_url}}/artist?min_followers=8000&max_followers=10000&order_by=followers&asc",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"artist"
 							],
@@ -988,14 +1030,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album",
+							"raw": "http://{{server_url}}/album",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album"
 							]
@@ -1036,14 +1080,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album?search=poo",
+							"raw": "http://{{server_url}}/album?search=poo",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album"
 							],
@@ -1090,14 +1136,16 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "http://0:80/album?end_year=1960&asc&order_by=release_date",
+							"raw": "http://{{server_url}}/album?end_year=1960&asc&order_by=release_date",
 							"protocol": "http",
 							"host": [
-								"0"
+								"{{server_url}}"
 							],
-							"port": "80",
 							"path": [
 								"album"
 							],
@@ -1154,14 +1202,16 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://0:80/about",
+					"raw": "http://{{server_url}}/about",
 					"protocol": "http",
 					"host": [
-						"0"
+						"{{server_url}}"
 					],
-					"port": "80",
 					"path": [
 						"about"
 					]
@@ -1202,14 +1252,16 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://0:80/search/poo",
+					"raw": "http://{{server_url}}/search/poo",
 					"protocol": "http",
 					"host": [
-						"0"
+						"{{server_url}}"
 					],
-					"port": "80",
 					"path": [
 						"search",
 						"poo"

@@ -109,8 +109,8 @@ export class AlbumHome extends Component {
             </select>
 
             <div className="btn-group">
-              <button className={"btn " + (this.state.direction == 'asc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('asc')}}>Asc</button>
-              <button className={"btn " + (this.state.direction == 'desc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('desc')}}>Desc</button>
+              <button className={"btn " + (this.state.direction === 'asc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('asc')}}>Asc</button>
+              <button className={"btn " + (this.state.direction === 'desc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('desc')}}>Desc</button>
             </div>
           </div>
         </div>
