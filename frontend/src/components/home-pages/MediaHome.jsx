@@ -18,7 +18,7 @@ export class MediaItem extends Component {
   }
 
   getTVYears() {
-    let first = this.props.media.release_date;
+    let first = this.props.media.release_date.substring(0,4);
     let last = '';
     if (this.props.media.running === true) {
       last = 'Present';
@@ -43,7 +43,7 @@ export class MediaItem extends Component {
       // TV Show
       return `TV Series • ${this.getTVYears()} • ${this.props.media.seasons} Seasons`
     } else {
-      return `Movie • ${this.props.media.release_date}`
+      return `Movie • ${this.props.media.release_date.substring(0,4)}`
     }
   }
 
