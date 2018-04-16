@@ -22,7 +22,7 @@ export class MediaInstance extends Component {
     }
 
     if(model_data.type === 0) {
-      let first = model_data.release_date;  
+      let first = model_data.release_date.substring(0,4);  
       let last = ''; 
       if (model_data.running === true) {
         last = 'Present'; 
@@ -44,7 +44,7 @@ export class MediaInstance extends Component {
       return 'TV Show | ' + years + ' | ' + seasons + " seasons | " + genre_text; 
     }
     else {
-      let year = model_data.release_date; 
+      let year = model_data.release_date.substring(0, 4); 
       return 'Movie | ' + year + ' | ' + genre_text; 
     }
   }
@@ -66,7 +66,7 @@ export class MediaInstance extends Component {
   }
 
   getURL() {
-    if (this.props.media.type == 0) {
+    if (this.props.media.type === 0) {
       return "https://www.themoviedb.org/tv/" + this.props.media.tmdb_id; 
     }
     else {
