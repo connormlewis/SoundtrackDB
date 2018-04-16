@@ -1,6 +1,6 @@
 """ORM for Album items"""
 from marshmallow import Schema, fields
-from sqlalchemy import Column, Text, Integer
+from sqlalchemy import Column, Text, Integer, Date
 from sqlalchemy.orm import relationship
 
 from app.models.associations import album_media, artist_album
@@ -16,7 +16,7 @@ class Album(Base):
 
     id = Column(Integer, primary_key=True)
     name = Column(Text)
-    release_date = Column(Text)
+    release_date = Column(Date)
     image = Column(Text)
     label = Column(Text)
     tracks = Column(Json)
@@ -33,7 +33,7 @@ class AlbumSchema(Schema):
     """
     id = fields.Int()
     name = fields.Str()
-    release_date = fields.Str()
+    release_date = fields.Date()
     image = fields.Str()
     label = fields.Str()
     tracks = fields.List(fields.Dict())
