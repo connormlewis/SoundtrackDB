@@ -114,7 +114,7 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_album(self):
-        response = self.client.get('/album?start_year=1950&end_year=2012running=true&order_by=name&asc')
+        response = self.client.get('/album?start_year=1950&end_year=2012&running=true&order_by=name&asc')
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media2(self):

@@ -1,6 +1,6 @@
 """Application routes"""
 import os
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, date
 
 import re
 import requests
@@ -221,7 +221,7 @@ def search_db(term):
                                search.c.kind.ilike('%' + term + '%'),
                                search.c.image.ilike('%' + term + '%'),
                                cast(search.c.id, Text).ilike('%' + term + '%'),
-                               search.c.release_date.ilike('%' + term + '%'))
+                               cast(search.c.release_date, Text).ilike('%' + term + '%'))
         query = session.query(search).filter(search_statement)
         query = search_filter(request.args, query)
         query = order_query(search, request.args, query)
@@ -365,13 +365,13 @@ def album_filter(query_params, query):
     if query_params.get('start_year') is not None \
         and query_params.get('end_year') is not None:
         filt_statement = and_(
-            col_name >= str(query_params.get('start_year')),
-            col_name <= str(query_params.get('end_year')))
+            col_name >= date(int(query_params.get('start_year')), 1, 1),
+            col_name <= date(int(query_params.get('end_year')), 12, 31))
         query = query.filter(filt_statement)
     elif query_params.get('start_year') is not None:
-        query = query.filter(col_name >= str(query_params.get('start_year')))
+        query = query.filter(col_name >= date(int(query_params.get('start_year')), 1, 1))
     elif query_params.get('end_year') is not None:
-        query = query.filter(col_name <= str(query_params.get('end_year')))
+        query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
     return query
 
 def media_filter(query_params, query):
@@ -388,13 +388,13 @@ def media_filter(query_params, query):
     if query_params.get('start_year') is not None \
         and query_params.get('end_year') is not None:
         filt_statement = and_(
-            col_name >= str(query_params.get('start_year')),
-            col_name <= str(query_params.get('end_year')))
+            col_name >= date(int(query_params.get('start_year')), 1, 1),
+            col_name <= date(int(query_params.get('end_year')), 12, 31))
         query = query.filter(filt_statement)
     elif query_params.get('start_year') is not None:
-        query = query.filter(col_name >= str(query_params.get('start_year')))
+        query = query.filter(col_name >= date(int(query_params.get('start_year')), 1, 1))
     elif query_params.get('end_year') is not None:
-        query = query.filter(col_name <= str(query_params.get('end_year')))
+        query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
     if query_params.get('running') is not None:
         if query_params.get('running').lower() == 'true':
             query = query.filter(table.c.running)
@@ -445,7 +445,7 @@ def media_search(query, term):
                            table.c.cast.ilike('%'+term+'%'),
                            table.c.genres.ilike('%'+term+'%'),
                            table.c.seasons.ilike('%'+term+'%'),
-                           table.c.release_date.ilike('%'+term+'%'),
+                           cast(table.c.release_date, Text).ilike('%'+term+'%'),
                            table.c.last_aired.ilike('%'+term+'%'),
                            table.c.image.ilike('%'+term+'%'),
                            cast(table.c.running, Text).ilike('%'+term+'%'), #convert?
@@ -466,7 +466,7 @@ def album_search(query, term):
     """
     table = Album.__table__
     search_statement = or_(table.c.name.ilike('%'+term+'%'),
-                           table.c.release_date.ilike('%'+term+'%'),
+                           cast(table.c.release_date, Text).ilike('%'+term+'%'),
                            table.c.image.ilike('%'+term+'%'),
                            table.c.label.ilike('%'+term+'%'),
                            table.c.tracks.ilike('%'+term+'%'),
