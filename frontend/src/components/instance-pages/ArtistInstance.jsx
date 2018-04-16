@@ -34,6 +34,10 @@ export class ArtistInstance extends Component {
             <iframe id="followers" className="w-30" title="Artist Followers" src={"https://open.spotify.com/follow/1/?uri=" + this.props.artist.spotify_uri + "&size=detail&theme=light"} height="56" scrolling="no" frameBorder="0" allowtransparency="true"> </iframe>
             <h3>Biography</h3>
             <p id="bio" style={{whiteSpace: 'pre-line'}}>{this.props.artist.bio === undefined || this.props.artist.bio === null || this.props.artist.length === 0 ? "No biography available" : this.props.artist.bio}</p>
+            <h3>Learn More</h3>
+            <a className="external-links" href={"https://open.spotify.com/artist/" + this.props.artist.spotify_uri.substring(15)} target="_blank" style={{paddingLeft: "10px", display: "inline-block", paddingBottom: "5px"}}>Spotify</a>
+            <br/>
+            <a className="external-links" href={"https://www.last.fm/music/" + this.props.artist.name} target="_blank" style={{paddingLeft: "10px", display: "inline-block", paddingBottom: "5px"}}>Last FM</a>
           </Col>
           <Col sm="4">
             <img id="artist-image" className="w-100" src={this.props.artist.image} alt="Artist" vspace="20" style={styles} />
