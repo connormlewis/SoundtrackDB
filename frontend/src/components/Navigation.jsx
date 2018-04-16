@@ -3,7 +3,7 @@ import { Navbar, Container, Nav, NavItem } from 'reactstrap';
 import { UISref, UISrefActive } from '@uirouter/react';
 import SearchBar from './SearchBar';
 import "../style/Navigation.css";
-import img from '../../src/static/logo.png'
+import img from '../static/logo.png'
 
 class Navigation extends Component {
 
