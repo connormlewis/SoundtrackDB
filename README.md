@@ -24,3 +24,14 @@ If any new dependencies are added using npm or pip, you must rebuild the images
 again using `docker-compose build`.
 
 You can kill the development instance by using `docker-compose down`.
+
+### Prerequisites
+
+You will need several npm packages installed globally to use the makefile:
+`npm install -g yarn`
+`npm install -g newman`
+
+You will also need geckodriver installed for selenium tests.
+
+Necessary global pip packages:
+`pip install selenium`
