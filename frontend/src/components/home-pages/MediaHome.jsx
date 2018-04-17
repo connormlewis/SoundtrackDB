@@ -128,6 +128,9 @@ export class MediaHome extends Component {
               <option value="name">Name</option>
               <option value="release_date">Year</option>
               <option value="popularity">Popularity</option>
+              <option value="runtime">Runtime</option>
+              <option value="seasons">Seasons</option>
+              <option value="average_rating">Average Rating</option>
             </select>
 
             <div className="btn-group">
