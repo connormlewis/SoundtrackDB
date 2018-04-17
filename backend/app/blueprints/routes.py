@@ -8,7 +8,7 @@ from flask import Blueprint, jsonify, request, abort
 
 from sqlalchemy import or_, Text, cast, asc, desc, and_
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media, \
-    search, SearchSchema
+    search, SearchSchema, Genre, GenreSchema
 from app.shared.db import get_session
 
 BP = Blueprint('category_routes', 'SoundtrackDB')
@@ -16,6 +16,7 @@ BP = Blueprint('category_routes', 'SoundtrackDB')
 artist_schema = ArtistSchema()
 album_schema = AlbumSchema()
 media_schema = MediaSchema()
+genre_schema = GenreSchema()
 artists_schema = ArtistSchema(exclude=('albums', 'media'))
 albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
 medias_schema = MediaSchema(
@@ -246,6 +247,38 @@ def search_db(term):
     finally:
         session.close()
 
+@BP.route('/genres')
+def get_genres():
+    """
+    Get genres
+    """
+    session = get_session()
+    try:
+        query = session.query(Genre)
+        final_query = query
+
+        if request.args.get('limit') is not None:
+            query = query.limit(int(request.args.get('limit')))
+        else:
+            query = query.limit(12)
+
+        if request.args.get('offset') is not None:
+            query = query.offset(int(request.args.get('offset')))
+        else:
+            query = query.offset(0)
+
+        genres = query.all()
+
+        count = final_query.count()
+        return jsonify({
+            'items': genre_schema.dump(genres, many=True).data,
+            'count': count
+        })
+    finally:
+        session.close()
+
+
+
 
 def get_commits():  # pragma: no cover
     """
@@ -416,15 +449,15 @@ def extra_media_filter(query_params, query):
     if query_params.get('seasons') is not None:
         query = query.filter(table.c.seasons >= query_params.get('seasons'))
     if query_params.get('run_time') is not None:
-        query = query.filter(table.c.seasons >= query_params.get('run_time'))
+        query = query.filter(table.c.runtime >= query_params.get('run_time'))
     if query_params.get('popularity') is not None:
-        query = query.filter(table.c.seasons >= query_params.get('popularity'))
+        query = query.filter(table.c.popularity >= query_params.get('popularity'))
     if query_params.get('average_rating') is not None:
-        query = query.filter(table.c.seasons >= query_params.get('average_rating'))
+        query = query.filter(table.c.average_rating >= query_params.get('average_rating'))
     if query_params.get('last_aired') is not None:
-        query = query.filter(table.c.seasons >= str(query_params.get('last_aired')))
-    if query_params.get('seasons') is not None:
-        query = query.filter(table.c.seasons >= query_params.get('seasons'))
+        query = query.filter(table.c.last_aired >= str(query_params.get('last_aired')).zfill(4))
+    if query_params.get('genres') is not None:
+        query = query.join(Media.genres).filter(Genre.name == query_params.get('genres'))
     return query
 
 def artist_search(query, term):
@@ -449,7 +482,6 @@ def media_search(query, term):
                            cast(table.c.type, Text).ilike('%'+term+'%'), #convert
                            table.c.name.ilike('%'+term+'%'),
                            table.c.cast.ilike('%'+term+'%'),
-                           table.c.genres.ilike('%'+term+'%'),
                            table.c.seasons.ilike('%'+term+'%'),
                            cast(table.c.release_date, Text).ilike('%'+term+'%'),
                            table.c.last_aired.ilike('%'+term+'%'),

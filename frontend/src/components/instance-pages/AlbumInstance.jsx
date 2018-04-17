@@ -55,6 +55,8 @@ export class AlbumInstance extends Component {
             <p id="year">Release Year: {this.props.album.release_date.substring(0,4)}</p>
             <h3>Tracklist</h3>
             <ol id="tracks">{this.getTracklist()}</ol>
+            <h3>Learn More</h3>
+            <a className="external-links" href={"https://open.spotify.com/album/" + this.props.album.spotify_uri.substring(14)} target="_blank" style={{padding: '10px'}}>Spotify</a>
           </Col>
           <Col sm="4">
             <img className="w-100" src={this.props.album.image} alt="Poster" vspace="20"/>
@@ -62,7 +64,7 @@ export class AlbumInstance extends Component {
           </Col>
         </Row>
         <Row>
-          <div id="media">{this.getMedia()}</div>
+          <div style={{paddingTop: "10px"}} id="media">{this.getMedia()}</div>
         </Row>
         <Row>
           <div id="artists"> {this.getArtists()} </div>

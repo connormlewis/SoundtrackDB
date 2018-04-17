@@ -22,7 +22,7 @@ export class MediaInstance extends Component {
     }
 
     if(model_data.type === 0) {
-      let first = model_data.release_date;  
+      let first = model_data.release_date.substring(0,4);  
       let last = ''; 
       if (model_data.running === true) {
         last = 'Present'; 
@@ -44,7 +44,7 @@ export class MediaInstance extends Component {
       return 'TV Show | ' + years + ' | ' + seasons + " seasons | " + genre_text; 
     }
     else {
-      let year = model_data.release_date; 
+      let year = model_data.release_date.substring(0, 4); 
       return 'Movie | ' + year + ' | ' + genre_text; 
     }
   }
@@ -63,6 +63,15 @@ export class MediaInstance extends Component {
       { cast.map((member, index) => <li key={index}>{member}</li>) }
       </ul> 
     )
+  }
+
+  getURL() {
+    if (this.props.media.type === 0) {
+      return "https://www.themoviedb.org/tv/" + this.props.media.tmdb_id; 
+    }
+    else {
+      return "https://www.themoviedb.org/movie/" + this.props.media.tmdb_id; 
+    }
   }
 
   getVideo() {
@@ -108,6 +117,8 @@ export class MediaInstance extends Component {
                 {this.getCast()}
               </Col>
             </Row>
+            <h3>Learn More</h3>
+            <a className="external-links" href={this.getURL()} target="_blank" style={{padding: '10px'}}>The Movie DB</a>
           </Col> 
           <Col sm="4">
             <img className="w-100" src={this.props.media.image} alt="Poster" vspace="20"/>
@@ -117,7 +128,7 @@ export class MediaInstance extends Component {
           </Col>
         </Row>
         <Row>
-          <h3 className="related-header">Photos</h3>
+          <h3 style={{paddingTop: "10px"}} className="related-header">Photos</h3>
         </Row>
         <Row>
           {

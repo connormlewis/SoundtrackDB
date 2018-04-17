@@ -1,4 +1,5 @@
 import * as $ from "jquery";
+import * as _ from 'lodash';
 
 var API_URL = 'http://localhost'
 if (process.env.NODE_ENV === "production") {
@@ -107,14 +108,17 @@ export default class ApiService {
     return $.get(API_URL + '/about')
   }
 
-  static getSearchResults(query, offset = 0, limit = 10, orderBy=null) {
+  static getSearchResults(query, offset = 0, limit = 10, orderBy=null, filters={}) {
+    console.log(filters)
+    var params = Object.assign({
+      offset: offset,
+      limit: limit
+    }, filters);
+    Object.keys(params).forEach((key) => (params[key] == null) && delete params[key]);
     return $.ajax({
       url: API_URL + '/search/' + query,
       type: 'get',
-      data: {
-        offset: offset,
-        limit: limit
-      }
+      data: params
     })
   }
 }
