@@ -122,7 +122,7 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media3(self):
-        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&seasons=3&genres=Comedy')
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&seasons=3&genre=Comedy')
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media4(self):
