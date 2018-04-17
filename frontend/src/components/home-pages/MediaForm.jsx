@@ -8,7 +8,7 @@ export class MediaForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {movie: false, tv_show: false, start_year: 0, end_year: 2018, running: false, collapse: false}; 
+    this.state = {movie: false, tv_show: false, start_year: 0, end_year: 2018, running: false, seasons: 0, run_time: 0, popularity: 0, average_rating: 0, last_aired: 0, collapse: false}; 
     this.filter = this.filter.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -27,6 +27,11 @@ export class MediaForm extends Component {
     if (this.state.running) {
       filters['running'] = "true"; 
     }
+    filters['seasons'] = this.state.season;
+    filters['run_time'] = this.state.runtime;
+    filters['popularity'] = this.state.popular;
+    filters['average_rating'] = this.state.avg_rate;
+    filters['last_aired'] = this.state.last_air;
     const { stateService } = this.props.transition.router;
     stateService.go('^.home', {limit: 12, offset: 0, filters: filters});
   }
@@ -93,6 +98,43 @@ export class MediaForm extends Component {
                   <input name="running" type="checkbox" checked={this.state.running} onChange={this.handleInputChange}/>{' '}
                   Currently Running Series
                 </Label>
+              </Col>
+            </FormGroup>
+            <legend>Number of Seasons</legend>
+            <FormGroup row>
+              <Col sm={5}>
+                <Label for="season" sm={10}>Min Seasons</Label>
+                <Input type="number" name="season" id="season" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+              </Col>
+            </FormGroup>
+            <legend>Runtime</legend>
+            <FormGroup row>
+              <Col sm={5}>
+                <Label for="runtime" sm={10}>Runtime (minutes)</Label>
+                <Input type="number" name="runtime" id="runtime" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+              </Col>
+            </FormGroup>
+            <legend>Popularity</legend>
+            <FormGroup row>
+              <Col sm={5}>
+                <Label for="popular" sm={10}>Popularity Rating</Label>
+                <Input type="number" name="popular" id="popular" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+              </Col>
+            </FormGroup>
+            <legend>Average Rating</legend>
+            <FormGroup row>
+              <Col sm={5}>
+                <Label for="avg_rate" sm={10}>Average Rating</Label>
+                <Input type="number" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+              </Col>
+            </FormGroup>
+            <legend>Last Aired</legend>
+            <FormGroup row>
+              <Col sm={5}>
+                <Label for="last_air" sm={10}>Last Aired (Year)</Label>
+                <Input type="select" name="last_air" id="last_air" onChange={(e) => (this.setState({album: e.target.value}))}>
+                  {years}
+                </Input>
               </Col>
             </FormGroup>
             <FormGroup check row>

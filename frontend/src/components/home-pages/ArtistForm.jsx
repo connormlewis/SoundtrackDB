@@ -7,7 +7,7 @@ export class ArtistForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {min_followers: 0, max_followers: 10000000, collapse: false}; 
+    this.state = {min_followers: 0, max_followers: 10000000, num_albums: 0, num_media: 0, collapse: false}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
   }
