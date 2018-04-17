@@ -3,7 +3,7 @@ from marshmallow import Schema, fields
 from sqlalchemy import Column, Integer, String, Boolean, Float, Date
 from sqlalchemy.orm import relationship
 
-from app.models.associations import media_artist, album_media
+from app.models.associations import media_artist, album_media, media_genre
 from app.shared.db import Base
 from app.shared.json_encoder import Json
 
@@ -18,7 +18,6 @@ class Media(Base):
     type = Column(Integer)
     name = Column(String)
     cast = Column(Json)
-    genres = Column(Json)
     seasons = Column(Integer)
     release_date = Column(Date)
     last_aired = Column(String)
@@ -36,6 +35,7 @@ class Media(Base):
 
     artists = relationship('Artist', secondary=media_artist)
     albums = relationship('Album', secondary=album_media)
+    genres = relationship('Genre', secondary=media_genre)
 
 
 class MediaSchema(Schema):
@@ -46,7 +46,6 @@ class MediaSchema(Schema):
     type = fields.Int()
     name = fields.Str()
     cast = fields.List(fields.Dict())
-    genres = fields.List(fields.Dict())
     seasons = fields.Int()
     release_date = fields.Date()
     last_aired = fields.Str()
@@ -63,3 +62,4 @@ class MediaSchema(Schema):
     average_rating = fields.Float()
     artists = fields.Nested('ArtistSchema', many=True, exclude=('media', 'albums'))
     albums = fields.Nested('AlbumSchema', many=True, exclude=('media', 'artist'))
+    genres = fields.Nested('GenreSchema', many=True)

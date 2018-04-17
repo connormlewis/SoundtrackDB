@@ -37,6 +37,7 @@
     "jsdom": "^11.6.2",
     "lodash": "^4.17.5",
     "mocha": "^5.0.1",
+    "newman": "^3.9.3",
     "object-assign": "4.1.1",
     "popper.js": "^1.12.9",
     "postcss-flexbugs-fixes": "3.2.0",

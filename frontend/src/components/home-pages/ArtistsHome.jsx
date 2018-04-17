@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button, ButtonGroup } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
@@ -101,11 +101,13 @@ export class ArtistHome extends Component {
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>
               <option value="name">Name</option>
               <option value="followers">Followers</option>
+              <option value="num_albums">Album Count</option>
+              <option value="num_media">Media Count</option>
             </select>
 
             <div className="btn-group">
-              <button className={"btn " + (this.state.direction == 'asc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('asc')}}>Asc</button>
-              <button className={"btn " + (this.state.direction == 'desc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('desc')}}>Desc</button>
+              <button className={"btn " + (this.state.direction === 'asc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('asc')}}>Asc</button>
+              <button className={"btn " + (this.state.direction === 'desc' ? 'btn-primary' : 'btn-outline-primary')} onClick={() => {this.orderDirectionChange('desc')}}>Desc</button>
             </div>
           </div>
         </div>

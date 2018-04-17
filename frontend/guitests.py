@@ -1,4 +1,5 @@
 import unittest
+import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
@@ -75,7 +76,7 @@ def test_cast(tester):
 class HomePage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + ""
 
     def test_welcome_message(self):
         test_title(self, "Welcome to SoundtrackDB")
@@ -89,7 +90,7 @@ class HomePage(unittest.TestCase):
 class AlbumPage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/album"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + "/album"
 
     def test_title(self):
         test_title(self, "Albums")
@@ -106,7 +107,7 @@ class AlbumPage(unittest.TestCase):
 class ArtistPage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/artist"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + "/artist"
 
     def test_title(self):
         test_title(self, "Artists");
@@ -123,7 +124,7 @@ class ArtistPage(unittest.TestCase):
 class MediaPage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/media"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + "/media"
 
     def test_title(self):
         test_title(self, "Media")
@@ -140,7 +141,7 @@ class MediaPage(unittest.TestCase):
 class AboutPage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/about"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + "/about"
 
     def test_navigation(self):
         test_navbar(self)
@@ -151,7 +152,7 @@ class AboutPage(unittest.TestCase):
 class AlbumInstance(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/album/1"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + "/album/1"
 
     def test_navigation(self):
         test_navbar(self)
@@ -165,7 +166,7 @@ class AlbumInstance(unittest.TestCase):
 class ArtistInstance(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/artist/1"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + "/artist/1"
 
     def test_navigation(self):
         test_navbar(self)
@@ -179,7 +180,7 @@ class ArtistInstance(unittest.TestCase):
 class MediaInstance(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/media/66"
+        self.url = "http://" + os.getenv('SELENIUM_URL') + "/media/66"
 
     def test_navigation(self):
         test_navbar(self)

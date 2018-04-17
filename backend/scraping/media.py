@@ -12,6 +12,7 @@ from sqlalchemy.exc import IntegrityError
 from app.shared.db import init_db, get_session
 from app.models.media import Media
 from app.models.album import Album
+from app.models import Genre
 from app.models.associations import album_media, artist_album
 
 def get_movie(id: int):
@@ -203,6 +204,25 @@ def parse_file(input: str):
                         get_tv(id)
                     time.sleep(1)
 
+
+def separate_genres():
+    session = get_session()
+    media = session.query(Media).all()
+    for item in media:
+        for genre_json in item.genres_json:
+            genre = session.query(Genre).get(genre_json['id'])
+            if genre is None:
+                genre = Genre()
+                genre.name = genre_json['name']
+                genre.id = genre_json['id']
+                session.add(genre)
+
+            item.genres.append(genre)
+
+        session.commit()
+    session.close()
+
+
 if __name__ == '__main__':
     uri = 'postgresql://' + \
          os.getenv('POSTGRES_USER') + ':' + \
@@ -211,7 +231,8 @@ if __name__ == '__main__':
          os.getenv('POSTGRES_DB')
 
     init_db(uri)
-    get_tv(58474)
+    # get_tv(58474)
     #parse_file('scraping/more_shows.txt')
     #associate_with_album()
     #associate_with_artist()
+    separate_genres()
