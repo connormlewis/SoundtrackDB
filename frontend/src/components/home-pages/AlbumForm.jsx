@@ -37,15 +37,15 @@ export class AlbumForm extends Component {
         <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
           <Form className="filtering-form">
-            <legend>Release Date</legend>
+            <legend style={{marginBottom: "0px"}}>Release Date</legend>
             <FormGroup row>
-              <Col sm={5}>
+              <Col sm={6}>
                 <Label for="start" sm={10}>Start Year</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
                   {years}
                 </Input>
               </Col>
-              <Col sm={5}>
+              <Col sm={6}>
                 <Label for="end" sm={10}>End Year</Label>
                 <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
                   {years}
@@ -54,10 +54,10 @@ export class AlbumForm extends Component {
             </FormGroup>
             <legend>Number of Tracks</legend>
             <FormGroup row>
-              <Col sm={5}>
-                <Label for="track" sm={10}>Min Tracks</Label>
-                <Input type="number" name="track" id="track" onChange={(e) => (this.setState({track: e.target.value}))}/>
-              </Col>
+                <Label className="form-label" for="track" sm={2}>Min</Label>
+                <Col sm={4}>
+                  <Input type="number" name="track" id="track" onChange={(e) => (this.setState({track: e.target.value}))}/>
+                </Col>
             </FormGroup>
             <FormGroup check row>
               <Col sm={{ size: 10 }}>

@@ -1,5 +1,4 @@
 import * as $ from "jquery";
-import * as _ from 'lodash';
 
 var API_URL = 'http://localhost'
 if (process.env.NODE_ENV === "production") {
