@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Col, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
+import { Row, Col, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
 // eslint-disable-next-line
 import styles from '../../style/Form.css'; 
 
@@ -42,25 +42,25 @@ export class ArtistForm extends Component {
                 <Input type="number" name="max" id="max" min="0" onChange={(e) => (this.setState({max: e.target.value}))}/>
               </Col>
             </FormGroup>
-            <legend>Number of Albums</legend>
-            <FormGroup row>
-              <Col sm={5}>
-                <Label for="album" sm={10}>Min Albums</Label>
-                <Input type="number" name="album" id="album" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
-              </Col>
-            </FormGroup>
-            <legend>Number of Media</legend>
-            <FormGroup row>
-              <Col sm={5}>
-                <Label for="media" sm={10}>Min Media</Label>
-                <Input type="number" name="media" id="media" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
-              </Col>
-            </FormGroup>
-            <FormGroup check row>
-              <Col sm={{ size: 10 }}>
-                <Button onClick={this.filter}>Submit</Button>
-              </Col>
-            </FormGroup>
+                <legend>Number of Albums</legend>
+                <FormGroup col>
+                  <Col sm={5}>
+                    <Label for="album" sm={10}>Min</Label>
+                    <Input type="number" name="album" id="album" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                  </Col>
+                </FormGroup>
+                <legend>Number of Media</legend>
+                <FormGroup col>
+                  <Col sm={5}>
+                    <Label for="media" sm={10}>Min</Label>
+                    <Input type="number" name="media" id="media" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                  </Col>
+                </FormGroup>
+                <FormGroup check row>
+                  <Col sm={{ size: 10 }}>
+                    <Button onClick={this.filter}>Submit</Button>
+                  </Col>
+                </FormGroup>
           </Form>
         </Collapse>
       </div>
