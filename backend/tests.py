@@ -122,7 +122,7 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media3(self):
-        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&seasons')
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&seasons=3&genres=Comedy')
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media4(self):
@@ -139,6 +139,10 @@ class SoundtrackDBTests(unittest.TestCase):
     
     def test_filter_album2(self):
         response = self.client.get('/album?start_year=1950&running=true&order_by=name&asc')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_genres(self):
+        response = self.client.get('/genres')
         self.assertEqual(response.status_code, 200)
     
     @staticmethod
