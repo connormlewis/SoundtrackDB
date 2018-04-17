@@ -82,7 +82,7 @@ export class MediaForm extends Component {
               </Col>
               <Col sm={5}>
                 <Label for="end" sm={10}>End Year</Label>
-                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
+                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
                   {years}
                 </Input>
               </Col>
