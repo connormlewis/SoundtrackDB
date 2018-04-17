@@ -120,4 +120,14 @@ export default class ApiService {
       data: params
     })
   }
+
+  static getGenres() {
+    return $.ajax({
+      url: API_URL + '/genres',
+      type: 'get',
+      data: {
+        limit: 200
+      }
+    })
+  }
 }

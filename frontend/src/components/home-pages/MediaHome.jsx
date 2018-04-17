@@ -140,7 +140,7 @@ export class MediaHome extends Component {
           </div>
         </div>
         <div className="row">
-          <MediaForm transition={this.props.transition}/>
+          <MediaForm transition={this.props.transition} genres={this.props.genres}/>
         </div>
 
         {
@@ -167,6 +167,7 @@ export class MediaHome extends Component {
 
 MediaHome.propTypes = {
   resolves: PropTypes.shape({
-    media: PropTypes.arrayOf(PropTypes.object)
+    media: PropTypes.arrayOf(PropTypes.object),
+    genres: PropTypes.objectOf(PropTypes.object)
   })
 }

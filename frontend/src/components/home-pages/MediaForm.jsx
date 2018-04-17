@@ -32,6 +32,9 @@ export class MediaForm extends Component {
     filters['popularity'] = this.state.popular;
     filters['average_rating'] = this.state.avg_rate;
     filters['last_aired'] = this.state.last_air;
+    if (this.state.genre != "") {
+      filters['genre'] = this.state.genre;
+    }
     const { stateService } = this.props.transition.router;
     stateService.go('^.home', {limit: 12, offset: 0, filters: filters});
   }
@@ -75,6 +78,21 @@ export class MediaForm extends Component {
                   <input name="tv_show" type="checkbox" checked={this.state.tv_show} onChange={this.handleInputChange}/>{' '}
                   TV Show
                 </Label>
+              </Col>
+            </FormGroup>
+            <legend>Genre</legend>
+            <FormGroup row>
+              <Col sm={12}>
+                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({genre: e.target.value}))}>
+                  <option value="">Any</option>
+                  {
+                    this.props.genres.items.map(genre => {
+                      return (
+                        <option value={genre.name}>{genre.name}</option>
+                      )
+                    })
+                  }
+                </Input>
               </Col>
             </FormGroup>
             <legend>Release Year</legend>
