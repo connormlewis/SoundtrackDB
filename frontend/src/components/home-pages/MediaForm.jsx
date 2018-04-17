@@ -1,7 +1,8 @@
 import React, { Component } from 'react'; 
 import { Col, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
 // eslint-disable-next-line
-import styles from '../../style/Form.css'; 
+import styles from '../../style/Form.css';
+import yearItems from './Years.jsx' 
 
 export class MediaForm extends Component {
 
@@ -45,6 +46,12 @@ export class MediaForm extends Component {
   }
 
   render () {
+    const years = yearItems.map((item) => {
+      return (
+        <option>{item}</option>
+      );
+    });
+
     return (
       <div>
         <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
@@ -69,11 +76,15 @@ export class MediaForm extends Component {
             <FormGroup row>
               <Col sm={5}>
                 <Label for="start" sm={10}>Start Year</Label>
-                <Input type="number" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}/>
+                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
+                  {years}
+                </Input>
               </Col>
               <Col sm={5}>
                 <Label for="end" sm={10}>End Year</Label>
-                <Input type="number" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}/>
+                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
+                  {years}
+                </Input>
               </Col>
             </FormGroup>
             <FormGroup check>
