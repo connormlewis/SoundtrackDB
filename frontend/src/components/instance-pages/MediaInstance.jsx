@@ -117,6 +117,10 @@ export class MediaInstance extends Component {
                 {this.getCast()}
               </Col>
             </Row>
+            <h3> Other Information </h3>
+            <p style={{paddingLeft: "10px"}}><strong>Runtime: </strong>{this.props.media.runtime} minutes</p>
+            <p style={{paddingLeft: "10px"}}><strong>TMDB Popularity: </strong>{this.props.media.popularity} </p>
+            <p style={{paddingLeft: "10px"}}><strong>Average Rating: </strong>{this.props.media.average_rating} / 10</p>
             <h3>Learn More</h3>
             <a className="external-links" href={this.getURL()} target="_blank" style={{padding: '10px'}}>The Movie DB</a>
           </Col> 
