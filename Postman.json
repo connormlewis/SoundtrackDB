@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "32177155-fe9f-4440-b11e-875f373aff79",
+		"_postman_id": "2fa3a843-dacf-4fac-a58b-515a297a8f20",
 		"name": "API Unit Tests",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -736,7 +736,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{server_url}}/media?search=poo",
+							"raw": "http://{{server_url}}/media?search=new",
 							"protocol": "http",
 							"host": [
 								"{{server_url}}"
@@ -747,7 +747,7 @@
 							"query": [
 								{
 									"key": "search",
-									"value": "poo"
+									"value": "new"
 								}
 							]
 						}
@@ -913,7 +913,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{server_url}}/artist?search=nerd",
+							"raw": "http://{{server_url}}/artist?search=new",
 							"protocol": "http",
 							"host": [
 								"{{server_url}}"
@@ -924,7 +924,7 @@
 							"query": [
 								{
 									"key": "search",
-									"value": "nerd"
+									"value": "new"
 								}
 							]
 						}
@@ -1085,7 +1085,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://{{server_url}}/album?search=poo",
+							"raw": "http://{{server_url}}/album?search=new",
 							"protocol": "http",
 							"host": [
 								"{{server_url}}"
@@ -1096,7 +1096,7 @@
 							"query": [
 								{
 									"key": "search",
-									"value": "poo"
+									"value": "new"
 								}
 							]
 						}
@@ -1257,14 +1257,14 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "http://{{server_url}}/search/poo",
+					"raw": "http://{{server_url}}/search/new",
 					"protocol": "http",
 					"host": [
 						"{{server_url}}"
 					],
 					"path": [
 						"search",
-						"poo"
+						"new"
 					]
 				}
 			},

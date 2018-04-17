@@ -93,11 +93,35 @@ class SearchResults extends Component {
   constructor(props) {
     super(props);
     this.resultsPerPageChanged = this.resultsPerPageChanged.bind(this);
+    this.state = {
+      resultsPerPage: 10,
+      filters: {}
+    }
   }
 
   resultsPerPageChanged(e) {
-    this.resultsPerPage = parseInt(e.target.value, 10);
-    this.props.transition.router.stateService.go('searchResults', {limit: this.resultsPerPage})
+    this.setState({
+      resultsPerPage: parseInt(e.target.value, 10)
+    }, () => {
+      this.refresh()
+    })
+  }
+
+  typeFilterChanged(key, value) {
+    let newState = Object.assign({}, this.state.filters);
+    if (value === "") {
+      value = null;
+    }
+    newState[key] = value
+    this.setState({
+      filters: newState
+    }, () => {
+      this.refresh()
+    })
+  }
+
+  refresh() {
+    this.props.transition.router.stateService.go('searchResults', {limit: this.state.resultsPerPage, filters: this.state.filters})
   }
 
   render() {
@@ -110,6 +134,14 @@ class SearchResults extends Component {
         <div className="clearfix">
           <h2 className="float-left mb-3">Showing results for: <span className="text-muted">{this.searchTerm}</span></h2>
           <div className="float-right form-inline">
+            <label className="mr-2">Type: </label>
+            <select name="" id="" className="form-control mr-2" onChange={(e) => {this.typeFilterChanged('type', e.target.value)}}>
+              <option value="">All</option>
+              <option value="Album">Albums</option>
+              <option value="Artist">Artists</option>
+              <option value="Media">Media</option>
+            </select>
+
             <label className="mr-2">Results per page: </label>
             <select name="" id="" className="form-control" value={this.resultsPerPage} onChange={this.resultsPerPageChanged}>
               <option value="10">10</option>

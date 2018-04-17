@@ -18,7 +18,7 @@ export class MediaItem extends Component {
   }
 
   getTVYears() {
-    let first = this.props.media.release_date;
+    let first = this.props.media.release_date.substring(0,4);
     let last = '';
     if (this.props.media.running === true) {
       last = 'Present';
@@ -43,7 +43,7 @@ export class MediaItem extends Component {
       // TV Show
       return `TV Series • ${this.getTVYears()} • ${this.props.media.seasons} Seasons`
     } else {
-      return `Movie • ${this.props.media.release_date}`
+      return `Movie • ${this.props.media.release_date.substring(0,4)}`
     }
   }
 
@@ -128,6 +128,9 @@ export class MediaHome extends Component {
               <option value="name">Name</option>
               <option value="release_date">Year</option>
               <option value="popularity">Popularity</option>
+              <option value="runtime">Runtime</option>
+              <option value="seasons">Seasons</option>
+              <option value="average_rating">Average Rating</option>
             </select>
 
             <div className="btn-group">
