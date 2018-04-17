@@ -101,6 +101,8 @@ export class ArtistHome extends Component {
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>
               <option value="name">Name</option>
               <option value="followers">Followers</option>
+              <option value="num_albums">Album Count</option>
+              <option value="num_media">Media Count</option>
             </select>
 
             <div className="btn-group">
