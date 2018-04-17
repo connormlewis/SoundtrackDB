@@ -39,8 +39,8 @@ def get_about():
     global updated_at, commit_data, issue_data
 
     last_hour_date_time = datetime.now() - timedelta(hours=1)
-    while ((updated_at is None or updated_at < last_hour_date_time) and
-           (commit_data is None or commit_data[1] == 0) and
+    while ((updated_at is None or updated_at < last_hour_date_time) or
+           (commit_data is None or commit_data[1] == 0) or
            (issue_data is None or issue_data[1] == 0)):
         commit_data = get_commits()
         issue_data = get_issues()
@@ -384,13 +384,13 @@ def artist_filter(query_params, query):
             col_name <= query_params.get('max_followers'))
         query = query.filter(filt_statement)
     elif query_params.get('min_followers') is not None:
-        query = query.filter(col_name >= query_params.get('min_followers'))
+        query = query.filter(col_name >= int(query_params.get('min_followers')))
     elif query_params.get('max_followers') is not None:
-        query = query.filter(col_name <= query_params.get('max_followers'))
+        query = query.filter(col_name <= int(query_params.get('max_followers')))
     if query_params.get('num_albums') is not None:
-        query = query.filter(table.c.num_albums >= query_params.get('num_albums'))
+        query = query.filter(table.c.num_albums >= int(query_params.get('num_albums')))
     if query_params.get('num_media') is not None:
-        query = query.filter(table.c.num_media >= query_params.get('num_media'))
+        query = query.filter(table.c.num_media >= int(query_params.get('num_media')))
     return query
 
 def album_filter(query_params, query):
@@ -410,7 +410,7 @@ def album_filter(query_params, query):
     elif query_params.get('end_year') is not None:
         query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
     if query_params.get('num_tracks') is not None:
-        query = query.filter(table.c.num_tracks >= query_params.get('num_tracks'))
+        query = query.filter(table.c.num_tracks >= int(query_params.get('num_tracks')))
     return query
 
 def media_filter(query_params, query):
@@ -447,17 +447,17 @@ def extra_media_filter(query_params, query):
     """
     table = Media.__table__
     if query_params.get('seasons') is not None:
-        query = query.filter(table.c.seasons >= query_params.get('seasons'))
+        query = query.filter(table.c.seasons >= int(query_params.get('seasons')))
     if query_params.get('run_time') is not None:
-        query = query.filter(table.c.runtime >= query_params.get('run_time'))
+        query = query.filter(table.c.runtime >= int(query_params.get('run_time')))
     if query_params.get('popularity') is not None:
-        query = query.filter(table.c.popularity >= query_params.get('popularity'))
+        query = query.filter(table.c.popularity >= float(query_params.get('popularity')))
     if query_params.get('average_rating') is not None:
-        query = query.filter(table.c.average_rating >= query_params.get('average_rating'))
+        query = query.filter(table.c.average_rating >= float(query_params.get('average_rating')))
     if query_params.get('last_aired') is not None:
         query = query.filter(table.c.last_aired >= str(query_params.get('last_aired')).zfill(4))
-    if query_params.get('genres') is not None:
-        query = query.join(Media.genres).filter(Genre.name == query_params.get('genres'))
+    if query_params.get('genre') is not None:
+        query = query.join(Media.genres).filter(Genre.name == query_params.get('genre'))
     return query
 
 def artist_search(query, term):
