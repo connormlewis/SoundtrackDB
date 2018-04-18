@@ -482,7 +482,7 @@ def media_search(query, term):
                            cast(table.c.type, Text).ilike('%'+term+'%'), #convert
                            table.c.name.ilike('%'+term+'%'),
                            table.c.cast.ilike('%'+term+'%'),
-                           table.c.seasons.ilike('%'+term+'%'),
+                           cast(table.c.seasons, Text).ilike('%'+term+'%'),
                            cast(table.c.release_date, Text).ilike('%'+term+'%'),
                            table.c.last_aired.ilike('%'+term+'%'),
                            table.c.image.ilike('%'+term+'%'),
