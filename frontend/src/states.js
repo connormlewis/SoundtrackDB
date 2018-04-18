@@ -109,6 +109,9 @@ const MEDIA_HOME = {
     token: 'media',
     deps: ['$transition$'],
     resolveFn: (trans) => ApiService.getAllMedia(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters, trans.params().orderBy)
+  }, {
+    token: 'genres',
+    resolveFn: () => ApiService.getGenres()
   }]
 };
 

@@ -33,7 +33,7 @@ export class AlbumItem extends Component {
         <CardBody>
           <CardTitle className="text-left" style={titleStyles}>{this.props.album.name}</CardTitle>
           <CardSubtitle className="text-muted text-left">{this.props.album.release_date.substring(0, 4)}</CardSubtitle>
-          <CardText className="text-left">{this.props.album.track_count} Track{this.props.album.track_count === 1 ? '' : 's'}</CardText>
+          <CardText className="text-left">{this.props.album.num_tracks} Track{this.props.album.num_tracks === 1 ? '' : 's'}</CardText>
         </CardBody>
       </Card>
     );
@@ -106,6 +106,7 @@ export class AlbumHome extends Component {
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>
               <option value="name">Name</option>
               <option value="release_date">Year</option>
+              <option value="num_tracks">Track Count</option>
             </select>
 
             <div className="btn-group">
