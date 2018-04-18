@@ -90,68 +90,78 @@ def test_model_search(tester, phrase):
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[1]/form/input").send_keys(phrase);
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[1]/form/button").click()
 
-class HomePage(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000"
+def test_media_sort(tester):
+    driver = tester.driver
+    driver.get(tester.url)
 
-    def test_welcome_message(self):
-        test_title(self, "Welcome to SoundtrackDB")
+    #test order by year
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='name']").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("1947", tabs[0].text)   
 
-    def test_navigation(self):
-        test_navbar(self)
 
-    def test_global_search(self):
-        test_global_search(self, "Hello")
+# class HomePage(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000"
 
-    def tearDown(self):
-        self.driver.close()
+#     def test_welcome_message(self):
+#         test_title(self, "Welcome to SoundtrackDB")
 
-class AlbumPage(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/album"
+#     def test_navigation(self):
+#         test_navbar(self)
 
-    def test_title(self):
-        test_title(self, "Albums")
+#     def test_global_search(self):
+#         test_global_search(self, "Hello")
 
-    def test_navigation(self):
-        test_navbar(self)
+#     def tearDown(self):
+#         self.driver.close()
 
-    def test_cards(self):
-        test_card_items(self)
+# class AlbumPage(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/album"
 
-    def test_global_search(self):
-        test_global_search(self, "Arrow")
+#     def test_title(self):
+#         test_title(self, "Albums")
 
-    def test_album_search(self):
-        test_model_search(self, "sparrow")
+#     def test_navigation(self):
+#         test_navbar(self)
 
-    def tearDown(self):
-        self.driver.close()
+#     def test_cards(self):
+#         test_card_items(self)
 
-class ArtistPage(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/artist"
+#     def test_global_search(self):
+#         test_global_search(self, "Arrow")
 
-    def test_title(self):
-        test_title(self, "Artists");
+#     def test_album_search(self):
+#         test_model_search(self, "sparrow")
 
-    def test_navigation(self):
-        test_navbar(self)
+#     def tearDown(self):
+#         self.driver.close()
 
-    def test_cards(self):
-        test_card_items(self)
+# class ArtistPage(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/artist"
 
-    def test_global_search(self):
-        test_global_search(self, "Hans Zimmer")
+#     def test_title(self):
+#         test_title(self, "Artists");
 
-    def test_artist_search(self):
-        test_model_search(self, "Hans Zimmer")
+#     def test_navigation(self):
+#         test_navbar(self)
 
-    def tearDown(self):
-        self.driver.close()
+#     def test_cards(self):
+#         test_card_items(self)
+
+#     def test_global_search(self):
+#         test_global_search(self, "Hans Zimmer")
+
+#     def test_artist_search(self):
+#         test_model_search(self, "Hans Zimmer")
+
+#     def tearDown(self):
+#         self.driver.close()
 
 class MediaPage(unittest.TestCase):
     def setUp(self):
@@ -173,64 +183,67 @@ class MediaPage(unittest.TestCase):
     # def test_media_search(self):
     #     test_model_search(self, "Doctor Who")
 
-    def tearDown(self):
-        self.driver.close()
-
-class AboutPage(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/about"
-
-    def test_navigation(self):
-        test_navbar(self)
+    def test_sort(self):
+        test_media_sort(self);
 
     def tearDown(self):
         self.driver.close()
 
-class AlbumInstance(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/album/1"
+# class AboutPage(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/about"
 
-    def test_navigation(self):
-        test_navbar(self)
+#     def test_navigation(self):
+#         test_navbar(self)
 
-    def test_title(self):
-        test_instance_title(self, "Arrow: Season 5 (Original Television Soundtrack)")
+#     def tearDown(self):
+#         self.driver.close()
 
-    def test_tracks(self):
-        test_tracklist(self)
+# class AlbumInstance(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/album/1"
 
-class ArtistInstance(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/artist/1"
+#     def test_navigation(self):
+#         test_navbar(self)
 
-    def test_navigation(self):
-        test_navbar(self)
+#     def test_title(self):
+#         test_instance_title(self, "Arrow: Season 5 (Original Television Soundtrack)")
 
-    def test_title(self):
-        test_instance_title(self, "Blake Neely")
+#     def test_tracks(self):
+#         test_tracklist(self)
 
-    def test_biography(self):
-        test_bio(self);
+# class ArtistInstance(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/artist/1"
 
-class MediaInstance(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/media/66"
+#     def test_navigation(self):
+#         test_navbar(self)
 
-    def test_navigation(self):
-        test_navbar(self)
+#     def test_title(self):
+#         test_instance_title(self, "Blake Neely")
 
-    def test_title(self):
-        test_instance_title(self, "African Safari")
+#     def test_biography(self):
+#         test_bio(self);
 
-    def test_about(self):
-        test_about(self);
+# class MediaInstance(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/media/66"
 
-    def test_cast(self):
-        test_cast(self)
+#     def test_navigation(self):
+#         test_navbar(self)
+
+#     def test_title(self):
+#         test_instance_title(self, "African Safari")
+
+#     def test_about(self):
+#         test_about(self);
+
+#     def test_cast(self):
+#         test_cast(self)
 
 if __name__ == "__main__":
     unittest.main()
