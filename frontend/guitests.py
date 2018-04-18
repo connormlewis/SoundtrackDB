@@ -72,15 +72,23 @@ def test_cast(tester):
     cast = list(driver.find_elements_by_id("cast"))
     tester.assertNotEqual(cast.__len__(), 0) 
 
-def test_global_search(tester):
+def test_global_search(tester, phrase):
     driver = tester.driver
     driver.get(tester.url)
 
     driver.find_element_by_xpath("//input[@type='search']").click()
     driver.find_element_by_xpath("//input[@type='search']").clear()
-    driver.find_element_by_xpath("//input[@type='search']").send_keys("Arrow")
+    driver.find_element_by_xpath("//input[@type='search']").send_keys(phrase)
     driver.find_element_by_xpath("//button[@type='submit']").click()
 
+def test_model_search(tester, phrase):
+    driver = tester.driver
+    driver.get(tester.url)
+
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[1]/form/input").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[1]/form/input").clear()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[1]/form/input").send_keys(phrase);
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[1]/form/button").click()
 
 class HomePage(unittest.TestCase):
     def setUp(self):
@@ -94,7 +102,7 @@ class HomePage(unittest.TestCase):
         test_navbar(self)
 
     def test_global_search(self):
-        test_global_search(self)
+        test_global_search(self, "Hello")
 
     def tearDown(self):
         self.driver.close()
@@ -113,6 +121,12 @@ class AlbumPage(unittest.TestCase):
     def test_cards(self):
         test_card_items(self)
 
+    def test_global_search(self):
+        test_global_search(self, "Arrow")
+
+    def test_album_search(self):
+        test_model_search(self, "sparrow")
+
     def tearDown(self):
         self.driver.close()
 
@@ -130,6 +144,12 @@ class ArtistPage(unittest.TestCase):
     def test_cards(self):
         test_card_items(self)
 
+    def test_global_search(self):
+        test_global_search(self, "Hans Zimmer")
+
+    def test_artist_search(self):
+        test_model_search(self, "Hans Zimmer")
+
     def tearDown(self):
         self.driver.close()
 
@@ -146,6 +166,12 @@ class MediaPage(unittest.TestCase):
 
     def test_cards(self):
         test_card_items(self)
+
+    def test_global_search(self):
+        test_global_search(self, "Interstellar")
+
+    # def test_media_search(self):
+    #     test_model_search(self, "Doctor Who")
 
     def tearDown(self):
         self.driver.close()
