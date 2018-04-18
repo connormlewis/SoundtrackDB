@@ -54,25 +54,25 @@ export class ArtistForm extends Component {
                 <Input type="number" name="max" id="max" min="0" onChange={(e) => (this.setState({max: e.target.value}))}/>
               </Col>
             </FormGroup>
-                <FormGroup row>
-                    <Col sm={6}>
-                        <legend>Number of Albums</legend>
-                        <Label for="album" sm={2}>Min</Label>
-                        <Input type="number" name="album" id="album" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
-                    </Col>
-                    <Col sm={6}>
-                        <legend>Number of Media</legend>
-                        <Label for="media" sm={2}>Min</Label>
-                        <Input type="number" name="media" id="media" min="0" onChange={(e) => (this.setState({media: e.target.value}))}/>
-                    </Col>
-                </FormGroup>
-                <FormGroup row>
-                </FormGroup>
-                <FormGroup check row>
-                  <Col sm={{ size: 10 }}>
-                    <Button onClick={this.filter}>Submit</Button>
-                  </Col>
-                </FormGroup>
+            <FormGroup row>
+              <Col sm={6}>
+                <legend>Number of Albums</legend>
+                <Label for="album" sm={2}>Min</Label>
+                <Input type="number" name="album" id="album" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+              </Col>
+              <Col sm={6}>
+                <legend>Number of Media</legend>
+                <Label for="media" sm={2}>Max</Label>
+                <Input type="number" name="media" id="media" min="0" onChange={(e) => (this.setState({media: e.target.value}))}/>
+              </Col>
+            </FormGroup>
+            <FormGroup row>
+            </FormGroup>
+            <FormGroup check row>
+              <Col sm={{ size: 10 }}>
+                <Button onClick={this.filter}>Submit</Button>
+              </Col>
+            </FormGroup>
           </Form>
         </Collapse>
       </div>

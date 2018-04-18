@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
 // eslint-disable-next-line
 import styles from '../../style/Form.css';
-import yearItems from './Years.jsx' 
+import yearItems from './Years.jsx';
+import ratingItems from './Rating.jsx';
+import seasonItems from './Seasons.jsx'
 
 export class MediaForm extends Component {
 
@@ -56,7 +58,25 @@ export class MediaForm extends Component {
   }
 
   render () {
+    const genres = this.props.genres.items.map(genre => {
+      return (
+        <option value={genre.name}>{genre.name}</option>
+      );
+    });
+
     const years = yearItems.map((item) => {
+      return (
+        <option>{item}</option>
+      );
+    });
+
+    const seasons = seasonItems.map((item) => {
+      return (
+        <option>{item}</option>
+      );
+    });
+
+    const ratings = ratingItems.map((item) => {
       return (
         <option>{item}</option>
       );
@@ -87,13 +107,7 @@ export class MediaForm extends Component {
               <Col sm={12}>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({genre: e.target.value}))}>
                   <option value="">Any</option>
-                  {
-                    this.props.genres.items.map(genre => {
-                      return (
-                        <option value={genre.name}>{genre.name}</option>
-                      )
-                    })
-                  }
+                  {genres}
                 </Input>
               </Col>
             </FormGroup>
@@ -102,12 +116,14 @@ export class MediaForm extends Component {
               <Col sm={5}>
                 <Label for="start" sm={10}>Start Year</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
+                  <option value="">Min</option>
                   {years}
                 </Input>
               </Col>
               <Col sm={5}>
                 <Label for="end" sm={10}>End Year</Label>
-                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
+                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
+                  <option value="">Max</option>
                   {years}
                 </Input>
               </Col>
@@ -123,22 +139,29 @@ export class MediaForm extends Component {
             <legend>Number of Seasons</legend>
             <FormGroup row>
               <Col sm={5}>
-                <Label for="season" sm={10}>Min Seasons</Label>
-                <Input type="number" name="season" id="season" min="0" onChange={(e) => (this.setState({season: e.target.value}))}/>
+                <Label for="season" sm={10}>Seasons</Label>
+                <Input type="select" name="season" id="season" min="0" onChange={(e) => (this.setState({season: e.target.value}))}>
+                  <option value="">Any</option>
+                  {seasons}
+                </Input>
               </Col>
             </FormGroup>
             <legend>Average Rating</legend>
             <FormGroup row>
               <Col sm={5}>
-                <Label for="avg_rate" sm={10}>Average Rating</Label>
-                <Input type="number" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({avg_rate: e.target.value}))}/>
+                <Label for="avg_rate" sm={10}>Rating</Label>
+                <Input type="select" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({avg_rate: e.target.value}))}>
+                  <option value="">Any</option>
+                  {ratings}
+                </Input>
               </Col>
             </FormGroup>
             <legend>Last Aired</legend>
             <FormGroup row>
               <Col sm={5}>
-                <Label for="last_air" sm={10}>Last Aired (Year)</Label>
+                <Label for="last_air" sm={10}>Year</Label>
                 <Input type="select" name="last_air" id="last_air" onChange={(e) => (this.setState({last_air: e.target.value}))}>
+                  <option value="">Any</option>
                   {years}
                 </Input>
               </Col>

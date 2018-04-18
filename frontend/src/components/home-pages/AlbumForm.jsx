@@ -45,22 +45,24 @@ export class AlbumForm extends Component {
               <Col sm={6}>
                 <Label for="start" sm={10}>Start Year</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
+                  <option value="">Min</option>
                   {years}
                 </Input>
               </Col>
               <Col sm={6}>
                 <Label for="end" sm={10}>End Year</Label>
                 <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
+                  <option value="">Max</option>
                   {years}
                 </Input>
               </Col>
             </FormGroup>
             <legend>Number of Tracks</legend>
             <FormGroup row>
-                <Label className="form-label" for="track" sm={2}>Min</Label>
-                <Col sm={4}>
-                  <Input type="number" name="track" id="track" onChange={(e) => (this.setState({track: e.target.value}))}/>
-                </Col>
+              <Label className="form-label" for="track" sm={2}>Min</Label>
+              <Col sm={4}>
+                <Input type="number" name="track" id="track" onChange={(e) => (this.setState({track: e.target.value}))}/>
+              </Col>
             </FormGroup>
             <FormGroup check row>
               <Col sm={{ size: 10 }}>
