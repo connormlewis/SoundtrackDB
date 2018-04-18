@@ -17,7 +17,7 @@ export class AlbumForm extends Component {
   }
 
   getNumTracks() {
-    if (this.state.track == "") {
+    if (this.state.track === "") {
       this.setState({validNum: true});
       return undefined;
     }
@@ -32,7 +32,7 @@ export class AlbumForm extends Component {
   }
 
   checkValidNum(num) {
-    if (num >= 0 && !isNaN(parseInt(num))) {
+    if (num >= 0 && !isNaN(parseInt(num, 10))) {
       return true; 
     }
     return false; 
@@ -76,7 +76,7 @@ export class AlbumForm extends Component {
       <div>
         <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
-          <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter}}>
+          <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={6}>
                 <Label style={{paddingRight: "50px"}}for="start">Release Year</Label>

@@ -21,14 +21,14 @@ export class ArtistForm extends Component {
   }
 
   checkValidNum(num) {
-    if (num >= 0 && !isNaN(parseInt(num))) {
+    if (num >= 0 && !isNaN(parseInt(num, 10))) {
       return true; 
     }
     return false; 
   }
 
   getMinFollowers() {
-    if (this.state.min == "") {
+    if (this.state.min === "") {
       this.setState({validMin: true});
       return undefined;
     }
@@ -43,7 +43,7 @@ export class ArtistForm extends Component {
   }
 
   getMaxFollowers() {
-    if (this.state.max == "") {
+    if (this.state.max === "") {
       this.setState({validMax: true});
       return undefined;
     }
@@ -58,7 +58,7 @@ export class ArtistForm extends Component {
   }
 
   getAlbum() {
-    if (this.state.album == "") {
+    if (this.state.album === "") {
       this.setState({validAlbum: true});
       return undefined;
     }
@@ -73,7 +73,7 @@ export class ArtistForm extends Component {
   }
 
   getMedia() {
-    if (this.state.media == "") {
+    if (this.state.media === "") {
       this.setState({validMedia: true});
       return undefined;
     }
@@ -133,7 +133,7 @@ export class ArtistForm extends Component {
       <div>
         <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
-          <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter}}>
+          <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={6}>
                 <Label for="min">Number of Spotify Followers</Label>
