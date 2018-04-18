@@ -388,9 +388,9 @@ def artist_filter(query_params, query):
     elif query_params.get('max_followers') is not None:
         query = query.filter(col_name <= int(query_params.get('max_followers')))
     if query_params.get('num_albums') is not None:
-        query = query.filter(table.c.num_albums >= int(query_params.get('num_albums')))
+        query = query.filter(table.c.num_albums == int(query_params.get('num_albums')))
     if query_params.get('num_media') is not None:
-        query = query.filter(table.c.num_media >= int(query_params.get('num_media')))
+        query = query.filter(table.c.num_media == int(query_params.get('num_media')))
     return query
 
 def album_filter(query_params, query):
@@ -410,7 +410,7 @@ def album_filter(query_params, query):
     elif query_params.get('end_year') is not None:
         query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
     if query_params.get('num_tracks') is not None:
-        query = query.filter(table.c.num_tracks >= int(query_params.get('num_tracks')))
+        query = query.filter(table.c.num_tracks == int(query_params.get('num_tracks')))
     return query
 
 def media_filter(query_params, query):
@@ -447,7 +447,7 @@ def extra_media_filter(query_params, query):
     """
     table = Media.__table__
     if query_params.get('seasons') is not None:
-        query = query.filter(table.c.seasons >= int(query_params.get('seasons')))
+        query = query.filter(table.c.seasons == int(query_params.get('seasons')))
     if query_params.get('run_time') is not None:
         query = query.filter(table.c.runtime >= int(query_params.get('run_time')))
     if query_params.get('popularity') is not None:
@@ -455,7 +455,7 @@ def extra_media_filter(query_params, query):
     if query_params.get('average_rating') is not None:
         query = query.filter(table.c.average_rating >= float(query_params.get('average_rating')))
     if query_params.get('last_aired') is not None:
-        query = query.filter(table.c.last_aired >= str(query_params.get('last_aired')).zfill(4))
+        query = query.filter(table.c.last_aired == str(query_params.get('last_aired')).zfill(4))
     if query_params.get('genre') is not None:
         query = query.join(Media.genres).filter(Genre.name == query_params.get('genre'))
     return query

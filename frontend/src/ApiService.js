@@ -1,5 +1,4 @@
 import * as $ from "jquery";
-import * as _ from 'lodash';
 
 var API_URL = 'http://localhost'
 if (process.env.NODE_ENV === "production") {
@@ -119,6 +118,16 @@ export default class ApiService {
       url: API_URL + '/search/' + query,
       type: 'get',
       data: params
+    })
+  }
+
+  static getGenres() {
+    return $.ajax({
+      url: API_URL + '/genres',
+      type: 'get',
+      data: {
+        limit: 200
+      }
     })
   }
 }
