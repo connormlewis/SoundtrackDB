@@ -32,7 +32,7 @@ export class MediaForm extends Component {
     filters['popularity'] = this.state.popular;
     filters['average_rating'] = this.state.avg_rate;
     filters['last_aired'] = this.state.last_air;
-    if (this.state.genre != "") {
+    if (this.state.genre !== "") {
       filters['genre'] = this.state.genre;
     }
     const { stateService } = this.props.transition.router;
