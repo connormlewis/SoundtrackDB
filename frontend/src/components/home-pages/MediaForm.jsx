@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
 // eslint-disable-next-line
 import styles from '../../style/Form.css';
-import yearItems from './Years.jsx' 
+import yearItems from './Years.jsx';
+import ratingItems from './Rating.jsx';
+import seasonItems from './Seasons.jsx';
 
 export class MediaForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {movie: false, tv_show: false, start_year: 0, end_year: 2018, running: false, seasons: 0, run_time: 0, popularity: 0, average_rating: 0, last_aired: 0, collapse: false}; 
+    this.state = {movie: false, tv_show: false, start_year: 0, end_year: 0, running: false, seasons: 0, average_rating: 0, last_air: 0, collapse: false}; 
     this.filter = this.filter.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
@@ -22,16 +24,24 @@ export class MediaForm extends Component {
     else if(this.state.tv_show && !this.state.movie) {
       filters['type'] = 'tv_show'; 
     }
-    filters['start_year'] = this.state.start; 
-    filters['end_year'] = this.state.end;
+    if (this.state.start !== "") {
+      filters['start_year'] = this.state.start; 
+    }
+    if (this.state.end !== "") {
+      filters['end_year'] = this.state.end;
+    }
     if (this.state.running) {
       filters['running'] = "true"; 
     }
-    filters['seasons'] = this.state.season;
-    filters['run_time'] = this.state.runtime;
-    filters['popularity'] = this.state.popular;
-    filters['average_rating'] = this.state.avg_rate;
-    filters['last_aired'] = this.state.last_air;
+    if (this.state.season !== "") {
+      filters['seasons'] = this.state.season;
+    }
+    if (this.state.avg_rate !== "") {
+      filters['average_rating'] = this.state.avg_rate;
+    }
+    if (this.state.last_air !== "") {
+      filters['last_aired'] = this.state.last_air;
+    }
     if (this.state.genre != "") {
       filters['genre'] = this.state.genre;
     }
@@ -54,9 +64,27 @@ export class MediaForm extends Component {
   }
 
   render () {
+    const genres = this.props.genres.items.map(genre => {
+      return (
+        <option value={genre.name}>{genre.name}</option>
+      );
+    });
+
     const years = yearItems.map((item) => {
       return (
-        <option>{item}</option>
+        <option value={item}>{item}</option>
+      );
+    });
+
+    const seasons = seasonItems.map((item) => {
+      return (
+        <option value={item}>{item}</option>
+      );
+    });
+
+    const ratings = ratingItems.map((item) => {
+      return (
+        <option value={item}>{item}</option>
       );
     });
 
@@ -98,45 +126,51 @@ export class MediaForm extends Component {
               <Col sm={3}>
                   <Label for="release" size="lg">Release Year</Label>
                   <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
+                    <option value="">Any</option>
                     {years}
                   </Input>
                   <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
+                    <option value="">Any</option>
                     {years}
                   </Input>
               </Col>
               
               <Col sm={3}>
                 <Label for="avg_rate" size="lg" sm={20}>Average Rating</Label>
-                <Input type="number" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                <Input type="select" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({avg_rate: e.target.value}))}>
+                  <option value="">Any</option>
+                  {ratings}
+                </Input>
               </Col>
             </FormGroup>
             
             <legend>TV Show Filters</legend>
             <FormGroup row>
-              <Col sm={4}>
+              <Col sm={5}>
                 <Label size="lg" check>
                   <input name="running" type="checkbox" checked={this.state.running} onChange={this.handleInputChange}/>{' '}
                   Currently Running Series
                 </Label>
               </Col>
-              <Col sm={4}>
+              <Col sm={3}>
                 <Label for="season" size="lg">Seasons</Label>
-                <Input type="number" name="season" id="season" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                <Input type="select" name="season" id="season" min="0" onChange={(e) => (this.setState({season: e.target.value}))}>
+                  <option value="">Any</option>
+                  {seasons}
+                </Input>
               </Col>
 
               <Col sm={4}>
                 <Label for="last_air" size="lg">Last Aired (Year)</Label>
-                <Input type="select" name="last_air" id="last_air" onChange={(e) => (this.setState({album: e.target.value}))}>
+                <Input type="select" name="last_air" id="last_air" onChange={(e) => (this.setState({last_air: e.target.value}))}>
+                  <option value="">Any</option>
                   {years}
                 </Input>
               </Col>
             </FormGroup>
-
-            <FormGroup check row>
-              <Col sm={{ size: 10 }}>
+              <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={{ size: 10 }}>
                 <Button onClick={this.filter}>Submit</Button>
               </Col>
-            </FormGroup>
           </Form>
         </Collapse>
       </div>
