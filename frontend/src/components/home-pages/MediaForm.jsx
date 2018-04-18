@@ -70,19 +70,19 @@ export class MediaForm extends Component {
 
     const years = yearItems.map((item) => {
       return (
-        <option>{item}</option>
+        <option value={item}>{item}</option>
       );
     });
 
     const seasons = seasonItems.map((item) => {
       return (
-        <option>{item}</option>
+        <option value={item}>{item}</option>
       );
     });
 
     const ratings = ratingItems.map((item) => {
       return (
-        <option>{item}</option>
+        <option value={item}>{item}</option>
       );
     });
 

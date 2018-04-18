@@ -37,7 +37,7 @@ export class AlbumForm extends Component {
   render () {
     const years = yearItems.map((item) => {
       return (
-        <option>{item}</option>
+        <option value={item}>{item}</option>
       );
     });
 
