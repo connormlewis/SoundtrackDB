@@ -24,8 +24,12 @@ export class MediaForm extends Component {
     else if(this.state.tv_show && !this.state.movie) {
       filters['type'] = 'tv_show'; 
     }
-    filters['start_year'] = this.state.start; 
-    filters['end_year'] = this.state.end;
+    if (this.state.start !== "") {
+      filters['start_year'] = this.state.start; 
+    }
+    if (this.state.end !== "") {
+      filters['end_year'] = this.state.end;
+    }
     if (this.state.running) {
       filters['running'] = "true"; 
     }
@@ -115,15 +119,15 @@ export class MediaForm extends Component {
             <FormGroup row>
               <Col sm={5}>
                 <Label for="start" sm={10}>Start Year</Label>
-                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
-                  <option value="">Min</option>
+                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))} default={1954}>
+                  <option value="">Any</option>
                   {years}
                 </Input>
               </Col>
               <Col sm={5}>
                 <Label for="end" sm={10}>End Year</Label>
-                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
-                  <option value="">Max</option>
+                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} default={2018}>
+                  <option value="">Any</option>
                   {years}
                 </Input>
               </Col>

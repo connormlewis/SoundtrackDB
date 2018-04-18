@@ -14,8 +14,14 @@ export class AlbumForm extends Component {
   }
 
   filter(params) {
-    let start_year = this.state.start;
-    let end_year = this.state.end;
+    let start_year = undefined; 
+    if (this.state.start !== "") {
+      start_year = this.state.start; 
+    }
+    let end_year = undefined; 
+    if (this.state.end !== "") {
+      end_year = this.state.end;
+    }
     let num_tracks = undefined;
     if (this.state.track !== "") {
       num_tracks = this.state.track; 
@@ -44,15 +50,15 @@ export class AlbumForm extends Component {
             <FormGroup row>
               <Col sm={6}>
                 <Label for="start" sm={10}>Start Year</Label>
-                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
-                  <option value="">Min</option>
+                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))} defaultValue={1954}>
+                  <option value="">Any</option>
                   {years}
                 </Input>
               </Col>
               <Col sm={6}>
                 <Label for="end" sm={10}>End Year</Label>
                 <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
-                  <option value="">Max</option>
+                  <option value="">Any</option>
                   {years}
                 </Input>
               </Col>
