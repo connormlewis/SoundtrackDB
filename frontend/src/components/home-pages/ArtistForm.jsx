@@ -51,7 +51,7 @@ export class ArtistForm extends Component {
                     <Col sm={6}>
                         <legend>Number of Media</legend>
                         <Label for="media" sm={2}>Min</Label>
-                        <Input type="number" name="media" id="media" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                        <Input type="number" name="media" id="media" min="0" onChange={(e) => (this.setState({media: e.target.value}))}/>
                     </Col>
                 </FormGroup>
                 <FormGroup row>

@@ -122,35 +122,35 @@ export class MediaForm extends Component {
             <FormGroup row>
               <Col sm={5}>
                 <Label for="season" sm={10}>Min Seasons</Label>
-                <Input type="number" name="season" id="season" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                <Input type="number" name="season" id="season" min="0" onChange={(e) => (this.setState({season: e.target.value}))}/>
               </Col>
             </FormGroup>
             <legend>Runtime</legend>
             <FormGroup row>
               <Col sm={5}>
                 <Label for="runtime" sm={10}>Runtime (minutes)</Label>
-                <Input type="number" name="runtime" id="runtime" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                <Input type="number" name="runtime" id="runtime" min="0" onChange={(e) => (this.setState({runtime: e.target.value}))}/>
               </Col>
             </FormGroup>
             <legend>Popularity</legend>
             <FormGroup row>
               <Col sm={5}>
                 <Label for="popular" sm={10}>Popularity Rating</Label>
-                <Input type="number" name="popular" id="popular" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                <Input type="number" name="popular" id="popular" min="0" onChange={(e) => (this.setState({popular: e.target.value}))}/>
               </Col>
             </FormGroup>
             <legend>Average Rating</legend>
             <FormGroup row>
               <Col sm={5}>
                 <Label for="avg_rate" sm={10}>Average Rating</Label>
-                <Input type="number" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
+                <Input type="number" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({avg_rate: e.target.value}))}/>
               </Col>
             </FormGroup>
             <legend>Last Aired</legend>
             <FormGroup row>
               <Col sm={5}>
                 <Label for="last_air" sm={10}>Last Aired (Year)</Label>
-                <Input type="select" name="last_air" id="last_air" onChange={(e) => (this.setState({album: e.target.value}))}>
+                <Input type="select" name="last_air" id="last_air" onChange={(e) => (this.setState({last_air: e.target.value}))}>
                   {years}
                 </Input>
               </Col>
