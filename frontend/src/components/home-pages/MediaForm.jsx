@@ -10,7 +10,7 @@ export class MediaForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {movie: false, tv_show: false, start_year: 0, end_year: 0, running: false, seasons: 0, average_rating: 0, last_air: 0, collapse: false}; 
+    this.state = {movie: false, tv_show: false, start: "", end: "", running: false, season: "", avg_rate: "", last_air: "", collapse: false}; 
     this.filter = this.filter.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
