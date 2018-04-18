@@ -92,7 +92,7 @@ export class MediaForm extends Component {
       <div>
         <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
-          <Form className="filtering-form">
+          <Form className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter}}>
             
             <FormGroup row>
               <Col sm={3}>
@@ -129,7 +129,7 @@ export class MediaForm extends Component {
                     <option value="">Any</option>
                     {years}
                   </Input>
-                  <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
+                  <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
                     <option value="">Any</option>
                     {years}
                   </Input>
@@ -169,7 +169,7 @@ export class MediaForm extends Component {
               </Col>
             </FormGroup>
               <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={{ size: 10 }}>
-                <Button onClick={this.filter}>Submit</Button>
+                <Button type="submit" onClick={this.filter}>Submit</Button>
               </Col>
           </Form>
         </Collapse>
