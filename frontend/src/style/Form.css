@@ -1,15 +1,28 @@
-.filtering-form {
-	margin: 20px;
-	padding: 10px;
-	border-style: solid;
-    border-color: #222e50;
-    background-color: #d0e2f2;
-    color: #222e50;
-    border-radius: 6px;
-    box-shadow: 0.5px 0.5px 0.5px;
+@media (min-width: 480px) {
+    .filtering-form {
+        max-width: 1200px;
+        width: 95%;
+        margin: 20px;
+        padding: 10px;
+        border-style: solid;
+        border-color: #222e50;
+        background-color: #d0e2f2;
+        color: #222e50;
+        border-radius: 6px;
+        box-shadow: 0.5px 0.5px 0.5px;
+    }
 }
 
-.form-label {
-    padding-left: 25px !important;
-    display: block;
+@media (max-width: 480px) {
+    .filtering-form {
+        width: 90%;
+        margin: 20px;
+        padding: 10px;
+        border-style: solid;
+        border-color: #222e50;
+        background-color: #d0e2f2;
+        color: #222e50;
+        border-radius: 6px;
+        box-shadow: 0.5px 0.5px 0.5px;
+    }
 }
