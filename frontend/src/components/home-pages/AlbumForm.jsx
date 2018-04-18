@@ -48,7 +48,7 @@ export class AlbumForm extends Component {
           <Form inline className="filtering-form">
             <FormGroup row>
               <Col sm={6}>
-                <Label for="start">Release Year</Label>
+                <Label style={{paddingRight: "50px"}}for="start">Release Year</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
@@ -60,15 +60,13 @@ export class AlbumForm extends Component {
                 </Input>
               </Col>
               <Col sm={6}>
-                <Label className="form-label" for="track">Number of Tracks</Label>
+                <Label for="track">Number of Tracks</Label>
                 <Input type="number" name="track" id="track" placeholder="value" onChange={(e) => (this.setState({track: e.target.value}))}/>
               </Col>
             </FormGroup>
-            <FormGroup check>
-              <Col sm={3}>
+              <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
                 <Button onClick={this.filter}>Submit</Button>
               </Col>
-            </FormGroup>
           </Form>
         </Collapse>
       </div>

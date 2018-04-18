@@ -59,11 +59,9 @@ export class ArtistForm extends Component {
                 <Input type="number" name="media" id="media" min="0" placeholder="value" onChange={(e) => (this.setState({media: e.target.value}))}/>
               </Col>
             </FormGroup>
-            <FormGroup check>
-              <Col sm={3}>
+              <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
                 <Button onClick={this.filter}>Submit</Button>
               </Col>
-            </FormGroup>
           </Form>
         </Collapse>
       </div>
