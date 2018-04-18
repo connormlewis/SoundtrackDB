@@ -45,33 +45,27 @@ export class AlbumForm extends Component {
       <div>
         <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
-          <Form className="filtering-form">
-            <legend style={{marginBottom: "0px"}}>Release Date</legend>
+          <Form inline className="filtering-form">
             <FormGroup row>
               <Col sm={6}>
-                <Label for="start" sm={10}>Start Year</Label>
-                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))} defaultValue={1954}>
+                <Label for="start">Release Year</Label>
+                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
+                  <option value="">Any</option>
+                  {years}
+                </Input>
+                {' '}
+                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
                 </Input>
               </Col>
               <Col sm={6}>
-                <Label for="end" sm={10}>End Year</Label>
-                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
-                  <option value="">Any</option>
-                  {years}
-                </Input>
+                <Label className="form-label" for="track">Number of Tracks</Label>
+                <Input type="number" name="track" id="track" placeholder="value" onChange={(e) => (this.setState({track: e.target.value}))}/>
               </Col>
             </FormGroup>
-            <legend>Number of Tracks</legend>
-            <FormGroup row>
-              <Label className="form-label" for="track" sm={2}>Min</Label>
-              <Col sm={4}>
-                <Input type="number" name="track" id="track" onChange={(e) => (this.setState({track: e.target.value}))}/>
-              </Col>
-            </FormGroup>
-            <FormGroup check row>
-              <Col sm={{ size: 10 }}>
+            <FormGroup check>
+              <Col sm={3}>
                 <Button onClick={this.filter}>Submit</Button>
               </Col>
             </FormGroup>

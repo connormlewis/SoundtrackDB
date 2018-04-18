@@ -42,34 +42,25 @@ export class ArtistForm extends Component {
       <div>
         <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
-          <Form className="filtering-form">
-            <legend>Number of Spotify Followers</legend>
+          <Form inline className="filtering-form">
             <FormGroup row>
               <Col sm={6}>
-                <Label for="min" sm={10}>Min</Label>
-                <Input type="number" name="min" id="min" min="0" onChange={(e) => (this.setState({min: e.target.value}))}/>
+                <Label for="min">Number of Spotify Followers</Label>
+                <Input type="number" name="min" id="min" min="0" placeholder="min" onChange={(e) => (this.setState({min: e.target.value}))}/>
+                {' '}
+                <Input type="number" name="max" id="max" min="0" placeholder="max" onChange={(e) => (this.setState({max: e.target.value}))}/>
               </Col>
-              <Col sm={6}>
-                <Label for="max" sm={10}>Max</Label>
-                <Input type="number" name="max" id="max" min="0" onChange={(e) => (this.setState({max: e.target.value}))}/>
+              <Col sm={3}>
+                <Label for="album">Number of Albums</Label>
+                <Input type="number" name="album" id="album" min="0" placeholder="value" onChange={(e) => (this.setState({album: e.target.value}))}/>
               </Col>
-            </FormGroup>
-            <FormGroup row>
-              <Col sm={6}>
-                <legend>Number of Albums</legend>
-                <Label for="album" sm={2}>Min</Label>
-                <Input type="number" name="album" id="album" min="0" onChange={(e) => (this.setState({album: e.target.value}))}/>
-              </Col>
-              <Col sm={6}>
-                <legend>Number of Media</legend>
-                <Label for="media" sm={2}>Max</Label>
-                <Input type="number" name="media" id="media" min="0" onChange={(e) => (this.setState({media: e.target.value}))}/>
+              <Col sm={3}>
+                <Label for="media">Number of Media</Label>
+                <Input type="number" name="media" id="media" min="0" placeholder="value" onChange={(e) => (this.setState({media: e.target.value}))}/>
               </Col>
             </FormGroup>
-            <FormGroup row>
-            </FormGroup>
-            <FormGroup check row>
-              <Col sm={{ size: 10 }}>
+            <FormGroup check>
+              <Col sm={3}>
                 <Button onClick={this.filter}>Submit</Button>
               </Col>
             </FormGroup>
