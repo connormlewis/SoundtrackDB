@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Col, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap'; 
+import { Col, Button, Form, FormGroup, Label, Input, Collapse, FormFeedback} from 'reactstrap'; 
 // eslint-disable-next-line
 import styles from '../../style/Form.css';
 import yearItems from './Years.jsx'
@@ -8,9 +8,27 @@ export class AlbumForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {start_year: 1954, end_year: 2018, tracks: 0, collapse: false}; 
+    this.state = {start_year: 1954, end_year: 2018, track: 0, collapse: false, validNum: true}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.checkValidNum = this.checkValidNum.bind(this);
+    this.getFeedback = this.getFeedback.bind(this); 
+  }
+
+  checkValidNum(num) {
+    if (num >= 0 && !isNaN(parseInt(num))) {
+      return true; 
+    }
+    return false; 
+  }
+
+  getFeedback() {
+    if (!this.state.validNum) {
+      return <FormFeedback>Please enter a positive number.</FormFeedback>
+    }
+    else {
+      return null; 
+    }
   }
 
   filter(params) {
@@ -25,6 +43,13 @@ export class AlbumForm extends Component {
     let num_tracks = undefined;
     if (this.state.track !== "") {
       num_tracks = this.state.track; 
+    }
+    if (!this.checkValidNum(num_tracks)) {
+      this.setState({validNum: false})
+      num_tracks = undefined
+    }
+    else {
+      this.setState({validNum: true})
     }
     const { stateService } = this.props.transition.router;
     stateService.go('^.home', {limit: 12, offset: 0, filters: {start_year: start_year, end_year: end_year, num_tracks: num_tracks}});
@@ -61,7 +86,8 @@ export class AlbumForm extends Component {
               </Col>
               <Col sm={6}>
                 <Label for="track">Number of Tracks</Label>
-                <Input type="number" name="track" id="track" placeholder="value" onChange={(e) => (this.setState({track: e.target.value}))}/>
+                <Input invalid={!this.state.validNum} type="number" name="track" id="track" placeholder="value" onChange={(e) => (this.setState({track: e.target.value}))}/>
+                {this.getFeedback()}
               </Col>
             </FormGroup>
               <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
