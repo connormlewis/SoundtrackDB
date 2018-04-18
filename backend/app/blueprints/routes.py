@@ -448,10 +448,6 @@ def extra_media_filter(query_params, query):
     table = Media.__table__
     if query_params.get('seasons') is not None:
         query = query.filter(table.c.seasons == int(query_params.get('seasons')))
-    if query_params.get('run_time') is not None:
-        query = query.filter(table.c.runtime >= int(query_params.get('run_time')))
-    if query_params.get('popularity') is not None:
-        query = query.filter(table.c.popularity >= float(query_params.get('popularity')))
     if query_params.get('average_rating') is not None:
         query = query.filter(table.c.average_rating >= float(query_params.get('average_rating')))
     if query_params.get('last_aired') is not None:
@@ -482,7 +478,7 @@ def media_search(query, term):
                            cast(table.c.type, Text).ilike('%'+term+'%'), #convert
                            table.c.name.ilike('%'+term+'%'),
                            table.c.cast.ilike('%'+term+'%'),
-                           table.c.seasons.ilike('%'+term+'%'),
+                           cast(table.c.seasons, Text).ilike('%'+term+'%'),
                            cast(table.c.release_date, Text).ilike('%'+term+'%'),
                            table.c.last_aired.ilike('%'+term+'%'),
                            table.c.image.ilike('%'+term+'%'),
