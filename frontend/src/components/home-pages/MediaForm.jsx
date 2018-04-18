@@ -27,10 +27,12 @@ export class MediaForm extends Component {
     if (this.state.running) {
       filters['running'] = "true"; 
     }
-    filters['seasons'] = this.state.season;
-    filters['run_time'] = this.state.runtime;
-    filters['popularity'] = this.state.popular;
-    filters['average_rating'] = this.state.avg_rate;
+    if (this.state.season !== "") {
+      filters['seasons'] = this.state.season;
+    }
+    if (this.state.avg_rate !== "") {
+      filters['average_rating'] = this.state.avg_rate;
+    }
     filters['last_aired'] = this.state.last_air;
     if (this.state.genre !== "") {
       filters['genre'] = this.state.genre;
@@ -123,20 +125,6 @@ export class MediaForm extends Component {
               <Col sm={5}>
                 <Label for="season" sm={10}>Min Seasons</Label>
                 <Input type="number" name="season" id="season" min="0" onChange={(e) => (this.setState({season: e.target.value}))}/>
-              </Col>
-            </FormGroup>
-            <legend>Runtime</legend>
-            <FormGroup row>
-              <Col sm={5}>
-                <Label for="runtime" sm={10}>Runtime (minutes)</Label>
-                <Input type="number" name="runtime" id="runtime" min="0" onChange={(e) => (this.setState({runtime: e.target.value}))}/>
-              </Col>
-            </FormGroup>
-            <legend>Popularity</legend>
-            <FormGroup row>
-              <Col sm={5}>
-                <Label for="popular" sm={10}>Popularity Rating</Label>
-                <Input type="number" name="popular" id="popular" min="0" onChange={(e) => (this.setState({popular: e.target.value}))}/>
               </Col>
             </FormGroup>
             <legend>Average Rating</legend>

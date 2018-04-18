@@ -16,7 +16,10 @@ export class AlbumForm extends Component {
   filter(params) {
     let start_year = this.state.start;
     let end_year = this.state.end;
-    let num_tracks = this.state.track;
+    let num_tracks = undefined;
+    if (this.state.track !== "") {
+      num_tracks = this.state.track; 
+    }
     const { stateService } = this.props.transition.router;
     stateService.go('^.home', {limit: 12, offset: 0, filters: {start_year: start_year, end_year: end_year, num_tracks: num_tracks}});
   }

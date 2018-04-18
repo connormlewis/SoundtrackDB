@@ -13,10 +13,22 @@ export class ArtistForm extends Component {
   }
 
   filter(params) {
-    let min_followers = this.state.min; 
-    let max_followers = this.state.max; 
-    let num_albums = this.state.album;
-    let num_media = this.state.media;
+    let min_followers = undefined; 
+    if (this.state.min !== "") {
+      min_followers = this.state.min;
+    } 
+    let max_followers = undefined;
+    if (this.state.max !== "") {
+      max_followers = this.state.max; 
+    }; 
+    let num_albums = undefined; 
+    if (this.state.album !== "") {
+      num_albums = this.state.album;
+    }; 
+    let num_media = undefined;
+    if (this.state.media !== "") {
+      num_media = this.state.media; 
+    }
     const { stateService } = this.props.transition.router;
     stateService.go('^.home', {limit: 12, offset: 0, filters: {min_followers: min_followers, max_followers: max_followers, num_albums: num_albums, num_media: num_media}});
   }
