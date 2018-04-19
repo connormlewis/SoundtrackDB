@@ -411,6 +411,8 @@ def album_filter(query_params, query):
         query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
     if query_params.get('num_tracks') is not None:
         query = query.filter(table.c.num_tracks == int(query_params.get('num_tracks')))
+    if query_params.get('label') is not None:
+        query = query.filter(table.c.label == str(query_params.get('label')))
     return query
 
 def media_filter(query_params, query):
