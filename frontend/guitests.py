@@ -182,6 +182,127 @@ def test_artist_sort(tester):
     tabs = list(driver.find_elements_by_tag_name("h5"))
     tester.assertIn("Hans Zimmer", tabs[0].text) 
 
+def test_album_filters(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+    
+    # test start year filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/select[@id='start']/option[@value='2016']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("2016", tabs[0].text) 
+    tester.assertIn("2017", tabs[1].text) 
+    
+    # add on end year filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/select[@id='end']/option[@value='2016']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("2016", tabs[0].text) 
+    tester.assertIn("2016", tabs[1].text) 
+
+    # add on track number filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input").clear()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input").send_keys("13")
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("p"))
+    tester.assertIn("13", tabs[0].text) 
+    tester.assertIn("13", tabs[1].text) 
+
+def test_artist_filters(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+
+    # test min followers filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/input[@id='min']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/input[@id='min']").clear()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/input[@id='min']").send_keys("90000")
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("p"))
+    tester.assertIn("137,976", tabs[0].text)
+    tester.assertIn("162,370", tabs[1].text)
+    
+    # test max followers filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/input[@id='max']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/input[@id='max']").clear()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/input[@id='max']").send_keys("160000")
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("p"))
+    tester.assertIn("137,976", tabs[0].text)
+    tester.assertIn("137,688", tabs[1].text)
+
+    # reload page
+    driver.get(tester.url)
+
+    # test number of albums filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input[@id='album']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input[@id='album']").clear()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input[@id='album']").send_keys("10")
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Murray Gold", tabs[0].text)
+
+    # reload page
+    driver.get(tester.url)
+
+    # test number of media filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/input[@id='media']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/input[@id='media']").clear()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/input[@id='media']").send_keys("10")
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Blake Neely", tabs[0].text)
+
+def test_media_filters(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+    
+    #test movie filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/label[2]/input").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("Movie", tabs[0].text)
+    tester.assertIn("Movie", tabs[2].text)
+    
+    #test tv filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/label[3]/input").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("TV", tabs[0].text)
+    tester.assertIn("TV", tabs[2].text)
+
+    #test both filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/label[4]/input").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("Movie", tabs[0].text)
+    tester.assertIn("TV", tabs[2].text)
+
+    #test genre filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/select/option[@value='Drama']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("A.I.", tabs[0].text)
+
+    #test start release year
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/select/option[@value='""']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/select[@id='start']/option[@value='2010']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("2016", tabs[0].text)
+
+    #test end release year
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/select[@id='end']/option[@value='2013']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("2013", tabs[0].text)
+
+
 # class HomePage(unittest.TestCase):
 #     def setUp(self):
 #         self.driver = setup_driver()
@@ -199,62 +320,69 @@ def test_artist_sort(tester):
 #     def tearDown(self):
 #         self.driver.close()
 
-class AlbumPage(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/album"
-
-    def test_title(self):
-        test_title(self, "Albums")
-
-    def test_navigation(self):
-        test_navbar(self)
-
-    def test_cards(self):
-        test_card_items(self)
-
-    def test_global_search(self):
-        test_global_search(self, "Arrow")
-
-    def test_album_search(self):
-        test_model_search(self, "sparrow")
-
-    def test_sort(self):
-        test_album_sort(self)
-
-    def tearDown(self):
-        self.driver.close()
-
-class ArtistPage(unittest.TestCase):
-    def setUp(self):
-        self.driver = setup_driver()
-        self.url = "http://localhost:3000/artist"
-
-    def test_title(self):
-        test_title(self, "Artists");
-
-    def test_navigation(self):
-        test_navbar(self)
-
-    def test_cards(self):
-        test_card_items(self)
-
-    def test_global_search(self):
-        test_global_search(self, "Hans Zimmer")
-
-    def test_artist_search(self):
-        test_model_search(self, "Hans Zimmer")
-
-    def test_sort(self):
-        test_artist_sort(self)
-
-    def tearDown(self):
-        self.driver.close()
-
-# class MediaPage(unittest.TestCase):
+# class AlbumPage(unittest.TestCase):
 #     def setUp(self):
 #         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/media"
+#         self.url = "http://localhost:3000/album"
+
+    # def test_title(self):
+    #     test_title(self, "Albums")
+
+    # def test_navigation(self):
+    #     test_navbar(self)
+
+    # def test_cards(self):
+    #     test_card_items(self)
+
+    # def test_global_search(self):
+    #     test_global_search(self, "Arrow")
+
+    # def test_album_search(self):
+    #     test_model_search(self, "sparrow")
+
+    # def test_sort(self):
+    #     test_album_sort(self)
+
+    # def test_filter(self):
+    #     test_album_filters(self)
+
+    # def tearDown(self):
+    #     self.driver.close()
+
+# class ArtistPage(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/artist"
+
+#     def test_title(self):
+#         test_title(self, "Artists");
+
+#     def test_navigation(self):
+#         test_navbar(self)
+
+#     def test_cards(self):
+#         test_card_items(self)
+
+#     def test_global_search(self):
+#         test_global_search(self, "Hans Zimmer")
+
+#     def test_artist_search(self):
+#         test_model_search(self, "Hans Zimmer")
+
+    # def test_sort(self):
+    #     test_artist_sort(self)
+
+    # def test_filter(self):
+    #     test_artist_filters(self);
+        
+
+    # def tearDown(self):
+    #     self.driver.close()
+
+class MediaPage(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/media"
 
 #     def test_title(self):
 #         test_title(self, "Media")
@@ -274,8 +402,11 @@ class ArtistPage(unittest.TestCase):
 #     def test_sort(self):
 #         test_media_sort(self);
 
-#     def tearDown(self):
-#         self.driver.close()
+    def test_filter(self):
+        test_media_filters(self)
+
+    def tearDown(self):
+        self.driver.close()
 
 # class AboutPage(unittest.TestCase):
 #     def setUp(self):
