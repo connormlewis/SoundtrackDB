@@ -118,7 +118,7 @@ export class ArtistHome extends Component {
 
         {
           this.props.artists.count === 0 ?
-            <div className="text-center my-4">No matching albums were found</div>
+            <div className="text-center my-4">No matching artists were found</div>
             :
             <div className="row">
               {

@@ -3,11 +3,15 @@ import { Col, Button, Form, FormGroup, Label, Input, Collapse, FormFeedback } fr
 // eslint-disable-next-line
 import styles from '../../../style/Form.css'; 
 
+const resetState = {
+    min: "", max: "", album: "", media: "", collapse: true, validMin: true, validMax: true, validAlbums: true, validMedia: true
+};
+
 export class ArtistForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {min: 0, max: 0, album: 0, media: 0, collapse: false, validMin: true, validMax: true, validAlbums: true, validMedia: true}; 
+    this.state = {min: "", max: "", album: "", media: "", collapse: false, validMin: true, validMax: true, validAlbums: true, validMedia: true}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
     this.checkValidNum = this.checkValidNum.bind(this);
@@ -18,6 +22,12 @@ export class ArtistForm extends Component {
     this.getFollowerFeedback = this.getFollowerFeedback.bind(this); 
     this.getAlbumsFeedback = this.getAlbumsFeedback.bind(this); 
     this.getMediaFeedback = this.getMediaFeedback.bind(this); 
+    this.resetFields = this.resetFields.bind(this);
+  }
+
+  resetFields() {
+    this.setState(resetState); 
+    document.getElementById("artist-form").reset();
   }
 
   checkValidNum(num) {
@@ -132,7 +142,7 @@ export class ArtistForm extends Component {
     return (
       <div>
         <Collapse isOpen={this.state.collapse}>
-          <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
+          <Form inline className="filtering-form" id="artist-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={6}>
                 <Label for="min">Number of Spotify Followers</Label>
@@ -151,8 +161,10 @@ export class ArtistForm extends Component {
                 {this.getMediaFeedback()}              
               </Col>
             </FormGroup>
-            <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
+             <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
               <Button type="submit" onClick={this.filter}>Submit</Button>
+              {' '}
+              <Button type="submit" color="danger" onClick={(e) => (this.resetFields())}>Reset</Button>
             </Col>
           </Form>
         </Collapse>

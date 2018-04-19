@@ -4,6 +4,10 @@ import { Col, Button, Form, FormGroup, Label, Input, Collapse, FormFeedback} fro
 import styles from '../../../style/Form.css';
 import yearItems from './selections/Years.jsx';
 
+const resetState = {
+  start_year: 1954, end_year: 2018, track: "", label: "", collapse: true, validNum: true
+};
+
 export class AlbumForm extends Component {
 
   constructor(props) {
@@ -14,6 +18,12 @@ export class AlbumForm extends Component {
     this.checkValidNum = this.checkValidNum.bind(this);
     this.getFeedback = this.getFeedback.bind(this); 
     this.getNumTracks = this.getNumTracks.bind(this); 
+    this.resetFields = this.resetFields.bind(this);
+  }
+
+  resetFields() {
+    this.setState(resetState); 
+    document.getElementById("album-form").reset();
   }
 
   getNumTracks() {
@@ -87,7 +97,7 @@ export class AlbumForm extends Component {
     return (
       <div>
         <Collapse isOpen={this.state.collapse}>
-          <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
+          <Form inline className="filtering-form" id="album-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup className="text-center" row>
               <Col style={{paddingRight: "0px"}} sm={4}>
                 <Label style={{marginRight: "5px"}} for="start">Release Year</Label>
@@ -113,8 +123,10 @@ export class AlbumForm extends Component {
                 </Input>
               </Col>
             </FormGroup>
-            <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
+            <Col style={{paddingLeft: "57px", marginTop: "10px"}} sm={3}>
               <Button type="submit" onClick={this.filter}>Submit</Button>
+              {' '}
+              <Button type="submit" color="danger" onClick={(e) => (this.resetFields())}>Reset</Button>
             </Col>
           </Form>
         </Collapse>

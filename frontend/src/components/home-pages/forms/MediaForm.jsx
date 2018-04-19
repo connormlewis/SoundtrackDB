@@ -6,6 +6,10 @@ import yearItems from './selections/Years.jsx';
 import ratingItems from './selections/Rating.jsx';
 import seasonItems from './selections/Seasons.jsx';
 
+const resetState = {
+  movie: false, tv_show: false, start: "", end: "", running: false, season: "", avg_rate: "", last_air: "", collapse: true
+};
+
 export class MediaForm extends Component {
 
   constructor(props) {
@@ -14,6 +18,11 @@ export class MediaForm extends Component {
     this.filter = this.filter.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
+  }
+
+  resetFields() {
+    this.setState(resetState); 
+    document.getElementById("media-form").reset();
   }
 
   filter(params) {
@@ -91,7 +100,7 @@ export class MediaForm extends Component {
     return (
       <div>
         <Collapse isOpen={this.state.collapse}>
-          <Form className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
+          <Form className="filtering-form" id="media-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={3}>
                 <Label for="type" size="lg">Type</Label>
@@ -160,8 +169,10 @@ export class MediaForm extends Component {
                 </Input>
               </Col>
             </FormGroup>
-            <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={{ size: 10 }}>
+             <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={4}>
               <Button type="submit" onClick={this.filter}>Submit</Button>
+              {' '}
+              <Button type="submit" color="danger" onClick={(e) => (this.resetFields())}>Reset</Button>
             </Col>
           </Form>
         </Collapse>
