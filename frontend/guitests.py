@@ -94,11 +94,93 @@ def test_media_sort(tester):
     driver = tester.driver
     driver.get(tester.url)
 
-    #test order by year
+    #test order by name
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='name']").click()
-    tabs = list(driver.find_elements_by_tag_name("h6"))
-    tester.assertIn("1947", tabs[0].text)   
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("10,000 BC", tabs[0].text)   
 
+    #test order by year
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='release_date']").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("1947", tabs[0].text) 
+
+    #test order by popularity
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='popularity']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Fools of Fortune", tabs[0].text) 
+
+    #test order by runtime
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='runtime']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Amazing Stories", tabs[0].text) 
+
+    #test order by seasons
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='seasons']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Doctor Who", tabs[0].text) 
+
+    #test order by average rating
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='average_rating']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("David Lev", tabs[0].text) 
+
+    #test descending (and if asc/dsc will not cancel other sort options)
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/div/button[2]").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Paul", tabs[0].text) 
+
+def test_album_sort(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+
+    #test order by name
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='name']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("10,000 BC", tabs[0].text)   
+
+    #test order by year
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='release_date']").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("1957", tabs[0].text) 
+
+    #test order by track count
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='num_tracks']").click()
+    tabs = list(driver.find_elements_by_tag_name("p"))
+    tester.assertIn("2", tabs[0].text) 
+
+    #test descending (and if asc/dsc will not cancel other sort options)
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/div/button[2]").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Doctor Who", tabs[0].text) 
+
+def test_artist_sort(tester):
+    driver = tester.driver
+    driver.get(tester.url)
+
+    #test order by name
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='name']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Alan Silvestri", tabs[0].text)   
+
+    #test order by followers
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='followers']").click()
+    tabs = list(driver.find_elements_by_tag_name("p"))
+    tester.assertIn("72", tabs[0].text) 
+
+    #test order by album count
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='num_albums']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Jesse L. Martin", tabs[0].text)
+
+    #test order by media count
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/select/option[@value='num_media']").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Victor Garber", tabs[0].text)
+
+    #test descending (and if asc/dsc will not cancel other sort options)
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/div/button[2]").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Hans Zimmer", tabs[0].text) 
 
 # class HomePage(unittest.TestCase):
 #     def setUp(self):
@@ -117,59 +199,13 @@ def test_media_sort(tester):
 #     def tearDown(self):
 #         self.driver.close()
 
-# class AlbumPage(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/album"
-
-#     def test_title(self):
-#         test_title(self, "Albums")
-
-#     def test_navigation(self):
-#         test_navbar(self)
-
-#     def test_cards(self):
-#         test_card_items(self)
-
-#     def test_global_search(self):
-#         test_global_search(self, "Arrow")
-
-#     def test_album_search(self):
-#         test_model_search(self, "sparrow")
-
-#     def tearDown(self):
-#         self.driver.close()
-
-# class ArtistPage(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/artist"
-
-#     def test_title(self):
-#         test_title(self, "Artists");
-
-#     def test_navigation(self):
-#         test_navbar(self)
-
-#     def test_cards(self):
-#         test_card_items(self)
-
-#     def test_global_search(self):
-#         test_global_search(self, "Hans Zimmer")
-
-#     def test_artist_search(self):
-#         test_model_search(self, "Hans Zimmer")
-
-#     def tearDown(self):
-#         self.driver.close()
-
-class MediaPage(unittest.TestCase):
+class AlbumPage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
-        self.url = "http://localhost:3000/media"
+        self.url = "http://localhost:3000/album"
 
     def test_title(self):
-        test_title(self, "Media")
+        test_title(self, "Albums")
 
     def test_navigation(self):
         test_navbar(self)
@@ -178,16 +214,68 @@ class MediaPage(unittest.TestCase):
         test_card_items(self)
 
     def test_global_search(self):
-        test_global_search(self, "Interstellar")
+        test_global_search(self, "Arrow")
 
-    # def test_media_search(self):
-    #     test_model_search(self, "Doctor Who")
+    def test_album_search(self):
+        test_model_search(self, "sparrow")
 
     def test_sort(self):
-        test_media_sort(self);
+        test_album_sort(self)
 
     def tearDown(self):
         self.driver.close()
+
+class ArtistPage(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/artist"
+
+    def test_title(self):
+        test_title(self, "Artists");
+
+    def test_navigation(self):
+        test_navbar(self)
+
+    def test_cards(self):
+        test_card_items(self)
+
+    def test_global_search(self):
+        test_global_search(self, "Hans Zimmer")
+
+    def test_artist_search(self):
+        test_model_search(self, "Hans Zimmer")
+
+    def test_sort(self):
+        test_artist_sort(self)
+
+    def tearDown(self):
+        self.driver.close()
+
+# class MediaPage(unittest.TestCase):
+#     def setUp(self):
+#         self.driver = setup_driver()
+#         self.url = "http://localhost:3000/media"
+
+#     def test_title(self):
+#         test_title(self, "Media")
+
+#     def test_navigation(self):
+#         test_navbar(self)
+
+#     def test_cards(self):
+#         test_card_items(self)
+
+#     def test_global_search(self):
+#         test_global_search(self, "Interstellar")
+
+#     # def test_media_search(self):
+#     #     test_model_search(self, "Doctor Who")
+
+#     def test_sort(self):
+#         test_media_sort(self);
+
+#     def tearDown(self):
+#         self.driver.close()
 
 # class AboutPage(unittest.TestCase):
 #     def setUp(self):
