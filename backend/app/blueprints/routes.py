@@ -156,6 +156,27 @@ def get_genres():
     finally:
         session.close()
 
+@BP.route('/labels')
+def get_labels():
+    """
+    Get all possible values for label in album table
+    """
+    session = get_session()
+    try:
+        query = session.query(Album.label).distinct()
+        final_query = query
+        labels = query.all()
+        label_list = []
+        for label in labels:
+            label_list.append(label[0])
+        count = final_query.count()
+        return jsonify({
+            'items': label_list,
+            'count': count
+        })
+    finally:
+        session.close()
+
 def query_single(model_id, Model, model_schema):
     """
     Make a query for a model instance
@@ -198,27 +219,6 @@ def query_multiple(query_params, search_func, filter_func, Model, models_schema)
     finally:
         session.close()
 
-
-@BP.route('/labels')
-def get_labels():
-    """
-    Get all possible values for label in album table
-    """
-    session = get_session()
-    try:
-        query = session.query(Album.label).distinct()
-        final_query = query
-        labels = query.all()
-        label_list = []
-        for label in labels:
-            label_list.append(label[0])
-        count = final_query.count()
-        return jsonify({
-            'items': label_list,
-            'count': count
-        })
-    finally:
-        session.close()
 def set_limit_offset(query_params, query):
     """
     Set the offset and limit of the return query
@@ -326,25 +326,6 @@ def find_last_page(link): # pragma: no cover
         temp_string = parse_words[index][:-1]
         last_page = re.split('page=', temp_string)[-1]
     return last_page
-
-
-def order_query(table, query_params, query):
-    """
-    Order query
-    """
-    if query_params.get('order_by') is not None:
-        val = query_params.get('order_by')
-        if val in table.c:
-            if 'asc' in request.args:
-                query = query.order_by(asc(val))
-            elif 'desc' in request.args:
-                query = query.order_by(desc(val))
-            else:
-                query = query.order_by(val)
-    else:
-        query = query.order_by(asc('name'))
-    return query
-
 
 def search_filter(query_params, query):
     """
@@ -463,12 +444,13 @@ def artist_search(query, term):
     Search artist table for term
     """
     table = Artist.__table__
-    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'),
-                           table.c.name.ilike('%'+term+'%'),
-                           table.c.bio.ilike('%'+term+'%'),
-                           table.c.image.ilike('%'+term+'%'),
-                           cast(table.c.followers, Text).ilike('%'+term+'%'),
-                           table.c.spotify_uri.ilike('%'+term+'%'))
+    search_statement = or_(
+        cast(table.c.id, Text).ilike('%' + term + '%'),
+        table.c.name.ilike('%' + term + '%'),
+        table.c.bio.ilike('%' + term + '%'),
+        table.c.image.ilike('%' + term + '%'),
+        cast(table.c.followers, Text).ilike('%' + term + '%'),
+        table.c.spotify_uri.ilike('%' + term + '%'))
     return query.filter(search_statement)
 
 
@@ -477,24 +459,25 @@ def media_search(query, term):
     Search media table for term
     """
     table = Media.__table__
-    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'),
-                           cast(table.c.type, Text).ilike('%'+term+'%'),
-                           table.c.name.ilike('%'+term+'%'),
-                           table.c.cast.ilike('%'+term+'%'),
-                           cast(table.c.seasons, Text).ilike('%'+term+'%'),
-                           cast(table.c.release_date, Text).ilike('%'+term+'%'),
-                           table.c.last_aired.ilike('%'+term+'%'),
-                           table.c.image.ilike('%'+term+'%'),
-                           cast(table.c.running, Text).ilike('%'+term+'%'),
-                           table.c.overview.ilike('%'+term+'%'),
-                           table.c.other_images.ilike('%'+term+'%'),
-                           table.c.videos.ilike('%'+term+'%'),
-                           cast(table.c.imdb_id, Text).ilike('%'+term+'%'),
-                           cast(table.c.tmdb_id, Text).ilike('%'+term+'%'),
-                           cast(table.c.runtime, Text).ilike('%'+term+'%'),
-                           table.c.tagline.ilike('%'+term+'%'),
-                           cast(table.c.popularity, Text).ilike('%'+term+'%'),
-                           cast(table.c.average_rating, Text).ilike('%'+term+'%'))
+    search_statement = or_(
+        cast(table.c.id, Text).ilike('%' + term + '%'),
+        cast(table.c.type, Text).ilike('%' + term + '%'),
+        table.c.name.ilike('%' + term + '%'),
+        table.c.cast.ilike('%' + term + '%'),
+        cast(table.c.seasons, Text).ilike('%' + term + '%'),
+        cast(table.c.release_date, Text).ilike('%' + term + '%'),
+        table.c.last_aired.ilike('%' + term + '%'),
+        table.c.image.ilike('%' + term + '%'),
+        cast(table.c.running, Text).ilike('%' + term + '%'),
+        table.c.overview.ilike('%' + term + '%'),
+        table.c.other_images.ilike('%' + term + '%'),
+        table.c.videos.ilike('%' + term + '%'),
+        cast(table.c.imdb_id, Text).ilike('%' + term + '%'),
+        cast(table.c.tmdb_id, Text).ilike('%' + term + '%'),
+        cast(table.c.runtime, Text).ilike('%' + term + '%'),
+        table.c.tagline.ilike('%' + term + '%'),
+        cast(table.c.popularity, Text).ilike('%' + term + '%'),
+        cast(table.c.average_rating, Text).ilike('%' + term + '%'))
     return query.filter(search_statement)
 
 
