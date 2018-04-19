@@ -26,7 +26,6 @@ search_schema = SearchSchema(many=True)
 
 commit_data = None
 issue_data = None
-updated_at = None
 lock = Lock()
 #Blessed
 
@@ -34,22 +33,17 @@ lock = Lock()
 @BP.route('/about')
 def get_about():
     """Get commits and data"""
-    global updated_at, commit_data, issue_data
+    global updated_at, commit_data, issue_data, lock
 
-    last_hour_date_time = datetime.now() - timedelta(hours=1)
-    if (updated_at is None or updated_at < last_hour_date_time):
-        commit_data = get_commits()
-        issue_data = get_issues()
-        updated_at = datetime.now()
-
+    lock.acquire()
     commits = commit_data
     issues = issue_data
-
     about_data = {}
     about_data['commits'] = commits[0]
     about_data['total_commits'] = commits[1]
     about_data['issues'] = issues[0]
     about_data['total_issues'] = issues[1]
+    lock.release()
     return jsonify(about_data)
 
 
@@ -280,7 +274,7 @@ def get_commits():  # pragma: no cover
     """
     Get commits from github
     """
-    global lock
+    global commit_data
     all_commits = 0
     team = {
         'stevex196x': 0,
@@ -290,7 +284,6 @@ def get_commits():  # pragma: no cover
         'connormlewis': 0,
         'tsukkisuki': 0
     }
-    lock.acquire()
     while all_commits == 0:
         url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
         data = requests.get(
@@ -302,15 +295,14 @@ def get_commits():  # pragma: no cover
             if user_name in team:
                 team[user_name] = total
             all_commits += total
-    lock.release()
-    return team, all_commits
+    commit_data = (team, all_commits)
 
 
 def get_issues():  # pragma: no cover
     """
     Get issues from github
     """
-    global lock
+    global issue_data
     team = {
         'stevex196x': 0,
         'TheSchaft': 0,
@@ -320,7 +312,6 @@ def get_issues():  # pragma: no cover
         'tsukkisuki': 0
     }
     all_issues = 0
-    lock.acquire()
     while all_issues == 0:
         url = ('https://api.github.com/repos/connormlewis/idb/'
                'issues?state=all&filter=all&per_page=100')
@@ -340,8 +331,7 @@ def get_issues():  # pragma: no cover
                     all_issues += 1
                     if entry['user']['login'] in team:
                         team[entry['user']['login']] += 1
-    lock.release()
-    return team, all_issues
+    issue_data = (team, all_issues)
 
 
 def find_last_page(link):  # pragma: no cover
