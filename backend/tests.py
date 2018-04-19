@@ -1,5 +1,6 @@
 import json
 import unittest
+from unittest.mock import patch
 
 from app import app
 from app.models import Media, Album, Artist
@@ -20,6 +21,12 @@ class SoundtrackDBTests(unittest.TestCase):
             session = get_session()
             self.populate_database(session)
             session.close()
+
+        self.commit_patch = patch('app.blueprints.routes.get_commits', return_value=({}, 0))
+        self.issue_patch = patch('app.blueprints.routes.get_issues', return_value=({}, 0))
+        self.commit_patch.start()
+        self.issue_patch.start()
+
 
     def test_get_about(self):
         response = self.client.get('/about')

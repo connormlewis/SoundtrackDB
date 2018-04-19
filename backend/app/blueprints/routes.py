@@ -1,13 +1,15 @@
 """Application routes"""
 import os
-from threading import Lock
+import re
+import sched
+import threading
+import time
 from datetime import date
 
-import re
 import requests
 from flask import Blueprint, jsonify, request, abort
-
 from sqlalchemy import or_, Text, cast, asc, desc, and_
+
 from app.models import Artist, ArtistSchema, MediaSchema, Album, AlbumSchema, Media, \
     search, SearchSchema, Genre, GenreSchema
 from app.shared.db import get_session
@@ -26,8 +28,28 @@ search_schema = SearchSchema(many=True)
 
 commit_data = None
 issue_data = None
-lock = Lock()
+lock = threading.Lock()
+event = None
 #Blessed
+
+
+@BP.before_app_first_request
+def setup_git_refresh():
+    """Refresh every hour"""
+    global event
+    event = sched.scheduler(time.time, time.sleep)
+    t = threading.Thread(target=get_git_data)
+    t.start()
+
+
+def get_git_data():
+    """Get the actual data from github"""
+    global event, commit_data, issue_data
+    lock.acquire()
+    commit_data = get_commits()
+    issue_data = get_issues()
+    lock.release()
+    event.enter(3600, 1, get_git_data, ())
 
 
 @BP.route('/about')
@@ -295,7 +317,7 @@ def get_commits():  # pragma: no cover
             if user_name in team:
                 team[user_name] = total
             all_commits += total
-    commit_data = (team, all_commits)
+    return team, all_commits
 
 
 def get_issues():  # pragma: no cover
@@ -331,7 +353,7 @@ def get_issues():  # pragma: no cover
                     all_issues += 1
                     if entry['user']['login'] in team:
                         team[entry['user']['login']] += 1
-    issue_data = (team, all_issues)
+    return team, all_issues
 
 
 def find_last_page(link):  # pragma: no cover
