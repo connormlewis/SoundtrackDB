@@ -291,22 +291,20 @@ def get_commits():  # pragma: no cover
         'tsukkisuki': 0
     }
     lock.acquire()
-    try:
-        while all_commits == 0:
-            url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
-            data = requests.get(
-                url,
-                headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
-            json_list = data.json()
-            for entry in json_list:
-                total = entry['total']
-                user_name = entry['author']['login']
-                if user_name in team:
-                    team[user_name] = total
-                all_commits += total
-    finally:
-        lock.release()
-        return team, all_commits
+    while all_commits == 0:
+        url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
+        data = requests.get(
+            url,
+            headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        json_list = data.json()
+        for entry in json_list:
+            total = entry['total']
+            user_name = entry['author']['login']
+            if user_name in team:
+                team[user_name] = total
+            all_commits += total
+    lock.release()
+    return team, all_commits
 
 
 def get_issues():  # pragma: no cover
@@ -324,32 +322,30 @@ def get_issues():  # pragma: no cover
     }
     all_issues = 0
     lock.acquire()
-    try:
-        while all_issues == 0:
+    while all_issues == 0:
+        url = ('https://api.github.com/repos/connormlewis/idb/'
+                'issues?state=all&filter=all&per_page=100')
+        data = requests.get(
+            url,
+            headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+        link = data.headers.get('Link', None)
+        for i in range(1, int(find_last_page(link)) + 1):
             url = ('https://api.github.com/repos/connormlewis/idb/'
-                   'issues?state=all&filter=all&per_page=100')
+                    'issues?state=all&filter=all&per_page=100' + '&page=' +
+                    str(i))
             data = requests.get(
                 url,
-                headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
-            link = data.headers.get('Link', None)
-            for i in range(1, int(find_last_page(link)) + 1):
-                url = ('https://api.github.com/repos/connormlewis/idb/'
-                       'issues?state=all&filter=all&per_page=100' + '&page=' +
-                       str(i))
-                data = requests.get(
-                    url,
-                    headers={
-                        'Authorization': 'token ' + os.environ['API_TOKEN']
-                    })
-                json_list = data.json()
-                for entry in json_list:
-                    if 'pull_request' not in entry:
-                        all_issues += 1
-                        if entry['user']['login'] in team:
-                            team[entry['user']['login']] += 1
-    finally:
-        lock.release()
-        return team, all_issues
+                headers={
+                    'Authorization': 'token ' + os.environ['API_TOKEN']
+                })
+            json_list = data.json()
+            for entry in json_list:
+                if 'pull_request' not in entry:
+                    all_issues += 1
+                    if entry['user']['login'] in team:
+                        team[entry['user']['login']] += 1
+    lock.release()
+    return team, all_issues
 
 
 def find_last_page(link):  # pragma: no cover
