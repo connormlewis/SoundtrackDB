@@ -102,7 +102,7 @@ export class AlbumHome extends Component {
             <SearchBar placeholder="Search Albums" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
           <div className="float-right form-inline mr-2">
-            <Button color="info" className="mr-2" onClick={() => {this.form.toggle() }}>Filter</Button>
+            <Button style={{backgroundColor: "#1d2951"}} className="mr-2" onClick={() => {this.form.toggle() }}>Filter</Button>
             
             <label className="mr-2">Order by:</label>
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>

@@ -26,7 +26,7 @@ export default class SearchBar extends Component {
     return (
       <form className="form-inline my-2 my-lg-0" onSubmit={evt => this.submitSearch(evt)}>
         <input className="form-control mr-sm-2" type="search" placeholder={this.props.placeholder} onChange={evt => this.updateInputValue(evt)} aria-label="Search"></input>
-        <button className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        <button style={{borderColor: "#1d2951", color: "#1d2951", backgroundColor: "#ffffff"}} className="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
       </form>
     )
   }
