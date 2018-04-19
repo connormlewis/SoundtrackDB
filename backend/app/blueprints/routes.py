@@ -294,8 +294,7 @@ def get_commits():  # pragma: no cover
     while all_commits == 0:
         url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
         data = requests.get(
-            url,
-            headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+            url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         json_list = data.json()
         for entry in json_list:
             total = entry['total']
@@ -324,20 +323,17 @@ def get_issues():  # pragma: no cover
     lock.acquire()
     while all_issues == 0:
         url = ('https://api.github.com/repos/connormlewis/idb/'
-                'issues?state=all&filter=all&per_page=100')
+               'issues?state=all&filter=all&per_page=100')
         data = requests.get(
-            url,
-            headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+            url, headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
         link = data.headers.get('Link', None)
         for i in range(1, int(find_last_page(link)) + 1):
-            url = ('https://api.github.com/repos/connormlewis/idb/'
-                    'issues?state=all&filter=all&per_page=100' + '&page=' +
-                    str(i))
+            url = (
+                'https://api.github.com/repos/connormlewis/idb/'
+                'issues?state=all&filter=all&per_page=100' + '&page=' + str(i))
             data = requests.get(
                 url,
-                headers={
-                    'Authorization': 'token ' + os.environ['API_TOKEN']
-                })
+                headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
             json_list = data.json()
             for entry in json_list:
                 if 'pull_request' not in entry:
