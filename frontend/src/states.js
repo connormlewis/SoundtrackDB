@@ -1,6 +1,6 @@
 import React from 'react'
 import { UIView } from '@uirouter/react'
-import Splash from './components/Splash';
+import Splash from './components/splash/Splash';
 import About from './components/About';
 import ErrorPage from './components/Error';
 
@@ -73,6 +73,9 @@ const ALBUM_HOME = {
     token: 'albums',
     deps: ['$transition$'],
     resolveFn: (trans) => ApiService.getAlbums(trans.params().offset, trans.params().limit, trans.params().searchTerm, trans.params().filters, trans.params().orderBy)
+  }, {
+    token: 'labels',
+    resolveFn: (trans) => ApiService.getLabels()
   }]
 };
 

@@ -10,9 +10,9 @@ import { AlbumHome, AlbumItem } from './src/components/home-pages/AlbumsHome'
 import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
-import Splash from './src/components/Splash';
-import SplashCarousel from './src/components/SplashCarousel';
-import SplashDescription from './src/components/SplashDescription';
+import Splash from './src/components/splash/Splash';
+import SplashCarousel from './src/components/splash/SplashCarousel';
+import SplashDescription from './src/components/splash/SplashDescription';
 import About from './src/components/About';
 import { Desc, Bio, Statistics, Data, Tools } from './src/components/About';
 import { MediaInstance } from './src/components/instance-pages/MediaInstance';
@@ -22,7 +22,7 @@ import { AlbumInstance } from './src/components/instance-pages/AlbumInstance';
 import { RelatedArtists } from './src/components/instance-pages/RelatedArtists'; 
 import { RelatedAlbums } from './src/components/instance-pages/RelatedAlbums'; 
 import { RelatedMedia } from './src/components/instance-pages/RelatedMedia'; 
-import {ALBUMS_JSON, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, 
+import {ALBUMS_JSON, LABELS, ARTISTS_JSON, MEDIAS_JSON, RIVERDALE_JSON, 
         INTERSTELLAR_JSON, ARTIST_JSON, ALBUM_JSON, BEOWULF_JSON, 
         ABOUT_JSON, BAD_MEDIA_JSON, BAD_ARTIST_JSON} from './testsData'; 
 import ErrorPage from './src/components/Error';
@@ -64,7 +64,7 @@ let fakeTransition = {
 
 describe('<AlbumHome/>', function () {
   it('should render without crashing', function () {
-    shallow(<AlbumHome albums={ALBUMS_JSON} transition={fakeTransition} />).render();
+    shallow(<AlbumHome labels={LABELS} albums={ALBUMS_JSON} transition={fakeTransition} />).render();
   })
 
   it('should contain 3 album instances', function () {
