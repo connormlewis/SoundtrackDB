@@ -122,15 +122,19 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media3(self):
-        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&seasons=3&genres=Comedy')
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&seasons=3&genre=Comedy')
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media4(self):
-        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&popularity')
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&popularity=9')
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media5(self):
-        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&type=movie&popularity&run_time&average_rating&last_aired')
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_media6(self):
+        response = self.client.get('/media?type=movie&popularity=2&run_time=3&average_rating=2&last_aired')
         self.assertEqual(response.status_code, 200)
 
     def test_filter_artist2(self):
@@ -138,7 +142,7 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_album2(self):
-        response = self.client.get('/album?start_year=1950&running=true&order_by=name&asc')
+        response = self.client.get('/album?start_year=1950&running=true&order_by=name&asc&label')
         self.assertEqual(response.status_code, 200)
     
     def test_genres(self):
