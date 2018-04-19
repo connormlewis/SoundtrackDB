@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import { Col, Button, Form, FormGroup, Label, Input, Collapse, FormFeedback } from 'reactstrap';
 // eslint-disable-next-line
-import styles from '../../style/Form.css'; 
+import styles from '../../../style/Form.css'; 
 
 export class ArtistForm extends Component {
 

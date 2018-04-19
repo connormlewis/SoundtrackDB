@@ -1,8 +1,8 @@
 import React, { Component } from 'react'; 
 import { Col, Button, Form, FormGroup, Label, Input, Collapse, FormFeedback} from 'reactstrap'; 
 // eslint-disable-next-line
-import styles from '../../style/Form.css';
-import yearItems from './Years.jsx'
+import styles from '../../../style/Form.css';
+import yearItems from './selections/Years.jsx'
 
 export class AlbumForm extends Component {
 

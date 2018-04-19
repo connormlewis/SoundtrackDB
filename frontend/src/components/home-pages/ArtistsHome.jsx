@@ -3,7 +3,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'react
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
-import { ArtistForm } from './ArtistForm'; 
+import { ArtistForm } from './forms/ArtistForm'; 
 
 export class ArtistItem extends Component {
   constructor(props) {

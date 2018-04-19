@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
-import { AlbumForm } from './AlbumForm'; 
+import { AlbumForm } from './forms/AlbumForm'; 
 
 const titleStyles = {
   'overflow': 'hidden',

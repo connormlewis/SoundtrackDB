@@ -1,10 +1,10 @@
 import React, { Component } from 'react'; 
 import { Col, Button, Form, FormGroup, Label, Input, Collapse } from 'reactstrap';
 // eslint-disable-next-line
-import styles from '../../style/Form.css';
-import yearItems from './Years.jsx';
-import ratingItems from './Rating.jsx';
-import seasonItems from './Seasons.jsx';
+import styles from '../../../style/Form.css';
+import yearItems from './selections/Years.jsx';
+import ratingItems from './selections/Rating.jsx';
+import seasonItems from './selections/Seasons.jsx';
 
 export class MediaForm extends Component {
 
