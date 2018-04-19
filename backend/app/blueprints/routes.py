@@ -1,7 +1,7 @@
 """Application routes"""
 import os
 from threading import Lock
-from datetime import datetime, timedelta, date
+from datetime import date
 
 import re
 import requests
@@ -33,7 +33,7 @@ lock = Lock()
 @BP.route('/about')
 def get_about():
     """Get commits and data"""
-    global updated_at, commit_data, issue_data, lock
+    global commit_data, issue_data, lock
 
     lock.acquire()
     commits = commit_data
