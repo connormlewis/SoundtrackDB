@@ -21,9 +21,9 @@ class SoundtrackDBTests(unittest.TestCase):
             self.populate_database(session)
             session.close()
 
-    def test_get_about(self):
-        response = self.client.get('/about')
-        self.assertEqual(response.status_code, 200)
+    #def test_get_about(self):
+    #    response = self.client.get('/about')
+    #    self.assertEqual(response.status_code, 200)
 
     def test_get_artist_all(self):
         response = self.client.get('/artist')
@@ -130,7 +130,11 @@ class SoundtrackDBTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
     
     def test_filter_media5(self):
-        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&type=movie&popularity=2&run_time=3&average_rating=2&last_aired')
+        response = self.client.get('/media?start_year=1950&running=true&order_by=name&asc&label')
+        self.assertEqual(response.status_code, 200)
+    
+    def test_filter_media6(self):
+        response = self.client.get('/media?type=movie&popularity=2&run_time=3&average_rating=2&last_aired')
         self.assertEqual(response.status_code, 200)
 
     def test_filter_artist2(self):
