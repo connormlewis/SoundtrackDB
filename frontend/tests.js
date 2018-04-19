@@ -10,9 +10,9 @@ import { AlbumHome, AlbumItem } from './src/components/home-pages/AlbumsHome'
 import { ArtistHome, ArtistItem } from './src/components/home-pages/ArtistsHome'
 import { MediaHome, MediaItem } from './src/components/home-pages/MediaHome'
 import { UIRouter } from '@uirouter/react';
-import Splash from './src/components/Splash';
-import SplashCarousel from './src/components/SplashCarousel';
-import SplashDescription from './src/components/SplashDescription';
+import Splash from './src/components/splash/Splash';
+import SplashCarousel from './src/components/splash/SplashCarousel';
+import SplashDescription from './src/components/splash/SplashDescription';
 import About from './src/components/About';
 import { Desc, Bio, Statistics, Data, Tools } from './src/components/About';
 import { MediaInstance } from './src/components/instance-pages/MediaInstance';
