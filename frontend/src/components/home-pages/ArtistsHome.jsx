@@ -3,7 +3,7 @@ import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'react
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
-import { ArtistForm } from './ArtistForm'; 
+import { ArtistForm } from './forms/ArtistForm'; 
 
 export class ArtistItem extends Component {
   constructor(props) {
@@ -118,7 +118,7 @@ export class ArtistHome extends Component {
 
         {
           this.props.artists.count === 0 ?
-            <div className="text-center my-4">No matching albums were found</div>
+            <div className="text-center my-4">No matching artists were found</div>
             :
             <div className="row">
               {

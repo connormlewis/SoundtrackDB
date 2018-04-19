@@ -148,6 +148,10 @@ class SoundtrackDBTests(unittest.TestCase):
     def test_genres(self):
         response = self.client.get('/genres')
         self.assertEqual(response.status_code, 200)
+
+    def test_labels(self):
+        response = self.client.get('/labels')
+        self.assertEqual(response.status_code, 200)
     
     @staticmethod
     def populate_database(session):

@@ -33,6 +33,15 @@ export const ALBUMS_JSON = {
   count: 3
 }
 
+export const LABELS = {
+  count: 3,
+  items: [
+    "Studiocanal",
+    "Sony Classical",
+    "Warner Bros."
+  ]
+}
+
 export const ARTISTS_JSON = {
   items: [{
       "bio": null,

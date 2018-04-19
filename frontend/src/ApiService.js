@@ -130,4 +130,11 @@ export default class ApiService {
       }
     })
   }
+
+  static getLabels() {
+    return $.ajax({
+      url: API_URL + '/labels',
+      type: 'get'
+    })
+  }
 }
