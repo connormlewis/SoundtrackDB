@@ -1,5 +1,6 @@
 """Application routes"""
 import os
+from threading import Lock
 from datetime import datetime, timedelta, date
 
 import re
@@ -20,18 +21,15 @@ genre_schema = GenreSchema()
 artists_schema = ArtistSchema(exclude=('albums', 'media'))
 albums_schema = AlbumSchema(exclude=('artists', 'media', 'tracks'))
 medias_schema = MediaSchema(
-    exclude=(
-        'albums',
-        'artists',
-        'cast',
-        'other_images',
-        'videos'))
+    exclude=('albums', 'artists', 'cast', 'other_images', 'videos'))
 search_schema = SearchSchema(many=True)
 
 commit_data = None
 issue_data = None
 updated_at = None
+lock = Lock()
 #Blessed
+
 
 @BP.route('/about')
 def get_about():
@@ -39,9 +37,7 @@ def get_about():
     global updated_at, commit_data, issue_data
 
     last_hour_date_time = datetime.now() - timedelta(hours=1)
-    while ((updated_at is None or updated_at < last_hour_date_time) or
-           (commit_data is None or commit_data[1] == 0) or
-           (issue_data is None or issue_data[1] == 0)):
+    if (updated_at is None or updated_at < last_hour_date_time):
         commit_data = get_commits()
         issue_data = get_issues()
         updated_at = datetime.now()
@@ -217,12 +213,13 @@ def search_db(term):
     """
     session = get_session()
     try:
-        search_statement = or_(search.c.name.ilike('%' + term + '%'),
-                               search.c.about.ilike('%' + term + '%'),
-                               search.c.kind.ilike('%' + term + '%'),
-                               search.c.image.ilike('%' + term + '%'),
-                               cast(search.c.id, Text).ilike('%' + term + '%'),
-                               cast(search.c.release_date, Text).ilike('%' + term + '%'))
+        search_statement = or_(
+            search.c.name.ilike('%' + term + '%'),
+            search.c.about.ilike('%' + term + '%'),
+            search.c.kind.ilike('%' + term + '%'),
+            search.c.image.ilike('%' + term + '%'),
+            cast(search.c.id, Text).ilike('%' + term + '%'),
+            cast(search.c.release_date, Text).ilike('%' + term + '%'))
         query = session.query(search).filter(search_statement)
         query = search_filter(request.args, query)
         query = order_query(search, request.args, query)
@@ -246,6 +243,7 @@ def search_db(term):
         })
     finally:
         session.close()
+
 
 @BP.route('/genres')
 def get_genres():
@@ -278,28 +276,36 @@ def get_genres():
         session.close()
 
 
-
-
 def get_commits():  # pragma: no cover
     """
     Get commits from github
     """
+    global lock
     all_commits = 0
-    team = {'stevex196x': 0, 'TheSchaft': 0, 'melxtru': 0,
-            'aylish19': 0, 'connormlewis': 0, 'tsukkisuki': 0}
+    team = {
+        'stevex196x': 0,
+        'TheSchaft': 0,
+        'melxtru': 0,
+        'aylish19': 0,
+        'connormlewis': 0,
+        'tsukkisuki': 0
+    }
+    lock.acquire()
     try:
-        url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
-        data = requests.get(
-            url, headers={
-                'Authorization': 'token ' + os.environ['API_TOKEN']})
-        json_list = data.json()
-        for entry in json_list:
-            total = entry['total']
-            user_name = entry['author']['login']
-            if user_name in team:
-                team[user_name] = total
-            all_commits += total
+        while all_commits == 0:
+            url = 'https://api.github.com/repos/connormlewis/idb/stats/contributors'
+            data = requests.get(
+                url,
+                headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+            json_list = data.json()
+            for entry in json_list:
+                total = entry['total']
+                user_name = entry['author']['login']
+                if user_name in team:
+                    team[user_name] = total
+                all_commits += total
     finally:
+        lock.release()
         return team, all_commits
 
 
@@ -307,35 +313,46 @@ def get_issues():  # pragma: no cover
     """
     Get issues from github
     """
-    team = {'stevex196x': 0, 'TheSchaft': 0, 'melxtru': 0,
-            'aylish19': 0, 'connormlewis': 0, 'tsukkisuki': 0}
+    global lock
+    team = {
+        'stevex196x': 0,
+        'TheSchaft': 0,
+        'melxtru': 0,
+        'aylish19': 0,
+        'connormlewis': 0,
+        'tsukkisuki': 0
+    }
     all_issues = 0
+    lock.acquire()
     try:
-        url = ('https://api.github.com/repos/connormlewis/idb/'
-               'issues?state=all&filter=all&per_page=100')
-        data = requests.get(
-            url, headers={
-                'Authorization': 'token ' + os.environ['API_TOKEN']})
-        link = data.headers.get('Link', None)
-        for i in range(1, int(find_last_page(link)) + 1):
-            url = (
-                'https://api.github.com/repos/connormlewis/idb/'
-                'issues?state=all&filter=all&per_page=100' +
-                '&page=' +
-                str(i))
+        while all_issues == 0:
+            url = ('https://api.github.com/repos/connormlewis/idb/'
+                   'issues?state=all&filter=all&per_page=100')
             data = requests.get(
-                url, headers={
-                    'Authorization': 'token ' + os.environ['API_TOKEN']})
-            json_list = data.json()
-            for entry in json_list:
-                if 'pull_request' not in entry:
-                    all_issues += 1
-                    if entry['user']['login'] in team:
-                        team[entry['user']['login']] += 1
+                url,
+                headers={'Authorization': 'token ' + os.environ['API_TOKEN']})
+            link = data.headers.get('Link', None)
+            for i in range(1, int(find_last_page(link)) + 1):
+                url = ('https://api.github.com/repos/connormlewis/idb/'
+                       'issues?state=all&filter=all&per_page=100' + '&page=' +
+                       str(i))
+                data = requests.get(
+                    url,
+                    headers={
+                        'Authorization': 'token ' + os.environ['API_TOKEN']
+                    })
+                json_list = data.json()
+                for entry in json_list:
+                    if 'pull_request' not in entry:
+                        all_issues += 1
+                        if entry['user']['login'] in team:
+                            team[entry['user']['login']] += 1
     finally:
+        lock.release()
         return team, all_issues
 
-def find_last_page(link): # pragma: no cover
+
+def find_last_page(link):  # pragma: no cover
     """
     Parses the header of the GitHub API and returns the last page
     """
@@ -345,6 +362,7 @@ def find_last_page(link): # pragma: no cover
         temp_string = parse_words[index][:-1]
         last_page = re.split('page=', temp_string)[-1]
     return last_page
+
 
 def order_query(table, query_params, query):
     """
@@ -363,6 +381,7 @@ def order_query(table, query_params, query):
         query = query.order_by(asc('name'))
     return query
 
+
 def search_filter(query_params, query):
     """
     Filter search by type
@@ -370,6 +389,7 @@ def search_filter(query_params, query):
     if query_params.get('type') is not None:
         query = query.filter(search.c.kind == query_params.get('type'))
     return query
+
 
 def artist_filter(query_params, query):
     """
@@ -379,19 +399,23 @@ def artist_filter(query_params, query):
     col_name = table.c.followers
     if query_params.get('min_followers') is not None \
         and query_params.get('max_followers') is not None:
-        filt_statement = and_(
-            col_name >= query_params.get('min_followers'),
-            col_name <= query_params.get('max_followers'))
+        filt_statement = and_(col_name >= query_params.get('min_followers'),
+                              col_name <= query_params.get('max_followers'))
         query = query.filter(filt_statement)
     elif query_params.get('min_followers') is not None:
-        query = query.filter(col_name >= int(query_params.get('min_followers')))
+        query = query.filter(
+            col_name >= int(query_params.get('min_followers')))
     elif query_params.get('max_followers') is not None:
-        query = query.filter(col_name <= int(query_params.get('max_followers')))
+        query = query.filter(
+            col_name <= int(query_params.get('max_followers')))
     if query_params.get('num_albums') is not None:
-        query = query.filter(table.c.num_albums == int(query_params.get('num_albums')))
+        query = query.filter(
+            table.c.num_albums == int(query_params.get('num_albums')))
     if query_params.get('num_media') is not None:
-        query = query.filter(table.c.num_media == int(query_params.get('num_media')))
+        query = query.filter(
+            table.c.num_media == int(query_params.get('num_media')))
     return query
+
 
 def album_filter(query_params, query):
     """
@@ -406,14 +430,18 @@ def album_filter(query_params, query):
             col_name <= date(int(query_params.get('end_year')), 12, 31))
         query = query.filter(filt_statement)
     elif query_params.get('start_year') is not None:
-        query = query.filter(col_name >= date(int(query_params.get('start_year')), 1, 1))
+        query = query.filter(
+            col_name >= date(int(query_params.get('start_year')), 1, 1))
     elif query_params.get('end_year') is not None:
-        query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
+        query = query.filter(
+            col_name <= date(int(query_params.get('end_year')), 12, 31))
     if query_params.get('num_tracks') is not None:
-        query = query.filter(table.c.num_tracks == int(query_params.get('num_tracks')))
+        query = query.filter(
+            table.c.num_tracks == int(query_params.get('num_tracks')))
     if query_params.get('label') is not None:
         query = query.filter(table.c.label == str(query_params.get('label')))
     return query
+
 
 def media_filter(query_params, query):
     """
@@ -433,9 +461,11 @@ def media_filter(query_params, query):
             col_name <= date(int(query_params.get('end_year')), 12, 31))
         query = query.filter(filt_statement)
     elif query_params.get('start_year') is not None:
-        query = query.filter(col_name >= date(int(query_params.get('start_year')), 1, 1))
+        query = query.filter(
+            col_name >= date(int(query_params.get('start_year')), 1, 1))
     elif query_params.get('end_year') is not None:
-        query = query.filter(col_name <= date(int(query_params.get('end_year')), 12, 31))
+        query = query.filter(
+            col_name <= date(int(query_params.get('end_year')), 12, 31))
     if query_params.get('running') is not None:
         if query_params.get('running').lower() == 'true':
             query = query.filter(table.c.running)
@@ -443,70 +473,80 @@ def media_filter(query_params, query):
             query = query.filter(not table.c.running)
     return extra_media_filter(query_params, query)
 
+
 def extra_media_filter(query_params, query):
     """
     Some more filtering for media
     """
     table = Media.__table__
     if query_params.get('seasons') is not None:
-        query = query.filter(table.c.seasons == int(query_params.get('seasons')))
+        query = query.filter(
+            table.c.seasons == int(query_params.get('seasons')))
     if query_params.get('average_rating') is not None:
-        query = query.filter(table.c.average_rating >= float(query_params.get('average_rating')))
+        query = query.filter(table.c.average_rating >= float(
+            query_params.get('average_rating')))
     if query_params.get('last_aired') is not None:
-        query = query.filter(table.c.last_aired == str(query_params.get('last_aired')).zfill(4))
+        query = query.filter(
+            table.c.last_aired == str(query_params.get('last_aired')).zfill(4))
     if query_params.get('genre') is not None:
-        query = query.join(Media.genres).filter(Genre.name == query_params.get('genre'))
+        query = query.join(
+            Media.genres).filter(Genre.name == query_params.get('genre'))
     return query
+
 
 def artist_search(query, term):
     """
     Search artist table for term
     """
     table = Artist.__table__
-    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'), #convert
-                           table.c.name.ilike('%'+term+'%'),
-                           table.c.bio.ilike('%'+term+'%'),
-                           table.c.image.ilike('%'+term+'%'),
-                           cast(table.c.followers, Text).ilike('%'+term+'%'), #convert
-                           table.c.spotify_uri.ilike('%'+term+'%'))
+    search_statement = or_(
+        cast(table.c.id, Text).ilike('%' + term + '%'),  #convert
+        table.c.name.ilike('%' + term + '%'),
+        table.c.bio.ilike('%' + term + '%'),
+        table.c.image.ilike('%' + term + '%'),
+        cast(table.c.followers, Text).ilike('%' + term + '%'),  #convert
+        table.c.spotify_uri.ilike('%' + term + '%'))
     return query.filter(search_statement)
+
 
 def media_search(query, term):
     """
     Search media table for term
     """
     table = Media.__table__
-    search_statement = or_(cast(table.c.id, Text).ilike('%'+term+'%'), #convert
-                           cast(table.c.type, Text).ilike('%'+term+'%'), #convert
-                           table.c.name.ilike('%'+term+'%'),
-                           table.c.cast.ilike('%'+term+'%'),
-                           cast(table.c.seasons, Text).ilike('%'+term+'%'),
-                           cast(table.c.release_date, Text).ilike('%'+term+'%'),
-                           table.c.last_aired.ilike('%'+term+'%'),
-                           table.c.image.ilike('%'+term+'%'),
-                           cast(table.c.running, Text).ilike('%'+term+'%'), #convert?
-                           table.c.overview.ilike('%'+term+'%'),
-                           table.c.other_images.ilike('%'+term+'%'),
-                           table.c.videos.ilike('%'+term+'%'),
-                           cast(table.c.imdb_id, Text).ilike('%'+term+'%'), #convert
-                           cast(table.c.tmdb_id, Text).ilike('%'+term+'%'), #convert
-                           cast(table.c.runtime, Text).ilike('%'+term+'%'), #convert
-                           table.c.tagline.ilike('%'+term+'%'),
-                           cast(table.c.popularity, Text).ilike('%'+term+'%'), #convert
-                           cast(table.c.average_rating, Text).ilike('%'+term+'%')) #convert
+    search_statement = or_(
+        cast(table.c.id, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.type, Text).ilike('%' + term + '%'),  #convert
+        table.c.name.ilike('%' + term + '%'),
+        table.c.cast.ilike('%' + term + '%'),
+        cast(table.c.seasons, Text).ilike('%' + term + '%'),
+        cast(table.c.release_date, Text).ilike('%' + term + '%'),
+        table.c.last_aired.ilike('%' + term + '%'),
+        table.c.image.ilike('%' + term + '%'),
+        cast(table.c.running, Text).ilike('%' + term + '%'),  #convert?
+        table.c.overview.ilike('%' + term + '%'),
+        table.c.other_images.ilike('%' + term + '%'),
+        table.c.videos.ilike('%' + term + '%'),
+        cast(table.c.imdb_id, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.tmdb_id, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.runtime, Text).ilike('%' + term + '%'),  #convert
+        table.c.tagline.ilike('%' + term + '%'),
+        cast(table.c.popularity, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.average_rating, Text).ilike('%' + term + '%'))  #convert
     return query.filter(search_statement)
+
 
 def album_search(query, term):
     """
     Search album table for term
     """
     table = Album.__table__
-    search_statement = or_(table.c.name.ilike('%'+term+'%'),
-                           cast(table.c.release_date, Text).ilike('%'+term+'%'),
-                           table.c.image.ilike('%'+term+'%'),
-                           table.c.label.ilike('%'+term+'%'),
-                           table.c.tracks.ilike('%'+term+'%'),
-                           table.c.spotify_uri.ilike('%'+term+'%'),
-                           cast(table.c.id, Text).ilike('%'+term+'%'))
+    search_statement = or_(
+        table.c.name.ilike('%' + term + '%'),
+        cast(table.c.release_date, Text).ilike('%' + term + '%'),
+        table.c.image.ilike('%' + term + '%'),
+        table.c.label.ilike('%' + term + '%'),
+        table.c.tracks.ilike('%' + term + '%'),
+        table.c.spotify_uri.ilike('%' + term + '%'),
+        cast(table.c.id, Text).ilike('%' + term + '%'))
     return query.filter(search_statement)
-         
