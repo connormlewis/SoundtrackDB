@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
-import { AlbumForm } from './AlbumForm'; 
+import { AlbumForm } from './forms/AlbumForm'; 
 
 const titleStyles = {
   'overflow': 'hidden',
@@ -118,7 +118,7 @@ export class AlbumHome extends Component {
           </div>
         </div>
         <div className="row">
-          <AlbumForm transition={this.props.transition} ref={instance => { this.form = instance; }}/>
+          <AlbumForm labels={this.props.labels} transition={this.props.transition} ref={instance => { this.form = instance; }}/>
         </div>
 
         {

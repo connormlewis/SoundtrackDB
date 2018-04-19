@@ -292,6 +292,28 @@ def get_genres():
         session.close()
 
 
+@BP.route('/labels')
+def get_labels():
+    """
+    Get all possible values for label in album table
+    """
+    session = get_session()
+    try:
+        query = session.query(Album.label).distinct()
+        final_query = query
+        labels = query.all()
+        label_list = []
+        for label in labels:
+            label_list.append(label[0])
+        count = final_query.count()
+        return jsonify({
+            'items': label_list,
+            'count': count
+        })
+    finally:
+        session.close()
+
+
 def get_commits():  # pragma: no cover
     """
     Get commits from github
@@ -356,7 +378,7 @@ def get_issues():  # pragma: no cover
     return team, all_issues
 
 
-def find_last_page(link):  # pragma: no cover
+def find_last_page(link): # pragma: no cover
     """
     Parses the header of the GitHub API and returns the last page
     """

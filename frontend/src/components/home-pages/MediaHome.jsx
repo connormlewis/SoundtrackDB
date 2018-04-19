@@ -3,7 +3,7 @@ import { Card, CardImg, CardBody, CardTitle, CardSubtitle, Button } from 'reacts
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
-import { MediaForm } from './MediaForm'; 
+import { MediaForm } from './forms/MediaForm'; 
 
 
 export class MediaItem extends Component {
