@@ -431,8 +431,8 @@ class MediaPage(unittest.TestCase):
     def test_global_search(self):
         test_global_search(self, "Interstellar")
 
-    # def test_media_search(self):
-    #     test_model_search(self, "Doctor Who")
+    def test_media_search(self):
+        test_model_search(self, "Doctor Who")
 
     def test_sort(self):
         test_media_sort(self);
