@@ -7,7 +7,7 @@ export class ArtistForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {min: 0, max: 0, album: 0, media: 0, collapse: false, validMin: true, validMax: true, validAlbums: true, validMedia: true}; 
+    this.state = {min: "", max: "", album: "", media: "", collapse: false, validMin: true, validMax: true, validAlbums: true, validMedia: true}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
     this.checkValidNum = this.checkValidNum.bind(this);
