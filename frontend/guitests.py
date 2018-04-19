@@ -233,11 +233,10 @@ def test_artist_filters(tester):
     tester.assertIn("137,976", tabs[0].text)
     tester.assertIn("137,688", tabs[1].text)
 
-    # reload page
-    driver.get(tester.url)
+    # reset filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[2]").click()
 
     # test number of albums filter
-    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input[@id='album']").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input[@id='album']").clear()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input[@id='album']").send_keys("10")
@@ -245,11 +244,10 @@ def test_artist_filters(tester):
     tabs = list(driver.find_elements_by_tag_name("h5"))
     tester.assertIn("Murray Gold", tabs[0].text)
 
-    # reload page
-    driver.get(tester.url)
+    # reset filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[2]").click()
 
     # test number of media filter
-    driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/input[@id='media']").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/input[@id='media']").clear()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/input[@id='media']").send_keys("10")
@@ -289,118 +287,155 @@ def test_media_filters(tester):
     tabs = list(driver.find_elements_by_tag_name("h5"))
     tester.assertIn("A.I.", tabs[0].text)
 
-    #test start release year
+    #test start release year filter
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/select/option[@value='""']").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/select[@id='start']/option[@value='2010']").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
     tabs = list(driver.find_elements_by_tag_name("h6"))
     tester.assertIn("2016", tabs[0].text)
 
-    #test end release year
+    #test end release year filter
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/select[@id='end']/option[@value='2013']").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
     tabs = list(driver.find_elements_by_tag_name("h6"))
     tester.assertIn("2013", tabs[0].text)
 
+    #reset form
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button[2]").click()
 
-# class HomePage(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000"
+    #test average rating filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[4]/select[@id='avg_rate']/option[@value='7']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("A Beautiful Mind", tabs[0].text)
 
-#     def test_welcome_message(self):
-#         test_title(self, "Welcome to SoundtrackDB")
+    #reset form
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button[2]").click()
 
-#     def test_navigation(self):
-#         test_navbar(self)
+    #test currently running series filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/div[1]/label/input").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("12 Monkeys", tabs[0].text)
 
-#     def test_global_search(self):
-#         test_global_search(self, "Hello")
+    #reset form
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button[2]").click()
 
-#     def tearDown(self):
-#         self.driver.close()
+    #test seasons filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/div[2]/select/option[@value='6']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("6", tabs[0].text)
 
-# class AlbumPage(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/album"
+    #reset form
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button[2]").click()
 
-    # def test_title(self):
-    #     test_title(self, "Albums")
+    #test last aired filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/div[3]/select/option[@value='2018']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button").click()
+    tabs = list(driver.find_elements_by_tag_name("h6"))
+    tester.assertIn("2018", tabs[0].text)
 
-    # def test_navigation(self):
-    #     test_navbar(self)
 
-    # def test_cards(self):
-    #     test_card_items(self)
 
-    # def test_global_search(self):
-    #     test_global_search(self, "Arrow")
+class HomePage(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000"
 
-    # def test_album_search(self):
-    #     test_model_search(self, "sparrow")
+    def test_welcome_message(self):
+        test_title(self, "Welcome to SoundtrackDB")
 
-    # def test_sort(self):
-    #     test_album_sort(self)
+    def test_navigation(self):
+        test_navbar(self)
 
-    # def test_filter(self):
-    #     test_album_filters(self)
+    def test_global_search(self):
+        test_global_search(self, "Hello")
 
-    # def tearDown(self):
-    #     self.driver.close()
+    def tearDown(self):
+        self.driver.close()
 
-# class ArtistPage(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/artist"
+class AlbumPage(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/album"
 
-#     def test_title(self):
-#         test_title(self, "Artists");
+    def test_title(self):
+        test_title(self, "Albums")
 
-#     def test_navigation(self):
-#         test_navbar(self)
+    def test_navigation(self):
+        test_navbar(self)
 
-#     def test_cards(self):
-#         test_card_items(self)
+    def test_cards(self):
+        test_card_items(self)
 
-#     def test_global_search(self):
-#         test_global_search(self, "Hans Zimmer")
+    def test_global_search(self):
+        test_global_search(self, "Arrow")
 
-#     def test_artist_search(self):
-#         test_model_search(self, "Hans Zimmer")
+    def test_album_search(self):
+        test_model_search(self, "sparrow")
 
-    # def test_sort(self):
-    #     test_artist_sort(self)
+    def test_sort(self):
+        test_album_sort(self)
 
-    # def test_filter(self):
-    #     test_artist_filters(self);
+    def test_filter(self):
+        test_album_filters(self)
+
+    def tearDown(self):
+        self.driver.close()
+
+class ArtistPage(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/artist"
+
+    def test_title(self):
+        test_title(self, "Artists");
+
+    def test_navigation(self):
+        test_navbar(self)
+
+    def test_cards(self):
+        test_card_items(self)
+
+    def test_global_search(self):
+        test_global_search(self, "Hans Zimmer")
+
+    def test_artist_search(self):
+        test_model_search(self, "Hans Zimmer")
+
+    def test_sort(self):
+        test_artist_sort(self)
+
+    def test_filter(self):
+        test_artist_filters(self);
         
 
-    # def tearDown(self):
-    #     self.driver.close()
+    def tearDown(self):
+        self.driver.close()
 
 class MediaPage(unittest.TestCase):
     def setUp(self):
         self.driver = setup_driver()
         self.url = "http://localhost:3000/media"
 
-#     def test_title(self):
-#         test_title(self, "Media")
+    def test_title(self):
+        test_title(self, "Media")
 
-#     def test_navigation(self):
-#         test_navbar(self)
+    def test_navigation(self):
+        test_navbar(self)
 
-#     def test_cards(self):
-#         test_card_items(self)
+    def test_cards(self):
+        test_card_items(self)
 
-#     def test_global_search(self):
-#         test_global_search(self, "Interstellar")
+    def test_global_search(self):
+        test_global_search(self, "Interstellar")
 
-#     # def test_media_search(self):
-#     #     test_model_search(self, "Doctor Who")
+    # def test_media_search(self):
+    #     test_model_search(self, "Doctor Who")
 
-#     def test_sort(self):
-#         test_media_sort(self);
+    def test_sort(self):
+        test_media_sort(self);
 
     def test_filter(self):
         test_media_filters(self)
@@ -408,61 +443,61 @@ class MediaPage(unittest.TestCase):
     def tearDown(self):
         self.driver.close()
 
-# class AboutPage(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/about"
+class AboutPage(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/about"
 
-#     def test_navigation(self):
-#         test_navbar(self)
+    def test_navigation(self):
+        test_navbar(self)
 
-#     def tearDown(self):
-#         self.driver.close()
+    def tearDown(self):
+        self.driver.close()
 
-# class AlbumInstance(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/album/1"
+class AlbumInstance(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/album/1"
 
-#     def test_navigation(self):
-#         test_navbar(self)
+    def test_navigation(self):
+        test_navbar(self)
 
-#     def test_title(self):
-#         test_instance_title(self, "Arrow: Season 5 (Original Television Soundtrack)")
+    def test_title(self):
+        test_instance_title(self, "Arrow: Season 5 (Original Television Soundtrack)")
 
-#     def test_tracks(self):
-#         test_tracklist(self)
+    def test_tracks(self):
+        test_tracklist(self)
 
-# class ArtistInstance(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/artist/1"
+class ArtistInstance(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/artist/1"
 
-#     def test_navigation(self):
-#         test_navbar(self)
+    def test_navigation(self):
+        test_navbar(self)
 
-#     def test_title(self):
-#         test_instance_title(self, "Blake Neely")
+    def test_title(self):
+        test_instance_title(self, "Blake Neely")
 
-#     def test_biography(self):
-#         test_bio(self);
+    def test_biography(self):
+        test_bio(self);
 
-# class MediaInstance(unittest.TestCase):
-#     def setUp(self):
-#         self.driver = setup_driver()
-#         self.url = "http://localhost:3000/media/66"
+class MediaInstance(unittest.TestCase):
+    def setUp(self):
+        self.driver = setup_driver()
+        self.url = "http://localhost:3000/media/66"
 
-#     def test_navigation(self):
-#         test_navbar(self)
+    def test_navigation(self):
+        test_navbar(self)
 
-#     def test_title(self):
-#         test_instance_title(self, "African Safari")
+    def test_title(self):
+        test_instance_title(self, "African Safari")
 
-#     def test_about(self):
-#         test_about(self);
+    def test_about(self):
+        test_about(self);
 
-#     def test_cast(self):
-#         test_cast(self)
+    def test_cast(self):
+        test_cast(self)
 
 if __name__ == "__main__":
     unittest.main()
