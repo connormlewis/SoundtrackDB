@@ -74,7 +74,6 @@ export class AlbumForm extends Component {
 
     return (
       <div>
-        <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
           <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
@@ -83,8 +82,7 @@ export class AlbumForm extends Component {
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
-                </Input>
-                {' '}
+                </Input>{' '}
                 <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
@@ -96,9 +94,9 @@ export class AlbumForm extends Component {
                 {this.getFeedback()}
               </Col>
             </FormGroup>
-              <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
-                <Button type="submit" onClick={this.filter}>Submit</Button>
-              </Col>
+            <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
+              <Button type="submit" onClick={this.filter}>Submit</Button>
+            </Col>
           </Form>
         </Collapse>
       </div>

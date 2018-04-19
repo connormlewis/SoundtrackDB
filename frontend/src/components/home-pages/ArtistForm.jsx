@@ -131,14 +131,12 @@ export class ArtistForm extends Component {
   render () {
     return (
       <div>
-        <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
           <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={6}>
                 <Label for="min">Number of Spotify Followers</Label>
-                <Input invalid={!this.state.validMin} type="number" name="min" id="min" min="0" placeholder="min" onChange={(e) => (this.setState({min: e.target.value}))}/>
-                {' '}
+                <Input invalid={!this.state.validMin} type="number" name="min" id="min" min="0" placeholder="min" onChange={(e) => (this.setState({min: e.target.value}))}/>{' '}
                 <Input invalid={!this.state.validMax} type="number" name="max" id="max" min="0" placeholder="max" onChange={(e) => (this.setState({max: e.target.value}))}/>
                 {this.getFollowerFeedback()}
               </Col>
@@ -153,9 +151,9 @@ export class ArtistForm extends Component {
                 {this.getMediaFeedback()}              
               </Col>
             </FormGroup>
-              <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
-                <Button type="submit" onClick={this.filter}>Submit</Button>
-              </Col>
+            <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
+              <Button type="submit" onClick={this.filter}>Submit</Button>
+            </Col>
           </Form>
         </Collapse>
       </div>

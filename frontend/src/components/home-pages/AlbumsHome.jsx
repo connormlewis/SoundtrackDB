@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types'
-import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardImg, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
 import { AlbumForm } from './AlbumForm'; 
@@ -102,6 +102,8 @@ export class AlbumHome extends Component {
             <SearchBar placeholder="Search Albums" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
           <div className="float-right form-inline mr-2">
+            <Button color="info" className="mr-2" onClick={() => {this.form.toggle() }}>Filter</Button>
+            
             <label className="mr-2">Order by:</label>
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>
               <option value="name">Name</option>
@@ -116,7 +118,7 @@ export class AlbumHome extends Component {
           </div>
         </div>
         <div className="row">
-          <AlbumForm transition={this.props.transition}/>
+          <AlbumForm transition={this.props.transition} ref={instance => { this.form = instance; }}/>
         </div>
 
         {
