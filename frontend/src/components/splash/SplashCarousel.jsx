@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import "../style/Splash.css"; 
+import "../../style/Splash.css"; 
 import { Carousel, CarouselItem, CarouselControl, CarouselIndicators, CarouselCaption } from 'reactstrap';
-import albumImg from '../static/splash/carousel/albumCarousel.jpg';
-import artistImg from '../static/splash/carousel/artistCarousel.jpg';
-import mediaImg from '../static/splash/carousel/mediaCarousel.jpg';
-import connectImg from '../static/splash/carousel/connectionCarousel.jpg';
+import albumImg from '../../static/splash/carousel/albumCarousel.jpg';
+import artistImg from '../../static/splash/carousel/artistCarousel.jpg';
+import mediaImg from '../../static/splash/carousel/mediaCarousel.jpg';
+import connectImg from '../../static/splash/carousel/connectionCarousel.jpg';
 
 const items = [
   {

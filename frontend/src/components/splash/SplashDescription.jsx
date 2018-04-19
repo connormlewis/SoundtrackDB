@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Col, Row } from 'reactstrap';
 import { UISref } from '@uirouter/react';
-import albumImg from '../static/splash/albumInfo.jpg';
-import artistImg from '../static/splash/artistInfo.jpg';
-import mediaImg from '../static/splash/mediaInfo.jpg'
+import albumImg from '../../static/splash/albumInfo.jpg';
+import artistImg from '../../static/splash/artistInfo.jpg';
+import mediaImg from '../../static/splash/mediaInfo.jpg'
 
 class SplashDescription extends Component {
   render() {

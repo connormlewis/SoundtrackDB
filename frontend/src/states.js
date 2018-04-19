@@ -1,6 +1,6 @@
 import React from 'react'
 import { UIView } from '@uirouter/react'
-import Splash from './components/Splash';
+import Splash from './components/splash/Splash';
 import About from './components/About';
 import ErrorPage from './components/Error';
 
