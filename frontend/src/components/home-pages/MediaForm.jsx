@@ -42,7 +42,7 @@ export class MediaForm extends Component {
     if (this.state.last_air !== "") {
       filters['last_aired'] = this.state.last_air;
     }
-    if (this.state.genre != "") {
+    if (this.state.genre !== "") {
       filters['genre'] = this.state.genre;
     }
     const { stateService } = this.props.transition.router;
@@ -90,51 +90,45 @@ export class MediaForm extends Component {
 
     return (
       <div>
-        <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
-          <Form className="filtering-form">
-            
+          <Form className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={3}>
                 <Label for="type" size="lg">Type</Label>
                 <br />
                 <Label check>
-                  <input name="movie" type="checkbox" checked={this.state.movie} onChange={this.handleInputChange}/>{' '}
+                  <input name="media" type="radio" onChange={(e) => (this.setState({movie: e.target.value, tv_show: !e.target.value}))}/>{' '}
                   Movie
                 </Label>
                 <br />
                 <Label check>
-                  <input name="tv_show" type="checkbox" checked={this.state.tv_show} onChange={this.handleInputChange}/>{' '}
+                  <input name="media" type="radio" onChange={(e) => (this.setState({movie: !e.target.value, tv_show: e.target.value}))}/>{' '}
                   TV Show
                 </Label>
+                <br />
+                <Label check>
+                  <input name="media" type="radio" onChange={(e) => (this.setState({movie: !e.target.value, tv_show: !e.target.value}))}/>{' '}
+                  Both
+                </Label>
               </Col>
-
               <Col sm={3}>
                 <Label for="genre" size="lg">Genre</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({genre: e.target.value}))}>
                   <option value="">Any</option>
-                  {
-                    this.props.genres.items.map(genre => {
-                      return (
-                        <option value={genre.name}>{genre.name}</option>
-                      )
-                    })
-                  }
+                  {genres}
                 </Input>
               </Col>
-
               <Col sm={3}>
-                  <Label for="release" size="lg">Release Year</Label>
-                  <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
-                    <option value="">Any</option>
-                    {years}
-                  </Input>
-                  <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))} defaultValue={2018}>
-                    <option value="">Any</option>
-                    {years}
-                  </Input>
-              </Col>
-              
+                <Label for="release" size="lg">Release Year</Label>
+                <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
+                  <option value="">Any</option>
+                  {years}
+                </Input>{' '}
+                <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
+                  <option value="">Any</option>
+                  {years}
+                </Input>
+              </Col>         
               <Col sm={3}>
                 <Label for="avg_rate" size="lg" sm={20}>Average Rating</Label>
                 <Input type="select" name="avg_rate" id="avg_rate" min="0" onChange={(e) => (this.setState({avg_rate: e.target.value}))}>
@@ -143,7 +137,6 @@ export class MediaForm extends Component {
                 </Input>
               </Col>
             </FormGroup>
-            
             <legend>TV Show Filters</legend>
             <FormGroup row>
               <Col sm={5}>
@@ -159,7 +152,6 @@ export class MediaForm extends Component {
                   {seasons}
                 </Input>
               </Col>
-
               <Col sm={4}>
                 <Label for="last_air" size="lg">Last Aired (Year)</Label>
                 <Input type="select" name="last_air" id="last_air" onChange={(e) => (this.setState({last_air: e.target.value}))}>
@@ -168,9 +160,9 @@ export class MediaForm extends Component {
                 </Input>
               </Col>
             </FormGroup>
-              <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={{ size: 10 }}>
-                <Button onClick={this.filter}>Submit</Button>
-              </Col>
+            <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={{ size: 10 }}>
+              <Button type="submit" onClick={this.filter}>Submit</Button>
+            </Col>
           </Form>
         </Collapse>
       </div>

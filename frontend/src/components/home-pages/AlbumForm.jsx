@@ -8,15 +8,31 @@ export class AlbumForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {start_year: 1954, end_year: 2018, track: 0, collapse: false, validNum: true}; 
+    this.state = {start_year: 1954, end_year: 2018, track: "", collapse: false, validNum: true}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
     this.checkValidNum = this.checkValidNum.bind(this);
     this.getFeedback = this.getFeedback.bind(this); 
+    this.getNumTracks = this.getNumTracks.bind(this); 
+  }
+
+  getNumTracks() {
+    if (this.state.track === "") {
+      this.setState({validNum: true});
+      return undefined;
+    }
+    else if (!this.checkValidNum(this.state.track)) {
+      this.setState({validNum: false});
+      return undefined;
+    }
+    else {
+      this.setState({validNum: true})
+      return this.state.track; 
+    }
   }
 
   checkValidNum(num) {
-    if (num >= 0 && !isNaN(parseInt(num))) {
+    if (num >= 0 && !isNaN(parseInt(num, 10))) {
       return true; 
     }
     return false; 
@@ -40,17 +56,7 @@ export class AlbumForm extends Component {
     if (this.state.end !== "") {
       end_year = this.state.end;
     }
-    let num_tracks = undefined;
-    if (this.state.track !== "") {
-      num_tracks = this.state.track; 
-    }
-    if (!this.checkValidNum(num_tracks)) {
-      this.setState({validNum: false})
-      num_tracks = undefined
-    }
-    else {
-      this.setState({validNum: true})
-    }
+    let num_tracks = this.getNumTracks();
     const { stateService } = this.props.transition.router;
     stateService.go('^.home', {limit: 12, offset: 0, filters: {start_year: start_year, end_year: end_year, num_tracks: num_tracks}});
   }
@@ -68,17 +74,15 @@ export class AlbumForm extends Component {
 
     return (
       <div>
-        <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
-          <Form inline className="filtering-form">
+          <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={6}>
                 <Label style={{paddingRight: "50px"}}for="start">Release Year</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
-                </Input>
-                {' '}
+                </Input>{' '}
                 <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
@@ -90,9 +94,9 @@ export class AlbumForm extends Component {
                 {this.getFeedback()}
               </Col>
             </FormGroup>
-              <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
-                <Button onClick={this.filter}>Submit</Button>
-              </Col>
+            <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>
+              <Button type="submit" onClick={this.filter}>Submit</Button>
+            </Col>
           </Form>
         </Collapse>
       </div>

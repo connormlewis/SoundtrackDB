@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Card, CardBody, CardTitle, CardSubtitle, CardText } from 'reactstrap';
+import { Card, CardBody, CardTitle, CardSubtitle, CardText, Button } from 'reactstrap';
 import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
@@ -97,6 +97,7 @@ export class ArtistHome extends Component {
             <SearchBar placeholder="Search Artists" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
           <div className="float-right form-inline mr-2">
+            <Button color="info" onClick={() => {this.form.toggle() }} className="mr-2">Filter</Button>
             <label className="mr-2">Order by:</label>
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>
               <option value="name">Name</option>
@@ -112,7 +113,7 @@ export class ArtistHome extends Component {
           </div>
         </div>
         <div className="row">
-          <ArtistForm transition={this.props.transition}/>
+          <ArtistForm transition={this.props.transition} ref={(instance) => {this.form = instance}}/>
         </div>
 
         {
