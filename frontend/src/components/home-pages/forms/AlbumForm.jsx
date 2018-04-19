@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Col, Button, Form, FormGroup, Label, Input, Collapse, FormFeedback} from 'reactstrap'; 
 // eslint-disable-next-line
 import styles from '../../../style/Form.css';
-import yearItems from './selections/Years.jsx'
+import yearItems from './selections/Years.jsx';
 
 export class AlbumForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {start_year: 1954, end_year: 2018, track: "", collapse: false, validNum: true}; 
+    this.state = {start_year: 1954, end_year: 2018, track: "", label: "", collapse: false, validNum: true}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
     this.checkValidNum = this.checkValidNum.bind(this);
@@ -57,8 +57,13 @@ export class AlbumForm extends Component {
       end_year = this.state.end;
     }
     let num_tracks = this.getNumTracks();
+
+    let label = undefined;
+    if (this.state.label !== "") {
+      label = this.state.label
+    }
     const { stateService } = this.props.transition.router;
-    stateService.go('^.home', {limit: 12, offset: 0, filters: {start_year: start_year, end_year: end_year, num_tracks: num_tracks}});
+    stateService.go('^.home', {limit: 12, offset: 0, filters: {start_year: start_year, end_year: end_year, num_tracks: num_tracks, label: label}});
   }
 
   toggle() {
@@ -66,7 +71,14 @@ export class AlbumForm extends Component {
   }
 
   render () {
+
     const years = yearItems.map((item) => {
+      return (
+        <option value={item}>{item}</option>
+      );
+    });
+
+    const labels = this.props.labels.items.map((item) => {
       return (
         <option value={item}>{item}</option>
       );
@@ -76,22 +88,29 @@ export class AlbumForm extends Component {
       <div>
         <Collapse isOpen={this.state.collapse}>
           <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
-            <FormGroup row>
-              <Col sm={6}>
-                <Label style={{paddingRight: "50px"}}for="start">Release Year</Label>
+            <FormGroup className="text-center" row>
+              <Col style={{paddingRight: "0px"}} sm={4}>
+                <Label style={{marginRight: "5px"}} for="start">Release Year</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
-                </Input>{' '}
+                </Input>
                 <Input type="select" name="end" id="end" onChange={(e) => (this.setState({end: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
                 </Input>
               </Col>
-              <Col sm={6}>
+              <Col style={{padding: "10px"}} sm={4}>
                 <Label for="track">Number of Tracks</Label>
-                <Input invalid={!this.state.validNum} type="number" name="track" id="track" placeholder="value" onChange={(e) => (this.setState({track: e.target.value}))}/>
+                <Input style={{width: "75%"}} invalid={!this.state.validNum} type="number" name="track" id="track" placeholder="value" onChange={(e) => (this.setState({track: e.target.value}))}/>
                 {this.getFeedback()}
+              </Col>
+              <Col sm={4}>
+                <Label for="label">Label</Label>
+                  <Input style={{width: "100%"}} type="select" name="label" id="label" onChange={(e) => (this.setState({label: e.target.value}))}>
+                  <option value="">Any</option>
+                  {labels}
+                </Input>
               </Col>
             </FormGroup>
             <Col style={{paddingLeft: "2px", marginTop: "10px"}} sm={3}>

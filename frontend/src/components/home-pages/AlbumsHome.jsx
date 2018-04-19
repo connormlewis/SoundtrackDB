@@ -118,7 +118,7 @@ export class AlbumHome extends Component {
           </div>
         </div>
         <div className="row">
-          <AlbumForm transition={this.props.transition} ref={instance => { this.form = instance; }}/>
+          <AlbumForm labels={this.props.labels} transition={this.props.transition} ref={instance => { this.form = instance; }}/>
         </div>
 
         {
