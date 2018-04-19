@@ -74,7 +74,6 @@ export class AlbumForm extends Component {
 
     return (
       <div>
-        <Button color="info" onClick={this.toggle} style={{ marginBottom: '1rem', marginLeft: '1rem' }}>Filter</Button>
         <Collapse isOpen={this.state.collapse}>
           <Form inline className="filtering-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
