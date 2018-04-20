@@ -17,7 +17,6 @@ def setup_driver() :
 def test_navbar(tester):
     driver = tester.driver
     driver.get(tester.url)
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
     tabs = list(driver.find_elements_by_tag_name("li"))
     tester.assertIn("Albums", tabs[0].get_attribute("outerHTML"))
     tester.assertIn("Artists", tabs[1].get_attribute("outerHTML"))
@@ -29,46 +28,46 @@ def test_title(tester, title):
     driver = tester.driver
     driver.get(tester.url)
 
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
     tester.assertIn(title, list(driver.find_elements_by_tag_name("h2"))[0].text)
 
 def test_instance_title(tester, title):
     driver = tester.driver
     driver.get(tester.url)
 
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
     tester.assertIn(title, list(driver.find_elements_by_id("name"))[0].text)
 
 def test_card_items(tester):
     driver = tester.driver
     driver.get(tester.url)
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+    
+    driver.implicitly_wait(10)
+
     tabs = list(driver.find_elements_by_class_name("card-body"))
     tester.assertEqual(tabs.__len__(), 12)
 
 def test_bio(tester):
     driver = tester.driver
     driver.get(tester.url)
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+
     tester.assertNotEqual("", list(driver.find_elements_by_id("bio"))[0].text)
 
 def test_tracklist(tester):
     driver = tester.driver
     driver.get(tester.url)
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+
     tracks = list(driver.find_elements_by_id("track"))
     tester.assertNotEqual(tracks.__len__(), 0)
 
 def test_about(tester):
     driver = tester.driver
     driver.get(tester.url)
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+
     tester.assertNotEqual("", list(driver.find_elements_by_id("about"))[0].text)
 
 def test_cast(tester):
     driver = tester.driver
     driver.get(tester.url)
-    html = list(driver.find_elements_by_tag_name("body"))[0].get_attribute('outerHTML')
+
     cast = list(driver.find_elements_by_id("cast"))
     tester.assertNotEqual(cast.__len__(), 0) 
 
@@ -189,26 +188,41 @@ def test_album_filters(tester):
     # test start year filter
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[1]/div[2]/button").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/select[@id='start']/option[@value='2016']").click()
-    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[1]").click()
     tabs = list(driver.find_elements_by_tag_name("h6"))
     tester.assertIn("2016", tabs[0].text) 
     tester.assertIn("2017", tabs[1].text) 
     
     # add on end year filter
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[1]/select[@id='end']/option[@value='2016']").click()
-    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[1]").click()
     tabs = list(driver.find_elements_by_tag_name("h6"))
     tester.assertIn("2016", tabs[0].text) 
     tester.assertIn("2016", tabs[1].text) 
+
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[2]").click()
 
     # add on track number filter
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input").click()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input").clear()
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[2]/input").send_keys("13")
-    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[1]").click()
     tabs = list(driver.find_elements_by_tag_name("p"))
     tester.assertIn("13", tabs[0].text) 
     tester.assertIn("13", tabs[1].text) 
+
+    # reset filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[2]").click()
+
+    # test label filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[1]/div[3]/select[@id='label']/option[@value='Atlantic Records']").click()
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[1]").click()
+    tabs = list(driver.find_elements_by_tag_name("h5"))
+    tester.assertIn("Harry Potter", tabs[0].text) 
+
+    # reset filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[2]").click()
+
 
 def test_artist_filters(tester):
     driver = tester.driver
@@ -254,6 +268,9 @@ def test_artist_filters(tester):
     driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button").click()
     tabs = list(driver.find_elements_by_tag_name("h5"))
     tester.assertIn("Blake Neely", tabs[0].text)
+
+    # reset filter
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[2]/button[2]").click()
 
 def test_media_filters(tester):
     driver = tester.driver
@@ -336,6 +353,8 @@ def test_media_filters(tester):
     tabs = list(driver.find_elements_by_tag_name("h6"))
     tester.assertIn("2018", tabs[0].text)
 
+    #reset form
+    driver.find_element_by_xpath("//div[@id='root']/div/div/div[2]/div/div/form/div[3]/button[2]").click()
 
 
 class HomePage(unittest.TestCase):
@@ -410,7 +429,6 @@ class ArtistPage(unittest.TestCase):
     def test_filter(self):
         test_artist_filters(self);
         
-
     def tearDown(self):
         self.driver.close()
 
