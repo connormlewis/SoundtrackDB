@@ -5,14 +5,14 @@ import styles from '../../../style/Form.css';
 import yearItems from './selections/Years.jsx';
 
 const resetState = {
-  start_year: 1954, end_year: 2018, track: "", label: "", collapse: true, validNum: true
+  start: "", end: "", track: "", label: "", collapse: true, validNum: true
 };
 
 export class AlbumForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {start_year: 1954, end_year: 2018, track: "", label: "", collapse: false, validNum: true}; 
+    this.state = {start: "", end: "", track: "", label: "", collapse: false, validNum: true}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
     this.checkValidNum = this.checkValidNum.bind(this);
@@ -24,6 +24,7 @@ export class AlbumForm extends Component {
   resetFields() {
     this.setState(resetState); 
     document.getElementById("album-form").reset();
+    this.filter()
   }
 
   getNumTracks() {
