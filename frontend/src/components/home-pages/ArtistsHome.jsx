@@ -97,7 +97,7 @@ export class ArtistHome extends Component {
             <SearchBar placeholder="Search Artists" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
           <div className="float-right form-inline mr-2">
-            <Button color="info" onClick={() => {this.form.toggle() }} className="mr-2">Filter</Button>
+            <Button style={{backgroundColor: "#1d2951"}} onClick={() => {this.form.toggle() }} className="mr-2">Filter</Button>
             <label className="mr-2">Order by:</label>
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>
               <option value="name">Name</option>

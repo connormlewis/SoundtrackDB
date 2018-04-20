@@ -6,7 +6,7 @@ import {Container} from 'reactstrap';
 
 
 const conStyle = {
-  backgroundColor: "#FFFFFF",
+  backgroundColor: "#E9EBEE",
 };
 
 class App extends Component {
