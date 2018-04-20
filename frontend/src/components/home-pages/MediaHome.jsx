@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import SDBPagination from "./../Pagination";
 import SearchBar from './../SearchBar'
 import { MediaForm } from './forms/MediaForm'; 
+import "../../style/Home.css";
 
 
 export class MediaItem extends Component {
@@ -123,7 +124,7 @@ export class MediaHome extends Component {
             <SearchBar placeholder="Search Media" value={this.params.searchTerm} onSubmit={(searchTerm) => this.search(searchTerm)} />
           </div>
           <div className="float-right form-inline mr-2">
-            <Button color="info" className="mr-2" onClick={() => {this.form.toggle() }}>Filter</Button>
+            <Button style={{backgroundColor: "#1d2951"}} className="mr-2" onClick={() => {this.form.toggle() }}>Filter</Button>
           
             <label className="mr-2">Order by:</label>
             <select name="" className="form-control mr-2" onChange={(e) => this.orderFieldChange(e)}>

@@ -7,17 +7,18 @@ import ratingItems from './selections/Rating.jsx';
 import seasonItems from './selections/Seasons.jsx';
 
 const resetState = {
-  movie: false, tv_show: false, start: "", end: "", running: false, season: "", avg_rate: "", last_air: "", collapse: true
+  movie: false, tv_show: false, start: "", end: "", running: false, season: "", avg_rate: "", last_air: "", genre: "", collapse: true
 };
 
 export class MediaForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {movie: false, tv_show: false, start: "", end: "", running: false, season: "", avg_rate: "", last_air: "", collapse: false}; 
+    this.state = {movie: false, tv_show: false, start: "", end: "", running: false, season: "", avg_rate: "", last_air: "", genre: "", collapse: false}; 
     this.filter = this.filter.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.toggle = this.toggle.bind(this);
+    this.resetFields = this.resetFields.bind(this);
   }
 
   resetFields() {
