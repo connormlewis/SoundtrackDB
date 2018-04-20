@@ -30,7 +30,7 @@ class Navigation extends Component {
   render() {
     return (
       <Fragment>
-        <Navbar light className="navbar-expand-md" style={{ backgroundColor: "#d0e2f2" }}>
+        <Navbar dark className="navbar-expand-md" style={{ backgroundColor: "#1d2951" }}>
           <Container fluid>
             <UISref to="home">
               <div className="navbar-brand" style={{ cursor: 'pointer' }}>

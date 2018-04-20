@@ -145,18 +145,18 @@ export class ArtistForm extends Component {
           <Form inline className="filtering-form" id="artist-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup row>
               <Col sm={6}>
-                <Label for="min">Number of Spotify Followers</Label>
+                <Label size="lg" for="min">Number of Spotify Followers</Label>
                 <Input invalid={!this.state.validMin} type="number" name="min" id="min" min="0" placeholder="min" onChange={(e) => (this.setState({min: e.target.value}))}/>{' '}
                 <Input invalid={!this.state.validMax} type="number" name="max" id="max" min="0" placeholder="max" onChange={(e) => (this.setState({max: e.target.value}))}/>
                 {this.getFollowerFeedback()}
               </Col>
               <Col sm={3}>
-                <Label for="album">Number of Albums</Label>
+                <Label size="lg" for="album">Number of Albums</Label>
                 <Input invalid={!this.state.validAlbums} type="number" name="album" id="album" min="0" placeholder="value" onChange={(e) => (this.setState({album: e.target.value}))}/>
                 {this.getAlbumsFeedback()}
               </Col>
               <Col sm={3}>
-                <Label for="media">Number of Media</Label>
+                <Label size="lg" for="media">Number of Media</Label>
                 <Input invalid={!this.state.validMedia} type="number" name="media" id="media" min="0" placeholder="value" onChange={(e) => (this.setState({media: e.target.value}))}/>
                 {this.getMediaFeedback()}              
               </Col>

@@ -72,155 +72,38 @@ def get_about():
 @BP.route('/artist')
 def get_artists():
     """Get all of the artists"""
-    session = get_session()
-
-    try:
-        query = session.query(Artist)
-        if request.args.get('search') is not None:
-            query = artist_search(query, request.args.get('search'))
-        query = artist_filter(request.args, query)
-        query = order_query(Artist.__table__, request.args, query)
-        final_query = query
-
-        if request.args.get('limit') is not None:
-            query = query.limit(int(request.args.get('limit')))
-        else:
-            query = query.limit(12)
-
-        if request.args.get('offset') is not None:
-            query = query.offset(int(request.args.get('offset')))
-        else:
-            query = query.offset(0)
-
-        artists = query.all()
-        count = final_query.count()
-        return jsonify({
-            'items': artists_schema.dump(artists, many=True).data,
-            'count': count
-        })
-    finally:
-        session.close()
-
+    return query_multiple(request.args, artist_search, \
+                artist_filter, Artist, artists_schema)
 
 @BP.route('/artist/<artist_id>')
 def get_artist(artist_id):
     """Get a specific artist"""
-    session = get_session()
-    try:
-        artist_id = int(artist_id)
-        artist = session.query(Artist).get(artist_id)
-
-        if artist is None:
-            return abort(404)
-
-        return jsonify(artist_schema.dump(artist).data)
-    except ValueError:
-        return abort(404)
-    finally:
-        session.close()
+    return query_single(artist_id, Artist, artist_schema)
 
 
 @BP.route('/album')
 def get_albums():
     """Get all of the albums"""
-    session = get_session()
-
-    try:
-        query = session.query(Album)
-        if request.args.get('search') is not None:
-            query = album_search(query, request.args.get('search'))
-        query = album_filter(request.args, query)
-        query = order_query(Album.__table__, request.args, query)
-        final_query = query
-
-        if request.args.get('limit') is not None:
-            query = query.limit(int(request.args.get('limit')))
-        else:
-            query = query.limit(12)
-
-        if request.args.get('offset') is not None:
-            query = query.offset(int(request.args.get('offset')))
-        else:
-            query = query.offset(0)
-
-        albums = query.all()
-        count = final_query.count()
-        return jsonify({
-            'items': albums_schema.dump(albums, many=True).data,
-            'count': count
-        })
-    finally:
-        session.close()
+    return query_multiple(request.args, album_search, \
+                album_filter, Album, albums_schema)
 
 
 @BP.route('/album/<album_id>')
 def get_album(album_id):
     """Get a specific album"""
-    session = get_session()
-    try:
-        album_id = int(album_id)
-        album = session.query(Album).get(album_id)
-
-        if album is None:
-            return abort(404)
-
-        return jsonify(album_schema.dump(album).data)
-    except ValueError:
-        return abort(404)
-    finally:
-        session.close()
+    return query_single(album_id, Album, album_schema)
 
 
 @BP.route('/media')
 def get_media():
     """Get all media"""
-    session = get_session()
-    try:
-        query = session.query(Media)
-        if request.args.get('search') is not None:
-            query = media_search(query, request.args.get('search'))
-        query = media_filter(request.args, query)
-        query = order_query(Media.__table__, request.args, query)
-        final_query = query
-
-        if request.args.get('limit') is not None:
-            query = query.limit(int(request.args.get('limit')))
-        else:
-            query = query.limit(12)
-
-        if request.args.get('offset') is not None:
-            query = query.offset(int(request.args.get('offset')))
-        else:
-            query = query.offset(0)
-
-        medias = query.all()
-
-        count = final_query.count()
-        return jsonify({
-            'items': medias_schema.dump(medias, many=True).data,
-            'count': count
-        })
-    finally:
-        session.close()
-
+    return query_multiple(request.args, media_search, \
+                media_filter, Media, medias_schema)
 
 @BP.route('/media/<media_id>')
 def get_single_media(media_id):
     """Get a specific media instance"""
-    session = get_session()
-    try:
-        media_id = int(media_id)
-        media = session.query(Media).get(media_id)
-
-        if media is None:
-            return abort(404)
-
-        return jsonify(media_schema.dump(media).data)
-    except ValueError:
-        return abort(404)
-    finally:
-        session.close()
-
+    return query_single(media_id, Media, media_schema)
 
 @BP.route('/search/<term>')
 def search_db(term):
@@ -241,15 +124,7 @@ def search_db(term):
         query = order_query(search, request.args, query)
         final_query = query
 
-        if request.args.get('limit') is not None:
-            query = query.limit(int(request.args.get('limit')))
-        else:
-            query = query.limit(12)
-
-        if request.args.get('offset') is not None:
-            query = query.offset(int(request.args.get('offset')))
-        else:
-            query = query.offset(0)
+        query = set_limit_offset(request.args, query)
 
         data = query.all()
         count = final_query.count()
@@ -270,17 +145,7 @@ def get_genres():
     try:
         query = session.query(Genre)
         final_query = query
-
-        if request.args.get('limit') is not None:
-            query = query.limit(int(request.args.get('limit')))
-        else:
-            query = query.limit(12)
-
-        if request.args.get('offset') is not None:
-            query = query.offset(int(request.args.get('offset')))
-        else:
-            query = query.offset(0)
-
+        query = set_limit_offset(request.args, query)
         genres = query.all()
 
         count = final_query.count()
@@ -290,7 +155,6 @@ def get_genres():
         })
     finally:
         session.close()
-
 
 @BP.route('/labels')
 def get_labels():
@@ -312,6 +176,80 @@ def get_labels():
         })
     finally:
         session.close()
+
+def query_single(model_id, Model, model_schema):
+    """
+    Make a query for a model instance
+    """
+    session = get_session()
+    try:
+        model_id = int(model_id)
+        model = session.query(Model).get(model_id)
+
+        if model is None:
+            return abort(404)
+
+        return jsonify(model_schema.dump(model).data)
+    except ValueError:
+        return abort(404)
+    finally:
+        session.close()
+
+def query_multiple(query_params, search_func, filter_func, Model, models_schema):
+    """
+    Make a query for multiple model instances
+    """
+    session = get_session()
+    table = Model.__table__
+    try:
+        query = session.query(Model)
+        if query_params.get('search') is not None:
+            query = search_func(query, query_params.get('search'))
+        query = filter_func(query_params, query)
+        query = order_query(table, query_params, query)
+        final_query = query
+        query = set_limit_offset(request.args, query)
+
+        models = query.all()
+        count = final_query.count()
+        return jsonify({
+            'items': models_schema.dump(models, many=True).data,
+            'count': count
+        })
+    finally:
+        session.close()
+
+def set_limit_offset(query_params, query):
+    """
+    Set the offset and limit of the return query
+    """
+    if query_params.get('limit') is not None:
+        query = query.limit(int(request.args.get('limit')))
+    else:
+        query = query.limit(12)
+
+    if query_params.get('offset') is not None:
+        query = query.offset(int(request.args.get('offset')))
+    else:
+        query = query.offset(0)
+    return query
+
+def order_query(table, query_params, query):
+    """
+    Order query
+    """
+    if query_params.get('order_by') is not None:
+        val = query_params.get('order_by')
+        if val in table.c:
+            if 'asc' in request.args:
+                query = query.order_by(asc(val))
+            elif 'desc' in request.args:
+                query = query.order_by(desc(val))
+            else:
+                query = query.order_by(val)
+    else:
+        query = query.order_by(asc('name'))
+    return query
 
 
 def get_commits():  # pragma: no cover
@@ -388,25 +326,6 @@ def find_last_page(link): # pragma: no cover
         temp_string = parse_words[index][:-1]
         last_page = re.split('page=', temp_string)[-1]
     return last_page
-
-
-def order_query(table, query_params, query):
-    """
-    Order query
-    """
-    if query_params.get('order_by') is not None:
-        val = query_params.get('order_by')
-        if val in table.c:
-            if 'asc' in request.args:
-                query = query.order_by(asc(val))
-            elif 'desc' in request.args:
-                query = query.order_by(desc(val))
-            else:
-                query = query.order_by(val)
-    else:
-        query = query.order_by(asc('name'))
-    return query
-
 
 def search_filter(query_params, query):
     """
@@ -526,11 +445,11 @@ def artist_search(query, term):
     """
     table = Artist.__table__
     search_statement = or_(
-        cast(table.c.id, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.id, Text).ilike('%' + term + '%'),
         table.c.name.ilike('%' + term + '%'),
         table.c.bio.ilike('%' + term + '%'),
         table.c.image.ilike('%' + term + '%'),
-        cast(table.c.followers, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.followers, Text).ilike('%' + term + '%'),
         table.c.spotify_uri.ilike('%' + term + '%'))
     return query.filter(search_statement)
 
@@ -541,24 +460,24 @@ def media_search(query, term):
     """
     table = Media.__table__
     search_statement = or_(
-        cast(table.c.id, Text).ilike('%' + term + '%'),  #convert
-        cast(table.c.type, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.id, Text).ilike('%' + term + '%'),
+        cast(table.c.type, Text).ilike('%' + term + '%'),
         table.c.name.ilike('%' + term + '%'),
         table.c.cast.ilike('%' + term + '%'),
         cast(table.c.seasons, Text).ilike('%' + term + '%'),
         cast(table.c.release_date, Text).ilike('%' + term + '%'),
         table.c.last_aired.ilike('%' + term + '%'),
         table.c.image.ilike('%' + term + '%'),
-        cast(table.c.running, Text).ilike('%' + term + '%'),  #convert?
+        cast(table.c.running, Text).ilike('%' + term + '%'),
         table.c.overview.ilike('%' + term + '%'),
         table.c.other_images.ilike('%' + term + '%'),
         table.c.videos.ilike('%' + term + '%'),
-        cast(table.c.imdb_id, Text).ilike('%' + term + '%'),  #convert
-        cast(table.c.tmdb_id, Text).ilike('%' + term + '%'),  #convert
-        cast(table.c.runtime, Text).ilike('%' + term + '%'),  #convert
+        cast(table.c.imdb_id, Text).ilike('%' + term + '%'),
+        cast(table.c.tmdb_id, Text).ilike('%' + term + '%'),
+        cast(table.c.runtime, Text).ilike('%' + term + '%'),
         table.c.tagline.ilike('%' + term + '%'),
-        cast(table.c.popularity, Text).ilike('%' + term + '%'),  #convert
-        cast(table.c.average_rating, Text).ilike('%' + term + '%'))  #convert
+        cast(table.c.popularity, Text).ilike('%' + term + '%'),
+        cast(table.c.average_rating, Text).ilike('%' + term + '%'))
     return query.filter(search_statement)
 
 
