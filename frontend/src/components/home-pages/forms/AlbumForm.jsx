@@ -5,14 +5,14 @@ import styles from '../../../style/Form.css';
 import yearItems from './selections/Years.jsx';
 
 const resetState = {
-  start_year: 1954, end_year: 2018, track: "", label: "", collapse: true, validNum: true
+  start: "", end: "", track: "", label: "", collapse: true, validNum: true
 };
 
 export class AlbumForm extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {start_year: 1954, end_year: 2018, track: "", label: "", collapse: false, validNum: true}; 
+    this.state = {start: "", end: "", track: "", label: "", collapse: false, validNum: true}; 
     this.filter = this.filter.bind(this);
     this.toggle = this.toggle.bind(this);
     this.checkValidNum = this.checkValidNum.bind(this);
@@ -24,6 +24,7 @@ export class AlbumForm extends Component {
   resetFields() {
     this.setState(resetState); 
     document.getElementById("album-form").reset();
+    this.filter()
   }
 
   getNumTracks() {
@@ -100,7 +101,7 @@ export class AlbumForm extends Component {
           <Form inline className="filtering-form" id="album-form" onSubmit={(e) => {e.preventDefault(); this.filter()}}>
             <FormGroup className="text-center" row>
               <Col style={{paddingRight: "0px"}} sm={4}>
-                <Label style={{marginRight: "5px"}} for="start">Release Year</Label>
+                <Label size="lg" style={{marginRight: "5px"}} for="start">Release Year</Label>
                 <Input type="select" name="start" id="start" onChange={(e) => (this.setState({start: e.target.value}))}>
                   <option value="">Any</option>
                   {years}
@@ -111,12 +112,12 @@ export class AlbumForm extends Component {
                 </Input>
               </Col>
               <Col style={{padding: "10px"}} sm={4}>
-                <Label for="track">Number of Tracks</Label>
+                <Label size="lg" for="track">Number of Tracks</Label>
                 <Input style={{width: "75%"}} invalid={!this.state.validNum} type="number" name="track" id="track" placeholder="value" onChange={(e) => (this.setState({track: e.target.value}))}/>
                 {this.getFeedback()}
               </Col>
               <Col sm={4}>
-                <Label for="label">Label</Label>
+                <Label size="lg" for="label">Label</Label>
                   <Input style={{width: "100%"}} type="select" name="label" id="label" onChange={(e) => (this.setState({label: e.target.value}))}>
                   <option value="">Any</option>
                   {labels}
