@@ -19,7 +19,7 @@ class SplashDescription extends Component {
             </p>
             <p className="text-left">
               <UISref to="album.home">
-                <Button color="secondary">Albums <i className="fas fa-chevron-right"></i></Button>
+                <Button style={{backgroundColor: "#1d2951"}}>Albums <i className="fas fa-chevron-right"></i></Button>
               </UISref>
             </p>
           </Col>
@@ -42,7 +42,7 @@ class SplashDescription extends Component {
             </p>
             <p className="text-right">
               <UISref to="artist.home">
-                <Button color="secondary">Artists <i className="fas fa-chevron-right"></i></Button>
+                <Button style={{backgroundColor: "#1d2951"}}>Artists <i className="fas fa-chevron-right"></i></Button>
               </UISref>
             </p> 
           </Col>
@@ -59,7 +59,7 @@ class SplashDescription extends Component {
             </p> 
             <p className="text-left">
               <UISref to="media.home">
-                <Button color="secondary">Media <i className="fas fa-chevron-right"></i></Button>
+                <Button style={{backgroundColor: "#1d2951"}}>Media <i className="fas fa-chevron-right"></i></Button>
               </UISref>
             </p>
           </Col>
