@@ -1,4 +1,4 @@
-{
+const data = {
   "nodes": [
     {
       "id": "Jade",
@@ -640,3 +640,5 @@
     }
   ]
 }
+
+export default data;
