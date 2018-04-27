@@ -21,7 +21,7 @@ Taylor Schaffner: Backend & API
 ---
 
 ## Demonstration
-[Website](soundtrackdb.me)
+[Website](http://soundtrackdb.me)
 
 ---
 
