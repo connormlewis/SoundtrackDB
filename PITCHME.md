@@ -8,15 +8,15 @@
 
 Alan Yi: Frontend & QA
 
-Aylish Wrench: Frontend & data scraping 
+Aylish Wrench: Frontend & Data Scraping
 
-Connor Lewis: Full stack
+Connor Lewis: Full Stack & DevOps
 
 Melody Truong: Frontend
 
-Steve Wang: Frontend 
+Steve Wang: Frontend
 
-Taylor Schaffner: Backend & API 
+Taylor Schaffner: Backend & API
 
 ---
 
@@ -58,35 +58,36 @@ Taylor Schaffner: Backend & API
 +++
 
 ### What did we do well?
-- Good team communication
-- Everyone showed up when necessary
-- Always willing to help
-- Website would scale well
+- Good teamwork
+- Website would scale well (mobile)
 - Allows future expansion
+- Didn't wait until the last minute to write tests
 
 +++
 
 ### What did we learn?
-- React isn't super pleasant to work with, some features lack documentation
+- React is not easy to work with
 - GitBook needs to hire new web developers (they're hiring: [job listings](https://gitbook.workable.com/))
-- It's very important to plan early and have a design in mind before you start writing code
-- Don't underestimate the difficulty of a particular issue, it may take more time than you intend
+- Plan and design early
+- Don't underestimate the difficulty of a particular issue
+- Check your site periodically
 
 +++
 
 ### What can we do better?
 - Have firm deadlines for tasks
-- Time estimating is hard, but we got better with it over time
-- Plan for expansion earlier rather than later
-- Better visual design
+- Time estimation is hard
+- Improve visual design
+- Make sure everyone can push changes to production
 
 +++
 
 ### What puzzles us?
-- Some of the tools that were required seem unnecessary
-    - Tools which aren't industry standard
-- What is a better way to connect data together
-    - Used a manual process for matching
+- Automation of connecting instances
+- How to better unit test frontend components
+    - Looking at you, carousel
+- How to integrate Selenium tests on Travis
+- Reactstrap
 
 ---
 
@@ -95,34 +96,30 @@ Taylor Schaffner: Backend & API
 +++
 
 ### What did they do well?
-- Their visual design looked very good
-    - Even from the start of the project, their site looked good
-    - In contrast, ours started kinda ugly, and improved slightly
+- Nice, consistent visual design
 - Site was easy and intuitive to navigate
+- Frontend filtering is user friendly
 
 +++
 
 ### What did we learn from their website?
-- The look of a site can make users feel a certain way about it
-    - More appealing visual design made us feel like their website would probably function better as well
+- Visual design is important
 
 +++
 
 ### What can they do better?
-- A lot more data
+- Add more data
 - More sorting options
-- Final design polishes
+- Final design polishing
+- More detailed API documentation
 
 +++
 
 ### What puzzles us about their website?
-- How were the external links for their model instances found? 
-- How they implemented the filtering interface on their site
+- How did they find the community instances?
+- Did they pay to get the .lol domain?
 
 ---
 
 ## Visualization
-
-- Exercise the API of another group in an interesting and useful way
-- Use D3
-- The page must have a clear English description and be rendered attractively
+[Visualization](http://soundtrackdb.me/visualization)
