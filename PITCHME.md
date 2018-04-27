@@ -7,10 +7,15 @@
 ## Introduction
 
 Alan Yi: Frontend & QA
+
 Aylish Wrench: Frontend & data scraping 
+
 Connor Lewis: Full stack
+
 Melody Truong: Frontend
+
 Steve Wang: Frontend 
+
 Taylor Schaffner: Backend & API 
 
 ---
