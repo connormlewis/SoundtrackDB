@@ -59,7 +59,7 @@ export class ModelConnections extends Component {
       .selectAll("circle")
       .data(this.nodes)
       .enter().append("circle")
-      .attr("r", 5)
+      .attr("r", 6)
       .attr("fill", this.getNodeColor)
 
     var textElements = svg.append("g")
