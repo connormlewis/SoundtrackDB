@@ -8,9 +8,9 @@
 
 Alan Yi: Frontend & QA
 
-Aylish Wrench: Frontend & data scraping 
+Aylish Wrench: Frontend & Data Scraping 
 
-Connor Lewis: Full stack
+Connor Lewis: Full Stack & DevOps
 
 Melody Truong: Frontend
 
@@ -61,7 +61,7 @@ Taylor Schaffner: Backend & API
 - Good team communication
 - Everyone showed up when necessary
 - Always willing to help
-- Website would scale well
+- Website would scale well (mobile)
 - Allows future expansion
 
 +++
@@ -71,6 +71,9 @@ Taylor Schaffner: Backend & API
 - GitBook needs to hire new web developers (they're hiring: [job listings](https://gitbook.workable.com/))
 - It's very important to plan early and have a design in mind before you start writing code
 - Don't underestimate the difficulty of a particular issue, it may take more time than you intend
+- Why people reported our website was not responding as intended
+    - Our application would stop working after 24 hours for some reason
+    - Manually restart it every night
 
 +++
 
@@ -97,7 +100,7 @@ Taylor Schaffner: Backend & API
 ### What did they do well?
 - Their visual design looked very good
     - Even from the start of the project, their site looked good
-    - In contrast, ours started kinda ugly, and improved slightly
+    - In contrast, ours started kind of ugly, and improved slightly
 - Site was easy and intuitive to navigate
 
 +++
