@@ -6,16 +6,45 @@
 
 ## Introduction
 
-Alan Yi: Frontend ~~breaks everything~~ QA :bomb: :question:
-Aylish Wrench: Frontend and data scraping :gb: 
-Connor Lewis: Full stack 🥞
-Melody Truong: Frontend :fries: 
-Steve Wang: Frontend :100: 
-Taylor Schaffner: :bomb: 
+Alan Yi: Frontend & QA
+Aylish Wrench: Frontend & data scraping 
+Connor Lewis: Full stack
+Melody Truong: Frontend
+Steve Wang: Frontend 
+Taylor Schaffner: Backend & API 
 
 ---
 
 ## Demonstration
+[Website](soundtrackdb.me)
+
+---
+
+## Testing
+
++++
+
+### Backend Tests
+
+![](https://raw.githubusercontent.com/connormlewis/idb/git-pitch/testing-images/backend.png)
+
++++
+
+### Postman Tests
+
+![](https://raw.githubusercontent.com/connormlewis/idb/git-pitch/testing-images/postman.png)
+
++++
+
+### Mocha Tests
+
+![](https://raw.githubusercontent.com/connormlewis/idb/git-pitch/testing-images/mocha.png)
+
++++
+
+### Selenium Tests
+
+![](https://raw.githubusercontent.com/connormlewis/idb/git-pitch/testing-images/selenium.png)
 
 ---
 
@@ -27,13 +56,13 @@ Taylor Schaffner: :bomb:
 - Good team communication
 - Everyone showed up when necessary
 - Always willing to help
-- Website would scale well (sorting on backend)
+- Website would scale well
 - Allows future expansion
 
 +++
 
 ### What did we learn?
-- React isn't super pleasnt to work with, some features lack documentation
+- React isn't super pleasant to work with, some features lack documentation
 - GitBook needs to hire new web developers (they're hiring: [job listings](https://gitbook.workable.com/))
 - It's very important to plan early and have a design in mind before you start writing code
 - Don't underestimate the difficulty of a particular issue, it may take more time than you intend
@@ -44,6 +73,7 @@ Taylor Schaffner: :bomb:
 - Have firm deadlines for tasks
 - Time estimating is hard, but we got better with it over time
 - Plan for expansion earlier rather than later
+- Better visual design
 
 +++
 
@@ -51,7 +81,7 @@ Taylor Schaffner: :bomb:
 - Some of the tools that were required seem unnecessary
     - Tools which aren't industry standard
 - What is a better way to connect data together
-    - Our process was somewhat manual, even though our data set is fairly large
+    - Used a manual process for matching
 
 ---
 
@@ -60,7 +90,7 @@ Taylor Schaffner: :bomb:
 +++
 
 ### What did they do well?
-- Their design looked very good, similar to what an actual wiki would look like
+- Their visual design looked very good
     - Even from the start of the project, their site looked good
     - In contrast, ours started kinda ugly, and improved slightly
 - Site was easy and intuitive to navigate
@@ -74,9 +104,9 @@ Taylor Schaffner: :bomb:
 +++
 
 ### What can they do better?
-- Their site didn't have that much data from the API's they scraped through many of the phases
-- Their site doesn't offer many options for sorting models
-- Their design is really good, but could use a bit of polish in a couple places
+- A lot more data
+- More sorting options
+- Final design polishes
 
 +++
 
