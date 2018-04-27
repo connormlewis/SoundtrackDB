@@ -91,3 +91,6 @@ html:-moz-full-screen-ancestor {
 
 .gp-download { margin-left: 10px; }
 
+img {
+  border: none !important;
+}
