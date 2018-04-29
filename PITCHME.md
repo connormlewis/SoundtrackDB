@@ -59,15 +59,16 @@ Taylor Schaffner: Backend & API
 
 ### What did we do well?
 - Good teamwork
-- Website would scale well (mobile)
+- Website would scale well
 - Allows future expansion
+- Used a responsive design
 - Didn't wait until the last minute to write tests
 
 +++
 
 ### What did we learn?
 - React is not easy to work with
-- GitBook needs to hire new web developers (they're hiring: [job listings](https://gitbook.workable.com/))
+- Certain tools are harder to use (BTW Gitbook is hiring) 
 - Plan and design early
 - Don't underestimate the difficulty of a particular issue
 - Check your site periodically
@@ -104,6 +105,7 @@ Taylor Schaffner: Backend & API
 
 ### What did we learn from their website?
 - Visual design is important
+- Design tools (Adobe XD and Zeplin)
 
 +++
 
@@ -116,6 +118,7 @@ Taylor Schaffner: Backend & API
 +++
 
 ### What puzzles us about their website?
+- Does their site contain all Runescape items and skills?
 - How did they find the community instances?
 - Did they pay to get the .lol domain?
 
