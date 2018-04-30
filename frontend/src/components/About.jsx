@@ -3,6 +3,7 @@ import React, { Component, Fragment } from 'react';
 import styles from "../style/About.css";
 import PropTypes from 'prop-types'
 import { Card, CardImg, CardText, CardBody, CardTitle } from 'reactstrap';
+import { UISref} from '@uirouter/react';
 
 import alan from '../res/avatars/alan.png';
 import aylish from '../res/avatars/aylish.jpg';
@@ -167,7 +168,11 @@ export class Statistics extends Component {
             <strong>Total Unit Tests: </strong>{73}</p>
           <p className="about-style-p"><a href="https://github.com/connormlewis/idb">GitHub Repository</a><br />
             <a href="https://connormlewis.gitbooks.io/api/">API Documentation</a><br />
-            <a href="https://connormlewis.gitbooks.io/report/">GitBook Report</a></p>
+            <a href="https://connormlewis.gitbooks.io/report/">GitBook Report</a><br />
+            <UISref to="visualization">
+              <a> Runescrape Visualization </a> 
+            </UISref>
+          </p>
         </div>
       </Fragment>
     );

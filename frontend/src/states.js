@@ -12,6 +12,7 @@ import { AlbumInstance } from './components/instance-pages/AlbumInstance';
 import { MediaInstance } from './components/instance-pages/MediaInstance'; 
 import { ArtistInstance } from './components/instance-pages/ArtistInstance';
 import SearchResults from './components/SearchResults';
+import { Visualization } from './components/Visualization'
 
 const HOME = {
   name: 'home',
@@ -170,4 +171,10 @@ const SEARCH_RESULTS = {
   }]
 }
 
-export default [HOME, ABOUT, ALBUM_ABSTRACT, ARTIST_ABSTRACT, MEDIA_ABSTRACT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE, ERROR, SEARCH_RESULTS]; 
+const VISUALIZATION = {
+    name: 'visualization',
+    url: '/visualization',
+    component: Visualization
+}
+
+export default [HOME, ABOUT, ALBUM_ABSTRACT, ARTIST_ABSTRACT, MEDIA_ABSTRACT, ALBUM_HOME, ARTIST_HOME, MEDIA_HOME, ALBUM_INSTANCE, ARTIST_INSTANCE, MEDIA_INSTANCE, ERROR, SEARCH_RESULTS, VISUALIZATION]; 
