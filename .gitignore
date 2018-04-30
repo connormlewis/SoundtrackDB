@@ -4,5 +4,4 @@ postgres-data/**/*
 !.gitkeep
 .idea
 *.log
-
 node_modules
